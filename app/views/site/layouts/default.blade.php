@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			IT fffffff
+			IT宝贝网-IT style learning,IT powered competence for China kids,IT从娃娃抓起，IT成为新世纪青少年必备生活技能
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
