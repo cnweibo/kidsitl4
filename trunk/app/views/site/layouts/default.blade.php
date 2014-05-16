@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			IT
+			IT fffffffff
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
