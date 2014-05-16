@@ -1,0 +1,58 @@
+[2014-05-12 14:40:55] production.ERROR: 500 - Command "generate:migrate" is not defined.
+
+Did you mean one of these?
+    generate:pivot
+    generate:migration
+    generate:resource
+    generate:scaffold
+    generate:publish-templates
+    generate:seed
+    generate:view
+    generate:controller
+    generate:model @ /
+exception 'InvalidArgumentException' with message 'Command "generate:migrate" is not defined.
+
+Did you mean one of these?
+    generate:pivot
+    generate:migration
+    generate:resource
+    generate:scaffold
+    generate:publish-templates
+    generate:seed
+    generate:view
+    generate:controller
+    generate:model' in C:\websites\kidsitok\laravelstarterkit\vendor\symfony\console\Symfony\Component\Console\Application.php:562
+Stack trace:
+#0 C:\websites\kidsitok\laravelstarterkit\vendor\symfony\console\Symfony\Component\Console\Application.php(188): Symfony\Component\Console\Application->find('generate:migrat...')
+#1 C:\websites\kidsitok\laravelstarterkit\vendor\symfony\console\Symfony\Component\Console\Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 C:\websites\kidsitok\laravelstarterkit\artisan(59): Symfony\Component\Console\Application->run()
+#3 {main} [] []
+[2014-05-12 14:45:17] production.ERROR: 500 - Command "generate:migrate" is not defined.
+
+Did you mean one of these?
+    generate:pivot
+    generate:migration
+    generate:resource
+    generate:scaffold
+    generate:publish-templates
+    generate:seed
+    generate:view
+    generate:controller
+    generate:model @ /
+exception 'InvalidArgumentException' with message 'Command "generate:migrate" is not defined.
+
+Did you mean one of these?
+    generate:pivot
+    generate:migration
+    generate:resource
+    generate:scaffold
+    generate:publish-templates
+    generate:seed
+    generate:view
+    generate:controller
+    generate:model' in C:\websites\kidsitok\laravelstarterkit\vendor\symfony\console\Symfony\Component\Console\Application.php:562
+Stack trace:
+#0 C:\websites\kidsitok\laravelstarterkit\vendor\symfony\console\Symfony\Component\Console\Application.php(188): Symfony\Component\Console\Application->find('generate:migrat...')
+#1 C:\websites\kidsitok\laravelstarterkit\vendor\symfony\console\Symfony\Component\Console\Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 C:\websites\kidsitok\laravelstarterkit\artisan(59): Symfony\Component\Console\Application->run()
+#3 {main} [] []

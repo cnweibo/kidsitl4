@@ -1,0 +1,35 @@
+[2014-05-15 12:29:57] production.ERROR: 500 - syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE) @ /admin/blogs
+exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE)' in /var/www/html/kidsit/live/app/lang/zh_CN/admin/blogs/table.php:8
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-05-15 12:40:36] production.ERROR: 500 - syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE) @ /admin/blogs
+exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE)' in /var/www/html/kidsit/live/app/lang/zh_CN/admin/blogs/table.php:8
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-05-15 12:41:24] production.ERROR: 500 - syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE) @ /admin/blogs
+exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE)' in /var/www/html/kidsit/live/app/lang/zh_CN/admin/blogs/table.php:8
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-05-15 12:42:24] production.ERROR: 500 - syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE) @ /admin/blogs
+exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE)' in /var/www/html/kidsit/live/app/lang/zh_CN/admin/blogs/table.php:8
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-05-15 12:48:04] production.ERROR: 500 - syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE) @ /admin/blogs
+exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE)' in /var/www/html/kidsit/live/app/lang/zh_CN/admin/blogs/table.php:8
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-05-15 12:50:30] production.ERROR: 500 - syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE) @ /admin/blogs
+exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE)' in /var/www/html/kidsit/live/app/lang/zh_CN/admin/blogs/table.php:8
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-05-15 12:51:41] production.ERROR: 500 - syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE) @ /admin/blogs
+exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''文章Id,' (T_ENCAPSED_AND_WHITESPACE)' in /var/www/html/kidsit/live/app/lang/zh_CN/admin/blogs/table.php:8
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
