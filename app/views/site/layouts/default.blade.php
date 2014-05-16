@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			IT fffffffff
+			IT宝贝网-IT范儿来学习,IT从娃娃抓起，IT成为新世纪必备的技能
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
