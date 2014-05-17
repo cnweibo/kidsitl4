@@ -50,7 +50,9 @@ class BlogController extends BaseController {
 	 */
 	public function getView($slug)
 	{
-
+	$pathInfo = Request::getPathInfo();
+    $message = 'myinformation';
+    Log::error(" - $message @ Request::getPathInfo()\r\n");
 		// Get this blog post data
 		$post = $this->post->where('slug', '=', $slug)->first();
 
