@@ -81,7 +81,7 @@
                     </button>
                 </div>
     			<div class="collapse navbar-collapse navbar-ex1-collapse">
-    				<ul class="nav navbar-nav">
+    				<ul class="nav navbar-nav" id="top-nav-left">
     					<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
     					<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
     					<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><span class="glyphicon glyphicon-bullhorn"></span> Comments</a></li>
@@ -95,7 +95,7 @@
     						</ul>
     					</li>
     				</ul>
-    				<ul class="nav navbar-nav pull-right">
+    				<ul class="nav navbar-nav pull-right" id="top-nav-right">
     					<li><a href="{{{ URL::to('/') }}}">View Homepage</a></li>
     					<li class="divider-vertical"></li>
     					<li class="dropdown">
