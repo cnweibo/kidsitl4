@@ -65,6 +65,18 @@
 						<li><a href="{{{ URL::to('') }}}">dropdown menu</a></li>
 						<li><a href="{{{ URL::to('') }}}">首页</a></li>
 
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+
+
 					</ul>
 
                     <ul class="nav navbar-nav pull-right" id="top-nav-right">
@@ -113,6 +125,7 @@
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('bootstrap/js/custom.js')}}"></script>
 
         @yield('scripts')
 	</body>
