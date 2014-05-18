@@ -19,7 +19,8 @@
 
 		<!-- CSS
 		================================================== -->
-        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}">
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
 
 		<style>
@@ -59,11 +60,14 @@
                     </button>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav"  id="top-nav-left">
 						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">首页</a></li>
+						<li><a href="{{{ URL::to('') }}}">dropdown menu</a></li>
+						<li><a href="{{{ URL::to('') }}}">首页</a></li>
+
 					</ul>
 
-                    <ul class="nav navbar-nav pull-right">
+                    <ul class="nav navbar-nav pull-right" id="top-nav-right">
                         @if (Auth::check())
                         @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>

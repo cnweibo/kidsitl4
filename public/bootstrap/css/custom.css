@@ -1,0 +1,19 @@
+/*@import url(bootstrap.css);*/
+ul#top-nav-left > li >a {
+color: #899823;
+}
+ul#top-nav-right > li >a {
+color: #899823;
+}
+ul#top-nav-left > li >a:hover {
+background-color: #FF9900;
+color:white;
+}
+ul#top-nav-right > li >a:hover {
+background-color: #FF9900;
+color:white;
+}
+
+body{
+	background-color: #eee;
+}
