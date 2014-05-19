@@ -131,7 +131,7 @@ class ExceptionHandler
                 $title = 'Sorry, the page you are looking for could not be found.';
                 break;
             default:
-                $title = 'Whoops, looks like something went wrong.';
+                $title = '系统无法完成您的请求！请检查URL是否合法';
         }
 
         $content = '';
@@ -175,7 +175,7 @@ EOF
                 if ($this->debug) {
                     $title = sprintf('Exception thrown when handling an exception (%s: %s)', get_class($exception), $exception->getMessage());
                 } else {
-                    $title = 'Whoops, looks like something went wrong.';
+                    $title = '系统无法完成您的请求！请检查URL是否合法';
                 }
             }
         }
