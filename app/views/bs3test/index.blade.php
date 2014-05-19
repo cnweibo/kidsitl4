@@ -4,6 +4,7 @@
 		<!-- Basic Page Needs
 		================================================== -->
 		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>
 			your title goes here
 		</title>
@@ -54,7 +55,7 @@
 					<li class="active"><a href="#">Link</a></li>
 					<li><a href="#">Link</a></li>
 				</ul>
-				<form class="navbar-form navbar-left" role="search">
+				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
 					</div>
@@ -74,6 +75,7 @@
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
+
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

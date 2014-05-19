@@ -4,6 +4,7 @@
 		<!-- Basic Page Needs
 		================================================== -->
 		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>
 			@section('title')
 			IT宝贝网-IT style learning,IT powered competence for China kids,IT从娃娃抓起，IT成为新世纪青少年必备生活技能
