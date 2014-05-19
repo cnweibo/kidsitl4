@@ -59,9 +59,10 @@
 
 	@yield('styles')
 
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	  <script src="{{asset('bootstrap/js/html5shiv.js')}}"></script>
+	  <script src="{{asset('bootstrap/js/respond.min.js')}}"></script>		  
 	<![endif]-->
 
 </head>
