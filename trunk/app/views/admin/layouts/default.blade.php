@@ -5,7 +5,7 @@
 <head id="Starter-Site">
 
 	<meta charset="UTF-8">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
