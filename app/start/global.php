@@ -57,7 +57,7 @@ App::error(function(Exception $exception, $code)
     if (Config::get('app.debug')) {
     	return;
     }
-
+  //customize the error page here following
     switch ($code)
     {
         case 403:
