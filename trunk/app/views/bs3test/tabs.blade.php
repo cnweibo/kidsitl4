@@ -37,18 +37,18 @@
 	</head>
 	<body>		
 		<div id="tabs-16771" class="tabbable"> <!-- Only required for left/right tabs -->
-			<ul class="nav nav-tabs">
-				<li class="active"><a contenteditable="true" data-toggle="tab" href="#panel_id">Section 1</a></li>
-				<li class=""><a contenteditable="true" data-toggle="tab" href="#panel_id2">Section 2</a></li>
-			</ul>
-			<div class="tab-content">
-				<div id="panel_id" class="tab-pane active">
-					<p contenteditable="true">I'm in Section 1.</p>
-				</div>
-				<div id=panel_id2" class="tab-pane">
-					<p contenteditable="true">Howdy, I'm in Section 2.</p>
-				</div>
+		<ul class="nav nav-tabs">
+			<li class="active"><a contenteditable="true" data-toggle="tab" href="#panel_id">Section 1</a></li>
+			<li class=""><a contenteditable="true" data-toggle="tab" href="#panel_id2">Section 2</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="panel_id" class="tab-pane active">
+				<p contenteditable="true">I'm in Section 1.</p>
 			</div>
+			<div id=panel_id2 class="tab-pane">
+				<p contenteditable="true">Howdy, I'm in Section 2.</p>
+			</div>
+		</div>
 		</div>
 		<!-- Javascripts
 		================================================== -->
