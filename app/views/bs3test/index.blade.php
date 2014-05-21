@@ -15,7 +15,6 @@
 		<!-- Mobile Specific Metas
 		================================================== -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 		<!-- CSS
 		================================================== -->
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
@@ -46,7 +45,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Title</a>
+				<a class="navbar-brand" href="#">首页</a>
 			</div>
 		
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,6 +74,20 @@
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
+
+<!-- 如下代码只会在手机显示 -->
+<div class="container">
+<div class="row">
+<div class="col-xs-12 hidden-lg">我只会在手机 (<768px)上面显示</div>
+</div>
+</div>
+<!-- 如下代码只会在平板显示 -->
+<div class="container">
+<div class="row">
+<div class="col-sm-12">我只会在平板 (≥768px)上面显示</div>
+</div>
+</div>
+
 
 		<!-- Javascripts
 		================================================== -->
