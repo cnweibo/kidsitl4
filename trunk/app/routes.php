@@ -105,8 +105,9 @@ Route::get('contact-us', function()
     return View::make('site/contact-us');
 });
 
-Route::get("/bs3test", function(){
-    return View::make('bs3test.index');
+Route::get("/bs3test/{page?}", function($page = 'index'){
+    //return $page;
+    return View::make('bs3test.'.$page);
 });
 # Posts - Second to last set, match slug
 Route::get('{postSlug}', 'BlogController@getView');
