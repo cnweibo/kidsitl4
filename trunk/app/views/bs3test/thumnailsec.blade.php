@@ -36,21 +36,16 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-		<ul contenteditable="true" class="nav nav-pills">
-		    <li class="active"><a href="#">Home</a></li>
-		    <li><a href="#">Profile</a></li>
-		    <li class="disabled"><a href="#">Messages</a></li>
-		    <li class="dropdown pull-right">
-		      <a class="dropdown-toggle" data-toggle="dropdown" href="#">开始下拉 <b class="caret"></b></a>
-		      <ul class="dropdown-menu">
-		        <li><a href="#">Action</a></li>
-		        <li><a href="#">Another action</a></li>
-		        <li><a href="#">Something else here</a></li>
-		        <li class="divider"></li>
-		        <li><a href="#">Separated link</a></li>
-		      </ul>
-		    </li>
-		</ul>
+		<div class="col-md-4">
+		    <div class="thumbnail">
+		      <img src="http://lorempixel.com/600/200/people" alt="300x200">
+		      <div contenteditable="true" class="caption">
+		        <h3>Thumbnail label</h3>
+		        <p>fasf放松放松放松的发撒旦法大赛地放松放松放松的发撒旦法大赛地方撒发射打发放松放松放松的发撒旦法大赛地方撒发射打发放松放松放松的发撒旦法大赛地方撒发射打发放松放松放松的发撒旦法大赛地方撒发射打发方撒发射打发速度Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+		        <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+		      </div>
+		    </div>
+		  </div>
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

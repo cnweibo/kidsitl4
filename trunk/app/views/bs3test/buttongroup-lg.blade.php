@@ -36,21 +36,12 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-		<ul contenteditable="true" class="nav nav-pills">
-		    <li class="active"><a href="#">Home</a></li>
-		    <li><a href="#">Profile</a></li>
-		    <li class="disabled"><a href="#">Messages</a></li>
-		    <li class="dropdown pull-right">
-		      <a class="dropdown-toggle" data-toggle="dropdown" href="#">开始下拉 <b class="caret"></b></a>
-		      <ul class="dropdown-menu">
-		        <li><a href="#">Action</a></li>
-		        <li><a href="#">Another action</a></li>
-		        <li><a href="#">Something else here</a></li>
-		        <li class="divider"></li>
-		        <li><a href="#">Separated link</a></li>
-		      </ul>
-		    </li>
-		</ul>
+		<div class="btn-group btn-group-lg">
+			<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left"></i> Left</button>
+			<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-center"></i> Center</button>
+			<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-right"></i> Right</button>
+			<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-justify"></i> Justify</button>
+		</div>
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

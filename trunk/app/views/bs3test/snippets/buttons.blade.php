@@ -36,25 +36,26 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-		<ul contenteditable="true" class="nav nav-pills">
-		    <li class="active"><a href="#">Home</a></li>
-		    <li><a href="#">Profile</a></li>
-		    <li class="disabled"><a href="#">Messages</a></li>
-		    <li class="dropdown pull-right">
-		      <a class="dropdown-toggle" data-toggle="dropdown" href="#">开始下拉 <b class="caret"></b></a>
-		      <ul class="dropdown-menu">
-		        <li><a href="#">Action</a></li>
-		        <li><a href="#">Another action</a></li>
-		        <li><a href="#">Something else here</a></li>
-		        <li class="divider"></li>
-		        <li><a href="#">Separated link</a></li>
-		      </ul>
-		    </li>
-		</ul>
-		<!-- Javascripts
+		<button type="button" class="btn btn-large btn-block btn-info">button</button>
+		<button type="button" class="btn btn-default">button</button>
+		<button type="button" class="btn btn-danger">button</button>
+		<button type="button" class="btn btn-success">button</button>
+		<button type="button" class="btn btn-primary">button</button>
+		<button type="button" class="btn btn-primary disabled">button</button>
+		<button type="button" class="btn btn-lg btn-info">button</button>
+		<button type="button" class="btn btn-sm btn-info">button</button>
+		<button type="button" class="btn btn-xs btn-danger">button</button>
+		<button type="button" class="btn btn-md btn-danger">button</button>
+		<button type="button" class="btn btn-large btn-block btn-info">button</button>
+		<button type="button" class="btn btn-large btn-block btn-danger">button</button>
+		<button type="button" class="btn btn-large btn-block btn-lg btn-warning">button</button>
+		<button type="button" class="btn btn-large btn-block btn-sm btn-success">button</button>
+		<button type="button" class="btn btn-large btn-block btn-xs btn-default">button</button>
+		<button type="button" class="btn btn-large btn-block btn-primary">button</button>
+		<link rel="canonical" href=""><!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('bootstrap/js/custom.js')}}"></script>
 	</body>
-</html>
+</html>	

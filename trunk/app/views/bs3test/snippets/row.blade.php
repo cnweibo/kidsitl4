@@ -35,22 +35,19 @@
 		<link rel="apple-touch-icon-precomposed" href="{{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}}">
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
-	<body>		
-		<ul contenteditable="true" class="nav nav-pills">
-		    <li class="active"><a href="#">Home</a></li>
-		    <li><a href="#">Profile</a></li>
-		    <li class="disabled"><a href="#">Messages</a></li>
-		    <li class="dropdown pull-right">
-		      <a class="dropdown-toggle" data-toggle="dropdown" href="#">开始下拉 <b class="caret"></b></a>
-		      <ul class="dropdown-menu">
-		        <li><a href="#">Action</a></li>
-		        <li><a href="#">Another action</a></li>
-		        <li><a href="#">Something else here</a></li>
-		        <li class="divider"></li>
-		        <li><a href="#">Separated link</a></li>
-		      </ul>
-		    </li>
-		</ul>
+	<body>	
+	<div class="container">
+			
+		<div class="row">
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				col8
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				colum4
+			</div>
+		</div>
+	</div>	
+
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

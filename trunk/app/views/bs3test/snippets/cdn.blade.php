@@ -36,21 +36,10 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-		<ul contenteditable="true" class="nav nav-pills">
-		    <li class="active"><a href="#">Home</a></li>
-		    <li><a href="#">Profile</a></li>
-		    <li class="disabled"><a href="#">Messages</a></li>
-		    <li class="dropdown pull-right">
-		      <a class="dropdown-toggle" data-toggle="dropdown" href="#">开始下拉 <b class="caret"></b></a>
-		      <ul class="dropdown-menu">
-		        <li><a href="#">Action</a></li>
-		        <li><a href="#">Another action</a></li>
-		        <li><a href="#">Something else here</a></li>
-		        <li class="divider"></li>
-		        <li><a href="#">Separated link</a></li>
-		      </ul>
-		    </li>
-		</ul>
+		<!-- Latest compiled and minified CSS & JS -->
+		<link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        
