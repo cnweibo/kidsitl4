@@ -36,12 +36,42 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-	   	<a class="btn btn-danger btn-lg" href="#">
-  		<i class="fa fa-trash-o fa-5x"></i> Delete</a>
-  		<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-music"></span> Music</button>
+		<ul class="pager">
+			<li><a href="#">Previous</a></li>
+			<li><a href="#">Next</a></li>
+		</ul>
+		<ul class="pagination">
+			<li><a href="#">&laquo;</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
+		<ul class="pager">
+			<li class="previous"><a href="#">&larr; Older</a></li>
+			<li class="next"><a href="#">Newer &rarr;</a></li>
+		</ul>
+		<ul class="pagination pagination-lg">
+			<li><a href="#">&laquo;</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
 		
-		<button type="button" class="btn btn-success"><i class="fa fa-trash-o fa-5x"></i> button</button>
-	
+		<ul class="pagination pagination-sm">
+			<li><a href="#">&laquo;</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        
