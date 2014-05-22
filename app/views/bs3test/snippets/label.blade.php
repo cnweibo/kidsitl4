@@ -36,12 +36,12 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-	   	<a class="btn btn-danger btn-lg" href="#">
-  		<i class="fa fa-trash-o fa-5x"></i> Delete</a>
-  		<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-music"></span> Music</button>
-		
-		<button type="button" class="btn btn-success"><i class="fa fa-trash-o fa-5x"></i> button</button>
-	
+		<span class="label">Label</span>
+		<span class="label label-info label-lg">Label</span>
+		<span class="label label-danger">Label</span>
+		<span class="label label-default label-lg">Label</span>
+		<span class="label label-success">Label</span>
+		<span class="label label-warning">Label</span>
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

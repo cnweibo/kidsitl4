@@ -36,12 +36,27 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-	   	<a class="btn btn-danger btn-lg" href="#">
-  		<i class="fa fa-trash-o fa-5x"></i> Delete</a>
-  		<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-music"></span> Music</button>
-		
-		<button type="button" class="btn btn-success"><i class="fa fa-trash-o fa-5x"></i> button</button>
-	
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left"></i> Left</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-center"></i> Center</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-right"></i> Right</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-justify"></i> Justify</button>
+			</div>
+			<div class="btn-group btn-group-lg">
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left"></i> Left</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-center"></i> Center</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-right"></i> Right</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-justify"></i> Justify</button>
+			</div>
+
+			<div class="btn-group">
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left"></i> Left</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-center"></i> Center</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-right"></i> Right</button>
+				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-justify"></i> Justify</button>
+			</div>
+		</div>	
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

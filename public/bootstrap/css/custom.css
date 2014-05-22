@@ -17,10 +17,6 @@ color:white;
 body{
 	background-color: #eee;
 }
-.navbar-inverse{
-	background-image: -webkit-linear-gradient(top,#124072 0,#222 100%);
-
-}
-.navbar{
-	background-color: #9a9a00;
+.label-lg {
+    font-size: 150%;
 }

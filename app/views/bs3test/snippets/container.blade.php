@@ -36,12 +36,10 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-	   	<a class="btn btn-danger btn-lg" href="#">
-  		<i class="fa fa-trash-o fa-5x"></i> Delete</a>
-  		<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-music"></span> Music</button>
-		
-		<button type="button" class="btn btn-success"><i class="fa fa-trash-o fa-5x"></i> button</button>
-	
+		<div class="container">
+			this was wrapped by container
+		</div>
+		<div class="wrapper">this was <span class="text-danger">NOT</span>  wrapped by container</div>
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

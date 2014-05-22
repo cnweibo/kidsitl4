@@ -52,6 +52,28 @@
 		<button type="button" class="btn btn-large btn-block btn-sm btn-success">button</button>
 		<button type="button" class="btn btn-large btn-block btn-xs btn-default">button</button>
 		<button type="button" class="btn btn-large btn-block btn-primary">button</button>
+        <div class="btn-group btn-group-lg">
+        	<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left"></i> Left</button>
+        	<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-center"></i> Center</button>
+        	<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-right"></i> Right</button>
+        	<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-justify"></i> Justify</button>
+        </div>
+        <div class="btn-group btn-group-xs">
+        	<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left"></i> Left</button>
+        	<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-center"></i> Center</button>
+        	<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-right"></i> Right</button>
+        	<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-justify"></i> Justify</button>
+        </div>
+        <div class="btn-group-vertical">
+        	<button type="button" class="btn btn-default">Top</button>
+        	<button type="button" class="btn btn-default">Middle</button>
+        	<button type="button" class="btn btn-default">Bottom</button>
+        </div>
+        <div class="btn-group-vertical">
+        	<button type="button" class="btn btn-lg btn-danger">Top</button>
+        	<button type="button" class="btn btn-lg btn-primary">Middle</button>
+        	<button type="button" class="btn btn-lg btn-default">Bottom</button>
+        </div>  
 		<link rel="canonical" href=""><!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

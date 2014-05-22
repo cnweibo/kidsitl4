@@ -36,11 +36,30 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-	   	<a class="btn btn-danger btn-lg" href="#">
-  		<i class="fa fa-trash-o fa-5x"></i> Delete</a>
-  		<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-music"></span> Music</button>
+		<form action="" method="POST" role="form">
+			<legend>Form title</legend>
 		
-		<button type="button" class="btn btn-success"><i class="fa fa-trash-o fa-5x"></i> button</button>
+			<div class="form-group">
+				<label for="">label</label>
+				<label for="input-id" class="col-sm-2">这里是form的lable这里是form的lable这里是form的lable这里是form的lable这里是form的lable</label>	
+
+				<input type="text" class="col-sm-2 form-control" id="" placeholder="Input field">
+			</div>
+		
+	</form>
+		<hr>
+				<form action="" method="POST" class="form-inline" role="form">
+					
+						<div class="form-group">
+							<label class="sr-only" for="">label</label>
+							<input type="email" class="form-control" id="" placeholder="Input field">
+						</div>
+					
+						
+					
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>		
+			<button type="submit" class="btn btn-primary">Submit</button>
 	
 		<!-- Javascripts
 		================================================== -->
