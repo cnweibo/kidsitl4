@@ -21,3 +21,11 @@ body{
 .label-lg {
     font-size: 150%;
 }
+/*.navbar-top-background{
+	background-color: blue;
+}
+*/
+.navbar-inverse{
+	background-color: #00D200;
+	border:1px dashed thick green;
+}
