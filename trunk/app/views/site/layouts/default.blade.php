@@ -21,9 +21,9 @@
 		<!-- CSS
 		================================================== -->
 
-        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
-        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
-        <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}">
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css,bootstrap-theme.min.css,custom.css')}}">
+        <!-- <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}"> -->
+        <!-- <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}"> -->
 		<style>
         body {
             padding: 60px 0;
@@ -135,9 +135,9 @@
 
 		<!-- Javascripts
 		================================================== -->
-        <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        
-        <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('bootstrap/js/custom.js')}}"></script>
+        <script src="{{asset('bootstrap/js/jquery.min.js,bootstrap.min.js,custom.js')}}"></script>        
+        <!-- <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script> -->
+        <!-- <script src="{{asset('bootstrap/js/custom.js')}}"></script> -->
 
         @yield('scripts')
 	</body>

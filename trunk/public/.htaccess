@@ -1,7 +1,10 @@
 <IfModule mod_rewrite.c>
 	Options -MultiViews
 	RewriteEngine On
-
+	#for combine js/css
+	RewriteRule ^bootstrap/css/(.*\.css) /combine.php?type=css&files=$1 [L]
+	RewriteRule ^bootstrap/js/(.*\.js) /combine.php?type=javascript&files=$1 [L]
+	
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.+)/$ http://%{HTTP_HOST}/$1 [R=301,L]
 

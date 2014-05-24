@@ -43,14 +43,14 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{{ asset('assets/ico/apple-touch-icon-72-precomposed.png') }}}">
 	<link rel="apple-touch-icon-precomposed" href="{{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}}">
 
-	<!-- CSS -->
-    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
+	<!-- CSS   ,prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css,custom.css-->
+    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css,bootstrap-theme.min.css,bootstrap-prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css,custom.css')}}">
+<!--     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/wysihtml5/prettify.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/wysihtml5/bootstrap-wysihtml5.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/datatables-bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/colorbox.css')}}">
-    <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}"> -->
 	<style>
 	body {
 		padding: 60px 0;
@@ -132,17 +132,17 @@
 	</div>
 	<!-- ./ container -->
 
-	<!-- Javascripts -->
-    <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>
-    <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+	<!-- Javascripts    -->
+    <script src="{{asset('bootstrap/js/jquery.min.js,bootstrap.min.js,wysihtml5-0.3.0.js,bootstrap-wysihtml5.js,jquery.dataTables.min.js,datatables-bootstrap.js,datatables.fnReloadAjax.js,jquery.colorbox.js,prettify.js,custom.js')}}"></script>
+   <!--  <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/wysihtml5/wysihtml5-0.3.0.js')}}"></script>
     <script src="{{asset('assets/js/wysihtml5/bootstrap-wysihtml5.js')}}"></script>
     <script src="{{asset('bootstrap/js/jquery.dataTables.min.js')}}"></script>    
     <script src="{{asset('assets/js/datatables-bootstrap.js')}}"></script>
     <script src="{{asset('assets/js/datatables.fnReloadAjax.js')}}"></script>
     <script src="{{asset('assets/js/jquery.colorbox.js')}}"></script>
-    <script src="{{asset('assets/js/prettify.js')}}"></script>
-
+    <script src="{{asset('assets/js/prettify.js')}}"></script> 
+    <script src="{{asset('assets/js/custom.js')}}"></script> -->
     <script type="text/javascript">
     	$('.wysihtml5').wysihtml5();
         $(prettyPrint);
