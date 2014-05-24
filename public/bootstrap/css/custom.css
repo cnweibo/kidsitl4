@@ -1,17 +1,19 @@
 /*@import url(bootstrap.css);*/
 ul#top-nav-left > li >a {
-color: #899823;
+color: white;
+font-weight: 800;
 }
 ul#top-nav-right > li >a {
-color: #899823;
+font-weight: 800;
+color: white;
 }
 ul#top-nav-left > li >a:hover {
 background-color: #FF9900;
-color:white;
+color:black;
 }
 ul#top-nav-right > li >a:hover {
 background-color: #FF9900;
-color:white;
+color:black;
 }
 
 body{
@@ -20,6 +22,13 @@ body{
 }
 .label-lg {
     font-size: 150%;
+}
+
+.navbar-inverse{
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff9800), to(#f60));
+	background-image: -webkit-linear-gradient(#ff9800, #f60);
+	background-image: linear-gradient(#ff9800, #f60);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9800', endColorstr='#f60',GradientType=0 );
 }
 /*.navbar-top-background{
 	background-color: blue;
