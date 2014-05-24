@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'kidsitcn',
 			'username'  => 'root',
-			'password'  => 'guozhiyindba@01',
+			'password'  => 'sndzhang',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

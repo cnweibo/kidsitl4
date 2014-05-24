@@ -20,10 +20,10 @@
 
 		<!-- CSS
 		================================================== -->
-        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
-        <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}">
-        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
 
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
+        <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}">
 		<style>
         body {
             padding: 60px 0;
