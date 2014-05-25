@@ -15,7 +15,9 @@ ul#top-nav-right > li >a:hover {
 background-color: #FF9900;
 color:black;
 }
-
+.dropdown,.dropdown-menu{
+	z-index: 10000;
+}
 body{
     font-family: tahoma,arial,"微软雅黑",sans-serif;	
 	background-color: #eee;
@@ -28,7 +30,7 @@ body{
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff9800), to(#f60));
 	background-image: -webkit-linear-gradient(#ff9800, #f60);
 	background-image: linear-gradient(#ff9800, #f60);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9800', endColorstr='#f60',GradientType=0 );
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9800', endColorstr='#f60',GradientType=0 );*/
 }
 /*.navbar-top-background{
 	background-color: blue;
