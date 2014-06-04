@@ -10,11 +10,14 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 /** ------------------------------------------
  *  Route model binding
  *  ------------------------------------------
  */
+Route::matched(function($route, $request)
+{
+    // dd("route matched event hit for $request");
+});
 Route::model('user', 'User');
 Route::model('comment', 'Comment');
 Route::model('post', 'Post');
@@ -118,7 +121,10 @@ Route::get("/bs3test/{page?}", function($page = 'index'){
 # Posts - Second to last set, match slug
 Route::get('{postSlug}', 'BlogController@getView');
 Route::post('{postSlug}', 'BlogController@postView');
+// Route::get('/',function(){
+//     dd(File::getfffff());
 
+// });
 # Index Page - Last route, no matches
 // detectLang in the get '/' 
 Route::get('/', array('uses' => 'BlogController@getIndex'));

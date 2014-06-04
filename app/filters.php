@@ -13,15 +13,19 @@
 
 App::before(function($request)
 {
-	//
+    // dd("application filter triggered");
 });
 
 
 App::after(function($request, $response)
 {
-	//
+	// dd("application filter triggered");
 });
 
+App::finish(function($request, $response)
+{
+    dd("application finish filter triggered for $request");           
+});
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters
