@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -14,6 +13,12 @@
  *  Route model binding
  *  ------------------------------------------
  */
+Route::get('clockwork',function(){
+    Clockwork::startEvent('queryProfiler','single query timing');
+    $user = User::first();
+    Clockwork::info($user->email);
+    Clockwork::endEvent('queryProfiler');
+    });
 Route::matched(function($route, $request)
 {
     // dd("route matched event hit for $request");

@@ -12,8 +12,7 @@
 namespace Carbon;
 
 use DateTime;
-use DateTimeZone;
-use InvalidArgumentException;
+use DateTimeZone;use InvalidArgumentException;
 
 /**
  * A simple API extension for DateTime
