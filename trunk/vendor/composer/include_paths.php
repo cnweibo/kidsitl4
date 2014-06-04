@@ -12,4 +12,5 @@ return array(
     $vendorDir . '/phpunit/php-timer',
     $vendorDir . '/phpunit/php-token-stream',
     $vendorDir . '/phpunit/php-file-iterator',
+    $vendorDir . '/phpunit/php-code-coverage',
 );

@@ -24,7 +24,7 @@ App::after(function($request, $response)
 
 App::finish(function($request, $response)
 {
-    dd("application finish filter triggered for $request");           
+    //dd("application finish filter triggered for $request");           
 });
 /*
 |--------------------------------------------------------------------------

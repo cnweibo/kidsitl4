@@ -1,0 +1,20 @@
+{
+    "name": "weibo/form",
+    "description": "",
+    "authors": [
+        {
+            "name": "weibo",
+            "email": "weibo@kidsit.cn"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Weibo\\Form": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
