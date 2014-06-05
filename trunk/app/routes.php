@@ -17,7 +17,9 @@ Route::get('admin/getform',function(){
         return View::make('sandstudy.getform');
     });
 Route::post('admin/getform',function(){
-        dd(Input::file('bishun'));
+        $file= Input::file('bishun');
+        $file->move(public_path().'/uploads/','uploaded.xxx');
+        return View::make('sandstudy.uploaddone');
     });
 Route::get('clockwork',function(){
     Clockwork::startEvent('queryProfiler','single query timing');
