@@ -601,8 +601,9 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
 	 */
 	public function run(SymfonyRequest $request = null)
 	{
-		$request = $request ?: $this['request'];
 
+		$request = $request ?: $this['request'];
+		var_dump($request);
 		$response = with($stack = $this->getStackedClient())->handle($request);
 
 		$response->send();
