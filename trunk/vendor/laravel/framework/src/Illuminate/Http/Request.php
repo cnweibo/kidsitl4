@@ -221,8 +221,10 @@ class Request extends SymfonyRequest {
 	 */
 	public function input($key = null, $default = null)
 	{
+		//dd($key);
 		$input = $this->getInputSource()->all() + $this->query->all();
-
+		
+		var_dump($input);
 		return array_get($input, $key, $default);
 	}
 

@@ -13,12 +13,22 @@
  *  Route model binding
  *  ------------------------------------------
  */
+Route::get('admin/getform',function(){
+        return View::make('sandstudy.getform');
+    });
+Route::post('admin/getform',function(){
+        dd(Input::file('bishun'));
+    });
 Route::get('clockwork',function(){
     Clockwork::startEvent('queryProfiler','single query timing');
     $user = User::first();
     Clockwork::info($user->email);
     Clockwork::endEvent('queryProfiler');
     });
+Route::get('request',function(){
+   //APP::make('request')->xxxx;
+    });
+
 Route::matched(function($route, $request)
 {
     // dd("route matched event hit for $request");
