@@ -18,6 +18,7 @@ Route::get('admin/getform',function(){
     });
 Route::post('admin/getform',function(){
         $file= Input::file('bishun');
+        // dd(app_path().'/storage/uploaded/','uploaded.xxx');
         $file->move(app_path().'/storage/uploaded/','uploaded.xxx');
         return View::make('sandstudy.uploaddone');
     });
