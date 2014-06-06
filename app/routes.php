@@ -20,14 +20,14 @@ Route::post('admin/getform',function(){
     if (Input::hasFile('bishun')){
         $file= Input::file('bishun');
         // dd(app_path().'/storage/uploaded/','uploaded.xxx');
-        $file->move(app_path().'/storage/uploaded/','uploaded.xxx');
-        return [
-            'path'=> $file->getRealPath(),
-            'size'=> $file->getSize(),
-            'mime'=> $file->getMimeType(),
-            'name'=> $file->getClientOriginalName(),
-            'extension'=> $file->getClientOriginalExtension()
-        ];
+        $file->move(app_path().'/storage/uploaded/',time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension());
+        // return [
+        //     'path'=> $file->getRealPath(),
+        //     'size'=> $file->getSize(),
+        //     'mime'=> $file->getMimeType(),
+        //     'name'=> $file->getClientOriginalName(),
+        //     'extension'=> $file->getClientOriginalExtension()
+        // ];
         return View::make('sandstudy.uploaddone');
     }});
 Route::get('clockwork',function(){
