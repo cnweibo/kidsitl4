@@ -10,6 +10,11 @@
 | application. Here you may also register your custom route filters.
 |
 */
+App::resolvingAny(function($object)
+{
+    //var_dump($object);
+    //
+});
 
 App::before(function($request)
 {
