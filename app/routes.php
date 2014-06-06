@@ -17,11 +17,19 @@ Route::get('admin/getform',function(){
         return View::make('sandstudy.getform');
     });
 Route::post('admin/getform',function(){
+    if (Input::hasFile('bishun')){
         $file= Input::file('bishun');
         // dd(app_path().'/storage/uploaded/','uploaded.xxx');
         $file->move(app_path().'/storage/uploaded/','uploaded.xxx');
+        return [
+            'path'=> $file->getRealPath(),
+            'size'=> $file->getSize(),
+            'mime'=> $file->getMimeType(),
+            'name'=> $file->getClientOriginalName(),
+            'extension'=> $file->getClientOriginalExtension()
+        ];
         return View::make('sandstudy.uploaddone');
-    });
+    }});
 Route::get('clockwork',function(){
     Clockwork::startEvent('queryProfiler','single query timing');
     $user = User::first();
