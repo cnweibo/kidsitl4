@@ -13,6 +13,11 @@
  *  Route model binding
  *  ------------------------------------------
  */
+
+// facades url to see all the laravel facades and its class
+Route::get('admin/facades/{name}',function($name){
+        dd(get_class($name::getFacadeRoot()));
+    });
 Route::get('admin/getform',function(){
         return View::make('sandstudy.getform');
     });
@@ -154,3 +159,4 @@ Route::post('{postSlug}', 'BlogController@postView');
 # Index Page - Last route, no matches
 // detectLang in the get '/' 
 Route::get('/', array('uses' => 'BlogController@getIndex'));
+
