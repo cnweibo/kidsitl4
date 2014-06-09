@@ -33,6 +33,9 @@
             "app/database/migrations",
             "app/database/seeds",
             "app/tests/library"
+        ],
+        "files":[
+            "app/kidsit_helpers.php"
         ]
     },
     "scripts": {

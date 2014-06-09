@@ -735,7 +735,6 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
 		{
 			$this['session']->start();
 		}
-
 		return $this['router']->dispatch($this->prepareRequest($request));
 	}
 
