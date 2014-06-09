@@ -13,6 +13,11 @@
  *  Route model binding
  *  ------------------------------------------
  */
+// kidsit slugs
+Route::get('/exercise',array('uses' => 'BlogController@getIndex'));
+Route::get('/pinyin',array('uses' => 'BlogController@getIndex'));
+Route::get('/phonetic',array('uses' => 'BlogController@getIndex'));
+Route::get('/kidsinternet',array('uses' => 'BlogController@getIndex'));
 
 // facades url to see all the laravel facades and its class
 Route::get('admin/facades/{name}',function($name){

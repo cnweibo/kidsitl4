@@ -63,7 +63,7 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav"  id="top-nav-left">
-						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">首页</a></li>
+						<li {{set_active('/')}}><a href="{{{ URL::to('') }}}">首页</a></li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('') }}}">汉字笔顺<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 					          <li><a href="http://kidsit.cn/admin">Action</a></li>
@@ -73,10 +73,10 @@
 					          <li><a href="#">Separated link</a></li>
 					        </ul>
 						</li>
-						<li><a href="{{{ URL::to('') }}}">拼音速学</a></li>
-						<li><a href="{{{ URL::to('') }}}">英语音标</a></li>
-						<li><a href="{{{ URL::to('') }}}">中小学同步课堂</a></li>						
-						<li><a href="{{{ URL::to('') }}}">互联网那点事儿</a></li>						
+						<li {{set_active('pinyin')}}><a href="{{{ URL::to('/pinyin') }}}">拼音速学</a></li>
+						<li {{set_active('phonetic')}}><a href="{{{ URL::to('phonetic') }}}">英语音标</a></li>
+						<li {{set_active('exercise')}}><a href="{{{ URL::to('exercise') }}}">中小学同步课堂</a></li>						
+						<li {{set_active('kidsinternet')}}><a href="{{{ URL::to('kidsinternet') }}}">互联网那点事儿</a></li>						
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
         <ul class="dropdown-menu">
