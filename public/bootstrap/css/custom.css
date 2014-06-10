@@ -40,3 +40,9 @@ body{
 	background-color: #00D200;
 	border:1px dashed thick green;
 }*/
+/*active navbar styling*/
+.navbar-inverse .navbar-nav > .active > a {
+    background-image: linear-gradient(to bottom, #228bca 0px, #428bca 100%);
+    /*background-color: #428bca;*/
+    color: #FFFFFF;
+}
