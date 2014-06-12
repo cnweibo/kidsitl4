@@ -13,6 +13,8 @@
  *  Route model binding
  *  ------------------------------------------
  */
+// respond for the bsShell requesting the bishun file
+Route::get('/getBishun/{$filename}','bishunController@getBishun');
 // kidsit slugs
 Route::get('/exercise',array('uses' => 'BlogController@getIndex'));
 Route::get('/pinyin',array('uses' => 'BlogController@getIndex'));
@@ -30,11 +32,13 @@ Route::post('admin/getform',function(){
     if (Input::hasFile('filename')){
         $file= Input::file('filename');
         // dd(app_path().'/storage/uploaded/','uploaded.xxx');
-        $destfile = app_path().'/storage/uploaded/'.time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
-        $file->move($destfile);
+        $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
+        $destabsolutefile = app_path().'/storage/uploaded/'.$destfile;
+        $file->move($destabsolutefile);
         $bishun = new Bishun;
         $bishun->hanzi = Input::get('hanzi');
         $bishun->filename = $destfile;
+        $bishun->relatedwords = Input::get('relatedwords');
         $bishun->save();    
         // return [
         //     'path'=> $file->getRealPath(),
