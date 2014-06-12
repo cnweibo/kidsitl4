@@ -27,10 +27,15 @@ Route::get('admin/getform',function(){
         return View::make('sandstudy.getform');
     });
 Route::post('admin/getform',function(){
-    if (Input::hasFile('bishun')){
-        $file= Input::file('bishun');
+    if (Input::hasFile('filename')){
+        $file= Input::file('filename');
         // dd(app_path().'/storage/uploaded/','uploaded.xxx');
-        $file->move(app_path().'/storage/uploaded/',time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension());
+        $destfile = app_path().'/storage/uploaded/'.time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
+        $file->move($destfile);
+        $bishun = new Bishun;
+        $bishun->hanzi = Input::get('hanzi');
+        $bishun->filename = $destfile;
+        $bishun->save();    
         // return [
         //     'path'=> $file->getRealPath(),
         //     'size'=> $file->getSize(),
