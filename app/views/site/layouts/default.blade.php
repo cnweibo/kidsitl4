@@ -129,7 +129,7 @@
 
 	    <div id="footer">
 	      <div class="container">
-	        <p class="muted credit">Laravel 4 Starter Site on <a href="https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site">Github</a>.</p>
+	        <p class="muted credit">版权所有 © {{date('Y')}} <a href="http://kidsit.cn">IT宝贝网</a></p>
 	      </div>
 	    </div>
 

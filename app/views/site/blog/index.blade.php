@@ -45,7 +45,7 @@
 
 <hr />
 @endforeach
-
+{{testforbladecall()}};
 {{ $posts->links() }}
 
 @stop
