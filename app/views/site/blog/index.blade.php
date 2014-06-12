@@ -1,7 +1,11 @@
 @extends('site.layouts.default')
 
-{{-- Content --}}
-@section('content')
+{{-- Content for bishun flash --}}
+@section('contentbishun')
+	@include('site.bishun')
+@stop
+{{-- Content blog--}}
+@section('contentblog')
 @foreach ($posts as $post)
 <div class="row">
 	<div class="col-md-8">

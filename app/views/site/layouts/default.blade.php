@@ -114,10 +114,13 @@
 			<!-- Notifications -->
 			@include('notifications')
 			<!-- ./ notifications -->
+			<!-- Content bishun flash-->
+			@yield('contentbishun')
+			<!-- ./ content bishun flash -->
 
-			<!-- Content -->
+			<!-- Content blog-->
 			@yield('content')
-			<!-- ./ content -->
+			<!-- ./ content blog-->
 		</div>
 		<!-- ./ container -->
 
