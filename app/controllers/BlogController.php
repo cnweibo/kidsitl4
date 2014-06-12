@@ -36,12 +36,14 @@ class BlogController extends BaseController {
 	{
 		// Get all the blog posts
    	    Clockwork::startEvent('getIndex','home page index action timing');
-		$posts = $this->post->orderBy('created_at', 'DESC')->paginate(10);
+		// $posts = $this->post->orderBy('created_at', 'DESC')->paginate(10);
+   	       $bishun = Bishun::first();
+   	       $filename = "http://kidsit.cn/getBishun/".$bishun->filename;
 
 		// Show the page
-		return View::make('site/blog/index', compact('posts'));
-		Clockwork:info($posts->first());
-		Clockwork::endEvent('getIndex');
+		return View::make('site/blog/index', compact('filename'));
+		// Clockwork:info($posts->first());
+		// Clockwork::endEvent('getIndex');
 	}
 
 	/**
