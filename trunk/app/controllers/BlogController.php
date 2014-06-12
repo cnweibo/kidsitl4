@@ -42,6 +42,7 @@ class BlogController extends BaseController {
 	    	{
 	    		$filename = "http://kidsit.cn/getBishun/".$bishun->filename;
 			}
+			$filename = 11;
 				return View::make('site/blog/index', compact('filename'));   	       		
 		// Show the page
 		// Clockwork:info($posts->first());
