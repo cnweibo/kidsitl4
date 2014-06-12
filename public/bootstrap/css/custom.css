@@ -30,6 +30,7 @@ body{
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff9800), to(#f60));
 	background-image: -webkit-linear-gradient(#ff9800, #f60);
 	background-image: linear-gradient(#ff9800, #f60);
+	background-color: #ff9800;
 	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9800', endColorstr='#f60',GradientType=0 );*/
 }
 /*.navbar-top-background{
@@ -43,6 +44,7 @@ body{
 /*active navbar styling*/
 .navbar-inverse .navbar-nav > .active > a {
     background-image: linear-gradient(to bottom, #228bca 0px, #428bca 100%);
-    /*background-color: #428bca;*/
-    color: #FFFFFF;
+    background-color: #428bca;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#228bca', endColorstr='#428bca', GradientType=0);
+    /*color: #FFFFFF;*/
 }
