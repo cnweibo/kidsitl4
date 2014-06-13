@@ -14,7 +14,7 @@
  *  ------------------------------------------
  */
 // respond for the bsShell requesting the bishun file
-Route::get('/getBishun/{$filename}','bishunController@getBishun');
+Route::get('/getBishun/{filename}',array('uses' => 'bishunController@getBishun'));
 // kidsit slugs
 Route::get('/exercise',array('uses' => 'BlogController@getIndex'));
 Route::get('/pinyin',array('uses' => 'BlogController@getIndex'));
@@ -33,8 +33,8 @@ Route::post('admin/getform',function(){
         $file= Input::file('filename');
         // dd(app_path().'/storage/uploaded/','uploaded.xxx');
         $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
-        $destabsolutefile = app_path().'/storage/uploaded/'.$destfile;
-        $file->move($destabsolutefile);
+        $destabsolutefile = app_path().'/storage/uploaded/';
+        $file->move($destabsolutefile,$destfile);
         $bishun = new Bishun;
         $bishun->hanzi = Input::get('hanzi');
         $bishun->filename = $destfile;
