@@ -7,10 +7,13 @@ class BishunController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function getBishun($filename)
+	public function getBishun($filename='1402629792_7.swf')
 	{
 		//
-		Response::download($filename);
+		$absolutefilename = app_path().'/storage/uploaded/'.$filename;
+		return (File::get($absolutefilename));
+		Response::download($absolutefilename);
+		//Return "received";
 	}
 
 	/**
