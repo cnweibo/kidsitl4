@@ -17,6 +17,8 @@ return array(
     'AuthorizedController' => $baseDir . '/app/controllers/AuthorizedController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'BaseControllerTestCase' => $baseDir . '/app/tests/library/BaseControllerTestCase.php',
+    'Bishun' => $baseDir . '/app/models/Bishun.php',
+    'BishunController' => $baseDir . '/app/controllers/bishunController.php',
     'Bllim\\Datatables\\Datatables' => $vendorDir . '/bllim/datatables/src/Bllim/Datatables/Datatables.php',
     'Bllim\\Datatables\\DatatablesServiceProvider' => $vendorDir . '/bllim/datatables/src/Bllim/Datatables/DatatablesServiceProvider.php',
     'Bllim\\Datatables\\Facades\\Profiler' => $vendorDir . '/bllim/datatables/src/Bllim/Datatables/Facade/Datatables.php',
