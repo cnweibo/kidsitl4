@@ -74,6 +74,7 @@
 					        </ul>
 						</li>
 						<li {{set_active('pinyin')}}><a href="{{{ URL::to('/pinyin') }}}">拼音速学</a></li>
+						<li {{set_active('pinyin')}}><a href="{{{ URL::to('/pinyin') }}}">键盘练习</a></li>
 						<li {{set_active('phonetic')}}><a href="{{{ URL::to('phonetic') }}}">英语音标</a></li>
 						<li {{set_active('exercise')}}><a href="{{{ URL::to('exercise') }}}">中小学同步课堂</a></li>						
 						<li {{set_active('kidsinternet')}}><a href="{{{ URL::to('kidsinternet') }}}">互联网那点事儿</a></li>						
@@ -121,6 +122,9 @@
 			<!-- Content blog-->
 			@yield('content')
 			<!-- ./ content blog-->
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			@yield('typinggame')	
+</div>
 		</div>
 		<!-- ./ container -->
 

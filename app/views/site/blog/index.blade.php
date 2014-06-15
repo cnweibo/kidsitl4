@@ -4,6 +4,9 @@
 @section('contentbishun')
 	@include('site.bishun')
 @stop
+@section('typinggame')
+	@include('site.typinggame')
+@stop
 {{-- Content blog--}}
 @section('contentblog')
 
