@@ -2,10 +2,10 @@
 
 {{-- Content for bishun flash --}}
 @section('contentbishun')
-	@include('site.bishun')
+	@include('site.bishun.bishunpartial')
 @stop
 @section('typinggame')
-	@include('site.typinggame')
+	@include('site.games.typinggamepartial')
 @stop
 {{-- Content blog--}}
 @section('contentblog')
