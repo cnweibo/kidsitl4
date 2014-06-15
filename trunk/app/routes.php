@@ -17,6 +17,7 @@
 Route::get('/getBishun/{filename}',array('uses' => 'bishunController@getBishun'));
 // kidsit slugs
 Route::get('/bishun', array('uses' => 'BishunController@getIndex'));
+Route::post('/bishun', array('uses' => 'BishunController@postSearch'));
 Route::get('/exercise',array('uses' => 'BlogController@getIndex'));
 Route::get('/game',array('uses' => 'GameController@getIndex'));
 Route::get('/pinyin',array('uses' => 'BlogController@getIndex'));

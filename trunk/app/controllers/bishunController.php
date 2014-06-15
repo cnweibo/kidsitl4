@@ -28,7 +28,18 @@ class BishunController extends \BaseController {
 		$bishuns = Bishun::all();
 		return View::make('site.bishun.bishun', compact('bishuns'));   
 	}
-
+	/**
+	 * process the bishun search form.
+	 *
+	 * @return Response
+	 */
+	public function postSearch()
+	{
+		dd(Input::all('bishunsearch'));
+		//show the searched bishun items
+		$bishuns = Bishun::all();
+		return View::make('site.bishun.bishun', compact('bishuns'));   
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
