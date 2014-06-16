@@ -37,15 +37,15 @@ class BishunController extends \BaseController {
 	{
 		$bishunsearch = Input::get('bishunsearch');
 		if ($bishunsearch){
-			$bishun = Bishun::where('hanzi','=', $bishunsearch)->first();
-			// dd(get_class($bishuns));
-			// dd($bishuns);
-			return (View::make('site.bishun.bishunSearchPartial',compact('bishun')));
-		}else{
 			// populate the html markup which will be displayed in ajax page
 			//show the searched bishun items
-			return Redirect::to('/bishun');
-
+			$bishuns = Bishun::where('hanzi','=', $bishunsearch)->first();
+			//dd(get_class($bishuns));
+			// dd($bishuns);
+			return (View::make('site.bishun.bishunSearchPartial',compact('bishuns')));
+		}else{
+			$bishuns = Bishun::all();
+			return View::make('site.bishun.bishunSearchPartial', compact('bishuns'));   
 		}
 	}
 	/**
