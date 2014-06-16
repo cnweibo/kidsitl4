@@ -14,7 +14,7 @@
  *  ------------------------------------------
  */
 // respond for the bsShell requesting the bishun file
-Route::get('/getBishun/{filename}',array('uses' => 'bishunController@getBishun'));
+Route::get('/getBishun/{filename}',array('uses' => 'BishunController@getBishun'));
 // kidsit slugs
 Route::get('/bishun', array('uses' => 'BishunController@getIndex'));
 Route::post('/bishun', array('uses' => 'BishunController@postSearch'));
