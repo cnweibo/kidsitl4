@@ -10,12 +10,14 @@ $(function(){
 });
 $('#bishunsearchform').on('submit',function(e){
 	var formdata = $(this).serialize();
+	var bshtml = "";
 	$.ajax({
 		url: 'bishun',
 		type: 'POST',
 		data: formdata,
 		success: function(results){
-			console.log(results);
+			$("#bishuncontainer").html(results
+				);
 		}
 	});
 	 e.preventDefault();
