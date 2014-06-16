@@ -36,14 +36,17 @@ class BishunController extends \BaseController {
 	public function postSearch()
 	{
 		$bishunsearch = Input::get('bishunsearch');
-		$bishun = Bishun::where('hanzi','=', $bishunsearch)->first();
-		// dd(get_class($bishuns));
-		// dd($bishuns);
-		return (View::make('site.bishun.bishunSearchPartial',compact('bishun')));
-		// populate the html markup which will be displayed in ajax page
-		//show the searched bishun items
-		$bishuns = Bishun::all();
-		return View::make('site.bishun.bishun', compact('bishuns'));   
+		if ($bishunsearch){
+			$bishun = Bishun::where('hanzi','=', $bishunsearch)->first();
+			// dd(get_class($bishuns));
+			// dd($bishuns);
+			return (View::make('site.bishun.bishunSearchPartial',compact('bishun')));
+		}else{
+			// populate the html markup which will be displayed in ajax page
+			//show the searched bishun items
+			$bishuns = Bishun::all();
+			return View::make('site.bishun.bishun', compact('bishuns'));   
+		}
 	}
 	/**
 	 * Show the form for creating a new resource.
