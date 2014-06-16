@@ -44,7 +44,7 @@ class BishunController extends \BaseController {
 		}else{
 			// populate the html markup which will be displayed in ajax page
 			//show the searched bishun items
-			Redirect::to('/bishun');
+			return Redirect::to('/bishun');
 
 		}
 	}
