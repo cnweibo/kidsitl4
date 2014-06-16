@@ -4,7 +4,7 @@
 	<div class="form-group pull-right">
 		<label for="bishunsearch">输入汉字查询笔顺: </label>
 		<input type="text" name="bishunsearch" id="inputBishunsearch" class="form-control" required="required">
-		<button type="submit" class="btn btn-primary">查询</button>
+		<!-- <button type="submit" class="btn btn-primary">查询</button> -->
 	</div>
 {{Form::close()}}	
 </div>
