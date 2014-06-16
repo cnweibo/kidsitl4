@@ -35,7 +35,9 @@ class BishunController extends \BaseController {
 	 */
 	public function postSearch()
 	{
-		dd(Input::all());
+		$bishunsearch = Input::get('bishunsearch');
+		return ($bishunsearch);
+		dd($bishunsearch);
 		//show the searched bishun items
 		$bishuns = Bishun::all();
 		return View::make('site.bishun.bishun', compact('bishuns'));   

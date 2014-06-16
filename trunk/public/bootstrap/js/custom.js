@@ -8,3 +8,15 @@ $(function(){
 		}
 	);
 });
+$('#bishunsearchform').on('submit',function(e){
+	var formdata = $(this).serialize();
+	$.ajax({
+		url: 'bishun',
+		type: 'POST',
+		data: formdata,
+		success: function(results){
+			console.log(results);
+		}
+	});
+	 e.preventDefault();
+});
