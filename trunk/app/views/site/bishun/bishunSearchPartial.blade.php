@@ -1,7 +1,7 @@
 <div class="row">
 <div id="bishuncontainer">
-@foreach ($bishuns as $bishun)
-<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+@if ($bishun)
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-lg-offset-4">
 	<div id="flashContent{{$bishun->id}}" style="text-align:center">
 				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="200" height="220" id="bsShell" align="top">
 					<param name="movie" value="utilities/bsShell.swf" />
@@ -40,6 +40,12 @@
 	</div>
 
 </div>
-@endforeach
+@else
+<div class="alert alert-danger">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong></strong>                                无搜索结果
+</div>
+@endif
+
 </div><!-- end bishuncontainer -->
 </div>
