@@ -44,8 +44,8 @@ class BishunController extends \BaseController {
 		}else{
 			// populate the html markup which will be displayed in ajax page
 			//show the searched bishun items
-			$bishuns = Bishun::all();
-			return View::make('site.bishun.bishun', compact('bishuns'));   
+			Redirect::to('/bishun');
+
 		}
 	}
 	/**
