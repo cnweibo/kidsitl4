@@ -158,7 +158,8 @@ Route::get('contact-us', function()
 
 Route::get("/bs3test/snippets/{page?}", function($page = 'index'){
     //return $page;
-    return View::make('bs3test.snippets.'.$page);
+    $page = "snippets".".".$page;
+    return View::make('bs3test.detail')->with('page',$page);
 });
 
 Route::get("/bs3test/{page?}", function($page = 'index'){
