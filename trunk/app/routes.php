@@ -162,7 +162,13 @@ Route::get("/bs3test/snippets/{page?}", function($page = 'index'){
 });
 
 Route::get("/bs3test/{page?}", function($page = 'index'){
-    //return $page;
+    if ($page == 'index') {
+        //populate the bs3test lists in the page.
+        $bs3fileslist = (File::files(app_path().'/views/bs3test'));
+        foreach ($bs3fileslist as $file) {
+            var_dump($file);
+        }
+    }
     return View::make('bs3test.'.$page);
 });
 
