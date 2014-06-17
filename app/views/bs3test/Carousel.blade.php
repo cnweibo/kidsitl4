@@ -37,41 +37,40 @@
 	</head>
 	<body>		
 		<div id="carousel_id" class="carousel slide">
-		  <ol class="carousel-indicators">
-		    <li data-target="#carousel_id" data-slide-to="0" class="active"></li>
-		    <li class="" data-target="#carousel_id" data-slide-to="1"></li>
-		    <li class="" data-target="#carousel_id" data-slide-to="2"></li>
-		  </ol>
-		  <div class="carousel-inner">
+			<ol class="carousel-indicators">
+				<li data-target="#carousel_id" data-slide-to="0" class="active"></li>
+				<li class="" data-target="#carousel_id" data-slide-to="1"></li>
+				<li class="" data-target="#carousel_id" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
 		    <div class="item active">
-		      <img src="http://lorempixel.com/1600/500/sports/1" alt="">
-		      <div class="carousel-caption">
-		        <h4>First Thumbnail label</h4>
-		        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-		      </div>
-		    </div>
+				<img src="http://lorempixel.com/1600/500/sports/1" alt="">
+				<div class="carousel-caption">
+				<h4>First Thumbnail label</h4>
+				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+			</div>
+			</div>
 		    <div class="item">
-		      <img src="http://lorempixel.com/1600/500/sports/2" alt="">
-		      <div class="carousel-caption">
-		        <h4>Second Thumbnail label</h4>
-		        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-		      </div>
-		    </div>
+				<img src="http://lorempixel.com/1600/500/sports/2" alt="">
+				<div class="carousel-caption">
+				<h4>Second Thumbnail label</h4>
+				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				</div>
+			</div>
 		    <div class="item">
-		      <img src="http://lorempixel.com/1600/500/sports/3" alt="">
-		      <div class="carousel-caption">
-		        <h4>Third Thumbnail label</h4>
-		        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-		      </div>
+				<img src="http://lorempixel.com/1600/500/sports/3" alt="">
+				<div class="carousel-caption">
+				<h4>Third Thumbnail label</h4>
+				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				</div>
 		    </div>
-		  </div>
-		
-		  <a data-slide="prev" href="#carousel_id" class="left carousel-control">
-		    <span class="glyphicon glyphicon-chevron-left"></span>
-		  </a>
-		  <a data-slide="next" href="#carousel_id" class="right carousel-control">
-		    <span class="glyphicon glyphicon-chevron-right"></span>
-		  </a>
+			</div>
+			<a data-slide="prev" href="#carousel_id" class="left carousel-control">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a data-slide="next" href="#carousel_id" class="right carousel-control">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
 		</div>
 		<!-- Javascripts
 		================================================== -->

@@ -107,6 +107,8 @@
 			<!-- Notifications -->
 			@include('notifications')
 			<!-- ./ notifications -->
+			<!-- content of carousel -->
+			@yield('carousel')
 			<!-- Content bishun flash-->
 			@yield('contentbishun')
 			<!-- ./ content bishun flash -->
