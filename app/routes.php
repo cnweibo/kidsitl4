@@ -165,11 +165,25 @@ Route::get("/bs3test/{page?}", function($page = 'index'){
     if ($page == 'index') {
         //populate the bs3test lists in the page.
         $bs3fileslist = (File::files(app_path().'/views/bs3test'));
+        $i=0;
         foreach ($bs3fileslist as $file) {
-            var_dump($file);
-        }
+            preg_match('/\/([^\/]*)\.blade\.php/', $file,$bs3shortname);
+            $bs3view[$i++] = $bs3shortname[1];
     }
-    return View::make('bs3test.'.$page);
+    //list the snippets directory 
+        $bs3snippetslist = (File::files(app_path().'/views/bs3test/snippets'));
+        foreach ($bs3snippetslist as $file) {
+            preg_match('/\/([^\/]*)\.blade\.php/', $file,$bs3shortname);
+            $bs3view[$i++] = "snippets/".$bs3shortname[1];
+        }
+        return View::make('bs3test.index',['bs3view' => $bs3view]);
+    }
+    else{
+        // View::share('page',$page);
+        $filecontent = File::get(app_path().'/views/bs3test/'.$page.'.blade.php');
+        return View::make('bs3test.detail',['page'=>$page, 'filecontent' =>$filecontent]);       
+    }
+
 });
 
 # Posts - Second to last set, match slug

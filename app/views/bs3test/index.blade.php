@@ -74,6 +74,14 @@
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
+<div class="container">
+	<div class="list-group">
+		@foreach ($bs3view as $bs3viewfilename)
+			<a href="{{url('/bs3test/')}}/{{$bs3viewfilename}}" class="list-group-item">{{$bs3viewfilename}}</a>
+		@endforeach
+	</div>
+</div>
+
 
 <!-- 如下代码只会在手机显示 -->
 <div class="container">
