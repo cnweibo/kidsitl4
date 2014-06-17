@@ -1,4 +1,8 @@
 @extends('site.layouts.default')
+{{-- content for the carousel:slider --}}
+@section('carousel')
+	@include('site.partials.carousel')
+@stop
 {{-- Content for bishun flash --}}
 @section('contentbishun')
 	@include('site.bishun.bishunpartial')

@@ -48,3 +48,7 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#228bca', endColorstr='#428bca', GradientType=0);
     /*color: #FFFFFF;*/
 }
+.carouselimg{
+	width:1140px;
+	height:356px;
+}
