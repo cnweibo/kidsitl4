@@ -48,7 +48,20 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#228bca', endColorstr='#428bca', GradientType=0);
     /*color: #FFFFFF;*/
 }
-.carouselimg{
-	width:1140px;
-	height:356px;
+.carousel-inner > .item > img.carouselimg
+{
+	width:80%;
+	height:400px;
+}
+.carousel-control.right {
+  right: 0;
+  left: auto;
+  background-image: -webkit-linear-gradient(left, color-stop(rgba(80, 90, 100, .0001) 0%), color-stop(rgba(30, 0, 90, .5) 100%));
+  background-image: linear-gradient(to right, rgba(80, 90, 100, .0001) 0%, rgba(30, 0, 90, .5) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+.carousel-control {
+  color: purple;
+  font-size: 18px;
 }
