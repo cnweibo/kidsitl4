@@ -6,7 +6,7 @@
 	</ol>
 	<div class="carousel-inner">
     <div class="item active">
-		<img src="{{asset('assets/img/internet.jpg')}}" class="carouselimg" alt="互联网那点事">
+		<img src="{{asset('assets/img/internetOriginal.jpg')}}" class="carouselimg" alt="互联网那点事">
 		<div class="carousel-caption">
 		<h4>让网络成为一种工具</h4>
 		<p>网络已经成为新生代的生活常态，有的家长视为洪水猛兽，IT宝贝因势利导，让网络成为一种服务学生的工具！</p>
