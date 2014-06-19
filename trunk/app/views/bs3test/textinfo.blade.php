@@ -36,7 +36,13 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 	<body>		
-		<p class="text-info">info for success</p>
+		<p class="text-info text-center">info text: Lorem ipsum dolor sit amet</p>
+		<p class="text-error text-right">error text: Lorem ipsum dolor sit amet</p>	
+		<p class="text-success text-left">success text: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		<p class="text-muted">muted text: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		<p class="text-warning">text warning: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		<p class="text-danger">text danger: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		<p class="text-primary">text danger: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
 		<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        
