@@ -37,7 +37,7 @@
 	</head>
 	<body>		
 		<div class="container">
-			<table class="table table-bordered table-condensed">
+			<table class="table table-bordered table-condensed table-hover">
 				<caption>This is a default table</caption>
 				<thead>
 					<tr>
