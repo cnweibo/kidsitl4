@@ -50,8 +50,8 @@ body{
 }
 .carousel-inner > .item > img.carouselimg
 {
-	width:80%;
-	height:400px;
+	/*width:80%;
+	height:400px;*/
 }
 .carousel-control.right {
   right: 0;
@@ -64,4 +64,13 @@ body{
 .carousel-control {
   color: purple;
   font-size: 18px;
+}
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.75);
+  right:0;
+  left:0;
+}
+.carousel-indicators{
+/*  top:15px;
+  left:95%;*/
 }
