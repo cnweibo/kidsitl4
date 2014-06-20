@@ -26,9 +26,11 @@
     <div class="item">
 		<img src="{{asset('assets/img/littletreeSmall.jpg')}}" class="carouselimg" alt="">
 		<div class="carousel-caption">
-		<h4>我们的小树苗我们应该如何爱护和培养？</h4>
-		<p>家长从此不再谈网色变</p>
-		<p>让IT成为学生的style：IT范儿</p>
+		<h4>我们的小树苗应该如何呵护和培养？</h4>
+		<p>孩子不爱学习不会学习？</p>
+		<p>孩子沉迷游戏不能自拔？</p>
+		<p>IT宝贝网给家长朋友提供矫正孩子痴迷游戏不会学习的秘密武器</p>
+		<p>培养孩子的IT范儿，您也能。。。</p>
 		</div>
     </div>
 	</div>
