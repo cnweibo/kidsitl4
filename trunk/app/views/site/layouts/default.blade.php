@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta name="chinaz-site-verification" content="081e7651-48c6-4c2f-a569-99321685eab1" />
 		<meta name="360-site-verification" content="3fbd5b7382fad17fb25b69bc7797914c" />
 		<!-- Basic Page Needs
 		================================================== -->
