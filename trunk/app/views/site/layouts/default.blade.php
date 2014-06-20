@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>
 			@section('title')
-			IT宝贝网-中国青少年信息化推动者，信息教育的先锋队IT style learning,NIT competence for China kids,IT从娃娃抓起
+			IT宝贝网-中国青少年信息化推动者，计算机信息教育的先锋队IT style learning,NIT competence for China kids,IT从娃娃抓起
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
