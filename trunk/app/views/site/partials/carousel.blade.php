@@ -5,7 +5,17 @@
 		<li class="" data-target="#carousel_id" data-slide-to="2"></li>
 	</ol>
 	<div class="carousel-inner">
-    <div class="item active"> 
+    <div class="item active">
+		<img src="{{asset('assets/img/littletreeSmall.jpg')}}" class="carouselimg" alt="">
+		<div class="carousel-caption">
+		<h4>我们的小树苗应该如何呵护和培养？</h4>
+		<p>孩子不爱学习不会学习？</p>
+		<p>孩子沉迷游戏不能自拔？</p>
+		<p>IT宝贝网给家长朋友提供矫正孩子痴迷游戏不会学习的秘密武器</p>
+		<p>培养孩子的IT范儿，您也能。。。</p>
+		</div>
+    </div>
+    <div class="item"> 
 		<img src="{{asset('assets/img/internet.jpg')}}" class="carouselimg" alt="互联网那点事">
 		<div class="carousel-caption">
 		<h4>让IT成为宝贝的必备技能</h4>
@@ -23,16 +33,6 @@
 		<p>让学习不仅高效而且有趣</p>
 		</div>
 	</div>
-    <div class="item">
-		<img src="{{asset('assets/img/littletreeSmall.jpg')}}" class="carouselimg" alt="">
-		<div class="carousel-caption">
-		<h4>我们的小树苗应该如何呵护和培养？</h4>
-		<p>孩子不爱学习不会学习？</p>
-		<p>孩子沉迷游戏不能自拔？</p>
-		<p>IT宝贝网给家长朋友提供矫正孩子痴迷游戏不会学习的秘密武器</p>
-		<p>培养孩子的IT范儿，您也能。。。</p>
-		</div>
-    </div>
 	</div>
 	<a data-slide="prev" href="#carousel_id" class="left carousel-control">
 		<span class="glyphicon glyphicon-chevron-left"></span>
