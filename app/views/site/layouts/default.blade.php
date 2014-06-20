@@ -7,12 +7,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>
 			@section('title')
-			IT宝贝网-IT style learning,IT powered competence for China kids,IT从娃娃抓起，IT成为新世纪青少年必备生活技能
+			IT宝贝网-中国青少年信息化推动者，信息教育的先锋队IT style learning,NIT competence for China kids,IT从娃娃抓起
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
 		<meta name="author" content="Jon Doe" />
-		<meta name="description" content="Lorem  description should be changed ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei." />
+		<meta name="description" content="中国计算机从娃娃抓起的践行者和推动者，IT宝贝网-中国青少年信息化推动者，信息教育的先锋队IT style learning,NIT competence for China kids" />
 
 		<!-- Mobile Specific Metas
 		================================================== -->

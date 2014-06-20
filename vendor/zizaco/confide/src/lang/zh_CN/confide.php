@@ -32,7 +32,7 @@ return array(
         'account_created' => '注册成功。请查阅您的电子邮箱，根据说明进行账户验证。',
         'too_many_attempts' => '尝试次数过多，请稍后再试。',
         'wrong_credentials' => '用户名、电子邮箱或者密码错误。',
-        'not_confirmed' => '您的账户尚未验证，请查阅您的电子邮箱。',
+        'not_confirmed' => '您的账户尚未验证，请查阅您的电子邮箱，点击验证链接激活帐号！',
         'confirmation' => '您的账户已验证！您现在可以登录了。',
         'wrong_confirmation' => '验证码错误！',
         'password_forgot' => '关于密码重置的信息已经发送到您的电子邮件',
@@ -48,7 +48,7 @@ return array(
             'subject' => '账号注册验证确认邮件',
             'greetings' => '您好， :name',
             'body' => '请通过点击下方的超链接来验证您的账户：',
-            'farewell' => '顺祝商祺',
+            'farewell' => '顺祝商祺/IT宝贝网管理团队',
         ),
 
         'password_reset' => array(
