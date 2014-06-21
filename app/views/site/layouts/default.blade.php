@@ -9,7 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>
 			@section('title')
-			IT宝贝网-中国青少年信息化推动者，计算机信息教育的先锋队IT style learning,NIT competence for China kids,IT从娃娃抓起
+			IT宝贝网-中国青少年信息化推动者，计算机信息教育的先锋队 | IT style learning,NIT competence for China kids,IT从娃娃抓起
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
@@ -144,8 +144,8 @@
 
         @yield('scripts')
 		<!-- daiyanbao -->
-        <div id="daiyanbao_com_content" style="position: fixed;_position: absolute;text-align: left;overflow: visible;bottom :0;right:0;display:block; z-index:999;">
+        <!--<div id="daiyanbao_com_content" style="position: fixed;_position: absolute;text-align: left;overflow: visible;bottom :0;right:0;display:block; z-index:999;">
         <script src="http://res.daiyanbao.com/freevideojs/304/1/88888888.js"></script>
-        </div>
+        </div> -->
 	</body>
 </html>
