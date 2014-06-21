@@ -143,5 +143,9 @@
         <!-- <script src="{{asset('bootstrap/js/custom.js')}}"></script> -->
 
         @yield('scripts')
+		<!-- daiyanbao -->
+        <div id="daiyanbao_com_content" style="position: fixed;_position: absolute;text-align: left;overflow: visible;bottom :0;right:0;display:block; z-index:999;">
+        <script src="http://res.daiyanbao.com/freevideojs/304/1/88888888.js"></script>
+        </div>
 	</body>
 </html>
