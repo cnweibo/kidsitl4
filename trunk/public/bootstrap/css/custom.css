@@ -74,3 +74,18 @@ body{
 /*  top:15px;
   left:95%;*/
 }
+/*bishun*/
+.bishunwrapper{
+  margin:10px;
+}
+#bishuncontainer{
+  margin:10px 0;
+  background: rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+/* row margin reset to 0*/
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
