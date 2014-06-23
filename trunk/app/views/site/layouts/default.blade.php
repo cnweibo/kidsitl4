@@ -52,83 +52,73 @@
 	<body>
 		<!-- To make sticky footer need to wrap in a div -->
 		<div id="wrap">
-		<!-- Navbar -->
-		<div class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-top-background">
-			 <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">切换</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav"  id="top-nav-left">
-						<li {{set_active('/')}}><a href="{{{ URL::to('') }}}">首页</a></li>
-						<li {{set_active('bishun')}}><a href="{{{ URL::to('/bishun') }}}">笔顺学习</a></li>
-						<li {{set_active('pinyin')}}><a href="{{{ URL::to('/pinyin') }}}">拼音速学</a></li>
-						<li {{set_active('game')}}><a href="{{{ URL::to('/game') }}}">键盘练习</a></li>
-						<li {{set_active('phonetic')}}><a href="{{{ URL::to('phonetic') }}}">英语音标</a></li>
-						<li {{set_active('exercise')}}><a href="{{{ URL::to('exercise') }}}">中小学同步课堂</a></li>						
-						<li {{set_active('kidsinternet')}}><a href="{{{ URL::to('kidsinternet') }}}">互联网那点事儿</a></li>						
-      <li class="dropdown hidden">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li>
-
-
-					</ul>
-
-                    <ul class="nav navbar-nav pull-right" id="top-nav-right">
-                        @if (Auth::check())
-                        @if (Auth::user()->hasRole('admin'))
-                        <li><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
-                        @endif
-                        <li><a href="{{{ URL::to('user') }}}">登录为： {{{ Auth::user()->username }}}</a></li>
-                        <li><a href="{{{ URL::to('user/logout') }}}">退出</a></li>
-                        @else
-                        <li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">登录</a></li>
-                        <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
-                        @endif
-                    </ul>
-					<!-- ./ nav-collapse -->
+			<!-- Navbar -->
+			<div class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-top-background">
+				<div class="container">
+	                <div class="navbar-header">
+	                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	                        <span class="sr-only">切换</span>
+	                        <span class="icon-bar"></span>
+	                        <span class="icon-bar"></span>
+	                        <span class="icon-bar"></span>
+	                    </button>
+	                </div>
+	                <div class="collapse navbar-collapse navbar-ex1-collapse">
+	                    <ul class="nav navbar-nav"  id="top-nav-left">
+							<li {{set_active('/')}}><a href="{{{ URL::to('') }}}">首页</a></li>
+							<li {{set_active('bishun')}}><a href="{{{ URL::to('/bishun') }}}">笔顺学习</a></li>
+							<li {{set_active('pinyin')}}><a href="{{{ URL::to('/pinyin') }}}">拼音速学</a></li>
+							<li {{set_active('game')}}><a href="{{{ URL::to('/game') }}}">键盘练习</a></li>
+							<li {{set_active('phonetic')}}><a href="{{{ URL::to('phonetic') }}}">英语音标</a></li>
+							<li {{set_active('exercise')}}><a href="{{{ URL::to('exercise') }}}">中小学同步课堂</a></li>						
+							<li {{set_active('kidsinternet')}}><a href="{{{ URL::to('kidsinternet') }}}">互联网那点事儿</a></li>						
+							<li class="dropdown hidden">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Separated link</a></li>
+								</ul>
+							</li>
+						</ul>
+	                    <ul class="nav navbar-nav pull-right" id="top-nav-right">
+	                        @if (Auth::check())
+	                        @if (Auth::user()->hasRole('admin'))
+	                        <li><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
+	                        @endif
+	                        <li><a href="{{{ URL::to('user') }}}">登录为： {{{ Auth::user()->username }}}</a></li>
+	                        <li><a href="{{{ URL::to('user/logout') }}}">退出</a></li>
+	                        @else
+	                        <li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">登录</a></li>
+	                        <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
+	                        @endif
+	                    </ul>
+					</div><!-- ./ nav-collapse end --> 
+				</div> <!-- container end -->
+			</div> <!-- ./ navbar end-->
+			<div class="container"><!--  container of content start-->
+				<!-- Notifications -->
+				@include('notifications')
+				<!-- ./ notifications -->
+				<!-- content of carousel -->
+				@yield('carousel')
+				<!-- Content bishun flash search form -->
+				@yield('contentbishunsearch')
+				<!-- Content bishun flash-->
+				@yield('contentbishun')
+				<!-- Content blog-->
+				@yield('content')
+				<!-- ./ content blog-->
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-lg-offset-3">
+					@yield('typinggame')	
 				</div>
-			</div>
-		</div>
-		<!-- ./ navbar -->
+			</div><!-- container end -->
 
-		<!-- Container -->
-		<div class="container">
-			<!-- Notifications -->
-			@include('notifications')
-			<!-- ./ notifications -->
-			<!-- content of carousel -->
-			@yield('carousel')
-			<!-- Content bishun flash-->
-			@yield('contentbishun')
-			<!-- ./ content bishun flash -->
-
-			<!-- Content blog-->
-			@yield('content')
-			<!-- ./ content blog-->
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-lg-offset-3">
-			@yield('typinggame')	
-</div>
-		</div>
-		<!-- ./ container -->
-
-		<!-- the following div is needed to make a sticky footer -->
-		<div id="push"></div>
-		</div>
-		<!-- ./wrap -->
-
+			<!-- the following div is needed to make a sticky footer -->
+			<div id="push"></div>
+		</div><!-- ./wrap -->
 
 	    <div id="footer">
 	      <div class="container">
@@ -152,6 +142,5 @@
         var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
         document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F53722a1e9a4275bed7713037cafa3b9d' type='text/javascript'%3E%3C/script%3E"));
         </script>
-
 	</body>
 </html>
