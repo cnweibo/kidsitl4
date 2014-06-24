@@ -36,6 +36,7 @@ class BishunController extends \BaseController {
 	public function postSearch()
 	{
 		$bishunsearch = Input::get('bishunsearch');
+		// dd($bishunsearch);
 		if ($bishunsearch){
 			// populate the html markup which will be displayed in ajax page
 			//show the searched bishun items

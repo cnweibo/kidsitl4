@@ -20,7 +20,7 @@ $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 	var formdata = $('#bishunsearchform').serialize();
 	var bishunsearchdata = $('#bishunsearchform #inputBishunsearch').val();
 	console.log(e.keyCode);
-	console.log(bishunsearchdata.trim());
+	console.log(bishunsearchdata);
 	if ((e.keyCode == 17) || (e.keyCode == 16))
 	{ //如果是CTRL,SPACE,SHIFT则返回
 		return ;
@@ -46,21 +46,24 @@ $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 			return;
 		}
 	}
-	{//default action:when user key pressed, ajax sent out
-		if ((bishunsearchdata.trim())&&(regexpress.test(bishunsearchdata.trim()))){
-			console.log('default no chinese action');
-		}else{
-			console.log('default chinese action');
-		$.ajax({
-			url: 'bishun',
-			type: 'POST',
-			data: formdata,
-			success: function(results){
-				$("#bishuncontainer").html(results
-					);
-			}
-		});
-	}
+	{//default action:when user key pressed, check input content, if chinese 
+	 //detected, ajax sent out, else return
+	    if(bishunsearchdata.trim())
+	    {	
+			if ((bishunsearchdata.trim())&&(regexpress.test(bishunsearchdata.trim()))){
+				console.log('default no chinese action');
+			}else{
+				console.log('default chinese action');
+			$.ajax({
+				url: 'bishun',
+				type: 'POST',
+				data: formdata,
+				success: function(results){
+					$("#bishuncontainer").html(results
+						);}
+					});
+				}
+		}
 		return;	
 	}
 });
