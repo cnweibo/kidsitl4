@@ -121,9 +121,14 @@
 		</div><!-- ./wrap -->
 
 	    <div id="footer">
-	      <div class="container">
-	        <p class="muted credit">版权所有 © {{date('Y')}} <a href="http://kidsit.cn">IT宝贝网</a></p>
-	      </div>
+			<div class="container">
+				<p class="muted credit aligncenter inlineblock">版权所有 © {{date('Y')}} <a href="http://kidsit.cn">IT宝贝网</a></p>
+				<!-- baidu tongji -->
+				<script type="text/javascript">
+				var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+				document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F53722a1e9a4275bed7713037cafa3b9d' type='text/javascript'%3E%3C/script%3E"));
+				</script>
+			</div>
 	    </div>
 
 		<!-- Javascripts
@@ -137,10 +142,5 @@
         <!--<div id="daiyanbao_com_content" style="position: fixed;_position: absolute;text-align: left;overflow: visible;bottom :0;right:0;display:block; z-index:999;">
         <script src="http://res.daiyanbao.com/freevideojs/304/1/88888888.js"></script>
         </div> -->
-        <!-- baidu tongji -->
-        <script type="text/javascript">
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F53722a1e9a4275bed7713037cafa3b9d' type='text/javascript'%3E%3C/script%3E"));
-        </script>
 	</body>
 </html>

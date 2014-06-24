@@ -89,3 +89,12 @@ body{
   margin-right: 0;
   margin-left: 0;
 }
+
+/*some helper css*/
+.inlineblock{
+	display:inline-block;
+}
+.aligncenter{
+	margin-left:auto;
+	margin-right:auto;
+}
