@@ -15,6 +15,7 @@
 						<param name="menu" value="true" />
 						<param name="devicefont" value="false" />
 						<param name="salign" value="" />
+						<param name="flashvars" value="filename={{url('/getBishun').'/'.$bishun->filename}}" />
 						<param name="allowScriptAccess" value="sameDomain" />
 						<!--[if !IE]>-->
 						<object type="application/x-shockwave-flash" data="utilities/bsShell.swf" width="200" height="220">
@@ -59,6 +60,7 @@
 					<param name="menu" value="true" />
 					<param name="devicefont" value="false" />
 					<param name="salign" value="" />
+					<param name="flashvars" value="filename={{url('/getBishun').'/'.$bishuns->filename}}" />
 					<param name="allowScriptAccess" value="sameDomain" />
 					<!--[if !IE]>-->
 					<object type="application/x-shockwave-flash" data="utilities/bsShell.swf" width="200" height="220">
