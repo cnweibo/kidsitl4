@@ -86,6 +86,7 @@
     					<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
     					<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><i class="glyphicon glyphicon-list-alt"></i> Blog</a></li>
     					<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><i class="glyphicon glyphicon-bullhorn"></i> Comments</a></li>
+    					<li{{ (Request::is('admin/bishuns*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/bishuns') }}}"><i class="glyphicon glyphicon glyphicon-pencil"></i> 笔顺</a></li>
     					<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
     						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
     							<i class="glyphicon glyphicon-user"></i> Users <span class="caret"></span>
