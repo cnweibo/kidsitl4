@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdminBishunsController' => $baseDir . '/app/controllers/admin/AdminBishunsController.php',
     'AdminBlogsController' => $baseDir . '/app/controllers/admin/AdminBlogsController.php',
     'AdminCommentsController' => $baseDir . '/app/controllers/admin/AdminCommentsController.php',
     'AdminController' => $baseDir . '/app/controllers/AdminController.php',
@@ -18,7 +19,7 @@ return array(
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'BaseControllerTestCase' => $baseDir . '/app/tests/library/BaseControllerTestCase.php',
     'Bishun' => $baseDir . '/app/models/Bishun.php',
-    'BishunController' => $baseDir . '/app/controllers/bishunController.php',
+    'BishunController' => $baseDir . '/app/controllers/BishunController.php',
     'Bllim\\Datatables\\Datatables' => $vendorDir . '/bllim/datatables/src/Bllim/Datatables/Datatables.php',
     'Bllim\\Datatables\\DatatablesServiceProvider' => $vendorDir . '/bllim/datatables/src/Bllim/Datatables/DatatablesServiceProvider.php',
     'Bllim\\Datatables\\Facades\\Profiler' => $vendorDir . '/bllim/datatables/src/Bllim/Datatables/Facade/Datatables.php',
@@ -97,6 +98,7 @@ return array(
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/File/Iterator/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/File/Iterator/Factory.php',
     'File_X509' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/X509.php',
+    'GameController' => $baseDir . '/app/controllers/GameController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'Illuminate\\Auth\\AuthManager' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/AuthManager.php',
     'Illuminate\\Auth\\AuthServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/AuthServiceProvider.php',
