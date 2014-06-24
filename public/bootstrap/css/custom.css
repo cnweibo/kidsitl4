@@ -98,3 +98,7 @@ body{
 	margin-left:auto;
 	margin-right:auto;
 }
+/*hover for the  table row*/
+.table-hover > tbody > tr:hover >td{
+  background-color: #f60;
+}
