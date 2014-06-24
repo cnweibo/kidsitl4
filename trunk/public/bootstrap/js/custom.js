@@ -11,6 +11,10 @@ $(function(){
 var previousBSKey = 0xff;
 var currentBSKey = 0xff;
 var regexpress = /[^\u4e00-\u9fa5]/;
+String.prototype.trim =function()
+{
+	return this.replace(/(^\s*)|(\s*$)/g, "");
+}
 console.log(regexpress);
 $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 	var formdata = $('#bishunsearchform').serialize();
@@ -43,7 +47,7 @@ $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 		}
 	}
 	{//default action:when user key pressed, ajax sent out
-		if ((bishunsearchdata.trim)&&(regexpress.test(bishunsearchdata.trim()))){
+		if ((bishunsearchdata.trim())&&(regexpress.test(bishunsearchdata.trim()))){
 			console.log('default no chinese action');
 		}else{
 			console.log('default chinese action');
