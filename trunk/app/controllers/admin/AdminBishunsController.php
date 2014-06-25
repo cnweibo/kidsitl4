@@ -66,33 +66,29 @@ class AdminBishunsController extends AdminController {
 	{
 		// Declare the rules for the form validation
 		$rules = array(
-		    // 'title'   => 'required|min:3',
-		    // 'content' => 'required|min:3'
+		    'hanzi'   => 'required',
+		    'filename' => 'required',
+		    'relatedwords' => 'required|min:2'
 		);
-
-		// // Validate the inputs
 		$validator = Validator::make(Input::all(), $rules);
 
 		// Check if the form validates with success
-		// if ($validator->passes())
-		// {
-		    // Update the blog post data
+		if ($validator->passes())
+		{
 		    // $this->bishuns->hanzi            = Input::get('hanzi');
-		    $this->bishuns->relatedwords     = Input::get('relatedwords');
-		    $this->bishuns->filename		 = Input::get('filename');
-		    // Was the blog post updated?
-		    if($this->bishuns->save())
+			$bishuntemp = Bishun::wherehanzi(Input::get('hanzi'))->first();
+		    if($bishuntemp->update(array('relatedwords'=>Input::get('relatedwords'),'filename'=>Input::get('filename'))));
 		    {
 		        // Redirect to the new blog post page
-		        return Redirect::to('admin/bishuns/' . $bishuns->hanzi . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
+		        return Redirect::to('admin/bishuns/' . $bishuntemp->hanzi . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
 		    }
 
 		    // Redirect to the blogs post management page
-		    return Redirect::to('admin/bishuns/' . $bishuns->hanzi . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'));
-		// }
+		    return Redirect::to('admin/bishuns/' . $bishuntemp->hanzi . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'));
+		}
 
 		// Form validation failed
-		return Redirect::to('admin/bishuns/' . $bishuns->hanzi . '/edit')->withInput()->withErrors($validator);
+		return Redirect::to('admin/bishuns/' . $bishun . '/edit')->withInput()->withErrors($validator);
 	}
 
 	/**
