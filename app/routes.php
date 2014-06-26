@@ -127,7 +127,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('bishuns/{bishun}/edit', 'AdminBishunsController@postEdit');
     Route::get('bishuns/{bishun}/delete', 'AdminBishunsController@getDelete');
     Route::post('bishuns/{bishun}/delete', 'AdminBishunsController@postDelete');
-    // Route::controller('bishuns', 'AdminBishunsController');
+    Route::controller('bishuns', 'AdminBishunsController');
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');

@@ -42,7 +42,44 @@ class AdminBishunsController extends AdminController {
 	 */
 	public function getCreate()
 	{
-		//
+        // Title
+        $title = "新建笔顺";
+
+        // Show the page
+        return View::make('admin/bishuns/create', compact('title'));
+	}
+	/**
+	 * process the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function postCreate()
+	{
+
+	    if (Input::hasFile('filename')){
+	        $file= Input::file('filename');
+	        // dd(app_path().'/storage/uploaded/','uploaded.xxx');
+	        $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
+	        $destabsolutefile = app_path().'/storage/uploaded/';
+	        $file->move($destabsolutefile,$destfile);
+	        $bishun = new Bishun;
+	        $bishun->hanzi = Input::get('hanzi');
+	        $bishun->filename = $destfile;
+	        $bishun->relatedwords = Input::get('relatedwords');
+	        $bishun->save();    
+	        // return [
+	        //     'path'=> $file->getRealPath(),
+	        //     'size'=> $file->getSize(),
+	        //     'mime'=> $file->getMimeType(),
+	        //     'name'=> $file->getClientOriginalName(),
+	        //     'extension'=> $file->getClientOriginalExtension()
+	        // ];
+	        // Title
+	        $title = "新建笔顺";
+	        
+	        // Show the page
+	        return View::make('admin/bishuns/create', compact('title'))->with('success', Lang::get('admin/blogs/messages.create.success'));
+	    }        
 	}
 	/**
 	 * show a form to edit resource in storage.
