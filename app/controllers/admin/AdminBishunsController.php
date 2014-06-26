@@ -130,10 +130,49 @@ class AdminBishunsController extends AdminController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getDelete($id)
+	public function getDelete($bishun)
 	{
-		//
+		// Title
+        $title = Lang::get('admin/bishuns/title.blog_delete');
+
+        // Show the page
+        return View::make('admin/bishuns/delete', compact('bishun', 'title'));
+
 	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param $post
+	 * @return Response
+	 */
+	public function postDelete($bishun)
+	{
+	    // Declare the rules for the form validation
+	    $rules = array(
+	        // 'id' => 'required|integer'
+	    );
+	    // Validate the inputs
+	    $validator = Validator::make(Input::all(), $rules);
+
+	    // Check if the form validates with success
+	    if ($validator->passes())
+	    {
+	    	var_dump(gettype($bishun));
+	    	var_dump(gettype(Input::get('hanzi')));
+	    	$bishuntodelete = Bishun::wherehanzi($bishun)->first();
+	    	$bishuntodelete->delete();
+	        // Was the bishun deleted?
+	        $bishunfound = Bishun::wherehanzi($bishun);
+	        if(empty($bishunfound))
+	        {
+	            // Redirect to the bishun management page
+	            return Redirect::to('admin/bishuns')->with('success', "笔顺删除成功！");
+	        }
+	    }
+	    // There was a problem deleting the bishun
+	    return Redirect::to('admin/bishuns')->with('error', "笔顺删除错误，请重试");
+	}	
 
 	/**
      * Show a list of all the bishun formatted for Datatables.
