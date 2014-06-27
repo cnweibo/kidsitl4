@@ -21,7 +21,7 @@ Route::post('/bishun', array('uses' => 'BishunController@postSearch'));
 Route::get('/exercise',array('uses' => 'BlogController@getIndex'));
 Route::get('/game',array('uses' => 'GameController@getIndex'));
 Route::get('/pinyin',array('uses' => 'BlogController@getIndex'));
-Route::get('/phonetic',array('uses' => 'BlogController@getIndex'));
+Route::get('/yinbiao',array('uses' => 'YinbiaoController@getIndex'));
 Route::get('/kidsinternet',array('uses' => 'BlogController@getIndex'));
 
 // facades url to see all the laravel facades and its class
