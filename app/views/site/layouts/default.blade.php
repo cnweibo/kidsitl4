@@ -69,7 +69,7 @@
 							<li {{set_active('bishun')}}><a href="{{{ URL::to('/bishun') }}}">笔顺学习</a></li>
 							<li {{set_active('pinyin')}}><a href="{{{ URL::to('/pinyin') }}}">拼音速学</a></li>
 							<li {{set_active('game')}}><a href="{{{ URL::to('/game') }}}">键盘练习</a></li>
-							<li {{set_active('phonetic')}}><a href="{{{ URL::to('phonetic') }}}">英语音标</a></li>
+							<li {{set_active('yinbiao')}}><a href="{{{ URL::to('yinbiao') }}}">英语音标</a></li>
 							<li {{set_active('exercise')}}><a href="{{{ URL::to('exercise') }}}">中小学同步课堂</a></li>						
 							<li {{set_active('kidsinternet')}}><a href="{{{ URL::to('kidsinternet') }}}">互联网那点事儿</a></li>						
 							<li class="dropdown hidden">
