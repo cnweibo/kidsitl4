@@ -16,7 +16,7 @@
 			{{{ $title }}}
 
 			<div class="pull-right">
-				<a href="{{{ URL::to('admin/bishuns/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 新填笔顺</a>
+				<a href="{{{ URL::to('admin/bishuns/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 新增笔顺</a>
 			</div>
 		</h3>
 	</div>
