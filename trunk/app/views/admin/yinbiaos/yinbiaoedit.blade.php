@@ -41,7 +41,12 @@
 				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
                         <label class="control-label" for="yinbiaocategory_id">音标分类：</label>
-						<textarea class="form-control full-width wysihtml5" name="yinbiaocategory_id" value="yinbiaocategory_id" rows="1">{{{$yinbiaosModel->yinbiaocategory_id}}}</textarea>
+						<select name="yinbiaocategory_id" id="yinbiaocategory_id">
+							@foreach (Yinbiaocategory::all() as $yinbiaocat)
+								<option value={{$yinbiaocat->id}}>{{$yinbiaocat->ybcategory}}</option>
+							@endforeach
+							
+						</select>
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div>

@@ -16,11 +16,15 @@
 			{{{ $title }}}
 
 			<div class="pull-right">
-				<a href="{{{ URL::to('admin/yinbiaos/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 新增笔顺</a>
+				<a href="{{{ URL::to('admin/yinbiaos/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 新增音标</a>
 			</div>
 		</h3>
 	</div>
-
+	<div class="adminlegend">
+		@foreach (Yinbiaocategory::all() as $yinbiaocat)
+			<span style="background-color: #999">{{$yinbiaocat->id}}</span>:<span style="background-color:#abc">{{$yinbiaocat->ybcategory}}</span>
+		@endforeach
+	</div>
 	<table id="yinbiaos" class="table table-striped table-hover">
 		<thead>
 			<tr>
