@@ -130,51 +130,17 @@ class AdminYinbiaosController extends AdminController {
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getDelete($bishun)
+	public function getDelete($yinbiao)
 	{
 		// Title
-        $title = Lang::get('admin/yinbiaos/title.blog_delete');
-
+        $title = "删除音标";
         // Show the page
-        return View::make('admin/yinbiaos/delete', compact('bishun', 'title'));
+        return View::make('admin/yinbiaos/delete', compact('yinbiao', 'title'));
 
 	}
 
@@ -184,7 +150,7 @@ class AdminYinbiaosController extends AdminController {
 	 * @param $post
 	 * @return Response
 	 */
-	public function postDelete($bishun)
+	public function postDelete($id)
 	{
 	    // Declare the rules for the form validation
 	    $rules = array(
@@ -192,28 +158,26 @@ class AdminYinbiaosController extends AdminController {
 	    );
 	    // Validate the inputs
 	    $validator = Validator::make(Input::all(), $rules);
-
 	    // Check if the form validates with success
 	    if ($validator->passes())
 	    {
-	    	var_dump(gettype($bishun));
-	    	var_dump(gettype(Input::get('hanzi')));
-	    	$bishuntodelete = Yinbiao::wherehanzi($bishun)->first();
-	    	$bishuntodelete->delete();
-	        // Was the bishun deleted?
-	        $bishunfound = Yinbiao::wherehanzi($bishun);
-	        if(empty($bishunfound))
+	    	$yinbiaotodelete = Yinbiao::find($id);
+	    	// dd($yinbiaotodelete);
+	    	$yinbiaotodelete->delete();
+	        // Was the id deleted?
+	        $yinbiaofound = Yinbiao::find($id);
+	        if(empty($yinbiaofound))
 	        {
-	            // Redirect to the bishun management page
-	            return Redirect::to('admin/yinbiaos')->with('success', "笔顺删除成功！");
+	            // Redirect to the yinbiao management page
+	            return Redirect::to('admin/yinbiaos')->with('success', "音标删除成功！");
 	        }
 	    }
-	    // There was a problem deleting the bishun
-	    return Redirect::to('admin/yinbiaos')->with('error', "笔顺删除错误，请重试");
+	    // There was a problem deleting the yinbiao
+	    return Redirect::to('admin/yinbiaos')->with('error', "音标删除错误，请重试");
 	}	
 
 	/**
-     * Show a list of all the bishun formatted for Datatables.
+     * Show a list of all the yinbiao formatted for Datatables.
      *
      * @return Datatables JSON
      */
@@ -233,5 +197,4 @@ class AdminYinbiaosController extends AdminController {
 
         ->make();
     }
-
 }

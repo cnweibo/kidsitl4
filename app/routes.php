@@ -203,7 +203,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('yinbiaos/{yinbiao}/edit', 'AdminYinbiaosController@getEdit');
     Route::post('yinbiaos/{yinbiao}/edit', 'AdminYinbiaosController@postEdit');
     Route::get('yinbiaos/{yinbiao}/delete', 'AdminYinbiaosController@getDelete');
-    Route::post('yinbiaos/{yinbiao}/delete', 'AdminYinbiaosController@postDelete');
+    Route::post('yinbiaos/{yinbiao}/delete', array('as'=>'postyinbiaodelete', 'uses' => 'AdminYinbiaosController@postDelete'));
     Route::controller('yinbiaos', 'AdminYinbiaosController');
 
     # Admin Dashboard
