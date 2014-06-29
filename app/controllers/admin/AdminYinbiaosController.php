@@ -114,7 +114,7 @@ class AdminYinbiaosController extends AdminController {
 		if ($validator->passes())
 		{
 		    // $this->yinbiaos->hanzi            = Input::get('hanzi');
-			$yinbiaotemp = Yinbiao::find(Input::get('id'))->first();
+			$yinbiaotemp = Yinbiao::find(Input::get('id'));
 		    if($yinbiaotemp->update(array('yinbiaocategory_id' =>Input::get('yinbiaocategory_id'),'mp3'=>Input::get('mp3'))));
 		    {
 		        // Redirect to the new blog post page
