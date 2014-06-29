@@ -102,3 +102,10 @@ body{
 .table-hover > tbody > tr:hover >td{
   background-color: #f60;
 }
+/*custom a tag styles*/
+a.yinbiaoatag{
+  color:green;
+}
+a.yinbiaocatatag{
+  color:blue;
+}
