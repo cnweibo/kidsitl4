@@ -59,7 +59,8 @@ class YinbiaocategoryController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$ybcategory = Yinbiaocategory::find($id);
+		return View::make('site.yinbiaocategory.show',compact('ybcategory'));
 	}
 
 	/**
