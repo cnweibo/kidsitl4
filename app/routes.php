@@ -9,10 +9,72 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
 /** ------------------------------------------
- *  Route model binding
+ *  Frontend Routes
  *  ------------------------------------------
  */
+// yinbiao routes
+Route::resource('yinbiao','YinbiaoController');
+// yinbiao category routes
+Route::resource('yinbiaocategory','YinbiaocategoryController');
+// User reset routes
+Route::get('user/reset/{token}', 'UserController@getReset');
+// User password reset
+Route::post('user/reset/{token}', 'UserController@postReset');
+//:: User Account Routes ::
+Route::post('user/{user}/edit', 'UserController@postEdit');
+
+//:: User Account Routes ::
+Route::post('user/login', 'UserController@postLogin');
+
+# User RESTful Routes (Login, Logout, Register, etc)
+Route::controller('user', 'UserController');
+
+//:: Application Routes ::
+
+# Filter for detect language
+//Route::when('contact-us','detectLang');
+Route::get('lang',function(){
+    echo trans('admin/users/messages.already_exists');
+});
+# Contact Us Static Page
+Route::get('contact-us', function()
+{
+    // Return about us page
+    return View::make('site/contact-us');
+});
+
+Route::get("/bs3test/snippets/{page?}", function($page = 'index'){
+    //return $page;
+    $page = "snippets".".".$page;
+    return View::make('bs3test.detail')->with('page',$page);
+});
+
+Route::get("/bs3test/{page?}", function($page = 'index'){
+    if ($page == 'index') {
+        //populate the bs3test lists in the page.
+        $bs3fileslist = (File::files(app_path().'/views/bs3test'));
+        $i=0;
+        foreach ($bs3fileslist as $file) {
+            preg_match('/\/([^\/]*)\.blade\.php/', $file,$bs3shortname);
+            $bs3view[$i++] = $bs3shortname[1];
+    }
+    //list the snippets directory 
+        $bs3snippetslist = (File::files(app_path().'/views/bs3test/snippets'));
+        foreach ($bs3snippetslist as $file) {
+            preg_match('/\/([^\/]*)\.blade\.php/', $file,$bs3shortname);
+            $bs3view[$i++] = "snippets/".$bs3shortname[1];
+        }
+        return View::make('bs3test.index',['bs3view' => $bs3view]);
+    }
+    else{
+        // View::share('page',$page);
+        $filecontent = File::get(app_path().'/views/bs3test/'.$page.'.blade.php');
+        return View::make('bs3test.detail',['page'=>$page, 'filecontent' =>$filecontent]);       
+    }
+
+});
 // respond for the bsShell requesting the bishun file
 Route::get('/getBishun/{filename}',array('uses' => 'BishunController@getBishun'));
 // kidsit slugs
@@ -21,7 +83,7 @@ Route::post('/bishun', array('uses' => 'BishunController@postSearch'));
 Route::get('/exercise',array('uses' => 'BlogController@getIndex'));
 Route::get('/game',array('uses' => 'GameController@getIndex'));
 Route::get('/pinyin',array('uses' => 'BlogController@getIndex'));
-Route::get('/yinbiao',array('uses' => 'YinbiaoController@getIndex'));
+#Route::get('/yinbiao',array('uses' => 'YinbiaoController@getIndex'));
 Route::get('/kidsinternet',array('uses' => 'BlogController@getIndex'));
 
 // facades url to see all the laravel facades and its class
@@ -66,6 +128,11 @@ Route::matched(function($route, $request)
 {
     // dd("route matched event hit for $request");
 });
+
+/** ------------------------------------------
+ *  Route model binding
+ *  ------------------------------------------
+ */
 Route::model('user', 'User');
 Route::model('comment', 'Comment');
 Route::model('post', 'Post');
@@ -131,70 +198,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
-});
-
-
-/** ------------------------------------------
- *  Frontend Routes
- *  ------------------------------------------
- */
-
-// User reset routes
-Route::get('user/reset/{token}', 'UserController@getReset');
-// User password reset
-Route::post('user/reset/{token}', 'UserController@postReset');
-//:: User Account Routes ::
-Route::post('user/{user}/edit', 'UserController@postEdit');
-
-//:: User Account Routes ::
-Route::post('user/login', 'UserController@postLogin');
-
-# User RESTful Routes (Login, Logout, Register, etc)
-Route::controller('user', 'UserController');
-
-//:: Application Routes ::
-
-# Filter for detect language
-//Route::when('contact-us','detectLang');
-Route::get('lang',function(){
-    echo trans('admin/users/messages.already_exists');
-});
-# Contact Us Static Page
-Route::get('contact-us', function()
-{
-    // Return about us page
-    return View::make('site/contact-us');
-});
-
-Route::get("/bs3test/snippets/{page?}", function($page = 'index'){
-    //return $page;
-    $page = "snippets".".".$page;
-    return View::make('bs3test.detail')->with('page',$page);
-});
-
-Route::get("/bs3test/{page?}", function($page = 'index'){
-    if ($page == 'index') {
-        //populate the bs3test lists in the page.
-        $bs3fileslist = (File::files(app_path().'/views/bs3test'));
-        $i=0;
-        foreach ($bs3fileslist as $file) {
-            preg_match('/\/([^\/]*)\.blade\.php/', $file,$bs3shortname);
-            $bs3view[$i++] = $bs3shortname[1];
-    }
-    //list the snippets directory 
-        $bs3snippetslist = (File::files(app_path().'/views/bs3test/snippets'));
-        foreach ($bs3snippetslist as $file) {
-            preg_match('/\/([^\/]*)\.blade\.php/', $file,$bs3shortname);
-            $bs3view[$i++] = "snippets/".$bs3shortname[1];
-        }
-        return View::make('bs3test.index',['bs3view' => $bs3view]);
-    }
-    else{
-        // View::share('page',$page);
-        $filecontent = File::get(app_path().'/views/bs3test/'.$page.'.blade.php');
-        return View::make('bs3test.detail',['page'=>$page, 'filecontent' =>$filecontent]);       
-    }
-
 });
 
 # Posts - Second to last set, match slug

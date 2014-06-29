@@ -22,6 +22,21 @@ ClassLoader::addDirectories(array(
 
 /*
 |--------------------------------------------------------------------------
+| Listen the database query
+|--------------------------------------------------------------------------
+|
+*/
+DB::Listen(function($sql){
+    //Log::error("sql query is: $sql");
+    // var_dump($sql);
+    // Log::error("$code - $message @ $pathInfo\r\n$exception");
+});
+Event::listen('illuminate.query',function($query){
+    // var_dump($query);
+    Log::info("SQL query prepared: $query\r\n");
+});
+/*
+|--------------------------------------------------------------------------
 | Application Error Logger
 |--------------------------------------------------------------------------
 |
