@@ -75,8 +75,13 @@ Route::get("/bs3test/{page?}", function($page = 'index'){
     }
 
 });
-// respond for the bsShell requesting the bishun file
+
+// API access for the bsShell requesting the bishun file
 Route::get('/getBishun/{filename}',array('uses' => 'BishunController@getBishun'));
+
+// API access for the yinbiao mp3 audio file
+Route::get('/getmp3/{filename}', 'Mp3Controller@getMp3');
+
 // kidsit slugs
 Route::get('/bishun', array('uses' => 'BishunController@getIndex'));
 Route::post('/bishun', array('uses' => 'BishunController@postSearch'));
@@ -188,7 +193,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
     # Bishun Management
     Route::get('bishuns', 'AdminBishunsController@getIndex');
-    Route::get('bishuns/data', 'AdminBishunsController@getData');    
+    Route::get('bishuns/data', 'AdminBishunsController@getData');
+    Route::get('bishuns/create', 'AdminBishunsController@getCreate');        
     // Route::get('bishuns/{bishun}/show', 'AdminBishunsController@getShow');
     Route::get('bishuns/{bishun}/edit', 'AdminBishunsController@getEdit');
     Route::post('bishuns/{bishun}/edit', 'AdminBishunsController@postEdit');
@@ -198,7 +204,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
     # Yinbiao Management
     Route::get('yinbiaos', 'AdminYinbiaosController@getIndex');
-    Route::get('yinbiaos/data', 'AdminYinbiaosController@getData');    
+    Route::get('yinbiaos/data', 'AdminYinbiaosController@getData'); 
+    Route::get('yinbiaos/create', 'AdminYinbiaosController@getCreate');     
     // Route::get('yinbiaos/{yinbiao}/show', 'AdminYinbiaosController@getShow');
     Route::get('yinbiaos/{yinbiao}/edit', 'AdminYinbiaosController@getEdit');
     Route::post('yinbiaos/{yinbiao}/edit', 'AdminYinbiaosController@postEdit');
