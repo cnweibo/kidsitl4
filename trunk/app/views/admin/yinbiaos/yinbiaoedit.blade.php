@@ -9,7 +9,7 @@
 		</ul>
 	<!-- ./ tabs -->
 
-	{{-- Edit bishun Form --}}
+	{{-- Edit yinbiao Form --}}
 	<form class="form-horizontal" method="post" action="@if (isset($bishuns)){{ URL::to('admin/bishuns/' . $bishuns->hanzi . '/edit') }}@endif" autocomplete="off">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
@@ -19,34 +19,40 @@
 		<div class="tab-content">
 			<!-- General tab -->
 			<div class="tab-pane active" id="tab-general">
-				@foreach ($bishunsModel as $bishun)
-				<!-- bishun hanzi -->
+
+				<!-- yinbiao id -->
 				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
                     <div class="col-md-12">
-                        <label class="control-label" for="hanzi">汉字名</label>
-						<input class="form-control" type="text" name="hanzi" id="hanzi" value="{{{$bishun->hanzi}}}" />
+                        <label class="control-label" for="id">音标ID：</label>
+						<input class="form-control" type="text" name="id" id="id" value="{{{$yinbiaosModel->id}}}" />
 						{{{ $errors->first('title', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div>
-				<!-- ./ post title -->
+				<!-- yinbiao name -->
+				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
+                    <div class="col-md-12">
+                        <label class="control-label" for="yinbiao">音标：</label>
+						<input class="form-control" type="text" name="yinbiao" id="yinbiao" value="{{{$yinbiaosModel->name}}}" />
+						{{{ $errors->first('title', '<span class="help-block">:message</span>') }}}
+					</div>
+				</div>
 
-				<!-- related words -->
+				<!-- yinbiao category -->
 				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
-                        <label class="control-label" for="content">该字相关词</label>
-						<textarea class="form-control full-width wysihtml5" name="relatedwords" value="relatedwords" rows="1">{{{$bishun->relatedwords}}}</textarea>
+                        <label class="control-label" for="yinbiaocategory_id">音标分类：</label>
+						<textarea class="form-control full-width wysihtml5" name="yinbiaocategory_id" value="yinbiaocategory_id" rows="1">{{{$yinbiaosModel->yinbiaocategory_id}}}</textarea>
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div>
-				<!-- file name -->
+				<!-- yinbiao mp3 file name -->
 				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
-                        <label class="control-label" for="content">文件名</label>
-						<textarea class="form-control full-width wysihtml5" name="filename" value="filename" rows="1">{{{$bishun->filename}}}</textarea>
+                        <label class="control-label" for="mp3">MP3音频文件：</label>
+						<textarea class="form-control full-width wysihtml5" name="mp3" value="mp3" rows="1">待增加</textarea>
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div>
-				@endforeach
 			</div>
 			<!-- ./ general tab -->
 

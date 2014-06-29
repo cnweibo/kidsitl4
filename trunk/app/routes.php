@@ -196,6 +196,16 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('bishuns/{bishun}/delete', 'AdminBishunsController@postDelete');
     Route::controller('bishuns', 'AdminBishunsController');
 
+    # Yinbiao Management
+    Route::get('yinbiaos', 'AdminYinbiaosController@getIndex');
+    Route::get('yinbiaos/data', 'AdminYinbiaosController@getData');    
+    // Route::get('yinbiaos/{yinbiao}/show', 'AdminYinbiaosController@getShow');
+    Route::get('yinbiaos/{yinbiao}/edit', 'AdminYinbiaosController@getEdit');
+    Route::post('yinbiaos/{yinbiao}/edit', 'AdminYinbiaosController@postEdit');
+    Route::get('yinbiaos/{yinbiao}/delete', 'AdminYinbiaosController@getDelete');
+    Route::post('yinbiaos/{yinbiao}/delete', 'AdminYinbiaosController@postDelete');
+    Route::controller('yinbiaos', 'AdminYinbiaosController');
+
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
 });
