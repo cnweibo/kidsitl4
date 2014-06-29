@@ -7,6 +7,11 @@ $(function(){
 			$(this).find(".dropdown-menu").slideUp();
 		}
 	);
+	// yinbiao player trigger event:click of the volumn icon
+	$("#yinbiao_1").click(function(){
+		$("#yinbiaoplayer").attr("src" ,"http://kidsit.cn/assets/audio/b.mp3");
+		$("#yinbiaoplayer").trigger('play');
+	});
 });
 var previousBSKey = 0xff;
 var currentBSKey = 0xff;
