@@ -1,6 +1,6 @@
 <?php
 
-class YinbiaoController extends BaseController {
+class YinbiaocategoryController extends BaseController {
 
     /**
      * Yinbiao Model
@@ -26,9 +26,9 @@ class YinbiaoController extends BaseController {
 	 */
 	public function index()
 	{
-		// Get all the yinbiao 
-		$yinbiaos = Yinbiao::all();
-		return View::make('site.yinbiao.index',compact('yinbiaos'));
+		// Get all the blog posts
+		$yinbiaocategories = Yinbiaocategory::all();
+		return View::make('site.yinbiaocategory.index',compact('yinbiaocategories'));
 	}
 
 	/**
