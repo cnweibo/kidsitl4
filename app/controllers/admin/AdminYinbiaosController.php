@@ -184,7 +184,7 @@ class AdminYinbiaosController extends AdminController {
     public function getData()
     {
         $yinbiaos = Yinbiao::select(array('yinbiaos.id', 'yinbiaos.name', 'yinbiaos.yinbiaocategory_id','yinbiaos.mp3', 'yinbiaos.created_at'));
-
+Log::info(get_class($yinbiaos));
         return Datatables::of($yinbiaos)
 
         // ->edit_column('hanzi', '{{ DB::table(\'hanzi\')->where(\'hanzi\', \'=\', $hanzi)->count() }}')
