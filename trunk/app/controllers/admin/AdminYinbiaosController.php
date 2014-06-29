@@ -43,7 +43,7 @@ class AdminYinbiaosController extends AdminController {
 	public function getCreate()
 	{
         // Title
-        $title = "新建笔顺";
+        $title = "新建音标";
 
         // Show the page
         return View::make('admin/yinbiaos/create', compact('title'));
@@ -55,18 +55,19 @@ class AdminYinbiaosController extends AdminController {
 	 */
 	public function postCreate()
 	{
-
+ 
 	    if (Input::hasFile('filename')){
 	        $file= Input::file('filename');
 	        // dd(app_path().'/storage/uploaded/','uploaded.xxx');
 	        $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
-	        $destabsolutefile = app_path().'/storage/uploaded/';
+	        $destabsolutefile = app_path().'/storage/uploaded/yinbiaomp3/';
 	        $file->move($destabsolutefile,$destfile);
-	        $bishun = new Yinbiao;
-	        $bishun->hanzi = Input::get('hanzi');
-	        $bishun->filename = $destfile;
-	        $bishun->relatedwords = Input::get('relatedwords');
-	        $bishun->save();    
+	        $yinbiao = new Yinbiao;
+	        $yinbiao->name = Input::get('yinbiao');
+	        $yinbiao->mp3 = $destfile;
+	        // $yinbiao->relatedwords = Input::get('relatedwords');
+	        $yinbiao->yinbiaocategory_id = Input::get('yinbiaocategory_id');
+	        $yinbiao->save();    
 	        // return [
 	        //     'path'=> $file->getRealPath(),
 	        //     'size'=> $file->getSize(),
@@ -75,7 +76,7 @@ class AdminYinbiaosController extends AdminController {
 	        //     'extension'=> $file->getClientOriginalExtension()
 	        // ];
 	        // Title
-	        $title = "新建笔顺";
+	        $title = "新建音标";
 	        
 	        // Show the page
 	        return View::make('admin/yinbiaos/create', compact('title'))->with('success', Lang::get('admin/blogs/messages.create.success'));
@@ -184,7 +185,6 @@ class AdminYinbiaosController extends AdminController {
     public function getData()
     {
         $yinbiaos = Yinbiao::select(array('yinbiaos.id', 'yinbiaos.name', 'yinbiaos.yinbiaocategory_id','yinbiaos.mp3', 'yinbiaos.created_at'));
-Log::info(get_class($yinbiaos));
         return Datatables::of($yinbiaos)
 
         // ->edit_column('hanzi', '{{ DB::table(\'hanzi\')->where(\'hanzi\', \'=\', $hanzi)->count() }}')

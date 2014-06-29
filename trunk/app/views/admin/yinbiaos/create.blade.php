@@ -3,23 +3,24 @@
 {{-- Content --}}
 @section('content')
 	{{ Form::open(['files'=>true])}}
-
 			<div class="form-group">
-				{{Form::label('hanzi','汉字：')}}
-				{{Form::text('hanzi',null,['class' =>'form-control'])}}
+				{{Form::label('yinbiao','音标：')}}
+				{{Form::text('yinbiao',null,['class' =>'form-control'])}}
 			</div>
 			<div class="form-group">
-				<!-- <label for="">汉字</label> -->
-				<!-- <input type="text" class="form-control" id="" placeholder="Input field"> -->
-				<!-- <label for="">笔顺</label> -->
-				<!-- <input type="text" class="form-control" id="" placeholder="Input field"> -->
-				{{Form::label('relatedwords','相关词：')}}
+				{{Form::label('yinbiaocategory_id','类别:')}}
+				<select name="yinbiaocategory_id" id="yinbiaocategory_id">
+					@foreach (Yinbiaocategory::all() as $yinbiaocat)
+						<option value={{$yinbiaocat->id}}>{{$yinbiaocat->ybcategory}}</option>
+					@endforeach
+				</select>
+			</div>  
+			<div class="form-group">
+				{{Form::label('relatedwords','相关英语词汇:')}}
 				{{Form::text('relatedwords',null,['class' =>'form-control'])}}
-				<!-- <label for="">文件</label> -->
-				<!-- <input type="file" class="form-control" id="" placeholder="Input field"> -->
 			</div>   
 			<div class="form-group">
-				{{Form::label('filename','笔顺flash文件：')}}
+				{{Form::label('filename','音标mp3文件：')}}
 				{{Form::file('filename')}}
 			</div> 	
 			{{Form::submit('提交',['class' => 'btn btn-primary'])}}
