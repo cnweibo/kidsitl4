@@ -27,13 +27,14 @@ ClassLoader::addDirectories(array(
 |
 */
 DB::Listen(function($sql){
+    Log::info("SQL query prepared: $sql\r\n");
     //Log::error("sql query is: $sql");
     // var_dump($sql);
     // Log::error("$code - $message @ $pathInfo\r\n$exception");
 });
 Event::listen('illuminate.query',function($query){
     // var_dump($query);
-    Log::info("SQL query prepared: $query\r\n");
+    //Log::info("SQL query prepared: $query\r\n");
 });
 /*
 |--------------------------------------------------------------------------
