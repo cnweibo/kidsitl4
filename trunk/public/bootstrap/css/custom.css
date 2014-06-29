@@ -109,3 +109,7 @@ a.yinbiaoatag{
 a.yinbiaocatatag{
   color:blue;
 }
+/*clickable*/
+.clickable{
+  cursor:pointer;
+}
