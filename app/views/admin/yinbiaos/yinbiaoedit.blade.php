@@ -10,7 +10,8 @@
 	<!-- ./ tabs -->
 
 	{{-- Edit yinbiao Form --}}
-	<form class="form-horizontal" method="post" action="@if (isset($bishuns)){{ URL::to('admin/bishuns/' . $bishuns->hanzi . '/edit') }}@endif" autocomplete="off">
+
+	<form class="form-horizontal" method="post" enctype="multipart/form-data"  action="@if (isset($yinbiaosModel)){{ URL::to('admin/yinbiaos/' . $yinbiaosModel->id . '/edit') }}@endif" autocomplete="off">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 		<!-- ./ csrf token -->
@@ -51,13 +52,13 @@
 					</div>
 				</div>
 				<!-- yinbiao mp3 file name -->
-				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
+				<div class="form-group">
 					<div class="col-md-12">
-                        <label class="control-label" for="mp3">MP3音频文件：</label>
-						<textarea class="form-control full-width wysihtml5" name="mp3" value="mp3" rows="1">待增加</textarea>
+						{{Form::label('mp3','音标mp3文件：')}}
+						{{Form::file('mp3')}}
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>
-				</div>
+				</div> 	
 			</div>
 			<!-- ./ general tab -->
 
