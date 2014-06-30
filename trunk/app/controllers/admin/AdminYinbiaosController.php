@@ -107,16 +107,23 @@ class AdminYinbiaosController extends AdminController {
 			'id'   => 'required',
 		    'yinbiao'   => 'required',
 		    'yinbiaocategory_id' => 'required',
-		    'mp3' => 'required|min:2'
+		    'mp3' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
-
 		// Check if the form validates with success
 		if ($validator->passes())
 		{
+			if (Input::hasFile('mp3')){
+			    $file= Input::file('mp3');
+			    // dd(app_path().'/storage/uploaded/','uploaded.xxx');
+			    $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
+			    $destabsolutefile = app_path().'/storage/uploaded/yinbiaomp3/';
+			    $file->move($destabsolutefile,$destfile);
+			}   
 		    // $this->yinbiaos->hanzi            = Input::get('hanzi');
 			$yinbiaotemp = Yinbiao::find(Input::get('id'));
-		    if($yinbiaotemp->update(array('yinbiaocategory_id' =>Input::get('yinbiaocategory_id'),'mp3'=>Input::get('mp3'))));
+			// dd($yinbiaotemp);
+		    if($yinbiaotemp->update(array('yinbiaocategory_id' =>Input::get('yinbiaocategory_id'),'mp3'=>$destfile,'name'=>Input::get('yinbiao'))));
 		    {
 		        // Redirect to the new blog post page
 		        return Redirect::to('admin/yinbiaos/' . $yinbiaotemp->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));

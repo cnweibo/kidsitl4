@@ -17,3 +17,6 @@
 
 	</div>
 @stop
+@section('scripts')
+	<script type="text/javascript">var mp3={{$yinbiao->mp3}};</script>
+@stop
