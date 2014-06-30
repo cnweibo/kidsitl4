@@ -9,7 +9,7 @@ $(function(){
 	);
 	// yinbiao player trigger event:click of the volumn icon
 	$("#yinbiao_1").click(function(){
-		$("#yinbiaoplayer").attr("src" ,"http://kidsit.cn/assets/audio/b.mp3");
+		$("#yinbiaoplayer").attr("src" ,"http://kidsit.cn/getmp3/b.mp3");
 		$("#yinbiaoplayer").trigger('play');
 	});
 });
