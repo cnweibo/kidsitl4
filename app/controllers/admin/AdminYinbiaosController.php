@@ -121,7 +121,7 @@ class AdminYinbiaosController extends AdminController {
 			    $file->move($destabsolutefile,$destfile);
 			}   
 		    // $this->yinbiaos->hanzi            = Input::get('hanzi');
-			$yinbiaotemp = Yinbiao::find(Input::get('id'));
+			$yinbiaotemp = Yinbiao::findOrFail(Input::get('id'));
 			// dd($yinbiaotemp);
 		    if($yinbiaotemp->update(array('yinbiaocategory_id' =>Input::get('yinbiaocategory_id'),'mp3'=>$destfile,'name'=>Input::get('yinbiao'))));
 		    {
