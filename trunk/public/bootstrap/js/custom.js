@@ -19,7 +19,7 @@ var regexpress = /[^\u4e00-\u9fa5]/;
 String.prototype.trim =function()
 {
 	return this.replace(/(^\s*)|(\s*$)/g, "");
-}
+};
 console.log(regexpress);
 $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 	var formdata = $('#bishunsearchform').serialize();
@@ -31,7 +31,8 @@ $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 		return ;
 	}
 	if ((e.keyCode == 32) ||(e.keyCode == 8))
-	{//如果是Backspace,space或者delete键，则判断是否当前输入框已为空，
+	{
+	 //如果是Backspace,space或者delete键，则判断是否当前输入框已为空，
 	 //如空则ajax请求数据
 	 	if ((bishunsearchdata)&&(regexpress.test(bishunsearchdata.trim()))){
 			console.log('no chinese input');
@@ -51,8 +52,9 @@ $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 			return;
 		}
 	}
-	{//default action:when user key pressed, check input content, if chinese 
-	 //detected, ajax sent out, else return
+	{
+		//default action:when user key pressed, check input content, if chinese 
+		//detected, ajax sent out, else return
 	    if(bishunsearchdata.trim())
 	    {	
 			if ((bishunsearchdata.trim())&&(regexpress.test(bishunsearchdata.trim()))){
