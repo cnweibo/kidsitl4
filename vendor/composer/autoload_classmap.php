@@ -29,6 +29,8 @@ return array(
     'CreateBishun' => $baseDir . '/app/database/migrations/2014_06_12_212217_create_bishun.php',
     'CreateCommentsTable' => $baseDir . '/app/database/migrations/2013_02_05_044505_create_comments_table.php',
     'CreatePostsTable' => $baseDir . '/app/database/migrations/2013_02_05_043505_create_posts_table.php',
+    'CreateRelatedwordYinbiaoTable' => $baseDir . '/app/database/migrations/2014_07_01_230834_create_relatedword_yinbiao_table.php',
+    'CreateRelatedwordsTable' => $baseDir . '/app/database/migrations/2014_07_01_230555_create_relatedwords_table.php',
     'CreateYinbiaocategoriesTable' => $baseDir . '/app/database/migrations/2014_06_28_215549_create_yinbiaocategories_table.php',
     'CreateYinbiaosTable' => $baseDir . '/app/database/migrations/2014_06_28_215321_create_yinbiaos_table.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',

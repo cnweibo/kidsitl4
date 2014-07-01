@@ -29,7 +29,7 @@ class CreateYinbiaosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('yinbiao');
+		Schema::drop('yinbiaos');
 	}
 
 }
