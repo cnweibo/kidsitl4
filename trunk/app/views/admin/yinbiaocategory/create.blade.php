@@ -5,7 +5,12 @@
 	{{ Form::open(['files'=>true])}}
 		<div class="alert alert-info">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-			<strong></strong> 已经存在下面的音标类别!
+			<strong></strong> 
+			@if (Yinbiaocategory::all())
+				已经存在下面的音标类别!
+			@else
+				系统没有已经定义的音标类别！
+			@endif	
 		</div>	
 			<ul class="list-group">
 				@foreach ($yinbiaocats as $yinbiaocat)
