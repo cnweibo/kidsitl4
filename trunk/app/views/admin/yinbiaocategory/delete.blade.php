@@ -20,7 +20,7 @@
         <!-- Form Actions -->
         <div class="form-group">
             <div class="controls">
-                删除 {{Yinbiao::find($yinbiao)->name}} 的音标信息？                
+                删除 {{Yinbiao::find($yinbiaocat)->ybcategory}} 的音标类别信息？                
                 <element class="btn-cancel close_popup"><button class="btn btn-primary">取消</button></element>
                 <button type="submit" class="btn btn-danger">删除</button>
             </div>

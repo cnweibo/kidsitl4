@@ -124,12 +124,12 @@ class AdminYinbiaocategoryController extends AdminController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getDelete($yinbiao)
+	public function getDelete($yinbiaocat)
 	{
 		// Title
-        $title = "删除音标";
+        $title = "删除音标类别：";
         // Show the page
-        return View::make('admin/yinbiaos/delete', compact('yinbiao', 'title'));
+        return View::make('admin/yinbiaocategory/delete', compact('yinbiaocat', 'title'));
 
 	}
 
@@ -150,19 +150,19 @@ class AdminYinbiaocategoryController extends AdminController {
 	    // Check if the form validates with success
 	    if ($validator->passes())
 	    {
-	    	$yinbiaotodelete = Yinbiao::find($id);
-	    	// dd($yinbiaotodelete);
-	    	$yinbiaotodelete->delete();
+	    	$yinbiaocattodelete = Yinbiaocategory::find($id);
+	    	// dd($yinbiaocattodelete);
+	    	$yinbiaocattodelete->delete();
 	        // Was the id deleted?
-	        $yinbiaofound = Yinbiao::find($id);
+	        $yinbiaofound = Yinbiaocategory::find($id);
 	        if(empty($yinbiaofound))
 	        {
 	            // Redirect to the yinbiao management page
-	            return Redirect::to('admin/yinbiaos')->with('success', "音标删除成功！");
+	            return Redirect::to('admin/yinbiaocategory')->with('success', "音标类别删除成功！");
 	        }
 	    }
 	    // There was a problem deleting the yinbiao
-	    return Redirect::to('admin/yinbiaos')->with('error', "音标删除错误，请重试");
+	    return Redirect::to('admin/yinbiaocategory')->with('error', "音标类别删除错误，请重试");
 	}	
 
 	/**
