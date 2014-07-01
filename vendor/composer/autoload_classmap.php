@@ -13,6 +13,7 @@ return array(
     'AdminDashboardController' => $baseDir . '/app/controllers/admin/AdminDashboardController.php',
     'AdminRolesController' => $baseDir . '/app/controllers/admin/AdminRolesController.php',
     'AdminUsersController' => $baseDir . '/app/controllers/admin/AdminUsersController.php',
+    'AdminYinbiaocategoryController' => $baseDir . '/app/controllers/admin/AdminYinbiaocategoryController.php',
     'AdminYinbiaosController' => $baseDir . '/app/controllers/admin/AdminYinbiaosController.php',
     'Andrew13\\Helpers\\String' => $baseDir . '/app/library/Andrew13/Helpers/String.php',
     'AssignedRoles' => $baseDir . '/app/models/AssignedRoles.php',

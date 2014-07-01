@@ -212,6 +212,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('yinbiaos/{yinbiao}/delete', 'AdminYinbiaosController@getDelete');
     Route::post('yinbiaos/{yinbiao}/delete', array('as'=>'postyinbiaodelete', 'uses' => 'AdminYinbiaosController@postDelete'));
     Route::controller('yinbiaos', 'AdminYinbiaosController');
+    
+    # Yinbiao category Management
+    Route::get('yinbiaocategory', 'AdminYinbiaocategoryController@getIndex');
+    Route::get('yinbiaocategory/data', 'AdminYinbiaocategoryController@getData'); 
+    Route::get('yinbiaocategory/create', 'AdminYinbiaocategoryController@getCreate');     
+    // Route::get('yinbiaocategory/{yinbiaocat}/show', 'AdminYinbiaocategoryController@getShow');
+    Route::get('yinbiaocategory/{yinbiaocat}/edit', 'AdminYinbiaocategoryController@getEdit');
+    Route::post('yinbiaocategory/{yinbiaocat}/edit', 'AdminYinbiaocategoryController@postEdit');
+    Route::get('yinbiaocategory/{yinbiaocat}/delete', 'AdminYinbiaocategoryController@getDelete');
+    Route::post('yinbiaocategory/{yinbiaocat}/delete', array('as'=>'postyinbiaocatdelete', 'uses' => 'AdminYinbiaocategoryController@postDelete'));
+    Route::controller('yinbiaocategory', 'AdminYinbiaocategoryController');
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
