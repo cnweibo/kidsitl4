@@ -42,9 +42,9 @@
 				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
                         <label class="control-label" for="yinbiaocategory_id">音标分类：</label>
-						<select name="yinbiaocategory_id" id="yinbiaocategory_id">
+						<select size=6 name="yinbiaocategory_id" id="yinbiaocategory_id">
 							@foreach (Yinbiaocategory::all() as $yinbiaocat)
-								<option value={{$yinbiaocat->id}}>{{$yinbiaocat->ybcategory}}</option>
+								<option @if ($yinbiaosModel->yinbiaocategory_id == $yinbiaocat->id) selected="selected"@endif value={{$yinbiaocat->id}}>{{$yinbiaocat->ybcategory}}</option>
 							@endforeach
 							
 						</select>
@@ -59,6 +59,11 @@
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div> 	
+				<!-- yinbiao related words -->
+				<div class="form-group">
+					{{Form::label('relatedwords','相关英语词汇:')}}
+					{{Form::text('relatedwords',null,['class' =>'form-control'])}}
+				</div>   
 			</div>
 			<!-- ./ general tab -->
 
