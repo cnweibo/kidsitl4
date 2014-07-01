@@ -83,7 +83,7 @@ class AdminYinbiaocategoryController extends AdminController {
         $title = "更改音标类别：";
         $yinbiaocatModel = Yinbiaocategory::find($id);
         // Show the page
-        return View::make('admin/Yinbiaocategory/yinbiaocatedit', compact('yinbiaocatModel', 'title'));
+        return View::make('admin/yinbiaocategory/yinbiaocatedit', compact('yinbiaocatModel', 'title'));
 	}
 	/**
 	 * Store a newly created resource in storage.
