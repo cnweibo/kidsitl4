@@ -54,7 +54,8 @@
 				<!-- yinbiao mp3 file name -->
 				<div class="form-group">
 					<div class="col-md-12">
-						{{Form::label('mp3','音标mp3文件：')}}
+						{{Form::label('mp3','音标mp3文件：',['class'=>'elementblock'])}}
+						<input name="originalmp3" class="form-inline" type="text" value={{$yinbiaosModel->mp3}} placeholder={{$yinbiaosModel->mp3}}>
 						{{Form::file('mp3')}}
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>

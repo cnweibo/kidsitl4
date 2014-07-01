@@ -66,8 +66,7 @@ $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 				type: 'POST',
 				data: formdata,
 				success: function(results){
-					$("#bishuncontainer").html(results
-						);}
+					$("#bishuncontainer").html(results);}
 					});
 				}
 		}

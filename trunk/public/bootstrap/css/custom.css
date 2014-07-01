@@ -94,6 +94,9 @@ body{
 .inlineblock{
 	display:inline-block;
 }
+#elementblock{
+  display:block;
+}
 .aligncenter{
 	margin-left:auto;
 	margin-right:auto;
