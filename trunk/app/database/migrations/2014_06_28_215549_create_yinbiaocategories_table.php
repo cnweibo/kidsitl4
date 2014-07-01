@@ -28,7 +28,7 @@ class CreateYinbiaocategoriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('yinbiaocategory');
+		Schema::drop('yinbiaocategories');
 	}
 
 }
