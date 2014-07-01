@@ -9,7 +9,7 @@
 			</div>
 			<div class="form-group">
 				{{Form::label('yinbiaocategory_id','类别:')}}
-				<select name="yinbiaocategory_id" id="yinbiaocategory_id">
+				<select size=6 name="yinbiaocategory_id" id="yinbiaocategory_id">
 					@foreach (Yinbiaocategory::all() as $yinbiaocat)
 						<option value={{$yinbiaocat->id}}>{{$yinbiaocat->ybcategory}}</option>
 					@endforeach
