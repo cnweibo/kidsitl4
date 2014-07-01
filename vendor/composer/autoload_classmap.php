@@ -39,6 +39,7 @@ return array(
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/File/Iterator/Factory.php',
     'GameController' => $baseDir . '/app/controllers/GameController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'Mp3Controller' => $baseDir . '/app/controllers/Mp3Controller.php',
     'PHPUnit_Framework_MockObject_Builder_Identity' => $vendorDir . '/phpunit/phpunit-mock-objects/src/Framework/MockObject/Builder/Identity.php',
     'PHPUnit_Framework_MockObject_Builder_InvocationMocker' => $vendorDir . '/phpunit/phpunit-mock-objects/src/Framework/MockObject/Builder/InvocationMocker.php',
     'PHPUnit_Framework_MockObject_Builder_Match' => $vendorDir . '/phpunit/phpunit-mock-objects/src/Framework/MockObject/Builder/Match.php',

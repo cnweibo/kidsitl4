@@ -26,13 +26,9 @@ class AdminYinbiaocategoryController extends AdminController {
 	{
 		//list the yinbiaocats available
 		// Title
-		$title = "音标管理";
-
-		// Grab all the yinbiao category
-		$yinbiaocats = $this->yinbiaocats;
-
+		$title = "音标类别管理";
 		// Show the page
-		return View::make('admin/yinbiaocategory/index', compact('yinbiaocats', 'title'));
+		return View::make('admin/yinbiaocategory/index', compact('title'));
 	}
 
 	/**
@@ -43,10 +39,10 @@ class AdminYinbiaocategoryController extends AdminController {
 	public function getCreate()
 	{
         // Title
-        $title = "新建音标";
-
+        $title = "新建音标类别";
+        $yinbiaocats = Yinbiaocategory::all();
         // Show the page
-        return View::make('admin/yinbiaos/create', compact('title'));
+        return View::make('admin/yinbiaocategory/create', compact('yinbiaocats','title'));
 	}
 	/**
 	 * process the form for creating a new resource.
@@ -56,31 +52,25 @@ class AdminYinbiaocategoryController extends AdminController {
 	public function postCreate()
 	{
  
-	    if (Input::hasFile('filename')){
-	        $file= Input::file('filename');
-	        // dd(app_path().'/storage/uploaded/','uploaded.xxx');
-	        $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
-	        $destabsolutefile = app_path().'/storage/uploaded/yinbiaomp3/';
-	        $file->move($destabsolutefile,$destfile);
-	        $yinbiao = new Yinbiao;
-	        $yinbiao->name = Input::get('yinbiao');
-	        $yinbiao->mp3 = $destfile;
-	        // $yinbiao->relatedwords = Input::get('relatedwords');
-	        $yinbiao->yinbiaocategory_id = Input::get('yinbiaocategory_id');
-	        $yinbiao->save();    
-	        // return [
-	        //     'path'=> $file->getRealPath(),
-	        //     'size'=> $file->getSize(),
-	        //     'mime'=> $file->getMimeType(),
-	        //     'name'=> $file->getClientOriginalName(),
-	        //     'extension'=> $file->getClientOriginalExtension()
-	        // ];
-	        // Title
-	        $title = "新建音标";
-	        
+		// Declare the rules for the form validation
+		$rules = array(
+		    'yinbiaocat'   => 'required',
+		    'description' => 'required'
+		);
+		$validator = Validator::make(Input::all(), $rules);
+		// Check if the form validates with success
+		if ($validator->passes())
+		{
+			$yinbiaocat = new Yinbiaocategory;
+			$yinbiaocat->ybcategory = Input::get('yinbiaocat');
+			$yinbiaocat->description = Input::get('description');
+			$yinbiaocat->save();
+		}
+	  
+	        $title = "新建音标类别";
+	        $yinbiaocats = Yinbiaocategory::all();
 	        // Show the page
-	        return View::make('admin/yinbiaos/create', compact('title'))->with('success', Lang::get('admin/blogs/messages.create.success'));
-	    }        
+	        return View::make('admin/yinbiaocategory/create', compact('yinbiaocats','title'))->with('success', Lang::get('admin/blogs/messages.create.success'));       
 	}
 	/**
 	 * show a form to edit resource in storage.
@@ -90,10 +80,10 @@ class AdminYinbiaocategoryController extends AdminController {
 	public function getEdit($id)
 	{
 		// Title
-        $title = "更改音标：";
-        $yinbiaosModel = Yinbiao::find($id);
+        $title = "更改音标类别：";
+        $yinbiaocatModel = Yinbiaocategory::find($id);
         // Show the page
-        return View::make('admin/yinbiaos/yinbiaoedit', compact('yinbiaosModel', 'title'));
+        return View::make('admin/Yinbiaocategory/yinbiaocatedit', compact('yinbiaocatModel', 'title'));
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -105,36 +95,27 @@ class AdminYinbiaocategoryController extends AdminController {
 		// Declare the rules for the form validation
 		$rules = array(
 			'id'   => 'required',
-		    'yinbiao'   => 'required',
-		    'yinbiaocategory_id' => 'required',
-		    'mp3' => 'required'
+		    'yinbiaodescription'   => 'required',
+		    'yinbiaocat' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
 		if ($validator->passes())
 		{
-			if (Input::hasFile('mp3')){
-			    $file= Input::file('mp3');
-			    // dd(app_path().'/storage/uploaded/','uploaded.xxx');
-			    $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
-			    $destabsolutefile = app_path().'/storage/uploaded/yinbiaomp3/';
-			    $file->move($destabsolutefile,$destfile);
-			}   
-		    // $this->yinbiaos->hanzi            = Input::get('hanzi');
-			$yinbiaotemp = Yinbiao::findOrFail(Input::get('id'));
-			// dd($yinbiaotemp);
-		    if($yinbiaotemp->update(array('yinbiaocategory_id' =>Input::get('yinbiaocategory_id'),'mp3'=>$destfile,'name'=>Input::get('yinbiao'))));
+			$yinbiaocattemp = Yinbiaocategory::findOrFail(Input::get('id'));
+			// dd($yinbiaocattemp);
+		    if($yinbiaocattemp->update(array('ybcategory' =>Input::get('yinbiaocat'),'description'=>Input::get('yinbiaodescription'))));
 		    {
 		        // Redirect to the new blog post page
-		        return Redirect::to('admin/yinbiaos/' . $yinbiaotemp->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
+		        return Redirect::to('admin/yinbiaocategory/' . $yinbiaocattemp->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
 		    }
 
 		    // Redirect to the blogs post management page
-		    return Redirect::to('admin/yinbiaos/' . $yinbiaotemp->id . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'));
+		    return Redirect::to('admin/yinbiaocategory/' . $yinbiaocattemp->id . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'));
 		}
 
 		// Form validation failed
-		return Redirect::to('admin/yinbiaos/' . $yinbiaotemp->id . '/edit')->withInput()->withErrors($validator);
+		return Redirect::to('admin/yinbiaocategory/' . $yinbiaocattemp->id . '/edit')->withInput()->withErrors($validator);
 	}
 
 	/**

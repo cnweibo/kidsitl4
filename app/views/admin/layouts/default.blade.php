@@ -88,7 +88,7 @@
     					<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><i class="glyphicon glyphicon-bullhorn"></i> Comments</a></li>
     					<li{{ (Request::is('admin/bishuns*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/bishuns') }}}"><i class="glyphicon glyphicon glyphicon-pencil"></i> 笔顺</a></li>
     					<li{{ (Request::is('admin/yinbiaos*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><i class="glyphicon glyphicon-sort-by-alphabet"></i> 音标</a></li>
-                        <li{{ (Request::is('admin/yinbiaocategory*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><i class="glyphicon glyphicon-sort-by-alphabet"></i> 音标分类</a></li>
+                        <li{{ (Request::is('admin/yinbiaocategory*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><i class="glyphicon glyphicon-list"></i> 音标分类</a></li>
                         <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
     						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
     							<i class="glyphicon glyphicon-user"></i> Users <span class="caret"></span>
