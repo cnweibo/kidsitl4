@@ -107,7 +107,7 @@ class AdminYinbiaosController extends AdminController {
 			'id'   => 'required',
 		    'yinbiao'   => 'required',
 		    'yinbiaocategory_id' => 'required',
-		    'mp3' => 'required'
+		    // 'mp3' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
@@ -119,8 +119,11 @@ class AdminYinbiaosController extends AdminController {
 			    $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
 			    $destabsolutefile = app_path().'/storage/uploaded/yinbiaomp3/';
 			    $file->move($destabsolutefile,$destfile);
+			}elseif (Input::has('originalmp3')) {
+				$destfile = Input::get('originalmp3');
+			}else{
+				throw new Exception("输入没有文件名", 1);
 			}   
-		    // $this->yinbiaos->hanzi            = Input::get('hanzi');
 			$yinbiaotemp = Yinbiao::findOrFail(Input::get('id'));
 			// dd($yinbiaotemp);
 		    if($yinbiaotemp->update(array('yinbiaocategory_id' =>Input::get('yinbiaocategory_id'),'mp3'=>$destfile,'name'=>Input::get('yinbiao'))));
