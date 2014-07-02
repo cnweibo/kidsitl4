@@ -87,8 +87,15 @@
     					<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><i class="glyphicon glyphicon-list-alt"></i> Blog</a></li>
     					<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><i class="glyphicon glyphicon-bullhorn"></i> Comments</a></li>
     					<li{{ (Request::is('admin/bishuns*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/bishuns') }}}"><i class="glyphicon glyphicon glyphicon-pencil"></i> 笔顺</a></li>
-    					<li{{ (Request::is('admin/yinbiaos*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><i class="glyphicon glyphicon-sort-by-alphabet"></i> 音标</a></li>
-                        <li{{ (Request::is('admin/yinbiaocategory*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><i class="glyphicon glyphicon-list"></i> 音标分类</a></li>
+                        <li class="dropdown {{(Request::is('admin/yinbiao*') ? ' active' : '') }}">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/yinbiaos') }}}">
+                                <i class="glyphicon glyphicon-sort-by-alphabet"></i> 音标<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 音标管理</a></li>
+                                <li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><span class="glyphicon glyphicon-list"></span> 音标类别管理</a></li>
+                            </ul>
+                        </li>
                         <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
     						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
     							<i class="glyphicon glyphicon-user"></i> Users <span class="caret"></span>
