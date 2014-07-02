@@ -6,4 +6,7 @@ class Yinbiao extends \Eloquent {
 	public function yinbiaocategory(){
 		return $this->belongsTo('Yinbiaocategory');
 	}
+	public function relatedwords(){
+		return $this->belongsToMany('Relatedword');
+	}
 }
