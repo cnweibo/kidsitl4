@@ -9,7 +9,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+Route::get('mm', function(){
+    $yinbiaotemp = Yinbiao::first();
+    // dd($yinbiaotemp);
+    dd(($yinbiaotemp->relatedwords));
+});
 /** ------------------------------------------
  *  Frontend Routes
  *  ------------------------------------------
