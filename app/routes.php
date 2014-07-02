@@ -11,8 +11,9 @@
 */
 Route::get('mm', function(){
     $yinbiaotemp = Yinbiao::first();
-    // dd($yinbiaotemp);
-    dd(($yinbiaotemp->relatedwords));
+    $yinbiaotemp->relatedwords()->detach(3);
+    dd($yinbiaotemp->relatedwords);
+    dd(($yinbiaotemp->relatedwords()->attach(3)));
 });
 /** ------------------------------------------
  *  Frontend Routes
@@ -227,6 +228,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('yinbiaocategory/{yinbiaocat}/delete', 'AdminYinbiaocategoryController@getDelete');
     Route::post('yinbiaocategory/{yinbiaocat}/delete', array('as'=>'postyinbiaocatdelete', 'uses' => 'AdminYinbiaocategoryController@postDelete'));
     Route::controller('yinbiaocategory', 'AdminYinbiaocategoryController');
+
+    # Yinbiao relatedword Management
+    Route::get('yinbiaorelatedwords', 'AdminYinbiaorelatedwordsController@getIndex');
+    Route::get('yinbiaorelatedwords/data', 'AdminYinbiaorelatedwordsController@getData'); 
+    Route::get('yinbiaorelatedwords/create', 'AdminYinbiaorelatedwordsController@getCreate');     
+    // Route::get('yinbiaorelatedwords/{relatedword}/show', 'AdminYinbiaorelatedwordsController@getShow');
+    Route::get('yinbiaorelatedwords/{relatedword}/edit', 'AdminYinbiaorelatedwordsController@getEdit');
+    Route::post('yinbiaorelatedwords/{relatedword}/edit', 'AdminYinbiaorelatedwordsController@postEdit');
+    Route::get('yinbiaorelatedwords/{relatedword}/delete', 'AdminYinbiaorelatedwordsController@getDelete');
+    Route::post('yinbiaorelatedwords/{relatedword}/delete', array('as'=>'postyinbiaorelatedworddelete', 'uses' => 'AdminYinbiaorelatedwordsController@postDelete'));
+    Route::controller('yinbiaorelatedwords', 'AdminYinbiaorelatedwordsController');
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');

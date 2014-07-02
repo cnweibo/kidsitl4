@@ -70,6 +70,9 @@
 <body>
 	<!-- Container -->
 	<div class="container">
+        <!-- Notifications -->
+        @include('notifications')
+        <!-- ./ notifications -->
 		<!-- Navbar -->
 		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -92,8 +95,9 @@
                                 <i class="glyphicon glyphicon-sort-by-alphabet"></i> 音标<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 音标管理</a></li>
-                                <li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><span class="glyphicon glyphicon-list"></span> 音标类别管理</a></li>
+                                <li{{ (Request::is('admin/yinbiaos*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 音标管理</a></li>
+                                <li{{ (Request::is('admin/yinbiaocategory*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><span class="glyphicon glyphicon-list"></span> 音标类别管理</a></li>
+                                <li{{ (Request::is('admin/yinbiaorelatedwords*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaorelatedwords') }}}"><span class="glyphicon glyphicon-paperclip"></span> 相关单词管理</a></li>
                             </ul>
                         </li>
                         <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
