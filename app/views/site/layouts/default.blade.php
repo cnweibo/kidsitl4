@@ -6,15 +6,15 @@
 		================================================== -->
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>
-			@section('title')
-			IT宝贝网-中国青少年信息化推动者，计算机信息教育的先锋队 | IT style learning,NIT competence for China kids,IT从娃娃抓起
-			@show
+		<title>@section('title')IT宝贝网-中国青少年信息化教育推动者，计算机信息教育先锋队，IT从娃娃抓起的践行者
+@show
 		</title>
-		<meta name="keywords" content="your, awesome, keywords, here" />
-		<meta name="author" content="Jon Doe" />
-		<meta name="description" content="中国计算机从娃娃抓起的践行者和推动者，IT宝贝网-中国青少年信息化推动者，信息教育的先锋队IT style learning,NIT competence for China kids" />
-
+		<meta name="keywords" content=@section('keywords')IT宝贝网
+		@show />
+		<meta name="author" content="IT宝贝网版权所有，如需转载请注明出处" />
+		<meta name="description" content=@section('description')中国计算机从娃娃抓起的践行者和推动者，IT宝贝网-中国青少年信息化推动者，信息教育的先锋队 IT style learning,NIT competence for China kids
+		@show 
+		/>
 		<!-- Mobile Specific Metas
 		================================================== -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
