@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta name="baidu-site-verification" content="S5IP1I3K8K" />
-		<!-- Basic Page Needs
-		================================================== -->
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>@section('title')IT宝贝网-中国青少年信息化教育推动者，计算机信息教育先锋队，IT从娃娃抓起的践行者
@@ -15,17 +12,9 @@
 		<meta name="description" content=@section('description')中国计算机从娃娃抓起的践行者和推动者，IT宝贝网-中国青少年信息化推动者，信息教育的先锋队 IT style learning,NIT competence for China kids
 		@show 
 		/>
-		<!-- Mobile Specific Metas
-		================================================== -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		<!-- CSS
-		================================================== -->
-
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css,bootstrap-theme.min.css,custom.css')}}">
-        <!-- <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}"> -->
-        <!-- <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}"> -->
-		<style>
+ 		<style>
         body {
             padding: 60px 0;
         }
