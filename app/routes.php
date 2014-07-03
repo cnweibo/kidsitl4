@@ -23,6 +23,8 @@ Route::get('mm', function(){
 Route::resource('yinbiao','YinbiaoController');
 // yinbiao category routes
 Route::resource('yinbiaocategory','YinbiaocategoryController');
+// 音标发音规则
+Route::resource('fayinguize', 'FayinguizeController');
 // User reset routes
 Route::get('user/reset/{token}', 'UserController@getReset');
 // User password reset
@@ -239,6 +241,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('yinbiaorelatedwords/{relatedword}/delete', 'AdminYinbiaorelatedwordsController@getDelete');
     Route::post('yinbiaorelatedwords/{relatedword}/delete', array('as'=>'postyinbiaorelatedworddelete', 'uses' => 'AdminYinbiaorelatedwordsController@postDelete'));
     Route::controller('yinbiaorelatedwords', 'AdminYinbiaorelatedwordsController');
+
+    # Yinbiao Fayinguize Management
+    Route::get('fayinguizes', 'AdminFayinguizeController@getIndex');
+    Route::get('fayinguizes/data', 'AdminFayinguizeController@getData'); 
+    Route::get('fayinguizes/create', 'AdminFayinguizeController@getCreate');     
+    // Route::get('fayinguizes/{relatedword}/show', 'AdminFayinguizeController@getShow');
+    Route::get('fayinguizes/{relatedword}/edit', 'AdminFayinguizeController@getEdit');
+    Route::post('fayinguizes/{relatedword}/edit', 'AdminFayinguizeController@postEdit');
+    Route::get('fayinguizes/{relatedword}/delete', 'AdminFayinguizeController@getDelete');
+    Route::post('fayinguizes/{relatedword}/delete', array('as'=>'postfayinguizedelete', 'uses' => 'AdminFayinguizeController@postDelete'));
+    Route::controller('fayinguizes', 'AdminFayinguizeController');
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
