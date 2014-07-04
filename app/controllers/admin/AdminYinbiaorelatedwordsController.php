@@ -71,6 +71,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 				$yinbiaorelatedword = new Relatedword;
 				$yinbiaorelatedword->wordtext = Input::get('wordtext');
 				$yinbiaorelatedword->wordyinbiao = Input::get('wordyinbiao');
+				$yinbiaorelatedword->fayinguize_id = Input::get('fayinguize_id');
 				$yinbiaorelatedword->mp3 = $destfile;
 				$yinbiaorelatedword->save();
 			}
@@ -79,8 +80,8 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 	  
 	        $title = "新建音标相关单词";
 	        $yinbiaorelatedwords = Relatedword::all();
-	        // Show the page
-	        return View::make('admin/yinbiaorelatedwords/create', compact('yinbiaorelatedwords','title'))->with('success', Lang::get('admin/blogs/messages.create.success'));       
+	        // Redirect to the create page
+		    return Redirect::to('admin/yinbiaorelatedwords/create')->with('success', Lang::get('admin/blogs/messages.update.success'));
 	}
 	/**
 	 * show a form to edit resource in storage.
@@ -123,7 +124,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 			}
 			// dd($relatedword);
 			// 更改新相关单词
-		    if($relatedword->update(array('wordtext' =>Input::get('wordtext'),'wordyinbiao'=>Input::get('wordyinbiao'),'mp3'=>$destfile)));
+		    if($relatedword->update(array('wordtext' =>Input::get('wordtext'),'wordyinbiao'=>Input::get('wordyinbiao'),'mp3'=>$destfile,'fayinguize_id'=>Input::get('fayinguize_id'))));
 		    {
 		        // Redirect to the new blog post page
 		        return Redirect::to('admin/yinbiaorelatedwords/' . $relatedword->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));

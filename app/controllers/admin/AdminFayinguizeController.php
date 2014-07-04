@@ -94,7 +94,7 @@ class AdminFayinguizeController extends AdminController {
 		$rules = array(
 			'id'   => 'required',
 		    'title'   => 'required',
-		    'description' => 'required'
+		    'description' => 'required',
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
