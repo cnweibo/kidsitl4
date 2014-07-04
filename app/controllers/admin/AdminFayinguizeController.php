@@ -175,8 +175,7 @@ class AdminFayinguizeController extends AdminController {
     {
         $fayinguizes = Fayinguize::select(array('fayinguizes.id', 'fayinguizes.title', 'fayinguizes.description', 'fayinguizes.yinbiao_id as yinbiao','fayinguizes.created_at'));
         return Datatables::of($fayinguizes)
-
-        ->edit_column('yinbiao', '{{($yinbiao)?Yinbiao::find($yinbiao)->name:""}}')
+        ->edit_column('yinbiao', '<a href="{{URL::to(\'admin/yinbiaos\')}}">{{($yinbiao)?Yinbiao::find($yinbiao)->name:""}}</a>')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/fayinguizes/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
                 <a href="{{{ URL::to(\'admin/fayinguizes/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>
             ')

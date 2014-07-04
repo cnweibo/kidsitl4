@@ -184,7 +184,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
         $yinbiaorelatedwords = Relatedword::select(array('relatedwords.id', 'relatedwords.wordtext', 'relatedwords.wordyinbiao','relatedwords.mp3','relatedwords.fayinguize_id as fayinguize','relatedwords.created_at'));
         return Datatables::of($yinbiaorelatedwords)
 
-        ->edit_column('fayinguize', '{{($fayinguize)?Fayinguize::find($fayinguize)->title:""}}')
+        ->edit_column('fayinguize', '<a href="{{URL::to(\'admin/fayinguizes\')}}">{{($fayinguize)?Fayinguize::find($fayinguize)->title:""}}</a>')
 
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/yinbiaorelatedwords/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
                 <a href="{{{ URL::to(\'admin/yinbiaorelatedwords/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>

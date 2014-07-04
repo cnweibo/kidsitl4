@@ -196,8 +196,8 @@ class AdminYinbiaosController extends AdminController {
     {
         $yinbiaos = Yinbiao::select(array('yinbiaos.id', 'yinbiaos.name', 'yinbiaos.yinbiaocategory_id as yinbiaocategory','yinbiaos.mp3', 'yinbiaos.created_at'));
         return Datatables::of($yinbiaos)
-
-        ->edit_column('yinbiaocategory', '{{($yinbiaocategory)?Yinbiaocategory::find($yinbiaocategory)->ybcategory:""}}')
+        
+        ->edit_column('yinbiaocategory', '<a href="{{URL::to(\'admin/yinbiaocategory\')}}">{{($yinbiaocategory)?Yinbiaocategory::find($yinbiaocategory)->ybcategory:""}}</a>')
 
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/yinbiaos/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
                 <a href="{{{ URL::to(\'admin/yinbiaos/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>
