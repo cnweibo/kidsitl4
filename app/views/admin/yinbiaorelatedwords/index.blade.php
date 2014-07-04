@@ -24,10 +24,11 @@
 	<table id="yinbiaocategory" class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th class="col-md-2">ID</th>
+				<th class="col-md-1">ID</th>
 				<th class="col-md-2">相关单词：</th>
 				<th class="col-md-2">相关单词音标</th>
 				<th class="col-md-2">MP3音频文件</th>
+				<th class="col-md-1">所属规则</th>
 				<th class="col-md-2">创建于</th>
 				<th class="col-md-2">操作：</th>
 			</tr>
