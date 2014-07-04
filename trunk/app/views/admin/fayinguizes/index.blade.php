@@ -27,6 +27,7 @@
 				<th class="col-md-2">ID</th>
 				<th class="col-md-2">发音规则：</th>
 				<th class="col-md-2">规则描述</th>
+				<th class="col-md-2">所属音标</th>
 				<th class="col-md-2">创建于：</th>
 				<th class="col-md-2">操作：</th>
 			</tr>

@@ -54,7 +54,8 @@ class AdminFayinguizeController extends AdminController {
 		// Declare the rules for the form validation
 		$rules = array(
 		    'title'   => 'required',
-		    'description' => 'required'
+		    'description' => 'required',
+		    'yinbiao_id' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
@@ -63,12 +64,13 @@ class AdminFayinguizeController extends AdminController {
 			$title = new Fayinguize;
 			$title->title = Input::get('title');
 			$title->description = Input::get('description');
+			$title->yinbiao_id = Input::get('yinbiao_id');
 			$title->save();
 		}
 	  
 	        $title = "新建发音规则";
-	        // Show the page
-	        return View::make('admin/fayinguizes/create', compact('fayinguizes','title'))->with('success', Lang::get('admin/blogs/messages.create.success'));       
+	        // redirect with success
+	        return Redirect::to('admin/fayinguizes/create')->with('success', Lang::get('admin/blogs/messages.create.success'));       
 	}
 	/**
 	 * show a form to edit resource in storage.
@@ -95,6 +97,7 @@ class AdminFayinguizeController extends AdminController {
 			'id'   => 'required',
 		    'title'   => 'required',
 		    'description' => 'required',
+		    'yinbiao_id' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
@@ -102,7 +105,7 @@ class AdminFayinguizeController extends AdminController {
 		{
 			$fayinguizetemp = Fayinguize::findOrFail(Input::get('id'));
 			// dd($fayinguizetemp);
-		    if($fayinguizetemp->update(array('title' =>Input::get('title'),'description'=>Input::get('description'))));
+		    if($fayinguizetemp->update(array('title' =>Input::get('title'),'description'=>Input::get('description'),'yinbiao_id'=>Input::get('yinbiao_id'))));
 		    {
 		        // Redirect to the new blog post page
 		        return Redirect::to('admin/fayinguizes/' . $fayinguizetemp->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
@@ -170,11 +173,10 @@ class AdminFayinguizeController extends AdminController {
      */
     public function getData()
     {
-        $fayinguizes = Fayinguize::select(array('fayinguizes.id', 'fayinguizes.title', 'fayinguizes.description', 'fayinguizes.created_at'));
+        $fayinguizes = Fayinguize::select(array('fayinguizes.id', 'fayinguizes.title', 'fayinguizes.description', 'fayinguizes.yinbiao_id as yinbiao','fayinguizes.created_at'));
         return Datatables::of($fayinguizes)
 
-        // ->edit_column('hanzi', '{{ DB::table(\'hanzi\')->where(\'hanzi\', \'=\', $hanzi)->count() }}')
-
+        ->edit_column('yinbiao', '{{($yinbiao)?Yinbiao::find($yinbiao)->name:""}}')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/fayinguizes/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
                 <a href="{{{ URL::to(\'admin/fayinguizes/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>
             ')

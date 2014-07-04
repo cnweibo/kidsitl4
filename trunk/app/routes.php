@@ -9,6 +9,12 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('yg', function(){
+    dd(Yinbiao::find(15)->fayinguizes);
+});
+Route::get('gy', function(){
+    dd(Fayinguize::first()->yinbiao);
+});
 Route::get('relatedwords',function(){
     $fayinguize = Fayinguize::find(3);
     // dd($fayinguize);

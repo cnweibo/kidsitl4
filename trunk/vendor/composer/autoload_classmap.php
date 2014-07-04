@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddYinbiaoIdToFayinguizesTable' => $baseDir . '/app/database/migrations/2014_07_05_001936_add_yinbiao_id_to_fayinguizes_table.php',
     'AdminBishunsController' => $baseDir . '/app/controllers/admin/AdminBishunsController.php',
     'AdminBlogsController' => $baseDir . '/app/controllers/admin/AdminBlogsController.php',
     'AdminCommentsController' => $baseDir . '/app/controllers/admin/AdminCommentsController.php',
@@ -39,7 +40,6 @@ return array(
     'Boris\\ReadlineClient' => $vendorDir . '/d11wtq/boris/lib/Boris/ReadlineClient.php',
     'Boris\\ShallowParser' => $vendorDir . '/d11wtq/boris/lib/Boris/ShallowParser.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
-    'ChangeFayinguizeIdNullableOnFayinguizes' => $baseDir . '/app/database/migrations/2014_07_04_201255_change_fayinguize_id_nullable_on_fayinguizes.php',
     'ChangeFayinguizeIdNullableOnRelatedwords' => $baseDir . '/app/database/migrations/2014_07_04_201856_change_fayinguize_id_nullable_on_relatedwords.php',
     'ChangeRelatedwordsTounique' => $baseDir . '/app/database/migrations/2014_07_03_003723_change_relatedwords_tounique.php',
     'ClassPreloader\\Application' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Application.php',
