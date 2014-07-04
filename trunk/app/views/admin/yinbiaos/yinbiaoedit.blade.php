@@ -41,29 +41,46 @@
 				<!-- yinbiao category -->
 				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
-                        <label class="control-label" for="yinbiaocategory_id">音标分类：</label>
-						<select size=6 name="yinbiaocategory_id" id="yinbiaocategory_id">
-							@foreach (Yinbiaocategory::all() as $yinbiaocat)
-								<option @if ($yinbiaosModel->yinbiaocategory_id == $yinbiaocat->id) selected="selected"@endif value={{$yinbiaocat->id}}>{{$yinbiaocat->ybcategory}}</option>
-							@endforeach
-							
-						</select>
+						<div class="panel panel-info">
+							<div class="panel-heading">
+							<h3 class="panel-title">音标分类</h3>
+							</div>
+							<div class="panel-body">
+		                        <label class="control-label" for="yinbiaocategory_id">音标分类：</label>
+								<select size=6 name="yinbiaocategory_id" id="yinbiaocategory_id">
+									@foreach (Yinbiaocategory::all() as $yinbiaocat)
+										<option @if ($yinbiaosModel->yinbiaocategory_id == $yinbiaocat->id) selected="selected"@endif value={{$yinbiaocat->id}}>{{$yinbiaocat->ybcategory}}</option>
+									@endforeach
+									
+								</select>
+							</div>
+					    </div>
+                        
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div>
 				<!-- yinbiao mp3 file name -->
 				<div class="form-group">
 					<div class="col-md-12">
-						{{Form::label('mp3','音标mp3文件：',['class'=>'elementblock'])}}
-						<input name="originalmp3" class="form-inline" type="text" value={{$yinbiaosModel->mp3}} placeholder={{$yinbiaosModel->mp3}}>
-						{{Form::file('mp3')}}
-						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
+						<div class="panel panel-info">
+							<div class="panel-heading">
+							<h3 class="panel-title">音标MP3</h3>
+							</div>
+							<div class="panel-body">
+		                        {{Form::label('mp3','音标mp3文件：',['class'=>'elementblock'])}}
+		                        <input name="originalmp3" class="form-inline" type="text" value={{$yinbiaosModel->mp3}} placeholder={{$yinbiaosModel->mp3}}>
+		                        {{Form::file('mp3')}}
+		                        {{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
+							</div>
+					    </div>						
 					</div>
 				</div> 	
 				<!-- yinbiao related words -->
 				<div class="form-group">
-					{{Form::label('relatedwords','相关英语词汇:')}}
-					{{Form::text('relatedwords',null,['class' =>'form-control'])}}
+					<div class="col-md-12">
+						{{Form::label('relatedwords','相关英语词汇:')}}
+						{{Form::text('relatedwords',null,['class' =>'form-control'])}}
+					</div>
 				</div>   
 			</div>
 			<!-- ./ general tab -->
