@@ -38,6 +38,23 @@
 					</div>
 				</div>
 
+				<div class="form-group">
+					<div class="panel panel-info">
+							<div class="panel-heading">
+							<h3 class="panel-title">所属音标</h3>
+							</div>
+							<div class="panel-body">
+    	                        <label class="control-label" for="yinbiao_id">所属音标:</label>
+    							<select size=6 name="yinbiao_id" id="yinbiao_id">
+    								@foreach (Yinbiao::all() as $yinbiao)
+    									<option @if ($fayinguizeModel->yinbiao_id == $yinbiao->id) selected="selected"@endif value={{$yinbiao->id}}>{{$yinbiao->name}}</option>
+    								@endforeach
+    								
+    							</select>
+				            </div>
+				    </div>		
+				</div>
+
 				<!-- yinbiao category -->
 				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
 					<div class="col-md-12">

@@ -9,4 +9,7 @@ class Yinbiao extends \Eloquent {
 	public function relatedwords(){
 		return $this->belongsToMany('Relatedword');
 	}
+	public function fayinguizes(){
+		return $this->hasMany('Fayinguize');
+	}	
 }

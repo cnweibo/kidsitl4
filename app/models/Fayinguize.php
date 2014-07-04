@@ -6,4 +6,7 @@ class Fayinguize extends \Eloquent {
 	public function relatedwords(){
 		return $this->hasMany('Relatedword');
 	}
+	public function yinbiao(){
+		return $this->belongsTo('Yinbiao');
+	}	
 }
