@@ -48,12 +48,40 @@
 				<!-- word mp3 file name -->
 				<div class="form-group">
 					<div class="col-md-12">
-						{{Form::label('mp3','单词mp3文件：',['class'=>'elementblock'])}}
-						<input name="originalmp3" class="form-inline" type="text" value={{$relatedword->mp3}} placeholder={{$relatedword->mp3}}>
-						{{Form::file('mp3')}}
-						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
+						<div class="panel panel-info">
+							<div class="panel-heading">
+							<h3 class="panel-title">MP3</h3>
+							</div>
+							<div class="panel-body">
+				            	{{Form::label('mp3','单词mp3文件：',['class'=>'elementblock'])}}
+				            	<input name="originalmp3" class="form-inline" type="text" value={{$relatedword->mp3}} placeholder={{$relatedword->mp3}}>
+				            	{{Form::file('mp3')}}
+				            	{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
+				            </div>
+					    </div>					
 					</div>
 				</div> 	
+				<!-- fayinguize -->
+				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
+					<div class="col-md-12">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+							<h3 class="panel-title">所属规则</h3>
+							</div>
+							<div class="panel-body">
+    	                        <label class="control-label" for="fayinguize_id">所属规则:</label>
+    							<select size=6 name="fayinguize_id" id="fayinguize_id">
+    								@foreach (Fayinguize::all() as $fayinguize)
+    									<option value={{$fayinguize->title}}>{{$fayinguize->title}}</option>
+    								@endforeach
+    								
+    							</select>
+				            </div>
+					    </div>		
+                        
+						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
+					</div>
+				</div>
 			</div>
 			<!-- ./ general tab -->
 
