@@ -10,11 +10,12 @@
 |
 */
 Route::get('relatedwords',function(){
-    $fayinguize = Fayinguize::first();
+    $fayinguize = Fayinguize::find(3);
+    // dd($fayinguize);
     dd($fayinguize->relatedwords);
 });
 Route::get('gz',function(){
-    $relatedwords = Relatedword::first();
+    $relatedwords = Relatedword::find(8);
     dd($relatedwords->fayinguize);
 });
 Route::get('mm', function(){
