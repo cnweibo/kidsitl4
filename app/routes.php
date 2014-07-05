@@ -255,6 +255,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('yinbiaorelatedwords/{relatedword}/edit', 'AdminYinbiaorelatedwordsController@postEdit');
     Route::get('yinbiaorelatedwords/{relatedword}/delete', 'AdminYinbiaorelatedwordsController@getDelete');
     Route::post('yinbiaorelatedwords/{relatedword}/delete', array('as'=>'postyinbiaorelatedworddelete', 'uses' => 'AdminYinbiaorelatedwordsController@postDelete'));
+    Route::get('yinbiaorelatedwords/guizesearch', array('as'=>'postyinbiaoguizesearch', 'uses' => 'AdminYinbiaorelatedwordsController@getGuizeSearch'));
+    
     Route::controller('yinbiaorelatedwords', 'AdminYinbiaorelatedwordsController');
 
     # Yinbiao Fayinguize Management

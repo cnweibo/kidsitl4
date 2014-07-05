@@ -192,4 +192,9 @@ class AdminYinbiaorelatedwordsController extends AdminController {
         
         ->make();
     }
+    public function getGuizeSearch()
+    {
+    	$guize=Input::get('guizesearch');
+    	return Fayinguize::where('title','LIKE',"%$guize%")->get(array('title','id'))->toArray();
+    }
 }
