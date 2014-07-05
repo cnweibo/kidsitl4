@@ -46,6 +46,11 @@
 		<label for="input-warning" class="col-sm-2">input something</label>
 		<input type="text" name="" id="input-warning" class="form-control" value="" required="required" pattern="" title="">
 	</div>
+	<hr>
+	<div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+      <input type="text" class="form-control" placeholder="Username">
+    </div>
 	<!-- Javascripts
 		================================================== -->
         <script src="{{asset('bootstrap/js/jquery.min.js')}}"></script>        

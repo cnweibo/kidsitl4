@@ -30,6 +30,10 @@
 					<h3 class="panel-title">所属规则</h3>
 					</div>
 					<div class="panel-body">
+                        <div class="input-group" style="margin-bottom: 10px">
+						      <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+						      <input type="text" class="form-control" id="guizesearch" name="guizesearch" placeholder="search">
+					    </div>
                         <label class="control-label" for="fayinguize_id">所属规则:</label>
 						<select size=6 name="fayinguize_id" id="fayinguize_id">
 							@foreach (Fayinguize::all() as $fayinguize)
@@ -37,9 +41,13 @@
 							@endforeach
 							
 						</select>
+						
 	            </div>
 		    </div>
 		</div>
 		{{Form::submit('提交',['class' => 'btn btn-primary'])}}
     {{ Form::close()}}
+@stop
+@section('scripts')
+	<script src="{{asset('bootstrap/js/backend.js')}}"></script>
 @stop
