@@ -55,7 +55,7 @@ class AdminRelatedsentenceController extends AdminController {
 		// Declare the rules for the form validation
 		$rules = array(
 		    'sentencetext' => 'required',
-		    'mp3' => 'required'
+		    // 'mp3' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
@@ -67,22 +67,27 @@ class AdminRelatedsentenceController extends AdminController {
 		        $destabsolutefile = app_path().'/storage/uploaded/yinbiaomp3/';
 		        $file->move($destabsolutefile,$destfile);
 		        // 创建新相关单词
-				$relatedsentence = new Relatedsentence;
-				$relatedsentence->sentencetext = Input::get('sentencetext');				
-				$relatedsentence->mp3 = $destfile;
-				$relatedsentence->save();
-				//save the fayinguize_id in the pivot table
-				// foreach (Input::get('fayinguize_id') as $fayinguize_id) {
-				// 	$relatedsentence->fayinguize()->attach($fayinguize_id);
-				// }
 			}
-			// dd($relatedsentence);
-		}
+			$relatedsentence = new Relatedsentence;
+			$relatedsentence->sentencetext = Input::get('sentencetext');				
+			if (Input::hasFile('mp3')){$relatedsentence->mp3 = $destfile;}
+			$relatedsentence->save();
+			//detach all the fayinguize_id in the pivot table first
+			if(Input::has('relatedword_id')){
+		    	//then save the fayinguize_id in the pivot table
+				foreach (Input::get('relatedword_id') as $relatedword_id) {
+					$relatedsentence->relatedwords()->attach($relatedword_id);
+				}
+			}
 	  
-	        $title = "新建音标相关单词";
+	        $title = "新建例句";
 	        $relatedsentences = Relatedsentence::all();
 	        // Redirect to the create page
 		    return Redirect::to('admin/relatedsentences/create')->with('success', Lang::get('admin/blogs/messages.update.success'));
+		}
+		// Form validation failed
+		return Redirect::to('admin/relatedsentences/create')->withInput()->withErrors($validator);
+
 	}
 	/**
 	 * show a form to edit resource in storage.
