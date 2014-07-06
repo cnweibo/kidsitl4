@@ -45,6 +45,7 @@
 
 	<!-- CSS   ,prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css,custom.css-->
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css,bootstrap-theme.min.css,bootstrap-prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css,custom.css')}}">
+    <link rel="stylesheet" href="{{asset('bootstrap/fonts/font-awesome-4.1.0/css/font-awesome.min.css')}}">
 <!--     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/wysihtml5/prettify.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/wysihtml5/bootstrap-wysihtml5.css')}}">
@@ -95,10 +96,10 @@
                                 <i class="glyphicon glyphicon-sort-by-alphabet"></i> 音标<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li{{ (Request::is('admin/yinbiaos*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 音标管理</a></li>
                                 <li{{ (Request::is('admin/yinbiaocategory*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><span class="glyphicon glyphicon-list"></span> 音标类别管理</a></li>
-                                <li{{ (Request::is('admin/yinbiaorelatedwords*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaorelatedwords') }}}"><span class="glyphicon glyphicon-paperclip"></span> 相关单词管理</a></li>
+                                <li{{ (Request::is('admin/yinbiaos*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 音标管理</a></li>
                                 <li{{ (Request::is('admin/fayinguizes*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/fayinguizes') }}}"><span class="glyphicon glyphicon-retweet"></span> 发音规则管理</a></li>
+                                <li{{ (Request::is('admin/yinbiaorelatedwords*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaorelatedwords') }}}"><span class="glyphicon glyphicon-paperclip"></span> 相关单词管理</a></li>
                             </ul>
                         </li>
                         <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
