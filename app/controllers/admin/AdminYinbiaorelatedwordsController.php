@@ -51,7 +51,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 	 */
 	public function postCreate()
 	{
- 
+ 		// $input = $_POST['fayinguize_id'];
 		// Declare the rules for the form validation
 		$rules = array(
 		    'wordyinbiao' => 'required',
@@ -70,10 +70,13 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 		        // 创建新相关单词
 				$yinbiaorelatedword = new Relatedword;
 				$yinbiaorelatedword->wordtext = Input::get('wordtext');
-				$yinbiaorelatedword->wordyinbiao = Input::get('wordyinbiao');
-				$yinbiaorelatedword->fayinguize_id = Input::get('fayinguize_id');
+				$yinbiaorelatedword->wordyinbiao = Input::get('wordyinbiao');				
 				$yinbiaorelatedword->mp3 = $destfile;
 				$yinbiaorelatedword->save();
+				//save the fayinguize_id in the pivot table
+				foreach (Input::get('fayinguize_id') as $fayinguize_id) {
+					$yinbiaorelatedword->fayinguize()->attach($fayinguize_id);
+				}
 			}
 			// dd($yinbiaorelatedword);
 		}
@@ -173,7 +176,10 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 	    // There was a problem deleting the yinbiao
 	    return Redirect::to('admin/yinbiaorelatedwords')->with('error', "单词删除错误，请重试");
 	}	
-
+	public static function printyinbiao()
+	{
+		return '<a href="{{URL::to(\'admin/fayinguizes\')}}">{{(Relatedword::find($id)->fayinguize)?Relatedword::find($id)->fayinguize()->first()->title:""}}</a> 所属音标：<a href="{{URL::to(\'admin/yinbiaos\')}}">{{(Relatedword::find($id)->fayinguize)?Relatedword::find($id)->fayinguize()->first()->yinbiao->name:""}}</a>';
+	}
 	/**
      * Show a list of all the yinbiao category formatted for Datatables.
      *
@@ -181,16 +187,17 @@ class AdminYinbiaorelatedwordsController extends AdminController {
      */
     public function getData()
     {
-        $yinbiaorelatedwords = Relatedword::select(array('relatedwords.id', 'relatedwords.wordtext', 'relatedwords.wordyinbiao','relatedwords.mp3','relatedwords.fayinguize_id as fayinguize','relatedwords.created_at'));
+        $yinbiaorelatedwords = Relatedword::select(array('relatedwords.id', 'relatedwords.wordtext', 'relatedwords.wordyinbiao','relatedwords.mp3','relatedwords.created_at'));
         return Datatables::of($yinbiaorelatedwords)
-
-        ->edit_column('fayinguize', '<a href="{{URL::to(\'admin/fayinguizes\')}}">{{($fayinguize)?Fayinguize::find($fayinguize)->title:""}}</a> 所属音标：<a href="{{URL::to(\'admin/yinbiaos\')}}">{{($fayinguize)?Fayinguize::find($fayinguize)->yinbiao->name:""}}</a>')
-
+  
+        ->add_column('fayinguize', '<?php for($i=0;$i<Relatedword::find($id)->fayinguize()->count();$i++){echo Relatedword::find($id)->fayinguize[$i]->title."属于".Relatedword::find($id)->fayinguize[$i]->yinbiao->name." ";}?>')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/yinbiaorelatedwords/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
                 <a href="{{{ URL::to(\'admin/yinbiaorelatedwords/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>
             ')
         
         ->make();
+      /*  ->add_column('fayinguize', '<?php for($i=0;$i<2;$i++){echo "<a href=".URL::to(\'admin/fayinguizes\').">".Relatedword::find($id)->fayinguize()->first()->title."</a> 所属音标：<a href=".URL::to(\'admin/yinbiaos\').">".Relatedword::find($id)->fayinguize()->first()->yinbiao->name."</a>";}?>')
+*/
     }
     public function getGuizeSearch()
     {

@@ -7,6 +7,6 @@ class Relatedword extends \Eloquent {
 		return $this->belongsToMany('Yinbiao');
 	}
 	public function fayinguize(){
-		return $this->belongsTo('Fayinguize');
+		return $this->belongsToMany('Fayinguize');
 	}
 }
