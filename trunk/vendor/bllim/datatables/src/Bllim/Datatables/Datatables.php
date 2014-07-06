@@ -254,8 +254,9 @@ class Datatables
     {
         $empty_filesystem_instance = new Filesystem;
         $blade = new BladeCompiler($empty_filesystem_instance,'datatables');
+        // dd($str);
         $parsed_string = $blade->compileString($str);
-
+        // dd($str,$parsed_string);
         ob_start() and extract($data, EXTR_SKIP);
 
         try
@@ -269,6 +270,7 @@ class Datatables
         }
 
         $str = ob_get_contents();
+        // dd($str);
         ob_end_clean();
 
         return $str;
