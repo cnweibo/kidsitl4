@@ -9,4 +9,8 @@ class Relatedword extends \Eloquent {
 	public function fayinguize(){
 		return $this->belongsToMany('Fayinguize');
 	}
+	public function relatedsentences(){
+		return $this->belongsToMany('Relatedsentence');
+	}
+
 }
