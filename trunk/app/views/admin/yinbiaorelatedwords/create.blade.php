@@ -37,7 +37,7 @@
                         <label class="control-label" for="fayinguize_id">所属规则:</label -->
 						<select multiple size=6 name="fayinguize_id[]" id="fayinguize_id">
 							@foreach (Fayinguize::all() as $fayinguize)
-								<option value={{$fayinguize->id}}>{{$fayinguize->title}}</option>
+								<option value={{$fayinguize->id}}>{{$fayinguize->title}}->{{$fayinguize->yinbiao->name}}</option>
 							@endforeach
 							
 						</select>
