@@ -73,16 +73,15 @@
 								      <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
 								      <input type="text" class="form-control" id="guizesearch" name="guizesearch" placeholder="search">
 							    </div>
-    	                        <label class="control-label" for="fayinguize_id">所属规则:</label>
-    							<select size=6 name="fayinguize_id" id="fayinguize_id">
-    								@foreach (Fayinguize::all() as $fayinguize)
-    									<option @if ($relatedword->fayinguize_id == $fayinguize->id) selected="selected"@endif value={{$fayinguize->id}}>{{$fayinguize->title}}</option>
-    								@endforeach
-    								
-    							</select>
+		                        <label class="control-label" for="fayinguize_id">所属规则:</label -->
+								<select multiple size=6 name="fayinguize_id[]" id="fayinguize_id">
+									@foreach (Fayinguize::all() as $fayinguize)
+										<option value={{$fayinguize->id}}>{{$fayinguize->title}}</option>
+									@endforeach
+									
+								</select>
 				            </div>
-					    </div>		
-                        
+					    </div>		                      
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div>
