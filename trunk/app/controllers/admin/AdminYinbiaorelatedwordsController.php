@@ -190,7 +190,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
         $yinbiaorelatedwords = Relatedword::select(array('relatedwords.id', 'relatedwords.wordtext', 'relatedwords.wordyinbiao','relatedwords.mp3','relatedwords.created_at'));
         return Datatables::of($yinbiaorelatedwords)
   
-        ->add_column('fayinguize', '<?php for($i=0;$i<Relatedword::find($id)->fayinguize()->count();$i++){echo Relatedword::find($id)->fayinguize[$i]->title."属于".Relatedword::find($id)->fayinguize[$i]->yinbiao->name." ";}?>')
+        ->add_column('fayinguize', '<?php for($i=0;$i<Relatedword::find($id)->fayinguize()->count();$i++){echo  \'<a class="adminfayinguizehref" href="http://kidsit.cn/admin/fayinguizes">\'.Relatedword::find($id)->fayinguize[$i]->title.\'</a>\'."属于".\'<a class="adminyinbiaohref" href="http://kidsit.cn/admin/yinbiaos">\'.Relatedword::find($id)->fayinguize[$i]->yinbiao->name.\'</a>\'." ";}?>')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/yinbiaorelatedwords/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
                 <a href="{{{ URL::to(\'admin/yinbiaorelatedwords/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>
             ')
