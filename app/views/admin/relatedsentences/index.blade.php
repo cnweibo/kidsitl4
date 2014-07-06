@@ -16,23 +16,21 @@
 			{{{ $title }}}
 
 			<div class="pull-right">
-				<a href="{{{ URL::to('admin/yinbiaos/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 新增音标</a>
+				<a href="{{{ URL::to('admin/relatedsentences/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 新增例句</a>
 			</div>
 		</h3>
 	</div>
-	<div class="adminlegend">
-		@foreach (Yinbiaocategory::all() as $yinbiaocat)
-			<span style="background-color: #999">{{$yinbiaocat->id}}</span>:<span style="background-color:#abc">{{$yinbiaocat->ybcategory}}</span>
-		@endforeach
-	</div>
-	@include('admin.partials.yinbiaoprocess')
-	<table id="yinbiaos" class="table table-striped table-hover">
+	
+@include('admin.partials.yinbiaoprocess')
+
+	<table id="yinbiaocategory" class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th class="col-md-2">音标：</th>
-				<th class="col-md-2">音标类别：</th>
-				<th class="col-md-2">音标文件</th>
-				<th class="col-md-2">创建于：</th>
+				<th class="col-md-1">例句ID</th>
+				<th class="col-md-4">例句内容</th>
+				<th class="col-md-1">MP3音频文件</th>
+				<th class="col-md-2">创建于</th>				
+				<th class="col-md-2">所属单词：</th>
 				<th class="col-md-2">操作：</th>
 			</tr>
 		</thead>
@@ -46,7 +44,7 @@
 	<script type="text/javascript">
 		var oTable;
 		$(document).ready(function() {
-			oTable = $('#yinbiaos').dataTable( {
+			oTable = $('#yinbiaocategory').dataTable( {
 				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 				"sPaginationType": "bootstrap",
 				"oLanguage": {
@@ -54,7 +52,7 @@
 				},
 				"bProcessing": true,
 		        "bServerSide": true,
-		        "sAjaxSource": "{{ URL::to('admin/yinbiaos/data') }}",
+		        "sAjaxSource": "{{ URL::to('admin/relatedsentences/data') }}",
 		        "fnDrawCallback": function ( oSettings ) {
 	           		$(".iframe").colorbox({iframe:true, width:"99%", height:"98%"});
 	     		}

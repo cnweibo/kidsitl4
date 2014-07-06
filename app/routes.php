@@ -261,19 +261,30 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('yinbiaorelatedwords/{relatedword}/edit', 'AdminYinbiaorelatedwordsController@postEdit');
     Route::get('yinbiaorelatedwords/{relatedword}/delete', 'AdminYinbiaorelatedwordsController@getDelete');
     Route::post('yinbiaorelatedwords/{relatedword}/delete', array('as'=>'postyinbiaorelatedworddelete', 'uses' => 'AdminYinbiaorelatedwordsController@postDelete'));
-    Route::get('yinbiaorelatedwords/guizesearch', array('as'=>'postyinbiaoguizesearch', 'uses' => 'AdminYinbiaorelatedwordsController@getGuizeSearch'));
-    
+    Route::get('yinbiaorelatedwords/guizesearch', array('as'=>'postyinbiaoguizesearch', 'uses' => 'AdminYinbiaorelatedwordsController@getGuizeSearch')); 
     Route::controller('yinbiaorelatedwords', 'AdminYinbiaorelatedwordsController');
+
+    # word related sentence Management
+    Route::get('relatedsentences', 'AdminRelatedsentenceController@getIndex');
+    Route::get('relatedsentences/data', 'AdminRelatedsentenceController@getData'); 
+    Route::get('relatedsentences/create', 'AdminRelatedsentenceController@getCreate');     
+    // Route::get('relatedsentences/{relatedsentence}/show', 'AdminRelatedsentenceController@getShow');
+    Route::get('relatedsentences/{relatedsentence}/edit', 'AdminRelatedsentenceController@getEdit');
+    Route::post('relatedsentences/{relatedsentence}/edit', 'AdminRelatedsentenceController@postEdit');
+    Route::get('relatedsentences/{relatedsentence}/delete', 'AdminRelatedsentenceController@getDelete');
+    Route::post('relatedsentences/{relatedsentence}/delete', array('as'=>'postrelatedsentencedelete', 'uses' => 'AdminRelatedsentenceController@postDelete'));
+    Route::get('relatedsentences/wordsearch', array('as'=>'postwordsearch', 'uses' => 'AdminRelatedsentenceController@getWordSearch')); 
+    Route::controller('relatedsentences', 'AdminRelatedsentenceController');
 
     # Yinbiao Fayinguize Management
     Route::get('fayinguizes', 'AdminFayinguizeController@getIndex');
     Route::get('fayinguizes/data', 'AdminFayinguizeController@getData'); 
     Route::get('fayinguizes/create', 'AdminFayinguizeController@getCreate');     
-    // Route::get('fayinguizes/{relatedword}/show', 'AdminFayinguizeController@getShow');
-    Route::get('fayinguizes/{relatedword}/edit', 'AdminFayinguizeController@getEdit');
-    Route::post('fayinguizes/{relatedword}/edit', 'AdminFayinguizeController@postEdit');
-    Route::get('fayinguizes/{relatedword}/delete', 'AdminFayinguizeController@getDelete');
-    Route::post('fayinguizes/{relatedword}/delete', array('as'=>'postfayinguizedelete', 'uses' => 'AdminFayinguizeController@postDelete'));
+    // Route::get('fayinguizes/{fayinguize}/show', 'AdminFayinguizeController@getShow');
+    Route::get('fayinguizes/{fayinguize}/edit', 'AdminFayinguizeController@getEdit');
+    Route::post('fayinguizes/{fayinguize}/edit', 'AdminFayinguizeController@postEdit');
+    Route::get('fayinguizes/{fayinguize}/delete', 'AdminFayinguizeController@getDelete');
+    Route::post('fayinguizes/{fayinguize}/delete', array('as'=>'postfayinguizedelete', 'uses' => 'AdminFayinguizeController@postDelete'));
     Route::controller('fayinguizes', 'AdminFayinguizeController');
 
     # Admin Dashboard

@@ -37,4 +37,22 @@ $('#guizesearch').bind('keyup',function(e){
 			}
 		});
 		
-	});
+});
+// related word search
+$('#wordsearch').bind('keyup',function(e){
+	var formdata = $('#wordsearch').serialize();
+	var bishunsearchdata = $('#wordsearch').val();
+		$.ajax({
+			url: 'http://kidsit.cn/admin/relatedsentences/wordsearch',
+			type: 'GET',
+			data: formdata,
+			success: function(results){
+				$("#relatedword_id").empty();
+				for (var i = 0; i < results.length; i++) {
+					var html = "<option value="+results[i].id+">"+results[i].wordtext+"</option>";
+					$("#relatedword_id").append(html);
+				}
+			}
+		});
+		
+});
