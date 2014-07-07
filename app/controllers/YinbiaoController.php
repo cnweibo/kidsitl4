@@ -26,8 +26,10 @@ class YinbiaoController extends BaseController {
 	 */
 	public function index()
 	{
-		// Get all the yinbiao 
-		$yinbiaos = Yinbiao::all();
+		// Get all the yinbiao with eager loading 
+		// instead of N+1 performance issue  
+		// $yinbiaos = Yinbiao::all();
+		$yinbiaos = Yinbiao::with('yinbiaocategory')->get();
 		return View::make('site.yinbiao.index',compact('yinbiaos'));
 	}
 
