@@ -49,6 +49,9 @@ Route::resource('yinbiao','YinbiaoController');
 Route::resource('yinbiaocategory','YinbiaocategoryController');
 // 音标发音规则
 Route::resource('fayinguize', 'FayinguizeController');
+// 音标相关单词
+Route::resource('relatedword', 'RelatedwordController');
+
 // User reset routes
 Route::get('user/reset/{token}', 'UserController@getReset');
 // User password reset

@@ -61,7 +61,8 @@ class YinbiaoController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$yinbiao = Yinbiao::findOrFail($id);
+		$yinbiao = Yinbiao::with('yinbiaocategory','fayinguizes','relatedwords')->findOrFail($id);
+		// $yinbiao = Yinbiao::findOrFail($id);
 		return View::make('site.yinbiao.show',compact('yinbiao'));
 	}
 

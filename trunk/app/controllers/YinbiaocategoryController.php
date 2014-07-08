@@ -26,7 +26,7 @@ class YinbiaocategoryController extends BaseController {
 	 */
 	public function index()
 	{
-		// Get all the blog posts
+		// Get all the yinbiao category
 		$yinbiaocategories = Yinbiaocategory::with('yinbiao')->get();
 		return View::make('site.yinbiaocategory.index',compact('yinbiaocategories'));
 	}
@@ -59,7 +59,7 @@ class YinbiaocategoryController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$ybcategory = Yinbiaocategory::find($id);
+		$ybcategory = Yinbiaocategory::with('yinbiao')->find($id);
 		return View::make('site.yinbiaocategory.show',compact('ybcategory'));
 	}
 
