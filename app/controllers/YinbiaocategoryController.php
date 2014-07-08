@@ -27,7 +27,7 @@ class YinbiaocategoryController extends BaseController {
 	public function index()
 	{
 		// Get all the blog posts
-		$yinbiaocategories = Yinbiaocategory::all();
+		$yinbiaocategories = Yinbiaocategory::with('yinbiao')->get();
 		return View::make('site.yinbiaocategory.index',compact('yinbiaocategories'));
 	}
 
