@@ -25,9 +25,9 @@
 	<table id="yinbiaocategory" class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th class="col-md-2">ID</th>
-				<th class="col-md-2">音标类别：</th>
-				<th class="col-md-2">类别描述</th>
+				<th class="col-md-1">ID</th>
+				<th class="col-md-1">音标类别：</th>
+				<th class="col-md-4">类别描述</th>
 				<th class="col-md-2">创建于：</th>
 				<th class="col-md-2">操作：</th>
 			</tr>
