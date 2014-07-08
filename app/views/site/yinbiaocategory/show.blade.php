@@ -11,21 +11,31 @@
 	@parent
 @stop
 @section('content')
+
 	<div class="container">	
-		<ul class="list-unstyled">
-		<li>
-		<div style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
-			<h1>{{link_to_route('yinbiaocategory.show',$ybcategory->ybcategory,$ybcategory->id,['class'=>'yinbiaocatatag'])}}</h1>
-			<p>{{$ybcategory->description}}</p>
-			<hr>
-			<?php $yinbiaos = $ybcategory->yinbiao; ?>
-			@foreach ($yinbiaos as $yinbiao)
-				<p>音标：{{link_to_route('yinbiao.show',$yinbiao->name,$yinbiao->id,['class'=>'yinbiaoatag'])}}</p>			
-			@endforeach
-	
-		</div>
-		<p>{{link_to_route('yinbiaocategory.index','浏览全部音标分类')}}</p>
-		</li>
-		</ul>
+		{{--*/$layoutloopcount=0;/*--}}
+
+			@if ($layoutloopcount%2==0)
+				<div class="row">				
+			@endif
+		{{--*/$layoutloopcount++;/*--}}
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+						<h3 class="panel-title">{{link_to_route('yinbiaocategory.show',$ybcategory->ybcategory,$ybcategory->id,['class'=>'yinbiaocatatag'])}}</h3>
+						</div>
+						<div class="panel-body">
+							<h4>{{$ybcategory->description}}</h4>
+							@foreach ($ybcategory->yinbiao as $yinbiao)
+								<span style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('yinbiao.show',$yinbiao->name,$yinbiao->id,['class'=>'yinbiaoatag'])}} </span>			
+							@endforeach
+						</div>
+				    </div>	
+				</div>	
+			@if ($layoutloopcount%2==0)
+				</div>				
+			@endif	
+			<p>{{link_to_route('yinbiaocategory.index','浏览全部音标分类')}}</p>
+
 	</div>
 @stop

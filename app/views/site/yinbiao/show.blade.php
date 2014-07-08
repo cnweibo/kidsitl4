@@ -12,6 +12,10 @@
 @stop
 @section('content')
 	<div class="container">	
+
+
+
+
 		<ul class="list-unstyled">
 		<li>
 		<div style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
@@ -20,10 +24,39 @@
 		<span id="yinbiao_1"><i class="clickable glyphicon glyphicon-volume-up"></i>点击发音</span>
 		<audio id="yinbiaoplayer"></audio>
 		</div>
-		<h2>所属类别：{{link_to_route('yinbiaocategory.show',$yinbiao->yinbiaocategory->ybcategory,$yinbiao->yinbiaocategory->id,['class'=>'yinbiaocatatag'])}} </h2>
+		<h2>所属类别：{{link_to_route('yinbiao.show',$yinbiao->yinbiaocategory->ybcategory,$yinbiao->yinbiaocategory->id,['class'=>'yinbiaocatatag'])}} </h2>
 		</div>
+		<!-- 发音规则分类 -->
+
+{{--*/$layoutloopcount=0;/*--}}
+		@foreach ($yinbiao->fayinguizes as $fayinguize)	
+			@if ($layoutloopcount%2==0)
+				<div class="row">				
+			@endif
+		{{--*/$layoutloopcount++;/*--}}
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+						<h3 class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
+						</div>
+						<div class="panel-body">
+							@foreach ($fayinguize->relatedwords as $relatedword)
+								<span style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'yinbiaoatag'])}} </span>			
+							@endforeach
+							<p> <a href="http://kidsit.cn/yinbiao/"><i class="font4e rightbottom glyphicon glyphicon-tree-conifer "></i></a></p>
+						</div>
+
+				    </div>	
+				    
+				</div>	
+
+			@if ($layoutloopcount%2==0)
+				</div>				
+			@endif	
+			
+
+		@endforeach
 		</li>
-		<li>{{link_to_route('yinbiao.index','浏览全部音标')}}</li>
 		</ul>
 
 	</div>

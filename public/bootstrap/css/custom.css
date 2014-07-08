@@ -123,3 +123,11 @@ a.yinbiaocatatag{
 .adminyinbiaohref{
   color:green;
 }
+.font4e{
+  font-size: 4em;
+}
+.rightbottom{
+  position: relative;
+  right:0;
+  bottom:0;
+}
