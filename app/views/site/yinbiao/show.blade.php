@@ -24,7 +24,7 @@
 		<span id="yinbiao_1"><i class="clickable glyphicon glyphicon-volume-up"></i>点击发音</span>
 		<audio id="yinbiaoplayer"></audio>
 		</div>
-		<h2>所属类别：{{link_to_route('yinbiao.show',$yinbiao->yinbiaocategory->ybcategory,$yinbiao->yinbiaocategory->id,['class'=>'yinbiaocatatag'])}} </h2>
+		<h2>所属类别：{{link_to_route('yinbiaocategory.show',$yinbiao->yinbiaocategory->ybcategory,$yinbiao->yinbiaocategory->id,['class'=>'yinbiaocatatag'])}} </h2>
 		</div>
 		<!-- 发音规则分类 -->
 
