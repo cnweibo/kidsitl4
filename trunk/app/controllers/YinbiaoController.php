@@ -29,7 +29,7 @@ class YinbiaoController extends BaseController {
 		// Get all the yinbiao with eager loading 
 		// instead of N+1 performance issue  
 		// $yinbiaos = Yinbiao::all();
-		$yinbiaos = Yinbiao::with('yinbiaocategory')->get();
+		$yinbiaos = Yinbiao::with('yinbiaocategory','fayinguizes','relatedwords')->get();
 		return View::make('site.yinbiao.index',compact('yinbiaos'));
 	}
 
