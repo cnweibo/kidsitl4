@@ -1,15 +1,15 @@
 <?php
 
-class YinbiaoController extends BaseController {
+class RelatedwordController extends BaseController {
 
     /**
      * Yinbiao Model
      * @var Yinbiao
      */
-    protected $yinbiao;
+    protected $relatedword;
     /**
      * Inject the models.
-     * @param Yinbiao $yinbiao
+     * @param Yinbiao $relatedword
      */
     public function __construct()
     {
@@ -26,11 +26,9 @@ class YinbiaoController extends BaseController {
 	 */
 	public function index()
 	{
-		// Get all the yinbiao with eager loading 
-		// instead of N+1 performance issue  
-		// $yinbiaos = Yinbiao::all();
-		$yinbiaos = Yinbiao::with('yinbiaocategory','fayinguizes','relatedwords')->get();
-		return View::make('site.yinbiao.index',compact('yinbiaos'));
+		// Get all the blog posts
+		$fayinguizes = Relatedword::all();
+		return View::make('site.relatedword.index',compact('fayinguizes'));
 	}
 
 	/**
@@ -61,12 +59,9 @@ class YinbiaoController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$yinbiao = Yinbiao::with('yinbiaocategory','fayinguizes','relatedwords')->findOrFail($id);
-		
-		// $yinbiao = Yinbiao::findOrFail($id);
-		return View::make('site.yinbiao.show',compact('yinbiao'));
+		$relatedword = Relatedword::find($id);
+		return View::make('site.relatedword.show',compact('relatedword'));
 	}
-
 
 	/**
 	 * Show the form for editing the specified resource.
