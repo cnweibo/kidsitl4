@@ -39,9 +39,9 @@
 						<div class="panel-heading">
 						<h3 class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
 						</div>
-						<div class="panel-body">
+						<div class="panel-body" id="relatedwordid_x">
 							@foreach ($fayinguize->relatedwords as $relatedword)
-								<span style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'yinbiaoatag','id'=>'relatedwordid_x'])}} </span>			
+								<span style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'yinbiaoatag'])}} </span>			
 							@endforeach
 							<p> <a href="http://kidsit.cn/yinbiao/"><i class="font4e rightbottom glyphicon glyphicon-tree-conifer "></i></a></p>
 						</div>
@@ -62,5 +62,6 @@
 	</div>
 @stop
 @section('scripts')
-	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';</script>
+	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
+	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';var ppatternregex='{{$yinbiao->fayinguizes->first()->regex}}'</script>
 @stop

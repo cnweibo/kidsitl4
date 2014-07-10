@@ -65,6 +65,16 @@
 						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div>
+				<!-- guize regex -->
+				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
+					<div class="col-md-12">
+                        <label class="control-label" for="regex">regex</label>
+						
+						<input class="form-control" type="text" name="regex" id="regex" value="{{{$fayinguizeModel->regex}}}" />
+
+						{{{ $errors->first('content', '<span class="help-block">:message</span>') }}}
+					</div>
+				</div>
 			</div>
 			<!-- ./ general tab -->
 

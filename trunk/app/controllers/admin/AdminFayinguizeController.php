@@ -97,6 +97,7 @@ class AdminFayinguizeController extends AdminController {
 			'id'   => 'required',
 		    'title'   => 'required',
 		    'description' => 'required',
+		    'regex' => 'required',
 		    'yinbiao_id' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
@@ -105,7 +106,7 @@ class AdminFayinguizeController extends AdminController {
 		{
 			$fayinguizetemp = Fayinguize::findOrFail(Input::get('id'));
 			// dd($fayinguizetemp);
-		    if($fayinguizetemp->update(array('title' =>Input::get('title'),'description'=>Input::get('description'),'yinbiao_id'=>Input::get('yinbiao_id'))));
+		    if($fayinguizetemp->update(array('title' =>Input::get('title'),'description'=>Input::get('description'),'yinbiao_id'=>Input::get('yinbiao_id'),'regex'=>Input::get('regex'))));
 		    {
 		        // Redirect to the new blog post page
 		        return Redirect::to('admin/fayinguizes/' . $fayinguizetemp->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
@@ -173,7 +174,7 @@ class AdminFayinguizeController extends AdminController {
      */
     public function getData()
     {
-        $fayinguizes = Fayinguize::select(array('fayinguizes.id', 'fayinguizes.title', 'fayinguizes.description', 'fayinguizes.yinbiao_id as yinbiao','fayinguizes.created_at'));
+        $fayinguizes = Fayinguize::select(array('fayinguizes.id', 'fayinguizes.title', 'fayinguizes.description', 'fayinguizes.yinbiao_id as yinbiao','fayinguizes.regex', 'fayinguizes.created_at'));
         return Datatables::of($fayinguizes)
         ->edit_column('yinbiao', '<a href="{{URL::to(\'admin/yinbiaos\')}}">{{($yinbiao)?Yinbiao::find($yinbiao)->name:""}}</a>')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/fayinguizes/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
