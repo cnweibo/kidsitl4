@@ -9,6 +9,10 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('givetojs', function(){
+    Give::javascript(['kidsit'=>'give to javascript']);
+    return View::make('hello');
+});
 Route::get('ybcat', function(){
     dd(Yinbiaocategory::first()->yinbiao);
 });

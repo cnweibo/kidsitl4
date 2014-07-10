@@ -107,8 +107,8 @@ function Hilitor(id, tag)
   };
 }
 // main entry fo the matched pronounce pattern letters highlighting
-var myhigh = new Hilitor("relatedwordid_x");
+var myhigh = new Hilitor("guizerelatedwords_1");
 	$(function(){
-		myHilitor = new Hilitor("relatedwordid_x");
+		myHilitor = new Hilitor("guizerelatedwords_1");
 		myHilitor.apply(ppatternregex);
 });
