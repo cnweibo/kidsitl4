@@ -6,10 +6,10 @@ class RelatedwordController extends BaseController {
      * Yinbiao Model
      * @var Yinbiao
      */
-    protected $relatedword;
+    protected $fayinguize;
     /**
      * Inject the models.
-     * @param Yinbiao $relatedword
+     * @param Yinbiao $fayinguize
      */
     public function __construct()
     {
@@ -27,8 +27,8 @@ class RelatedwordController extends BaseController {
 	public function index()
 	{
 		// Get all the blog posts
-		$fayinguizes = Relatedword::all();
-		return View::make('site.relatedword.index',compact('fayinguizes'));
+		$fayinguizes = Fayinguize::all();
+		return View::make('site.fayinguize.index',compact('fayinguizes'));
 	}
 
 	/**
@@ -59,8 +59,8 @@ class RelatedwordController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$relatedword = Relatedword::find($id);
-		return View::make('site.relatedword.show',compact('relatedword'));
+		$fayinguize = Fayinguize::find($id);
+		return View::make('site.fayinguize.show',compact('fayinguize'));
 	}
 
 	/**

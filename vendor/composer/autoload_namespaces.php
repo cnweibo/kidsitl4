@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'Zizaco\\Entrust' => array($vendorDir . '/zizaco/entrust/src'),
     'Zizaco\\Confide' => array($vendorDir . '/zizaco/confide/src'),
     'Woodling' => array($vendorDir . '/summerstreet/woodling/src'),
@@ -26,6 +27,7 @@ return array(
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
+    'Symfony\\Component\\ClassLoader\\' => array($vendorDir . '/symfony/class-loader'),
     'Symfony\\Component\\BrowserKit\\' => array($vendorDir . '/symfony/browser-kit'),
     'Stack' => array($vendorDir . '/stack/builder/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
@@ -34,8 +36,10 @@ return array(
     'PHPParser' => array($vendorDir . '/nikic/php-parser/lib'),
     'Normalizer' => array($vendorDir . '/patchwork/utf8/class'),
     'Net' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
+    'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'Math' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'LaravelBook\\Ardent' => array($vendorDir . '/laravelbook/ardent/src'),
+    'Laracasts\\Utilities' => array($vendorDir . '/laracasts/utilities/src'),
     'Jeremeamia\\SuperClosure' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Illuminate' => array($vendorDir . '/laravel/framework/src'),
     'File' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
@@ -45,4 +49,5 @@ return array(
     'Carbon' => array($vendorDir . '/nesbot/carbon/src'),
     'Boris' => array($vendorDir . '/d11wtq/boris/lib'),
     'Bllim\\Datatables' => array($vendorDir . '/bllim/datatables/src'),
+    'Barryvdh\\LaravelIdeHelper' => array($vendorDir . '/barryvdh/laravel-ide-helper/src'),
 );
