@@ -41,7 +41,7 @@
 						</div>
 						<div class="panel-body">
 							@foreach ($fayinguize->relatedwords as $relatedword)
-								<span style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'yinbiaoatag'])}} </span>			
+								<span style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'yinbiaoatag','id'=>'relatedwordid_x'])}} </span>			
 							@endforeach
 							<p> <a href="http://kidsit.cn/yinbiao/"><i class="font4e rightbottom glyphicon glyphicon-tree-conifer "></i></a></p>
 						</div>
