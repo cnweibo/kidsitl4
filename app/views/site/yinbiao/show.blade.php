@@ -22,9 +22,10 @@
 		<div>
 		<h1 style="display:inline;margin-right:20px">{{link_to_route('yinbiao.show',$yinbiao->name,$yinbiao->id,['class'=>'yinbiaoatag'])}}</h1>
 		<span id="yinbiao_1"><i class="clickable glyphicon glyphicon-volume-up"></i>点击发音</span>
+		<span>所属类别：{{link_to_route('yinbiaocategory.show',$yinbiao->yinbiaocategory->ybcategory,$yinbiao->yinbiaocategory->id,['class'=>'yinbiaocatatag'])}} </span>
 		<audio id="yinbiaoplayer"></audio>
 		</div>
-		<h2>所属类别：{{link_to_route('yinbiaocategory.show',$yinbiao->yinbiaocategory->ybcategory,$yinbiao->yinbiaocategory->id,['class'=>'yinbiaocatatag'])}} </h2>
+		
 		</div>
 		<!-- 发音规则分类 -->
 
@@ -42,9 +43,12 @@
 						</div>
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							@foreach ($fayinguize->relatedwords as $relatedword)
-								<span style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'yinbiaoatag'])}} </span>			
+								<p class="inlineblock wordyinbiaoblock">
+								<span class="elementblock" style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
+								<span class="elementblock" style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 1px;font-size:10px"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </span>
+								</p>
 							@endforeach
-							<p> <a href="http://kidsit.cn/yinbiao/"><i class="font4e rightbottom glyphicon glyphicon-tree-conifer "></i></a></p>
+							<p class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font1e rightbottom glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></p>
 						</div>
 
 				    </div>	

@@ -94,12 +94,15 @@ body{
 .inlineblock{
 	display:inline-block;
 }
-#elementblock{
+.elementblock,#elementblock{
   display:block;
 }
 .aligncenter{
 	margin-left:auto;
 	margin-right:auto;
+}
+#ppatternregex_1{
+  position: relative;
 }
 /*hover for the  table row*/
 .table-hover > tbody > tr:hover >td{
@@ -111,6 +114,15 @@ a.yinbiaoatag{
 }
 a.yinbiaocatatag{
   color:blue;
+}
+a.wordtextatag{
+  color: #0F48D7;
+}
+a.wordyinbiaoatag{
+  color: #3C3838;
+}
+p.wordyinbiaoblock:after{
+  /*content:"";*/
 }
 /*clickable*/
 .clickable{
@@ -127,9 +139,9 @@ a.yinbiaocatatag{
   font-size: 4em;
 }
 .rightbottom{
-  position: relative;
+  position: absolute;
   right:0;
-  bottom:0;
+  bottom:20;
 }
 .relatedsentence{
   background: rgba(200,100,100,.2);
@@ -138,3 +150,6 @@ a.yinbiaocatatag{
   background: rgba(230,30,230,.7);
   color: white;
 };
+.kidsittreeback{
+  background-color: green;
+}
