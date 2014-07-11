@@ -63,7 +63,7 @@ class YinbiaoController extends BaseController {
 	{
 		
 		$yinbiao = Yinbiao::with('yinbiaocategory','fayinguizes','relatedwords')->findOrFail($id);
-		
+		Give::javascript(['ppatternregexcount'=>$yinbiao->fayinguizes->count()]);
 		// $yinbiao = Yinbiao::findOrFail($id);
 		return View::make('site.yinbiao.show',compact('yinbiao'));
 	}

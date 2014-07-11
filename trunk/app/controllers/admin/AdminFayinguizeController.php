@@ -97,7 +97,7 @@ class AdminFayinguizeController extends AdminController {
 			'id'   => 'required',
 		    'title'   => 'required',
 		    'description' => 'required',
-		    'regex' => 'required',
+		    // 'regex' => 'required',
 		    'yinbiao_id' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);

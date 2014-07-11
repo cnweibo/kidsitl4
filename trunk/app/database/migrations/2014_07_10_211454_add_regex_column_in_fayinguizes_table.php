@@ -13,7 +13,7 @@ class AddRegexColumnInFayinguizesTable extends Migration {
 	public function up()
 	{
 		Schema::table('fayinguizes', function(Blueprint $table) {
-			$table->string('regex');
+			$table->string('regex')->nullable();
 		});
 	}
 
