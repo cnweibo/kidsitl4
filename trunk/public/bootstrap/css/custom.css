@@ -140,8 +140,9 @@ p.wordyinbiaoblock:after{
 }
 p.rightbottom{
   position: absolute;
-  right:10px;
-  bottom:-5px;
+  right:50px;
+  bottom:5px;
+  background-color: yellow;
 }
 .relatedsentence{
   background: rgba(200,100,100,.2);
