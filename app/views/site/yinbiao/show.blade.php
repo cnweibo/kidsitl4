@@ -48,7 +48,7 @@
 								<span class="elementblock" style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 1px;font-size:10px"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </span>
 								</p>
 							@endforeach
-							<p class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font1e rightbottom glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></p>
+							<p class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font1e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></p>
 						</div>
 
 				    </div>	
