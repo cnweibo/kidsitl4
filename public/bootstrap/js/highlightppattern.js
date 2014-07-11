@@ -101,14 +101,21 @@ function Hilitor(id, tag)
   this.apply = function(input)
   {
     if(input == undefined || !input) return;
-    this.remove();
+    console.log(this);
+    // this.remove();
     this.setRegex(input);
     this.hiliteWords(targetNode);
   };
 }
 // main entry fo the matched pronounce pattern letters highlighting
-var myhigh = new Hilitor("guizerelatedwords_1");
+
+// var myhigh = new Hilitor("ppatternregex_2");
 	$(function(){
-		myHilitor = new Hilitor("guizerelatedwords_1");
-		myHilitor.apply(ppatternregex);
+    for (var i = ppatternregexcount; i > 0; i--) {
+    // var hilightname = eval("Hilight"+i);
+    // var  =  (new Hilitor("ppatternregex_"+i)).apply(eval('ppatternregex_'+i));
+    (new Hilitor("ppatternregex_"+i)).apply(eval('ppatternregex_'+i));
+  };
+	
+		// myHilitor.apply(ppatternregex_2);//
 });

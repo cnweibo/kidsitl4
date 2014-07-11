@@ -56,17 +56,19 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 		$rules = array(
 		    'wordyinbiao' => 'required',
 		    'wordtext' => 'required',
-		    'mp3' => 'required'
+		    // 'mp3' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
 		if ($validator->passes())
 		{
+			$destfile = 'Not_defined';
 			if (Input::hasFile('mp3')){
 		        $file= Input::file('mp3');
 		        $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
 		        $destabsolutefile = app_path().'/storage/uploaded/yinbiaomp3/';
 		        $file->move($destabsolutefile,$destfile);
+		    }   
 		        // 创建新相关单词
 				$yinbiaorelatedword = new Relatedword;
 				$yinbiaorelatedword->wordtext = Input::get('wordtext');
@@ -77,7 +79,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 				foreach (Input::get('fayinguize_id') as $fayinguize_id) {
 					$yinbiaorelatedword->fayinguize()->attach($fayinguize_id);
 				}
-			}
+			
 			// dd($yinbiaorelatedword);
 		}
 	  

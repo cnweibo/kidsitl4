@@ -37,10 +37,10 @@
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<?php Give::javascript(['guizerelatedwords_'.$layoutloopcount =>$fayinguize->regex,'admin'=>'king of kidist']);?>
+							<?php Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
 						<h3 class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
 						</div>
-						<div class="panel-body" id='guizerelatedwords_{{$layoutloopcount}}'>
+						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<span style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'yinbiaoatag'])}} </span>			
 							@endforeach
@@ -64,5 +64,5 @@
 @stop
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
-	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';var ppatternregex='{{$yinbiao->fayinguizes->first()->regex}}'</script>
+	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';var ppatternregex='{{(is_null($yinbiao->fayinguizes->first())) ? 'Not_assigned_ppattern' : $yinbiao->fayinguizes->first()->regex}}';</script>
 @stop
