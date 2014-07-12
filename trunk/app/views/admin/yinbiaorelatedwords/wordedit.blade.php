@@ -83,7 +83,7 @@
 								<label class="control-label" for="fayinguize_preselected">当前已选规则:</label -->
 								<select multiple size=6 name="fayinguize_preselected[]" id="fayinguize_preselected">
 									@foreach ($relatedword->fayinguize as $fayinguize)
-										<option value={{$fayinguize->id}}>{{$fayinguize->title}}->{{$fayinguize->yinbiao->name}}</option>
+										<option selected value={{$fayinguize->id}}>{{$fayinguize->title}}->{{$fayinguize->yinbiao->name}}</option>
 									@endforeach
 								</select>
 				            </div>
