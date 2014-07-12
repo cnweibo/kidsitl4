@@ -29,7 +29,7 @@ class YinbiaoController extends BaseController {
 		// Get all the yinbiao with eager loading 
 		// instead of N+1 performance issue  
 		// $yinbiaos = Yinbiao::all();
-		$yinbiaos = Yinbiao::with('yinbiaocategory','fayinguizes','relatedwords')->get();
+		$yinbiaos = Yinbiao::with('yinbiaocategory','fayinguizes')->get();
 		return View::make('site.yinbiao.index',compact('yinbiaos'));
 	}
 
@@ -62,7 +62,7 @@ class YinbiaoController extends BaseController {
 	public function show($id)
 	{
 		
-		$yinbiao = Yinbiao::with('yinbiaocategory','fayinguizes','relatedwords')->findOrFail($id);
+		$yinbiao = Yinbiao::with('yinbiaocategory','fayinguizes')->findOrFail($id);
 		Give::javascript(['ppatternregexcount'=>$yinbiao->fayinguizes->count()]);
 		// $yinbiao = Yinbiao::findOrFail($id);
 		return View::make('site.yinbiao.show',compact('yinbiao'));

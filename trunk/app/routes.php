@@ -38,10 +38,11 @@ Route::get('gz',function(){
     dd($relatedwords->fayinguize);
 });
 Route::get('mm', function(){
-    $yinbiaotemp = Yinbiao::first();
-    $yinbiaotemp->relatedwords()->detach(3);
-    dd($yinbiaotemp->relatedwords);
-    dd(($yinbiaotemp->relatedwords()->attach(3)));
+// relation between yinbiao and relative words removed
+    // $yinbiaotemp = Yinbiao::first();
+    // $yinbiaotemp->relatedwords()->detach(3);
+    // dd($yinbiaotemp->relatedwords);
+    // dd(($yinbiaotemp->relatedwords()->attach(3)));
 });
 /** ------------------------------------------
  *  Frontend Routes
