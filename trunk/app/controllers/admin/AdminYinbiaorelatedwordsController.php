@@ -142,6 +142,9 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 				foreach (Input::get('fayinguize_id') as $fayinguize_id) {
 					$relatedword->fayinguize()->attach($fayinguize_id);
 				}
+				foreach (Input::get('fayinguize_preselected') as $fayinguize_preselected){ 
+					$relatedword->fayinguize()->attach($fayinguize_id);
+				}
 		        // Redirect to the new blog post page
 		        return Redirect::to('admin/yinbiaorelatedwords/' . $relatedword->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
 		    }
