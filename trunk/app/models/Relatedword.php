@@ -3,9 +3,10 @@
 class Relatedword extends \Eloquent {
 	protected $guarded = [];
 	public $table = "relatedwords";
-	public function yinbiaos(){
-		return $this->belongsToMany('Yinbiao');
-	}
+	// remove the relation between word and yinbiao
+	// public function yinbiaos(){
+	// 	return $this->belongsToMany('Yinbiao');
+	// }
 	public function fayinguize(){
 		return $this->belongsToMany('Fayinguize');
 	}
