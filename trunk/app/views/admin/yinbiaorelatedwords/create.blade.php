@@ -37,7 +37,7 @@
                         <label class="control-label" for="fayinguize_id">所属规则:</label -->
 						<select multiple size=20 name="fayinguize_id[]" id="fayinguize_id">
 							@foreach (Fayinguize::with('yinbiao')->get() as $fayinguize)
-								<option value={{$fayinguize->id}}>{{$fayinguize->title}}->{{$fayinguize->yinbiao->name}}</option>
+								<option @if($fayinguize->id == Prevguizeoperated::all()->last()->prevguize_id) selected @endif  value={{$fayinguize->id}}>{{$fayinguize->title}}->{{$fayinguize->yinbiao->name}}</option>
 							@endforeach
 							
 						</select>
