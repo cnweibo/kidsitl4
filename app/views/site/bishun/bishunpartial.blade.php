@@ -33,7 +33,7 @@
 						<param name="allowScriptAccess" value="sameDomain" />
 					<!--<![endif]-->
 						<a href="http://www.adobe.com/go/getflash">
-							<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="获得 Adobe Flash Player" />
+							<img src="{{asset('bootstrap/img/get_flash_player.gif')}}" alt="获得 Adobe Flash Player" />
 						</a>
 					<!--[if !IE]>-->
 					</object>
