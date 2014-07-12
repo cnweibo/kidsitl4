@@ -75,9 +75,13 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 				$yinbiaorelatedword->wordyinbiao = Input::get('wordyinbiao');				
 				$yinbiaorelatedword->mp3 = $destfile;
 				$yinbiaorelatedword->save();
+				
 				//save the fayinguize_id in the pivot table
 				foreach (Input::get('fayinguize_id') as $fayinguize_id) {
 					$yinbiaorelatedword->fayinguize()->attach($fayinguize_id);
+					$previousguizeoperated = new Prevguizeoperated;
+					$previousguizeoperated ->prevguize_id = $fayinguize_id;
+					$previousguizeoperated ->save();
 				}
 			
 			// dd($yinbiaorelatedword);
