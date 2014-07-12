@@ -35,8 +35,8 @@
 						      <input type="text" class="form-control" id="guizesearch" name="guizesearch" placeholder="search">
 					    </div>
                         <label class="control-label" for="fayinguize_id">所属规则:</label -->
-						<select multiple size=6 name="fayinguize_id[]" id="fayinguize_id">
-							@foreach (Fayinguize::all() as $fayinguize)
+						<select multiple size=20 name="fayinguize_id[]" id="fayinguize_id">
+							@foreach (Fayinguize::with('yinbiao')->get() as $fayinguize)
 								<option value={{$fayinguize->id}}>{{$fayinguize->title}}->{{$fayinguize->yinbiao->name}}</option>
 							@endforeach
 							
