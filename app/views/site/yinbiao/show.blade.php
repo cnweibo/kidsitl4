@@ -44,8 +44,8 @@
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<p class="inlineblock wordyinbiaoblock">
-								<span class="elementblock" style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
-								<span class="elementblock" style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 1px;font-size:10px"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </span>
+								<span class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
+								<span class="elementblock wordyinbiao"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </span>
 								</p>
 							@endforeach
 							<p class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font1e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></p>

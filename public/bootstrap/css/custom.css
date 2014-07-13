@@ -124,6 +124,9 @@ a.wordyinbiaoatag{
 p.wordyinbiaoblock:after{
   /*content:"";*/
 }
+.wordyinbiaoblock{
+  margin-right: 10px;
+}
 /*clickable*/
 .clickable{
   cursor:pointer;
@@ -153,4 +156,14 @@ p.rightbottom{
 };
 .kidsittreeback{
   background-color: green;
+}
+/*音标show页面style*/
+.wordtext{
+  font-family:Lucida Sans Unicode,Arial Unicode MS;
+  letter-spacing: 2px;
+  font-size:20px;
+}
+.wordyinbiao{
+  font-family:Lucida Sans Unicode,Arial Unicode MS;
+  letter-spacing: 0px;font-size:13px
 }
