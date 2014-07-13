@@ -174,9 +174,11 @@ class AdminFayinguizeController extends AdminController {
      */
     public function getData()
     {
-        $fayinguizes = Fayinguize::select(array('fayinguizes.id', 'fayinguizes.title', 'fayinguizes.description', 'fayinguizes.yinbiao_id as yinbiao','fayinguizes.regex', 'fayinguizes.created_at'));
+        $fayinguizes = Fayinguize::select(array('fayinguizes.id', 'fayinguizes.title', 'fayinguizes.description', 'fayinguizes.yinbiao_id as yinbiao','fayinguizes.regex'));
         return Datatables::of($fayinguizes)
+        ->add_column('relatedwords', '<?php for($i=0;$i<Fayinguize::find($id)->Relatedwords()->count();$i++){echo  \'<a class="adminfayinguizehref" href="http://kidsit.cn/admin/yinbiaorelatedwords">\'.Fayinguize::find($id)->relatedwords[$i]->wordtext.\'</a>\'." ";}?>')
         ->edit_column('yinbiao', '<a href="{{URL::to(\'admin/yinbiaos\')}}">{{($yinbiao)?Yinbiao::find($yinbiao)->name:""}}</a>')
+        
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/fayinguizes/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
                 <a href="{{{ URL::to(\'admin/fayinguizes/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>
             ')
