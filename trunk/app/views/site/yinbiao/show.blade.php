@@ -45,7 +45,7 @@
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<p class="inlineblock wordyinbiaoblock">
 								<span class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
-								<span class="elementblock wordyinbiao"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </span>
+								<em class="elementblock wordyinbiao"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </em>
 								</p>
 							@endforeach
 							<p class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font1e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></p>
