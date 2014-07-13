@@ -2,7 +2,7 @@
 
 {{-- Content --}}
 @section('content')
-	{{ Form::open(['files'=>true])}}
+	{{ Form::open(['files'=>true,'name'=>"relatedwordcreate"])}}
 		<div class="form-group">
 			{{Form::label('wordtext','单词：')}}
             {{Form::text('wordtext',null,['class' =>'form-control'])}}	
