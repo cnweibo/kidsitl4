@@ -56,3 +56,4 @@ $('#wordsearch').bind('keyup',function(e){
 		});
 		
 });
+

@@ -139,8 +139,10 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 				$relatedword->fayinguize()->detach();
 				// die();
 		    	//then save the fayinguize_id in the pivot table
-				foreach (Input::get('fayinguize_id') as $fayinguize_id) {
-					$relatedword->fayinguize()->attach($fayinguize_id);
+		    	if (Input::has('fayinguize_id')){ 
+					foreach (Input::get('fayinguize_id') as $fayinguize_id) {
+						$relatedword->fayinguize()->attach($fayinguize_id);
+					}
 				}
 				if (Input::has('fayinguize_preselected')){ 
 					foreach (Input::get('fayinguize_preselected') as $fayinguize_preselected){ 
