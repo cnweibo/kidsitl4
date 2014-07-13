@@ -77,6 +77,7 @@ function Hilitor(id, tag)
         match.appendChild(document.createTextNode(regs[0]));
         match.style.color = wordColor[regs[0].toLowerCase()];
         match.style.fontStyle = "inherit";
+        match.style.fontWeight = "bolder";
         // match.style.color = "#000";
 
         var after = node.splitText(regs.index);
