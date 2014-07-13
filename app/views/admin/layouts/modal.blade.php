@@ -68,7 +68,7 @@
 
 </head>
 
-<body>
+<body onload="window.relatedwordcreate.wordtext.focus()">
 	<!-- Container -->
 	<div class="container">
 
