@@ -38,7 +38,8 @@ class BlogController extends BaseController {
    	    Clockwork::startEvent('getIndex','home page index action timing');
 		// $posts = $this->post->orderBy('created_at', 'DESC')->paginate(10);
 		   $filename = 'none';
-   	       $bishuns = Bishun::where('id', '>','0')->take(4)->get(); //::all();
+		   $bishuns = Bishun::orderBy('created_at','desc')->take(4)->get();
+   	       // $bishuns = Bishun::where('id', '>','0')->take(4)->get(); //::all();
    // 	       if ($bishun)
 	  //   	{
 	  //   		$filename = "http://kidsit.cn/getBishun/".$bishun->filename;

@@ -25,7 +25,8 @@ class BishunController extends \BaseController {
 	public function getIndex()
 	{
 		//show the bishun page
-		$bishuns = Bishun::where('id', '>','0')->take(8)->get(); 
+    	$bishuns = Bishun::orderBy('created_at','desc')->take(8)->get();
+		// $bishuns = Bishun::where('id', '>','0')->take(8)->get(); 
 		return View::make('site.bishun.bishun', compact('bishuns'));   
 	}
 	/**
