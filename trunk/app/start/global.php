@@ -36,6 +36,9 @@ Event::listen('illuminate.query',function($query){
     // var_dump($query);
     //Log::info("SQL query prepared: $query\r\n");
 });
+Event::listen('responsesent', function($contenttosend){
+    Log::info($contenttosend);
+});
 /*
 |--------------------------------------------------------------------------
 | Application Error Logger
