@@ -370,8 +370,8 @@ class Response
      */
     public function send()
     {
-        $contenttosend = $this->content;
-        \Event::fire('responsesent', array($contenttosend));
+        // $contenttosend = $this->content;
+        // \Event::fire('responsesent', array($contenttosend));
         $this->sendHeaders();
         $this->sendContent();
 
