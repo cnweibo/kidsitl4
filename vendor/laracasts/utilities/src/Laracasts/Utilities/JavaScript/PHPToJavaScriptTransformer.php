@@ -79,7 +79,8 @@ class PHPToJavaScriptTransformer {
      */
     protected function buildNamespaceDeclaration()
     {
-        return "window.{$this->namespace} = window.{$this->namespace} || {};";
+        return ;
+        //return "window.{$this->namespace} = window.{$this->namespace} || {};";
     }
 
     /**

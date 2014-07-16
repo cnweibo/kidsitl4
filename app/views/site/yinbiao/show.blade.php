@@ -38,7 +38,7 @@
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<?php //Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
+							<?php Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
 						<h3 style="display:inline;margin-right:20px" class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
 						<em style="font-weight: bolder">{{$fayinguize->description}}</em>
 						</div>
@@ -69,5 +69,6 @@
 @stop
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
-	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';var ppatternregex='{{(is_null($yinbiao->fayinguizes->first())) ? 'Not_assigned_ppattern' : $yinbiao->fayinguizes->first()->regex}}';</script>
+	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';//var ppatternregex='{{(is_null($yinbiao->fayinguizes->first())) ? 'Not_assigned_ppattern' : $yinbiao->fayinguizes->first()->regex}}';</script>
+    @include('phptojsvariables')
 @stop
