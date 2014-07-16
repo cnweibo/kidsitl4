@@ -38,7 +38,7 @@
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<?php Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
+							<?php //Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
 						<h3 style="display:inline;margin-right:20px" class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
 						<em style="font-weight: bolder">{{$fayinguize->description}}</em>
 						</div>
@@ -49,7 +49,7 @@
 								<em class="elementblock wordyinbiao"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </em>
 								</p>
 							@endforeach
-							<p class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font1e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></p>
+							<div class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font2e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></div>
 						</div>
 
 				    </div>	

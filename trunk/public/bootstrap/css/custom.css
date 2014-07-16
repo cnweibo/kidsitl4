@@ -101,7 +101,7 @@ body{
 	margin-left:auto;
 	margin-right:auto;
 }
-#ppatternregex_1{
+#ppatternregex_*{
   position: relative;
 }
 /*hover for the  table row*/
@@ -141,11 +141,13 @@ p.wordyinbiaoblock:after{
 .font4e{
   font-size: 4em;
 }
-p.rightbottom{
+.font2e{
+  font-size: 2em;
+}
+div.rightbottom{
   position: absolute;
-  right:50px;
-  bottom:5px;
-  background-color: yellow;
+  right:0px;
+  bottom:0px;
 }
 .relatedsentence{
   background: rgba(200,100,100,.2);
@@ -166,4 +168,7 @@ p.rightbottom{
 .wordyinbiao{
   font-family:Lucida Sans Unicode,Arial Unicode MS;
   letter-spacing: 0px;font-size:13px
+}
+.panel-body{
+  position: relative;
 }
