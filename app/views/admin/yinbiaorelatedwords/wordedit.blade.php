@@ -29,7 +29,7 @@
 						{{{ $errors->first('title', '<span class="help-block">:message</span>') }}}
 					</div>
 				</div>
-				<!-- yinbiao text -->
+				<!-- word text -->
 				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
                     <div class="col-md-12">
                         <label class="control-label" for="wordtext">单词拼写：</label>
@@ -38,6 +38,14 @@
 					</div>
 				</div>
 				<!-- word text -->
+				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
+                    <div class="col-md-12">
+                        <label class="control-label" for="yinjieshu">音节个数：</label>
+						<input class="form-control" type="text" name="yinjieshu" id="yinjieshu" value="{{{$relatedword->yinjieshu}}}" />
+						{{{ $errors->first('title', '<span class="help-block">:message</span>') }}}
+					</div>
+				</div>
+				<!-- word yinbiao -->
 				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
                     <div class="col-md-12">
                         <label class="control-label" for="wordyinbiao">单词音标：</label>

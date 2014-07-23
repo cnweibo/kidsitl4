@@ -121,6 +121,9 @@ a.wordtextatag{
 a.wordyinbiaoatag{
   color: #3C3838;
 }
+a.wordyinjieshuatag{
+  color: #blue;
+}
 p.wordyinbiaoblock:after{
   /*content:"";*/
 }

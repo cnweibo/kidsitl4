@@ -74,6 +74,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 				$yinbiaorelatedword->wordtext = Input::get('wordtext');
 				$yinbiaorelatedword->wordyinbiao = Input::get('wordyinbiao');				
 				$yinbiaorelatedword->mp3 = $destfile;
+				$yinbiaorelatedword->yinjieshu = Input::get('yinjieshu');
 				$yinbiaorelatedword->save();
 				
 				//save the fayinguize_id in the pivot table
@@ -133,7 +134,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
 			}
 			// dd($relatedword);
 			// 更改新相关单词
-		    if($relatedword->update(array('wordtext' =>Input::get('wordtext'),'wordyinbiao'=>Input::get('wordyinbiao'),'mp3'=>$destfile,)));
+		    if($relatedword->update(array('wordtext' =>Input::get('wordtext'),'yinjieshu' => Input::get('yinjieshu') ,'wordyinbiao'=>Input::get('wordyinbiao'),'mp3'=>$destfile,)));
 		    {
 		    	//detach all the fayinguize_id in the pivot table first
 				$relatedword->fayinguize()->detach();
@@ -211,7 +212,7 @@ class AdminYinbiaorelatedwordsController extends AdminController {
      */
     public function getData()
     {
-        $yinbiaorelatedwords = Relatedword::select(array('relatedwords.id', 'relatedwords.wordtext', 'relatedwords.wordyinbiao','relatedwords.mp3','relatedwords.created_at'));
+        $yinbiaorelatedwords = Relatedword::select(array('relatedwords.id', 'relatedwords.wordtext', 'relatedwords.yinjieshu','relatedwords.wordyinbiao','relatedwords.mp3','relatedwords.created_at'));
         return Datatables::of($yinbiaorelatedwords)
         ->add_column('fayinguize', '<?php for($i=0;$i<Relatedword::find($id)->fayinguize()->count();$i++){echo  \'<a class="adminfayinguizehref" href="http://kidsit.cn/admin/fayinguizes">\'.Relatedword::find($id)->fayinguize[$i]->title.\'</a>\'."属于".\'<a class="adminyinbiaohref" href="http://kidsit.cn/admin/yinbiaos">\'.Relatedword::find($id)->fayinguize[$i]->yinbiao->name.\'</a>\'." ";}?>')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/yinbiaorelatedwords/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>

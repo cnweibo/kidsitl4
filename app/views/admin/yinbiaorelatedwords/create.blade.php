@@ -7,7 +7,11 @@
 			{{Form::label('wordtext','单词：')}}
             {{Form::text('wordtext',null,['class' =>'form-control'])}}	
 		</div>
-
+		<!-- word text -->
+		<div class="form-group">
+            <label class="control-label" for="yinjieshu">音节个数：</label>
+			<input class="form-control" type="text" name="yinjieshu" id="yinjieshu" />
+		</div>
 		<div class="form-group">
 			{{Form::label('wordyinbiao','单词音标:')}}
 			{{Form::text('wordyinbiao',null,['class' =>'form-control'])}}
