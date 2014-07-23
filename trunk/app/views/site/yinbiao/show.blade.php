@@ -47,6 +47,7 @@
 								<p class="inlineblock wordyinbiaoblock">
 								<span class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
 								<em class="elementblock wordyinbiao"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </em>
+								<small class="elementblock yinbiaoshu"> {{link_to_route('relatedword.show',"音节数:".$relatedword->yinjieshu,$relatedword->id,['class'=>'wordyinjieshuatag'])}} </small>
 								</p>
 							@endforeach
 							<div class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font2e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></div>

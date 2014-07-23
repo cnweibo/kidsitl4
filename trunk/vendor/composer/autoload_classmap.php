@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddRegexColumnInFayinguizesTable' => $baseDir . '/app/database/migrations/2014_07_10_211454_add_regex_column_in_fayinguizes_table.php',
     'AddYinbiaoIdToFayinguizesTable' => $baseDir . '/app/database/migrations/2014_07_05_001936_add_yinbiao_id_to_fayinguizes_table.php',
+    'AddYinjieshuToRelatedwords' => $baseDir . '/app/database/migrations/2014_07_23_233624_add_yinjieshu_to_relatedwords.php',
     'AdminBishunsController' => $baseDir . '/app/controllers/admin/AdminBishunsController.php',
     'AdminBlogsController' => $baseDir . '/app/controllers/admin/AdminBlogsController.php',
     'AdminCommentsController' => $baseDir . '/app/controllers/admin/AdminCommentsController.php',
@@ -1426,6 +1427,7 @@ return array(
     'Predis\\Session\\SessionHandler' => $vendorDir . '/predis/predis/lib/Predis/Session/SessionHandler.php',
     'Predis\\Transaction\\AbortedMultiExecException' => $vendorDir . '/predis/predis/lib/Predis/Transaction/AbortedMultiExecException.php',
     'Predis\\Transaction\\MultiExecContext' => $vendorDir . '/predis/predis/lib/Predis/Transaction/MultiExecContext.php',
+    'Prevguizeoperated' => $baseDir . '/app/models/Prevguizeoperated.php',
     'Psr\\Log\\AbstractLogger' => $vendorDir . '/psr/log/Psr/Log/AbstractLogger.php',
     'Psr\\Log\\InvalidArgumentException' => $vendorDir . '/psr/log/Psr/Log/InvalidArgumentException.php',
     'Psr\\Log\\LogLevel' => $vendorDir . '/psr/log/Psr/Log/LogLevel.php',

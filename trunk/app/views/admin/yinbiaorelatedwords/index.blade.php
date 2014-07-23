@@ -27,8 +27,9 @@
 		<thead>
 			<tr>
 				<th class="col-md-1">ID</th>
-				<th class="col-md-2">相关单词：</th>
-				<th class="col-md-1">相关单词音标</th>
+				<th class="col-md-1">相关词</th>
+				<th class="col-md-1">音节数</th>
+				<th class="col-md-1">单词音标</th>
 				<th class="col-md-1">MP3音频文件</th>
 				<th class="col-md-2">创建于</th>				
 				<th class="col-md-3">所属规则->音标</th>
