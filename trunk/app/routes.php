@@ -48,6 +48,8 @@ Route::get('mm', function(){
  *  Frontend Routes
  *  ------------------------------------------
  */
+// guest added english words
+Route::resource('guestaddedword','GuestaddedwordsController');
 // yinbiao routes
 Route::resource('yinbiao','YinbiaoController');
 // yinbiao category routes

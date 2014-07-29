@@ -14,7 +14,7 @@ function Hilitor(id, tag)
   var matchRegex = "";
   var openLeft = false;
   var openRight = false;
-  console.log('targetNode:',targetNode);
+  // console.log('targetNode:',targetNode);
   this.setMatchType = function(type)
   {
     switch(type)
@@ -42,7 +42,7 @@ function Hilitor(id, tag)
     // if(!this.openLeft) re = "\\b" + re;
     // if(!this.openRight) re = re + "\\b";
     matchRegex = new RegExp(re, "i");
-    console.log('setRegex:matchRex',matchRegex);
+    // console.log('setRegex:matchRex',matchRegex);
   };
 
   this.getRegex = function()
@@ -62,7 +62,7 @@ function Hilitor(id, tag)
 
     if(node.hasChildNodes()) {
       for(var i=0; i < node.childNodes.length; i++){
-        console.log(node.childNodes[i]);
+        // console.log(node.childNodes[i]);
         this.hiliteWords(node.childNodes[i]);}
     }
     if(node.nodeType == 3) { // NODE_TEXT
@@ -102,7 +102,7 @@ function Hilitor(id, tag)
   this.apply = function(input)
   {
     if(input == undefined || !input) return;
-    console.log(this);
+    // console.log(this);
     // this.remove();
     this.setRegex(input);
     this.hiliteWords(targetNode);

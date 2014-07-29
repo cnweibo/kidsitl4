@@ -20,7 +20,6 @@ String.prototype.trim =function()
 {
 	return this.replace(/(^\s*)|(\s*$)/g, "");
 };
-console.log(regexpress);
 $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 	var formdata = $('#bishunsearchform').serialize();
 	var bishunsearchdata = $('#bishunsearchform #inputBishunsearch').val();
@@ -73,3 +72,11 @@ $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 		return;	
 	}
 });
+// angular js guest add word controller
+function guestaddwordController($scope){
+	$scope.wordsadded = [
+		{wordtext: 'hello',createdby: 'zhangsan'},
+		{wordtext: 'go',createdby: 'lisi'},
+	];
+
+}

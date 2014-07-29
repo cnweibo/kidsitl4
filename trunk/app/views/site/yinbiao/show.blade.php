@@ -11,11 +11,7 @@
 	@parent
 @stop
 @section('content')
-	<div class="container">	
-
-
-
-
+	<div class="container" ng-app ng-controller="guestaddwordController">
 		<ul class="list-unstyled">
 		<li>
 		<div style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
@@ -50,6 +46,8 @@
 								<small class="elementblock yinbiaoshu"> {{link_to_route('relatedword.show',"音节数:".$relatedword->yinjieshu,$relatedword->id,['class'=>'wordyinjieshuatag'])}} </small>
 								</p>
 							@endforeach
+
+							@include('site/partials/guestaddword')
 							<div class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font2e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></div>
 						</div>
 
@@ -69,6 +67,7 @@
 	</div>
 @stop
 @section('scripts')
+	<script type="text/javascript" src="{{ asset('bootstrap/js/angular.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
 	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';//var ppatternregex='{{(is_null($yinbiao->fayinguizes->first())) ? 'Not_assigned_ppattern' : $yinbiao->fayinguizes->first()->regex}}';</script>
     @include('phptojsvariables')
