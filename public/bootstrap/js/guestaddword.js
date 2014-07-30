@@ -1,9 +1,11 @@
 // angular js guest add word controller
-function guestaddwordController($scope,$log,$http){
+angular.module('guestaddwordapp', []).controller('guestaddwordController', function($scope,$window,$log,$http){
 	// $scope.wordsadded = [
 	// 	{wordtext: 'hello',createdby: 'zhangsan'},
 	// 	{wordtext: 'go',createdby: 'lisi'},
 	// ];
+	// retrieve the session token
+	$scope.csrf_token = $window.csrf_token;
 	$http.get('/guestaddedword').success(function(guestaddedwords)
 	{
 		$scope.wordsadded = guestaddedwords;
@@ -11,6 +13,7 @@ function guestaddwordController($scope,$log,$http){
 	$scope.addword = function(){
 		var wordadded = {
 			wordtext: $scope.newwordadded,
+			_token: $scope.csrf_token,
 			createdby: 'zhangsan'
 		};
 		$http.post('/guestaddedword',wordadded);
@@ -22,4 +25,4 @@ function guestaddwordController($scope,$log,$http){
 		$scope.newwordadded = '';
 	};
 
-}
+});
