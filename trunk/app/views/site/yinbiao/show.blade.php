@@ -69,6 +69,7 @@
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('bootstrap/js/angular.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bootstrap/js/guestaddword.js') }}"></script>
 	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';//var ppatternregex='{{(is_null($yinbiao->fayinguizes->first())) ? 'Not_assigned_ppattern' : $yinbiao->fayinguizes->first()->regex}}';</script>
     @include('phptojsvariables')
 @stop
