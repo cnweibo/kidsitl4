@@ -64,6 +64,7 @@ class YinbiaoController extends BaseController {
 		
 		$yinbiao = Yinbiao::with('yinbiaocategory','fayinguizes')->findOrFail($id);
 		Give::javascript(['ppatternregexcount'=>$yinbiao->fayinguizes->count()]);
+		Give::javascript(['csrf_token'=> csrf_token()]);
 		// $yinbiao = Yinbiao::findOrFail($id);
 		return View::make('site.yinbiao.show',compact('yinbiao'));
 	}

@@ -11,7 +11,7 @@
 	@parent
 @stop
 @section('content')
-	<div class="container" ng-app ng-controller="guestaddwordController">
+	<div class="container" ng-app="guestaddwordapp" ng-controller="guestaddwordController">
 		<ul class="list-unstyled">
 		<li>
 		<div style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
