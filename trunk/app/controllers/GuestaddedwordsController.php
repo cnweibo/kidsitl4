@@ -31,9 +31,12 @@ class GuestaddedwordsController extends \BaseController {
 	 */
 	public function store()
 	{
+		// dd(Input::all());
 		Guestaddedword::create(
 				array('wordtext'=>Input::get('wordtext'),
-					  'addedby' =>Input::get('createdby'))
+					  'addedby' =>Input::get('createdby'),
+					  'fayinguizeid' => Input::get('fayinguizeid'),
+					  'yinbiaoid' => Input::get('yinbiaoid'))
 			);
 	}
 
