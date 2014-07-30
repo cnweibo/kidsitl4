@@ -11,7 +11,7 @@
 	@parent
 @stop
 @section('content')
-	<div class="container" ng-app="guestaddwordapp" ng-controller="guestaddwordController">
+	<div class="container" ng-app="guestaddwordapp">
 		<ul class="list-unstyled">
 		<li>
 		<div style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
@@ -32,7 +32,7 @@
 			@endif
 		{{--*/$layoutloopcount++;/*--}}
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<div class="panel panel-success">
+					<div class="panel panel-success" ng-controller="guestaddwordController">
 						<div class="panel-heading">
 							<?php Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
 						<h3 style="display:inline;margin-right:20px" class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
@@ -46,8 +46,9 @@
 								<small class="elementblock yinbiaoshu"> {{link_to_route('relatedword.show',"音节数:".$relatedword->yinjieshu,$relatedword->id,['class'=>'wordyinjieshuatag'])}} </small>
 								</p>
 							@endforeach
-
+						<ul class="nopadding" ng-init="fayinguizeid<?php echo $fayinguize->id?>=<?php echo $fayinguize->id ?>">
 							@include('site/partials/guestaddword')
+						</ul>
 							<div class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font2e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></div>
 						</div>
 
