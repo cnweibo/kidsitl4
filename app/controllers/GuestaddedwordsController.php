@@ -9,7 +9,7 @@ class GuestaddedwordsController extends \BaseController {
 	 */
 	public function index()
 	{
-		dd(Guestaddedword::all());
+		return Guestaddedword::all();
 	}
 
 
