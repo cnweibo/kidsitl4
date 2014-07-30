@@ -73,10 +73,22 @@ $('#bishunsearchform #inputBishunsearch').bind('keyup',function(e){
 	}
 });
 // angular js guest add word controller
-function guestaddwordController($scope){
+function guestaddwordController($scope,$log,$http){
 	$scope.wordsadded = [
 		{wordtext: 'hello',createdby: 'zhangsan'},
 		{wordtext: 'go',createdby: 'lisi'},
 	];
+	// $http.get('/guestaddedword').success(function(guestaddedwords))
+	// {
+	// 	$scope.wordsadded = guestaddedwords;
+	// };
+	$scope.addword = function(){
+		$scope.wordsadded.push({
+			wordtext: $scope.newwordadded,
+			createdby:'wangwu'
+		});
+		$log.info($scope.wordsadded);
+		$scope.newwordadded = '';
+	};
 
 }
