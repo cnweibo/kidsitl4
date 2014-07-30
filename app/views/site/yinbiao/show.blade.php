@@ -46,7 +46,7 @@
 								<small class="elementblock yinbiaoshu"> {{link_to_route('relatedword.show',"音节数:".$relatedword->yinjieshu,$relatedword->id,['class'=>'wordyinjieshuatag'])}} </small>
 								</p>
 							@endforeach
-						<ul class="nopadding" ng-init="fayinguizeid<?php echo $fayinguize->id?>=<?php echo $fayinguize->id ?>">
+						<ul class="nopadding" ng-init="wordinfo = {fayinguizeid : <?php echo $fayinguize->id ?>, yinbiaoid : <?php echo $yinbiao->id ?>}">
 							@include('site/partials/guestaddword')
 						</ul>
 							<div class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font2e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></div>
@@ -70,7 +70,9 @@
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('bootstrap/js/angular.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('bootstrap/js/guestaddword.js') }}"></script>
+	@foreach ($yinbiao->fayinguizes as $fayinguize)
+		<script type="text/javascript" src="http://kidsit.cn/getjs?fayinguizeid={{$fayinguize->id}}&yinbiaoid={{$yinbiao->id}}"></script>
+	@endforeach
 	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';//var ppatternregex='{{(is_null($yinbiao->fayinguizes->first())) ? 'Not_assigned_ppattern' : $yinbiao->fayinguizes->first()->regex}}';</script>
     @include('phptojsvariables')
 @stop
