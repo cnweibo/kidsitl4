@@ -1,5 +1,5 @@
 // angular js guest add word controller
-angular.module('guestaddwordapp', []).controller('guestaddwordController', function($scope,$window,$log,$http){
+guestaddwordapplication.controller('guestaddwordController_<?php echo $fayinguizeid ?>', function($scope,$window,$log,$http){
 	// $scope.wordsadded = [
 	// 	{wordtext: 'hello',createdby: 'zhangsan'},
 	// 	{wordtext: 'go',createdby: 'lisi'},

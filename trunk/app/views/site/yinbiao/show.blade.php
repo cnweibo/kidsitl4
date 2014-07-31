@@ -32,7 +32,7 @@
 			@endif
 		{{--*/$layoutloopcount++;/*--}}
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<div class="panel panel-success" ng-controller="guestaddwordController">
+					<div class="panel panel-success" ng-controller="guestaddwordController_<?php echo $fayinguize->id ?>">
 						<div class="panel-heading">
 							<?php Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
 						<h3 style="display:inline;margin-right:20px" class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
@@ -69,6 +69,7 @@
 @stop
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('bootstrap/js/angular.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bootstrap/js/angularinit.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
 	@foreach ($yinbiao->fayinguizes as $fayinguize)
 		<script type="text/javascript" src="http://kidsit.cn/getjs?fayinguizeid={{$fayinguize->id}}&yinbiaoid={{$yinbiao->id}}"></script>
