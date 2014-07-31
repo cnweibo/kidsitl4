@@ -46,6 +46,7 @@
 								<small class="elementblock yinbiaoshu"> {{link_to_route('relatedword.show',"音节数:".$relatedword->yinjieshu,$relatedword->id,['class'=>'wordyinjieshuatag'])}} </small>
 								</p>
 							@endforeach
+							<hr class = "guestaddwordhr">
 						<ul class="nopadding" ng-init="wordinfo = {fayinguizeid : <?php echo $fayinguize->id ?>, yinbiaoid : <?php echo $yinbiao->id ?>}">
 							@include('site/partials/guestaddword')
 						</ul>

@@ -184,3 +184,11 @@ div.rightbottom{
 .guestaddword{
   margin-right: 10px;
 }
+.guestaddwordinput{
+  line-height: 0.6em;
+  width:70px;
+}
+.guestaddwordhr{
+  margin: 5px auto;
+  border-top: 1px solid rgba(59, 9, 92, 0.22);
+}

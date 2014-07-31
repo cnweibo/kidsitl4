@@ -1,8 +1,7 @@
 								
-								    <li class="inlineblock guestaddword" ng-repeat="wordadded in wordsadded">{{wordadded.wordtext}}</li>
-									<form class="form-inline" ng-submit="addword()">
-									    <input type="text" name="wordadded" id="inputWordadded" class="form-control" ng-model="newwordadded">
-										<p>发音规则id:{{wordinfo.fayinguizeid}} 音标id: {{wordinfo.yinbiaoid}}</p>
-										<button type="submit" class="btn btn-info">我来加词</button>
+								    <li class="inlineblock guestaddword" ng-repeat="wordadded in wordsadded"><span class="label label-default label-sm">{{wordadded.wordtext}}</span></li>
+									<form style="display:inline" class="form-inline" ng-submit="addword()">
+									    <input type="text" name="wordadded" id="inputWordadded" class="guestaddwordinput" ng-model="newwordadded">
+										<button type="submit" class="btn btn-info btn-xs">我来加词</button>
 									</form>					
 							
