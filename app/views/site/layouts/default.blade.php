@@ -44,6 +44,7 @@
 			<div class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-top-background">
 				<div class="container">
 	                <div class="navbar-header">
+	                	<span>IT宝贝网</span>
 	                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 	                        <span class="sr-only">切换</span>
 	                        <span class="icon-bar"></span>
