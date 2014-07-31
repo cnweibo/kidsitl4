@@ -183,6 +183,7 @@ div.rightbottom{
 /*guest add word css*/
 .guestaddword{
   margin-right: 10px;
+  margin-bottom: 8px;
 }
 .guestaddwordinput{
   line-height: 0.6em;
