@@ -9,7 +9,7 @@ class GuestaddedwordsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Guestaddedword::all();
+		return Guestaddedword::wherefayinguizeid(Input::get('fayinguizeid'))->get();
 	}
 
 

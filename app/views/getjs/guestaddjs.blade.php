@@ -6,7 +6,7 @@ guestaddwordapplication.controller('guestaddwordController_<?php echo $fayinguiz
 	// ];
 	// retrieve the session token
 	$scope.csrf_token = $window.csrf_token;
-	$http.get('/guestaddedword').success(function(guestaddedwords)
+	$http.get('/guestaddedword?fayinguizeid=<?php echo $fayinguizeid ?>&yinbiaoid=<?php echo $yinbiaoid ?>').success(function(guestaddedwords)
 	{
 		$scope.wordsadded = guestaddedwords;
 	});
