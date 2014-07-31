@@ -1,0 +1,1 @@
+var guestaddwordapplication = angular.module('guestaddwordapp', []);
