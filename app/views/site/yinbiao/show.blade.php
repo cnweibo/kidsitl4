@@ -14,12 +14,13 @@
 	<div class="container" ng-app="guestaddwordapp">
 		<ul class="list-unstyled">
 		<li>
-		<div style="font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
+		<div class="yinbiaoshowheader row" style="margin-bottom:10px;margin-left:13px;font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
 		<div>
 		<h1 style="display:inline;margin-right:20px">{{link_to_route('yinbiao.show',$yinbiao->name,$yinbiao->id,['class'=>'yinbiaoatag'])}}</h1>
 		<span id="yinbiao_1"><i class="clickable glyphicon glyphicon-volume-up"></i>点击发音</span>
 		<span>所属类别：{{link_to_route('yinbiaocategory.show',$yinbiao->yinbiaocategory->ybcategory,$yinbiao->yinbiaocategory->id,['class'=>'yinbiaocatatag'])}} </span>
 		<audio id="yinbiaoplayer"></audio>
+		<a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a>
 		</div>
 		
 		</div>
@@ -47,7 +48,7 @@
 								</p>
 							@endforeach
 							<hr class = "guestaddwordhr">
-						<ul class="nopadding" ng-init="wordinfo = {fayinguizeid : <?php echo $fayinguize->id ?>, yinbiaoid : <?php echo $yinbiao->id ?>}">
+						<ul class="nopadding guestaddwordul" ng-init="wordinfo = {fayinguizeid : <?php echo $fayinguize->id ?>, yinbiaoid : <?php echo $yinbiao->id ?>}">
 							@include('site/partials/guestaddword')
 						</ul>
 							<div class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font2e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></div>
