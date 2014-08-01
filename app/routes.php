@@ -306,8 +306,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('guestaddedwords/data', 'AdminGuestaddedwordsController@getData'); 
     Route::get('guestaddedwords/create', 'AdminGuestaddedwordsController@getCreate');     
     // Route::get('guestaddedwords/{fayinguize}/show', 'AdminGuestaddedwordsController@getShow');
-    Route::get('guestaddedwords/{fayinguize}/edit', 'AdminGuestaddedwordsController@getEdit');
-    Route::post('guestaddedwords/{fayinguize}/edit', 'AdminGuestaddedwordsController@postEdit');
+    Route::get('guestaddedwords/{fayinguize}/disable', 'AdminGuestaddedwordsController@getDisable');
+    Route::get('guestaddedwords/{fayinguize}/enable', 'AdminGuestaddedwordsController@getEnable');
     Route::get('guestaddedwords/{fayinguize}/delete', 'AdminGuestaddedwordsController@getDelete');
     Route::post('guestaddedwords/{fayinguize}/delete', array('as'=>'guestaddedwordsdelete', 'uses' => 'AdminGuestaddedwordsController@postDelete'));
     Route::controller('guestaddedwords', 'AdminGuestaddedwordsController');
