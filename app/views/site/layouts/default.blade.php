@@ -122,7 +122,7 @@
 
 		<!-- Javascripts
 		================================================== -->
-        <script src="{{asset('bootstrap/js/jquery.min.js,bootstrap.min.js,custom.js')}}"></script>        
+        <script src="{{asset('bootstrap/js/jquery.min.js,bootstrap.min.js')}}"></script>        
         <!-- <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script> -->
         <!-- <script src="{{asset('bootstrap/js/custom.js')}}"></script> -->
 
