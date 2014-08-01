@@ -20,10 +20,13 @@
 	<table id="guestaddedwords" class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th class="col-md-2">ID:</th>
-				<th class="col-md-2">单词：</th>
-				<th class="col-md-2">批准状态：</th>
-				<th class="col-md-2">创建于：</th>
+				<th class="col-md-1">ID:</th>
+				<th class="col-md-1">待审单词</th>
+				<th class="col-md-1">所属音标</th>	
+				<th class="col-md-1">所属规则</th>	
+				<th class="col-md-1">创建于：</th>			
+				<th class="col-md-1">批准状态：</th>
+				<th class="col-md-2">参考例词</th>
 				<th class="col-md-2">操作：</th>
 			</tr>
 		</thead>
