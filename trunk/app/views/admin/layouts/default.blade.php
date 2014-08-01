@@ -136,7 +136,6 @@
 		<!-- Notifications -->
 		@include('notifications')
 		<!-- ./ notifications -->
-
 		<!-- Content -->
 		@yield('content')
 		<!-- ./ content -->

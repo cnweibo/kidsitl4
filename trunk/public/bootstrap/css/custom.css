@@ -193,3 +193,7 @@ div.rightbottom{
   margin: 5px auto;
   border-top: 1px solid rgba(59, 9, 92, 0.22);
 }
+.adminprocessitem{
+  display:inline-block;
+  margin-bottom: 10px;
+}
