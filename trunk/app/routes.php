@@ -301,6 +301,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('fayinguizes/{fayinguize}/delete', array('as'=>'postfayinguizedelete', 'uses' => 'AdminFayinguizeController@postDelete'));
     Route::controller('fayinguizes', 'AdminFayinguizeController');
 
+    # Guest added words Management
+    Route::get('guestaddedwords', 'AdminGuestaddedwordsController@getIndex');
+    Route::get('guestaddedwords/data', 'AdminGuestaddedwordsController@getData'); 
+    Route::get('guestaddedwords/create', 'AdminGuestaddedwordsController@getCreate');     
+    // Route::get('guestaddedwords/{fayinguize}/show', 'AdminGuestaddedwordsController@getShow');
+    Route::get('guestaddedwords/{fayinguize}/edit', 'AdminGuestaddedwordsController@getEdit');
+    Route::post('guestaddedwords/{fayinguize}/edit', 'AdminGuestaddedwordsController@postEdit');
+    Route::get('guestaddedwords/{fayinguize}/delete', 'AdminGuestaddedwordsController@getDelete');
+    Route::post('guestaddedwords/{fayinguize}/delete', array('as'=>'guestaddedwordsdelete', 'uses' => 'AdminGuestaddedwordsController@postDelete'));
+    Route::controller('guestaddedwords', 'AdminGuestaddedwordsController');
+
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
 });

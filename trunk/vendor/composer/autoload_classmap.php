@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddApprovedToGuestaddedwordsTable' => $baseDir . '/app/database/migrations/2014_08_01_132953_add_approved_to_guestaddedwords_table.php',
     'AddRegexColumnInFayinguizesTable' => $baseDir . '/app/database/migrations/2014_07_10_211454_add_regex_column_in_fayinguizes_table.php',
     'AddYinbiaoIdToFayinguizesTable' => $baseDir . '/app/database/migrations/2014_07_05_001936_add_yinbiao_id_to_fayinguizes_table.php',
     'AddYinjieshuToRelatedwords' => $baseDir . '/app/database/migrations/2014_07_23_233624_add_yinjieshu_to_relatedwords.php',
@@ -15,6 +16,7 @@ return array(
     'AdminController' => $baseDir . '/app/controllers/AdminController.php',
     'AdminDashboardController' => $baseDir . '/app/controllers/admin/AdminDashboardController.php',
     'AdminFayinguizeController' => $baseDir . '/app/controllers/admin/AdminFayinguizeController.php',
+    'AdminGuestaddedwordsController' => $baseDir . '/app/controllers/admin/AdminGuestaddedwordsController.php',
     'AdminRelatedsentenceController' => $baseDir . '/app/controllers/admin/AdminRelatedsentenceController.php',
     'AdminRolesController' => $baseDir . '/app/controllers/admin/AdminRolesController.php',
     'AdminUsersController' => $baseDir . '/app/controllers/admin/AdminUsersController.php',
@@ -61,6 +63,7 @@ return array(
     'Guestaddedword' => $baseDir . '/app/models/Guestaddedword.php',
     'GuestaddedwordsController' => $baseDir . '/app/controllers/GuestaddedwordsController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'JSController' => $baseDir . '/app/controllers/JSController.php',
     'Mp3Controller' => $baseDir . '/app/controllers/Mp3Controller.php',
     'NullableMp3InRelatedsentenceTable' => $baseDir . '/app/database/migrations/2014_07_06_225250_nullable_mp3_in_relatedsentence_table.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
