@@ -133,9 +133,6 @@
 		</div>
 		<!-- ./ navbar -->
 
-		<!-- Notifications -->
-		@include('notifications')
-		<!-- ./ notifications -->
 		<!-- Content -->
 		@yield('content')
 		<!-- ./ content -->

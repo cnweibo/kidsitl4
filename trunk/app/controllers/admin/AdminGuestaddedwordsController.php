@@ -133,10 +133,48 @@ class AdminGuestaddedwordsController extends AdminController {
 	public function getEnable($guestaddedword)
 	{
 		Guestaddedword::find($guestaddedword)->update(array('approved' =>1));
-        return Redirect::to('admin/guestaddedwords');
+	    return Redirect::to('admin/guestaddedwords');
 
 	}
+	/**
+	 * accept to fayinguize and yinbiao relationship .
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function getAccept($guestaddedword)
+	{
+		// 创建新相关单词
+		$yinbiaorelatedword = new Relatedword;
+		if (Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()){
+			// dd(Relatedword::where('wordtext',Guestaddedword::find($guestaddedword)->wordtext));
+			// dd(Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()->fayinguize->first());
+			$arrayvar = Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()->fayinguize->all();
+			$arraycount = count(Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()->fayinguize->all());
+			for ($i=0;$i<$arraycount;$i++) {
+				if (Guestaddedword::find($guestaddedword)->fayinguizeid == $arrayvar[$i]->id)
+					return Redirect::to('admin/guestaddedwords')->with('error', Guestaddedword::find($guestaddedword)->wordtext."重复单词，请删除待审单词！");
 
+			}
+			// 已经存在相关单词，但是在该发音规则上还没有本单词，则update
+			Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()->fayinguize()->attach(Guestaddedword::find($guestaddedword)->fayinguizeid);
+			Guestaddedword::find($guestaddedword)->delete();	
+			return Redirect::to('admin/guestaddedwords');
+		}
+		// 不存在相关单词，则新创
+		$yinbiaorelatedword->wordtext = Guestaddedword::find($guestaddedword)->wordtext;
+		$yinbiaorelatedword->wordyinbiao = "待添加";				
+		$yinbiaorelatedword->mp3 = "待修改";
+		$yinbiaorelatedword->yinjieshu = "待修改";
+		$yinbiaorelatedword->save();
+		//save the fayinguize_id in the pivot table
+		$yinbiaorelatedword->fayinguize()->attach(Guestaddedword::find($guestaddedword)->fayinguizeid);
+		$acceptedword = Guestaddedword::find($guestaddedword)->wordtext;
+		$accepttofayinguize = Fayinguize::find(Guestaddedword::find($guestaddedword)->fayinguizeid)->title;
+		Guestaddedword::find($guestaddedword)->delete();	
+	    return Redirect::to('admin/guestaddedwords')->with('success', $acceptedword."单词已经被接收到发音规则：".$accepttofayinguize);
+
+	}
 	/**
 	 * enable .
 	 *
@@ -164,10 +202,10 @@ class AdminGuestaddedwordsController extends AdminController {
         ->edit_column('fayinguizeid', '<a href="{{URL::to(\'admin/fayinguizes\')}}">{{($fayinguizeid)?Fayinguize::find($fayinguizeid)->title:""}}</a>')
         // ->edit_column('hanzi', '{{ DB::table(\'hanzi\')->where(\'hanzi\', \'=\', $hanzi)->count() }}')
 
-        ->add_column('actions', '<a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/disable\' ) }}}" class="btn btn-default btn-xs" >Disaprove</a>
+        ->add_column('actions', '<a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/disable\' ) }}}" class="btn btn-default btn-xs" >拒绝</a>
         	<a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/enable\' ) }}}" class="btn btn-default btn-xs" >Approve</a>
                 <a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
-            ')
+            <a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/accept\' ) }}}" class="btn btn-xs btn-primary">接收</a>')
         
         ->make();
     }
