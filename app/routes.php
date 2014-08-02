@@ -309,6 +309,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('guestaddedwords/{fayinguize}/disable', 'AdminGuestaddedwordsController@getDisable');
     Route::get('guestaddedwords/{fayinguize}/enable', 'AdminGuestaddedwordsController@getEnable');
     Route::get('guestaddedwords/{fayinguize}/delete', 'AdminGuestaddedwordsController@getDelete');
+    Route::get('guestaddedwords/{fayinguize}/accept', 'AdminGuestaddedwordsController@getAccept');
     Route::post('guestaddedwords/{fayinguize}/delete', array('as'=>'guestaddedwordsdelete', 'uses' => 'AdminGuestaddedwordsController@postDelete'));
     Route::controller('guestaddedwords', 'AdminGuestaddedwordsController');
 
