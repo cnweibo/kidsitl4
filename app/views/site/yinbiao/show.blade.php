@@ -10,6 +10,9 @@
 	{{$yinbiao->name}}的国际音标，英语国际音标是自然拼读法的基础，本系列教程以音标，音标相关单词，单词拼音的相关规则，单词相应的句子为学习的引导线，组织严谨科学，配音由外国语小学满分学生朗读
 	@parent
 @stop
+@section('css')
+	<link rel="stylesheet" href={{ asset('bootstrap/css/printyinbiaoshow.css')}}>
+@stop
 @section('content')
 	<div class="container" ng-app="guestaddwordapp">
 		<ul class="list-unstyled">
