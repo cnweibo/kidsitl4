@@ -31,6 +31,7 @@
 	</table>
 @stop
 
+
 {{-- Scripts --}}
 @section('scripts')
 	<script type="text/javascript">
@@ -43,8 +44,6 @@
 					"sLengthMenu": "_MENU_ records per page"
 				},
 				"iDisplayLength": 20,
-				"iSortCol_0": 5,
-				"sSortDir_0":"desc",
 				"bProcessing": true,
 		        "bServerSide": true,
 		        "sAjaxSource": "{{ URL::to('admin/guestaddedwords/data') }}",
@@ -52,6 +51,7 @@
 	           		$(".iframe").colorbox({iframe:true, width:"99%", height:"98%"});
 	     		}
 			});
+			oTable.fnSort( [ [5,'desc'], [2,'asc'] ] );
 		});
 	</script>
 @stop
