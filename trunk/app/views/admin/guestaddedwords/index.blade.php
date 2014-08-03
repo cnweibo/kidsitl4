@@ -42,7 +42,9 @@
 				"oLanguage": {
 					"sLengthMenu": "_MENU_ records per page"
 				},
-				"iDisplayLength": 50,
+				"iDisplayLength": 20,
+				"iSortCol_0": 5,
+				"sSortDir_0":"desc",
 				"bProcessing": true,
 		        "bServerSide": true,
 		        "sAjaxSource": "{{ URL::to('admin/guestaddedwords/data') }}",
