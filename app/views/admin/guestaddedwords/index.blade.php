@@ -42,6 +42,7 @@
 				"oLanguage": {
 					"sLengthMenu": "_MENU_ records per page"
 				},
+				"iDisplayLength": 50,
 				"bProcessing": true,
 		        "bServerSide": true,
 		        "sAjaxSource": "{{ URL::to('admin/guestaddedwords/data') }}",
