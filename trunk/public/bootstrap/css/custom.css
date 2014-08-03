@@ -197,19 +197,8 @@ div.rightbottom{
   display:inline-block;
   margin-bottom: 10px;
 }
-@media print {
 
-  .yinbiaoshowheader::before{
-    content: IT宝贝网：中国青少年信息化教育先锋，计算机从娃娃抓起践行者 !important;
-  }
-  .kidsittreeback,.guestaddwordul,#footer{
-    display: none;
-  }
-  a[href]::after {
-    content: none;
-  }
-  a {
-    text-decoration: none;
-    color: inherit !important;
-  }
+div.exerciserow{
+
+  font-size: 160%;
 }

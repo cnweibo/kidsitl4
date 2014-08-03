@@ -1,0 +1,34 @@
+@media print {
+div.exerciserow{
+	width: 100%;
+	float: left;
+}
+div.container{
+	width: 100%;
+}
+  h1{
+  	font-size: 200%;
+  }
+  .navbar {
+  	display: none;
+  }
+  .yinbiaoshowheader::before{
+    content: IT宝贝网：中国青少年信息化教育先锋，计算机从娃娃抓起践行者 !important;
+  }
+  .kidsittreeback,.guestaddwordul,#footer{
+    display: none;
+  }
+  a[href]::after {
+    content: none;
+  }
+  a {
+    text-decoration: none;
+    color: inherit !important;
+  }
+  body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background: none;
+   }
+}
