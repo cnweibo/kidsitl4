@@ -199,7 +199,7 @@ class AdminGuestaddedwordsController extends AdminController {
         return Datatables::of($guestaddedwords)
         ->add_column('relatedwords', '<?php for($i=0;$i<((Fayinguize::find($fayinguizeid))? Fayinguize::find($fayinguizeid)->Relatedwords()->count(): 0);$i++){echo  \'<a class="adminfayinguizehref" href="http://kidsit.cn/admin/yinbiaorelatedwords">\'.Fayinguize::find($fayinguizeid)->relatedwords[$i]->wordtext.\'</a>\'." ";}?>')
         ->edit_column('yinbiaoid', '<a href="{{URL::to(\'admin/yinbiaos\')}}">{{($yinbiaoid)?Yinbiao::find($yinbiaoid)->name:""}}</a>')
-        ->edit_column('fayinguizeid', '<a href="{{URL::to(\'admin/fayinguizes\')}}">{{($fayinguizeid)?(Fayinguize::find($fayinguizeid)? Fayinguize::find($fayinguizeid)->title):"Not found"}}</a>')
+        ->edit_column('fayinguizeid', '<a href="{{URL::to(\'admin/fayinguizes\')}}">{{($fayinguizeid)?(Fayinguize::find($fayinguizeid)? Fayinguize::find($fayinguizeid)->title : "GUIZENotFound"):""}}</a>')
         // ->edit_column('hanzi', '{{ DB::table(\'hanzi\')->where(\'hanzi\', \'=\', $hanzi)->count() }}')
 
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/disable\' ) }}}" class="btn btn-default btn-xs" >拒绝</a>
