@@ -170,8 +170,6 @@ class Mathsum4Controller extends \BaseController {
 		$exercises = [];
 		$exam = [];
 		$exercises = Mathsum4::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
-
-		var_dump($exercises);
 		//保存卷子题目字典信息到试卷数据库mathexams
 		for ($i=0;$i<$quantity;$i++){
 			array_push($exam,$exercises[$i]['id']);
