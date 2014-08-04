@@ -10,7 +10,8 @@
 |
 */
 Route::group(array('prefix' => 'math'), function(){
-    Route::get('sum4/{difficulty?}', 'Mathsum4Controller@exercise4' );
+    Route::get('sum4', 'Mathsum4Controller@exercise4' );
+    Route::get('exams/{examid}', 'MathexamsController@show' );    
     Route::get('mathsum4populate', 'Mathsum4Controller@index4');
     Route::get('mathsum31populate', 'Mathsum4Controller@index31');
     Route::get('mathsum32populate', 'Mathsum4Controller@index32');

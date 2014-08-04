@@ -2,9 +2,8 @@
 
 class AdminGuestaddedwordsController extends AdminController {
 
-	 
     /**
-     * 
+     * Construct
      */
     public function __construct()
     {
@@ -20,7 +19,7 @@ class AdminGuestaddedwordsController extends AdminController {
 	{
 		//list the guestaddedwords available
 		// Title
-		$title = "访客所创相关单词管理";
+		$title = "访客新创单词管理";
 		// Show the page
 		return View::make('admin/guestaddedwords/index', compact('title'));
 	}
@@ -33,10 +32,9 @@ class AdminGuestaddedwordsController extends AdminController {
 	public function getCreate()
 	{
         // Title
-        $title = "新建音标类别";
-        $guestaddedwords = Guestaddedword::all();
+        $title = "新建发音规则";
         // Show the page
-        return View::make('admin/yinbiaocategory/create', compact('guestaddedwords','title'));
+        return View::make('admin/guestaddedwords/create',compact('title'));
 	}
 	/**
 	 * process the form for creating a new resource.
@@ -48,23 +46,24 @@ class AdminGuestaddedwordsController extends AdminController {
  
 		// Declare the rules for the form validation
 		$rules = array(
-		    'yinbiaocat'   => 'required',
-		    'description' => 'required'
+		    'title'   => 'required',
+		    'description' => 'required',
+		    'yinbiao_id' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
 		if ($validator->passes())
 		{
-			$yinbiaocat = new Guestaddedword;
-			$yinbiaocat->ybcategory = Input::get('yinbiaocat');
-			$yinbiaocat->description = Input::get('description');
-			$yinbiaocat->save();
+			$title = new Guestaddedword;
+			$title->title = Input::get('title');
+			$title->description = Input::get('description');
+			$title->yinbiao_id = Input::get('yinbiao_id');
+			$title->save();
 		}
 	  
-	        $title = "新建音标类别";
-	        $guestaddedwords = Guestaddedword::all();
-	        // Show the page
-	        return View::make('admin/yinbiaocategory/create', compact('guestaddedwords','title'))->with('success', Lang::get('admin/blogs/messages.create.success'));       
+	        $title = "新建发音规则";
+	        // redirect with success
+	        return Redirect::to('admin/guestaddedwords/create')->with('success', Lang::get('admin/blogs/messages.create.success'));       
 	}
 	/**
 	 * show a form to edit resource in storage.
@@ -74,10 +73,10 @@ class AdminGuestaddedwordsController extends AdminController {
 	public function getEdit($id)
 	{
 		// Title
-        $title = "更改音标类别：";
-        $yinbiaocatModel = Guestaddedword::find($id);
+        $title = "更改发音规则：";
+        $fayinguizeModel = Guestaddedword::find($id);
         // Show the page
-        return View::make('admin/yinbiaocategory/yinbiaocatedit', compact('yinbiaocatModel', 'title'));
+        return View::make('admin/guestaddedwords/fayinguizeedit', compact('fayinguizeModel', 'title'));
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -89,27 +88,29 @@ class AdminGuestaddedwordsController extends AdminController {
 		// Declare the rules for the form validation
 		$rules = array(
 			'id'   => 'required',
-		    'yinbiaodescription'   => 'required',
-		    'yinbiaocat' => 'required'
+		    'title'   => 'required',
+		    'description' => 'required',
+		    // 'regex' => 'required',
+		    'yinbiao_id' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		// Check if the form validates with success
 		if ($validator->passes())
 		{
-			$yinbiaocattemp = Guestaddedword::findOrFail(Input::get('id'));
-			// dd($yinbiaocattemp);
-		    if($yinbiaocattemp->update(array('ybcategory' =>Input::get('yinbiaocat'),'description'=>Input::get('yinbiaodescription'))));
+			$fayinguizetemp = Guestaddedword::findOrFail(Input::get('id'));
+			// dd($fayinguizetemp);
+		    if($fayinguizetemp->update(array('title' =>Input::get('title'),'description'=>Input::get('description'),'yinbiao_id'=>Input::get('yinbiao_id'),'regex'=>Input::get('regex'))));
 		    {
 		        // Redirect to the new blog post page
-		        return Redirect::to('admin/yinbiaocategory/' . $yinbiaocattemp->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
+		        return Redirect::to('admin/guestaddedwords/' . $fayinguizetemp->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
 		    }
 
 		    // Redirect to the blogs post management page
-		    return Redirect::to('admin/yinbiaocategory/' . $yinbiaocattemp->id . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'));
+		    return Redirect::to('admin/guestaddedwords/' . $fayinguizetemp->id . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'));
 		}
 
 		// Form validation failed
-		return Redirect::to('admin/yinbiaocategory/' . $yinbiaocattemp->id . '/edit')->withInput()->withErrors($validator);
+		return Redirect::to('admin/guestaddedwords/' . $fayinguizetemp->id . '/edit')->withInput()->withErrors($validator);
 	}
 
 	/**
@@ -118,75 +119,46 @@ class AdminGuestaddedwordsController extends AdminController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getDelete($guestaddedword)
+	public function getDelete($fayinguize)
 	{
-		Guestaddedword::find($guestaddedword)->delete();
-        return Redirect::to('admin/guestaddedwords');
+		// Title
+        $title = "删除发音规则：";
+        // Show the page
+        return View::make('admin/guestaddedwords/delete', compact('fayinguize', 'title'));
 
 	}
+
 	/**
-	 * enable .
+	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param $post
 	 * @return Response
 	 */
-	public function getEnable($guestaddedword)
+	public function postDelete($id)
 	{
-		Guestaddedword::find($guestaddedword)->update(array('approved' =>1));
-	    return Redirect::to('admin/guestaddedwords');
-
-	}
-	/**
-	 * accept to fayinguize and yinbiao relationship .
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function getAccept($guestaddedword)
-	{
-		// 创建新相关单词
-		$yinbiaorelatedword = new Relatedword;
-		if (Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()){
-			// dd(Relatedword::where('wordtext',Guestaddedword::find($guestaddedword)->wordtext));
-			// dd(Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()->fayinguize->first());
-			$arrayvar = Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()->fayinguize->all();
-			$arraycount = count(Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()->fayinguize->all());
-			for ($i=0;$i<$arraycount;$i++) {
-				if (Guestaddedword::find($guestaddedword)->fayinguizeid == $arrayvar[$i]->id)
-					return Redirect::to('admin/guestaddedwords')->with('error', Guestaddedword::find($guestaddedword)->wordtext."重复单词，请删除待审单词！");
-
-			}
-			// 已经存在相关单词，但是在该发音规则上还没有本单词，则update
-			Relatedword::where('wordtext','=',Guestaddedword::find($guestaddedword)->wordtext)->first()->fayinguize()->attach(Guestaddedword::find($guestaddedword)->fayinguizeid);
-			Guestaddedword::find($guestaddedword)->delete();	
-			return Redirect::to('admin/guestaddedwords');
-		}
-		// 不存在相关单词，则新创
-		$yinbiaorelatedword->wordtext = Guestaddedword::find($guestaddedword)->wordtext;
-		$yinbiaorelatedword->wordyinbiao = "待添加";				
-		$yinbiaorelatedword->mp3 = "待修改";
-		$yinbiaorelatedword->yinjieshu = "待修改";
-		$yinbiaorelatedword->save();
-		//save the fayinguize_id in the pivot table
-		$yinbiaorelatedword->fayinguize()->attach(Guestaddedword::find($guestaddedword)->fayinguizeid);
-		$acceptedword = Guestaddedword::find($guestaddedword)->wordtext;
-		$accepttofayinguize = Fayinguize::find(Guestaddedword::find($guestaddedword)->fayinguizeid)->title;
-		Guestaddedword::find($guestaddedword)->delete();	
-	    return Redirect::to('admin/guestaddedwords')->with('success', $acceptedword."单词已经被接收到发音规则：".$accepttofayinguize);
-
-	}
-	/**
-	 * enable .
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function getDisable($guestaddedword)
-	{
-		Guestaddedword::find($guestaddedword)->update(array('approved' =>0));
-        return Redirect::to('admin/guestaddedwords');
-
-	}
+	    // Declare the rules for the form validation
+	    $rules = array(
+	        // 'id' => 'required|integer'
+	    );
+	    // Validate the inputs
+	    $validator = Validator::make(Input::all(), $rules);
+	    // Check if the form validates with success
+	    if ($validator->passes())
+	    {
+	    	$yinbiaocattodelete = Guestaddedword::find($id);
+	    	// dd($yinbiaocattodelete);
+	    	$yinbiaocattodelete->delete();
+	        // Was the id deleted?
+	        $yinbiaofound = Guestaddedword::find($id);
+	        if(empty($yinbiaofound))
+	        {
+	            // Redirect to the yinbiao management page
+	            return Redirect::to('admin/guestaddedwords')->with('success', "音标类别删除成功！");
+	        }
+	    }
+	    // There was a problem deleting the yinbiao
+	    return Redirect::to('admin/guestaddedwords')->with('error', "音标类别删除错误，请重试");
+	}	
 
 	/**
      * Show a list of all the yinbiao category formatted for Datatables.
@@ -195,17 +167,11 @@ class AdminGuestaddedwordsController extends AdminController {
      */
     public function getData()
     {
-        $guestaddedwords = Guestaddedword::select(array('guestaddedwords.id', 'guestaddedwords.wordtext','guestaddedwords.yinbiaoid as yinbiaoid','guestaddedwords.fayinguizeid as fayinguizeid', 'guestaddedwords.created_at','guestaddedwords.approved'));
-        return Datatables::of($guestaddedwords)
-        ->add_column('relatedwords', '<?php for($i=0;$i<Fayinguize::find($fayinguizeid)->Relatedwords()->count();$i++){echo  \'<a class="adminfayinguizehref" href="http://kidsit.cn/admin/yinbiaorelatedwords">\'.Fayinguize::find($fayinguizeid)->relatedwords[$i]->wordtext.\'</a>\'." ";}?>')
-        ->edit_column('yinbiaoid', '<a href="{{URL::to(\'admin/yinbiaos\')}}">{{($yinbiaoid)?Yinbiao::find($yinbiaoid)->name:""}}</a>')
-        ->edit_column('fayinguizeid', '<a href="{{URL::to(\'admin/fayinguizes\')}}">{{($fayinguizeid)?Fayinguize::find($fayinguizeid)->title:""}}</a>')
-        // ->edit_column('hanzi', '{{ DB::table(\'hanzi\')->where(\'hanzi\', \'=\', $hanzi)->count() }}')
-
-        ->add_column('actions', '<a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/disable\' ) }}}" class="btn btn-default btn-xs" >拒绝</a>
-        	<a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/enable\' ) }}}" class="btn btn-default btn-xs" >Approve</a>
-                <a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
-            <a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/accept\' ) }}}" class="btn btn-xs btn-primary">接收</a>')
+        $guestaddedwords = Guestaddedword::select(array('guestaddedwords.id', 'guestaddedwords.wordtext', 'guestaddedwords.approved as approvedstatus', 'guestaddedwords.created_at'));
+        return Datatables::of($guestaddedwords)        
+        ->add_column('actions', '<a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >{{{ Lang::get(\'button.edit\') }}}</a>
+                <a href="{{{ URL::to(\'admin/guestaddedwords/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>
+            ')
         
         ->make();
     }
