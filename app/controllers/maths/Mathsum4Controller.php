@@ -171,8 +171,8 @@ class Mathsum4Controller extends \BaseController {
 		$exam = [];
 		$exercises = Mathsum4::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
 
-		// dd($exercises);
-		//保存卷子到数据库mathexams
+		var_dump($exercises);
+		//保存卷子题目字典信息到试卷数据库mathexams
 		for ($i=0;$i<$quantity;$i++){
 			array_push($exam,$exercises[$i]['id']);
 		}	
@@ -181,7 +181,7 @@ class Mathsum4Controller extends \BaseController {
 		$mathexam-> exerciseids = $exam_exercisesrows;
 		$mathexam-> exercisetab = "mathsum4exercises";				
 		$mathexam->save();
-		$mathexamID = $mathexam -> id ;
+		$mathexamID = $mathexam -> id ;	
 		return View::make('site.mathexercise.mathsum4',compact('exercises','mathexamID'));
 
 	}
