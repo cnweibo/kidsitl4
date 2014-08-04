@@ -1,19 +1,28 @@
 @media print {
+*{
+    margin: 0;
+    padding: 0;
+}
 div.exerciserow{
 	width: 100%;
-	float: left;
 }
 div.container{
+  margin-top: -30px;
 	width: 100%;
+  margin-bottom: 10px;
+  border-top: 1px solid #000000;
 }
   h1{
   	font-size: 200%;
+  }
+  h4{
+    font-size: 150%;
   }
   .navbar {
   	display: none;
   }
   .yinbiaoshowheader::before{
-    content: IT宝贝网：中国青少年信息化教育先锋，计算机从娃娃抓起践行者 !important;
+    content: IT宝贝网：中国青少年信息化教育先锋，计算机从娃娃抓起践行者;
   }
   .kidsittreeback,.guestaddwordul,#footer{
     display: none;
@@ -23,12 +32,30 @@ div.container{
   }
   a {
     text-decoration: none;
-    color: inherit !important;
   }
   body {
       width: 100%;
+      font-size: 10px;
       margin: 0;
       padding: 0;
       background: none;
    }
+   .col-md-4{
+    display: inline-block;
+    width: 32%;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+   }
+   .col-md-10{
+
+    margin-left: 10px;
+    padding: 0;
+    vertical-align: top;    
+   }
+   article.span{
+    width: 15px;
+    font-size: 10px;
+   }
+   
 }
