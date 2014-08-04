@@ -23,11 +23,11 @@
 				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1 ">
 					<div class="row	exerciserow">
 						@foreach ($row as $exercise)
-							<article class="col-md-4">
-								<span style="display:inline-block;width:45px;">{{$exercise['operand1']}}</span>  
-								<span class="glyphicon glyphicon-plus"></span> 
-								<span style="display:inline-block;width:45px;">{{$exercise['operand2']}}</span>  
-								= <span style="display:inline-block;width:45px;">(_____)</span>
+							<article class="col-md-4 mathexerciseitem">
+								<span style ="display:inline-block;width:38px;">{{$exercise['operand1']}}</span>  
+								<span> +</span> 
+								<span style ="display:inline-block;width:38px;">{{$exercise['operand2']}}</span>  
+								= <span style ="display:inline-block;width:38px;">(____)</span>
 							</article>
 						@endforeach
 					</div>

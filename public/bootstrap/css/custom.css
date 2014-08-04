@@ -202,3 +202,7 @@ div.exerciserow{
 
   font-size: 160%;
 }
+
+article.mathexerciseitem{
+  margin-bottom: 10px;
+}
