@@ -14,8 +14,7 @@
 	<link rel="stylesheet" href="{{ asset('bootstrap/css/printmath.css') }}">
 @stop
 @section('content')
-<h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a></h1>
-<h4 style="text-align: center;" > <a href= {{url('/math/exams/')}}/{{$mathexamID}} >本练习试卷教师参考答案查询地址：http://kidsit.cn/math/sum4/{{$mathexamID}}</a></h4>
+<h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库(试卷id:{{$examid}}) <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a></h1>
 <hr>
 	<div class="container">	
 		@foreach (array_chunk($exercises,3) as $row)
@@ -27,7 +26,7 @@
 								<span style="display:inline-block;width:45px;">{{$exercise['operand1']}}</span>  
 								<span class="glyphicon glyphicon-plus"></span> 
 								<span style="display:inline-block;width:45px;">{{$exercise['operand2']}}</span>  
-								= <span style="display:inline-block;width:45px;">(_____)</span>
+								= <span style="display:inline-block;width:45px;">({{$exercise['sumdata']}})</span>
 							</article>
 						@endforeach
 					</div>

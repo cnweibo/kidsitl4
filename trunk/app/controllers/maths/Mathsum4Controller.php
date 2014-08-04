@@ -164,17 +164,25 @@ class Mathsum4Controller extends \BaseController {
 		return "done!";
 	}
 
-	public function exercise4($difficulty = 4){
-
+	public function exercise4(){
+		$difficulty = Input::get('difficulty')? Input::get('difficulty') : 4;
+		$quantity = Input::get('quantity')? Input::get('quantity'): 100;
 		$exercises = [];
-		$exercises = Mathsum4::orderByRaw("rand() limit 0,50")->get()->toArray();
+		$exam = [];
+		$exercises = Mathsum4::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+
 		// dd($exercises);
-		//保存卷子到数据库
-		// for ($i=0;$i<100;$i++){
-		// 	$exercise = Mathsum4::find(rand(1,10000));
-		// 	array_push($exercises,$exercise);
-		// }	
-		return View::make('site.mathexercise.mathsum4',compact('exercises'));
+		//保存卷子到数据库mathexams
+		for ($i=0;$i<$quantity;$i++){
+			array_push($exam,$exercises[$i]['id']);
+		}	
+		$exam_exercisesrows= json_encode($exam);
+		$mathexam = new Mathexam;
+		$mathexam-> exerciseids = $exam_exercisesrows;
+		$mathexam-> exercisetab = "mathsum4exercises";				
+		$mathexam->save();
+		$mathexamID = $mathexam -> id ;
+		return View::make('site.mathexercise.mathsum4',compact('exercises','mathexamID'));
 
 	}
 }
