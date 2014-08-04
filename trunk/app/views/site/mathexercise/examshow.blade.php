@@ -26,7 +26,7 @@
 								<span style="display:inline-block;width:45px;">{{$exercise['operand1']}}</span>  
 								<span class="glyphicon glyphicon-plus"></span> 
 								<span style="display:inline-block;width:45px;">{{$exercise['operand2']}}</span>  
-								= <span style="display:inline-block;width:45px;">({{$exercise['sumdata']}})</span>
+								= (<span style="display:inline-block;width:40px;color: blue;">{{$exercise['sumdata']}}</span>      )
 							</article>
 						@endforeach
 					</div>

@@ -11,8 +11,13 @@ class MathexamsController extends \BaseController {
 	{
 
 		$mathexamExerciseIDs = Mathexam::findOrFail($examid)->exerciseids;
-		// dd(json_decode($mathexam));
-		$exercises = Mathsum4::whereIn('id',json_decode($mathexamExerciseIDs))->get()->toArray();
+		// dd(($mathexamExerciseIDs));
+		$examIDs = json_decode($mathexamExerciseIDs);
+		// 注意使用DB::raw带 FIELD(id, examIDs)将会取消默认的按照value排序的方式
+		$exercises = Mathsum4::whereIn('id', $examIDs)->orderBy(DB::raw("FIELD(id,".implode(",", $examIDs).")"))->get()->toArray();
+		// dd($exercises);
+
+		// $exercises = Mathsum4::whereIn('id',json_decode($mathexamExerciseIDs))->get()->toArray();
 		// dd($exercises);
 		// dd($mathexam);
 		// $difficulty = Input::get('difficulty')? Input::get('difficulty') : 4;
