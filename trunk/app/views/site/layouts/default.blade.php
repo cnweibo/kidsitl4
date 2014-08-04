@@ -112,7 +112,7 @@
 
 	    <div id="footer">
 			<div class="container">
-				<p class="muted credit aligncenter inlineblock">版权所有 © {{date('Y')}} <a href="http://kidsit.cn">IT宝贝网</a></p>
+				<p class="muted credit aligncenter inlineblock">版权所有 © {{date('Y')}} <a href="http://kidsit.cn">IT宝贝网</a> <span> | </span> <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=00124dc114c0de6a4a9d49ad355c597a8abd9fdf82e3a0ea5aed445f1db69cee"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="IT宝贝网学员学习群" title="IT宝贝网学员学习群"></a></p>
 				<!-- baidu tongji -->
 				<script type="text/javascript">
 				var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
