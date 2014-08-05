@@ -41,6 +41,7 @@
 							<?php Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
 						<h3 style="display:inline;margin-right:20px" class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
 						<em style="font-weight: bolder">{{$fayinguize->description}}</em>
+						<span ng-click="sequentialfollow(<?php $words=[];?> <?php foreach ( Fayinguize::find(4)->relatedwords->toArray() as $relateword) ?> <?php array_push($words,'#wd_'.$relateword["id"]); ?> <?php echo json_encode($words); ?>) ">顺序跟读</span>
 						</div>
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							@foreach ($fayinguize->relatedwords as $relatedword)
