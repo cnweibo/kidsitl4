@@ -13,4 +13,7 @@ guestaddwordapplication.controller('mp3playerController', function($scope,$windo
 	$(domid).animate({backgroundColor: wordiddombg}, 200);
 	previousanimatingID = domid;
 };
+	$scope.sequentialfollow = function(wordstoplay){
+		console.log(wordstoplay);
+	};
 });
