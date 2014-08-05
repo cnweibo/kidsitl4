@@ -45,7 +45,7 @@
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<p class="inlineblock wordyinbiaoblock">
-								<span ng-mouseenter="playmp3('{{$relatedword->mp3}}')" ng-init="mp3={{$relatedword->mp3}}" class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
+								<span ng-mouseenter="playmp3('{{$relatedword->mp3}}')" class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
 								<em class="elementblock wordyinbiao"> {{$relatedword->wordyinbiao}} </em>
 								<small class="elementblock yinbiaoshu"> 音节数:{{$relatedword->yinjieshu}}</small>
 								</p>
