@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href={{ asset('bootstrap/css/printyinbiaoshow.css')}}>
 @stop
 @section('content')
-	<div class="container" ng-app="guestaddwordapp">
+	<div class="container" ng-app="guestaddwordapp" ng-controller="mp3playerController">
 		<ul class="list-unstyled">
 		<li>
 		<div class="yinbiaoshowheader row" style="margin-bottom:10px;margin-left:13px;font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
@@ -45,9 +45,9 @@
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<p class="inlineblock wordyinbiaoblock">
-								<span class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
-								<em class="elementblock wordyinbiao"> {{link_to_route('relatedword.show',$relatedword->wordyinbiao,$relatedword->id,['class'=>'wordyinbiaoatag'])}} </em>
-								<small class="elementblock yinbiaoshu"> {{link_to_route('relatedword.show',"音节数:".$relatedword->yinjieshu,$relatedword->id,['class'=>'wordyinjieshuatag'])}} </small>
+								<span ng-mouseenter="playmp3('{{$relatedword->mp3}}')" ng-init="mp3={{$relatedword->mp3}}" class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
+								<em class="elementblock wordyinbiao"> {{$relatedword->wordyinbiao}} </em>
+								<small class="elementblock yinbiaoshu"> 音节数:{{$relatedword->yinjieshu}}</small>
 								</p>
 							@endforeach
 							<hr class = "guestaddwordhr">
