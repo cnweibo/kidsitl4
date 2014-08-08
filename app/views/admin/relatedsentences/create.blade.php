@@ -32,7 +32,7 @@
                         <label class="control-label" for="relatedword_id">所属单词:</label -->
 						<select multiple size=6 name="relatedword_id[]" id="relatedword_id">
 							@foreach (Relatedword::all() as $relatedword)
-								<option @if($relatedword->id == Previousewordid::all()->last()->relatedwordid) selected @endif value={{$relatedword->id}}>{{$relatedword->wordtext}}</option>
+								<option @if( ($relatedword->id == (   (Previousewordid::all()->last()) ? Previousewordid::all()->last()->relatedwordid : 0))) selected @endif value={{$relatedword->id}}>{{$relatedword->wordtext}}</option>
 							@endforeach
 							
 						</select>
