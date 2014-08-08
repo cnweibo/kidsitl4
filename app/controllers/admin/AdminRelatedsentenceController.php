@@ -66,8 +66,8 @@ class AdminRelatedsentenceController extends AdminController {
 		        $destfile = time().'_'.rand(1,10).'.'.$file->getClientOriginalExtension();
 		        $destabsolutefile = app_path().'/storage/uploaded/yinbiaomp3/';
 		        $file->move($destabsolutefile,$destfile);
-		        // 创建新相关单词
 			}
+	        // 创建新相关单词
 			$relatedsentence = new Relatedsentence;
 			$relatedsentence->sentencetext = Input::get('sentencetext');				
 			if (Input::hasFile('mp3')){$relatedsentence->mp3 = $destfile;}
@@ -77,10 +77,12 @@ class AdminRelatedsentenceController extends AdminController {
 		    	//then save the fayinguize_id in the pivot table
 				foreach (Input::get('relatedword_id') as $relatedword_id) {
 					$relatedsentence->relatedwords()->attach($relatedword_id);
+					$newwordoperated =new Previousewordid;
+					$newwordoperated ->relatedwordid = $relatedword_id;
+					$newwordoperated ->save();
 				}
 			}
-	  
-	        $title = "新建例句";
+	  		$title = "新建例句";
 	        $relatedsentences = Relatedsentence::all();
 	        // Redirect to the create page
 		    return Redirect::to('admin/relatedsentences/create')->with('success', Lang::get('admin/blogs/messages.update.success'));
