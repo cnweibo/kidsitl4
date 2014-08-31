@@ -9,8 +9,8 @@
 		<meta name="keywords" content=@section('keywords')IT宝贝网
 		@show />
 		<meta name="author" content="IT宝贝网版权所有，如需转载请注明出处" />
-		<meta name="description" content=@section('description')中国计算机从娃娃抓起的践行者和推动者，IT宝贝网-中国青少年信息化推动者，信息教育的先锋队 IT style learning,NIT competence for China kids
-		@show 
+		<meta name="description" content="@section('description')中国计算机从娃娃抓起的践行者和推动者，IT宝贝网-中国青少年信息化推动者，信息教育的先锋队 IT style learning,NIT competence for China kids
+		@show"
 		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css,bootstrap-theme.min.css,custom.css')}}">
