@@ -55,7 +55,7 @@
 			</span>
 		</form>	
 		<div> 
-		<h3>本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">查询地址:</span> <a href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h3> 
+		<h3>本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h3> 
 		</div>	
 		<hr>
 
@@ -69,7 +69,7 @@
 		
 			    		<span style="display:inline-block;width:40px;font-size: 0.8em">[[examrow.operand2]]</span>  
 			    		= <input style="width:40px;font-size:0.6em" type="text" data-ng-model="answerdata" data-ng-hide="mathexam.showAnswer"><span data-ng-show="answerdata == examrow.sumdata"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
-			    		<span  data-ng-show="mathexam.showAnswer" style="display:inline-block;width:45px;color: blue; font-size: 0.8em">([[examrow.sumdata]])</span></span>
+			    		<span  data-ng-show="mathexam.showAnswer" style="display:inline-block;width:45px;color: blue; font-size: 0.8em">([[examrow.sumdata]])</span>
 			    		
 			    	</article>
 			    </div>
