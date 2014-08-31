@@ -12,7 +12,6 @@
 @stop
 @section('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/printmath.css') }}" media="print"/>
-    <link rel="stylesheet" href="{{asset('bootstrap/fonts/font-awesome-4.1.0/css/font-awesome.min.css')}}">
 @stop
 @section('content')
 <div ng-app="examApp" ng-controller="examAppCtrl">
@@ -55,7 +54,8 @@
 				<label class="checkbox inline"><input type="checkbox" name="mathShowAnswer" ng-model="mathexam.showAnswer">看答案 </label>			
 			</span>
 		</form>	
-		<div> <span>本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">查询地址:</span> <a href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/[[examdata.examID]]</a></span> </div>	
+		<div> 
+		<h3>本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">查询地址:</span> <a href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/[[examdata.examID]]</a></span></h3> </div>	
 		<hr>
 
 		<div class="row">
@@ -67,7 +67,9 @@
 			    		<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
 		
 			    		<span style="display:inline-block;width:40px;font-size: 0.8em">[[examrow.operand2]]</span>  
-			    		= (<span ng-show="mathexam.showAnswer" style="display:inline-block;width:45px;color: blue; font-size: 0.8em">[[examrow.sumdata]]</span><span ng-show="!mathexam.showAnswer">&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp</span>)
+			    		= <input style="width:40px;font-size:0.6em"type="text" ng-model="answerdata" ng-hide="mathexam.showAnswer"><span ng-show="answerdata == examrow.sumdata"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
+			    		<span  ng-show="mathexam.showAnswer" style="display:inline-block;width:45px;color: blue; font-size: 0.8em">([[examrow.sumdata]])</span></span>
+			    		
 			    	</article>
 			    </div>
 			</div>    	
