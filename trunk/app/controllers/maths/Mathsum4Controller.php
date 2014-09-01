@@ -163,7 +163,67 @@ class Mathsum4Controller extends \BaseController {
 		}
 		return "done!";
 	}
+	// 2位数题库populate
+	// difficulty = 1 digitnumber = 2
+	public function index2_12()
+	{
+		for ($i=0;$i<1000;$i++){
+			$Mathsum2row = new Mathsum2;
+			$operand1 = rand(1,9);
+			$operand2 = rand(10,99);
+			$Mathsum2row->operand1 = $operand1;
+			$Mathsum2row->operand2 = $operand2;
+			$Mathsum2row->sumdata = $operand1+$operand2;
+			$Mathsum2row->difficulty = 1;
+			try {
+			    $Mathsum2row->save();
+			} catch (Exception $e) {
+			    echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+		}
+		return "done!";
+	}
 
+	public function index2_21()
+	{
+		for ($i=0;$i<1000;$i++){
+			$Mathsum2row = new Mathsum2;
+			$operand1 = rand(10,99);
+			$operand2 = rand(1,9);
+			$Mathsum2row->operand1 = $operand1;
+			$Mathsum2row->operand2 = $operand2;
+			$Mathsum2row->sumdata = $operand1+$operand2;
+			$Mathsum2row->difficulty = 1;
+			try {
+			    $Mathsum2row->save();
+			} catch (Exception $e) {
+			    echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+		}
+		return "done!";
+	}
+	// difficulty =2 digitnumber =2
+	public function index2_22()
+	{
+		for ($i=0;$i<1000;$i++){
+			$Mathsum2row = new Mathsum2;
+			$operand1 = rand(10,99);
+			$operand2 = rand(10,99);
+			$Mathsum2row->operand1 = $operand1;
+			$Mathsum2row->operand2 = $operand2;
+			$Mathsum2row->sumdata = $operand1+$operand2;
+			$Mathsum2row->difficulty = 2;
+			try {
+			    $Mathsum2row->save();
+			} catch (Exception $e) {
+			    echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+		}
+		return "done!";
+	}
 	public function exercise4(){
 		$difficulty = Input::get('difficulty')? Input::get('difficulty') : 4;
 		$quantity = Input::get('quantity')? Input::get('quantity'): 100;

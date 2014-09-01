@@ -60,6 +60,7 @@ class MathexamsController extends \BaseController {
 	 */
 	public function create()
 	{
+		$mathexam = new Mathexam;
 		// return View::make('site.mathexercise.examcreate');
 		$digitnumbers = Input::get('mathDigitNumbers')? Input::get('mathDigitNumbers') : 4;
 		$category = Input::get('mathCategory')? Input::get('mathCategory') : 'plus'; 
@@ -68,15 +69,29 @@ class MathexamsController extends \BaseController {
 		$exercises = [];
 		$exam=[];
 		$examdata = [];
-		$exercises = Mathsum4::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
-		//保存卷子题目字典信息到试卷数据库mathexams
-		for ($i=0;$i<$quantity;$i++){
-			array_push($examdata,$exercises[$i]['id']);
-		}	
+		switch ($digitnumbers) {
+			case '4':
+				$mathexam-> exercisetab = "mathsum4exercises";
+				$exercises = Mathsum4::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+				//保存卷子题目字典信息到试卷数据库mathexams
+				for ($i=0;$i<$quantity;$i++){
+					array_push($examdata,$exercises[$i]['id']);
+				}	
+				break;
+			case '2':
+				$mathexam-> exercisetab = "mathsum2exercises";
+				$exercises = Mathsum2::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+				//保存卷子题目字典信息到试卷数据库mathexams
+				for ($i=0;$i<$quantity;$i++){
+					array_push($examdata,$exercises[$i]['id']);
+				}	
+				break;
+			default:
+				break;
+		}
+		
 		$exam_exercisesrows= json_encode($examdata);
-		$mathexam = new Mathexam;
 		$mathexam-> exerciseids = $exam_exercisesrows;
-		$mathexam-> exercisetab = "mathsum4exercises";				
 		$mathexam->save();
 		$mathexamID = $mathexam -> id ;	
 		$exam["examID"] = $mathexamID;
