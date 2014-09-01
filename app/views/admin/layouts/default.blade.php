@@ -44,7 +44,8 @@
 	<link rel="apple-touch-icon-precomposed" href="{{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}}">
 
 	<!-- CSS   ,prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css,custom.css-->
-    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css,bootstrap-theme.min.css,bootstrap-prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css,custom.css')}}">
+    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css,bootstrap-theme.min.css,bootstrap-prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css')}}">
+    <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}">
     <link rel="stylesheet" href="{{asset('bootstrap/fonts/font-awesome-4.1.0/css/font-awesome.min.css')}}">
     @yield('css')
 <!--     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
