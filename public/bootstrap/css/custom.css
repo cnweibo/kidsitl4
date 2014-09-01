@@ -98,8 +98,9 @@ body{
   display:block;
 }
 .aligncenter{
-	margin-left:auto;
-	margin-right:auto;
+	margin:0 auto;
+  display:block;
+  text-align: center;
 }
 .nopadding{
   padding-left:0;
@@ -206,4 +207,19 @@ div.exerciserow{
 
 article.mathexerciseitem{
   margin-bottom: 10px;
+}
+
+/*examdata style*/
+#examcontainer .answerdata{
+  display:inline-block;
+  width:45px;
+  color: blue; 
+  font-size: 0.6em
+}
+#examcontainer .answerTF{
+  margin-left: 5px;
+}
+#examcontainer .answerInput{
+  width:45px;
+  font-size:0.6em;
 }
