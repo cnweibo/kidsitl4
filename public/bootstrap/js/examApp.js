@@ -1,4 +1,4 @@
-var app = angular.module('examApp', [],function($interpolateProvider) {
+var app = angular.module('examApp', ['ui.bootstrap'],function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });

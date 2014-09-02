@@ -15,14 +15,37 @@
 @stop
 @section('content')
 <div data-ng-app="examApp" data-ng-controller="examAppCtrl">
-<h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a></h1>
-<hr>
+<h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a><a href="#" data-ng-click="showSettings = !showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a></h1>
+<h4 style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
 	<div class="container">	
-		<div class="aligncenter">
+		<div ng-show="showSettings" class="aligncenter">
+			<div class="panel panel-primary">
+				  <div class="panel-heading">
+						<h3 class="panel-title">试卷数据配置面板:</h3>
+				  </div>
+				  <div class="panel-body">
+						<tabset>
+						    <tab heading="题型">
+						    	<div style="display:inline" >
+					    	    <div class="form-group">
+					    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="plus" check="checked"> 加</label>
+					    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="minus"> 减</label>
+					    		    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="times"> 乘</label>
+					    			<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="division"> 除</label>				
+					    		</div>
+					    		</div>
+						    </tab>
+						  	<tab heading="位数">Static content</tab>
+						  	<tab heading="难度">Static content</tab>
+						  	<tab heading="题数">Static content</tab>
+						  	<tab heading="在线考试模式">Static content</tab>
+						</tabset>
+				  </div>
+			</div>
+			
 			<form id="examcustom" style="display:inline" class="form-inline" data-ng-submit="createExam()">
 			    <span style="display:inline-block">   
 			    <div class="form-group">
-			    	<span> 题型: </span>
 			    	<label class="radio inline"><input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="plus" check="checked"> 加</label>
 			    	<label class="radio inline"><input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="minus"> 减</label>
 				    <label class="radio inline"><input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="times"> 乘</label>
@@ -56,9 +79,6 @@
 				</span>
 			</form>	
 		</div>
-		<div> 
-		<h4 class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
-		</div>	
 		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  </span></h4>
 		<div class="row">
 			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
@@ -81,5 +101,6 @@
 @stop
 @section('scripts')
 	<script src="{{asset('bootstrap/js/angular.js')}}"></script>
+	<script src="{{asset('bootstrap/js/ui-bootstrap-tpls-0.11.0.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/examApp.js')}}"></script>
 @stop
