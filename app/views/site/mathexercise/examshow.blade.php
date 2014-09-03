@@ -15,6 +15,7 @@
 @stop
 @section('content')
 <h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库(试卷id:{{$examid}}) <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a></h1>
+<h4 style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 {{$examcreatedat}} <span class="label label-warning">试卷永久网址:</span> <a href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/{{$examid}}</a></h4> 
 <hr>
 	<div id="examcontainer" class="container">	
 		{{--*/$layoutloopcount=0;/*--}}
@@ -30,7 +31,7 @@
 								<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
 								
 								<span style="display:inline-block;width:40px;font-size: 0.8em">{{$exercise['operand2']}}</span>  
-								= <span class="answerdata" data-ng-show="mathexam.showAnswer">({{$exercise['sumdata']}})</span>
+								= <span class="answerdata" data-ng-show="mathexam.showAnswer">(&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp)</span>
 							</article>
 						@endforeach
 					</div>

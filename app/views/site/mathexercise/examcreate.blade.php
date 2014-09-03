@@ -15,29 +15,47 @@
 @stop
 @section('content')
 <div data-ng-app="examApp" data-ng-controller="examAppCtrl">
-<h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a><a href="#" data-ng-click="showSettings = !showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a></h1>
+<h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a><a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a><a href="#" data-ng-click="mathexam.showAnswer = !mathexam.showAnswer "><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a></h1>
 <h4 style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
 	<div class="container">	
-		<div ng-show="showSettings" class="aligncenter">
-			<div class="panel panel-primary">
+		<div ng-show="showconf.showSettings" class="aligncenter">
+			<div class="panel panel-info">
 				  <div class="panel-heading">
-						<h3 class="panel-title">试卷数据配置面板:</h3>
+						<h3 class="panel-title">试卷配置及考试配置面板</h3>
 				  </div>
 				  <div class="panel-body">
 						<tabset>
+							<p><span class="label label-default">[[mathexam.mathCategory | examTixing]]</span> 
+								<span class="label label-default">[[mathexam.mathDigitNumbers]]位数</span> 
+								<span class="label label-default">[[mathexam.mathDifficulty]]级</span> 
+								<span class="label label-default">[[mathexam.mathQuantity]]题</span>
+								<button type="submit" data-ng-click="createExam();showconf.showSettings = null " class="btn btn-danger btn-lg">生成试卷开始做题</button>
+							</p>
 						    <tab heading="题型">
-						    	<div style="display:inline" >
-					    	    <div class="form-group">
-					    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="plus" check="checked"> 加</label>
-					    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="minus"> 减</label>
-					    		    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="times"> 乘</label>
-					    			<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="division"> 除</label>				
-					    		</div>
-					    		</div>
+				    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="plus" check="checked"> 加</label>
+				    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="minus"> 减</label>
+				    		    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="times"> 乘</label>
+				    			<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="division"> 除</label>				
 						    </tab>
-						  	<tab heading="位数">Static content</tab>
-						  	<tab heading="难度">Static content</tab>
-						  	<tab heading="题数">Static content</tab>
+						  	<tab heading="位数">
+				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="1"> 1位数</label>
+				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="2"> 2位数</label>
+				  			    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="3"> 3位数</label>
+				  				<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="4" check="checked"> 4位数</label>				
+				  			
+						  	</tab>
+						  	<tab heading="难度">
+						    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="1"> 1级</label>
+						    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="2"> 2级</label>
+						    		    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="3"> 3级</label>
+						    			<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="4" check="checked"> 4级</label>				
+						    		</tab>
+						  	<tab heading="题数">
+				  				<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="20"> 20</label>
+				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="50" check="checked">50</label>
+				  			    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="100"> 100</label>			
+				  			
+						  	</tab>
 						  	<tab heading="在线考试模式">Static content</tab>
 						</tabset>
 				  </div>
@@ -75,7 +93,7 @@
 				    <label class="radio inline"><input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="100"> 100</label>			
 				</div>
 						<button type="submit" data-ng-click="createExam()" class="btn btn-info btn-xs btn-large">开始做题</button>
-					<label class="checkbox inline"><input type="checkbox" name="mathShowAnswer" data-ng-model="mathexam.showAnswer">看答案 </label>			
+							
 				</span>
 			</form>	
 		</div>
