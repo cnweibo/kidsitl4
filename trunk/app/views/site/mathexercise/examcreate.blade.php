@@ -16,7 +16,7 @@
 @section('content')
 <div data-ng-app="examApp" data-ng-controller="examAppCtrl">
 <h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a><a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a><a href="#" data-ng-click="mathexam.showAnswer = !mathexam.showAnswer "><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a></h1>
-<h4 style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
+<h4 style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
 	<div class="container">	
 		<div ng-show="showconf.showSettings" class="aligncenter">
 			<div class="panel panel-info">
