@@ -43,7 +43,7 @@
 		<!-- To make sticky footer need to wrap in a div -->
 		<div id="wrap">
 			<!-- Navbar -->
-			<div class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-top-background">
+			<div id="mainnavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-top-background">
 				<div class="container">
 	                <div class="navbar-header">
 	                	<span>IT宝贝网</span>

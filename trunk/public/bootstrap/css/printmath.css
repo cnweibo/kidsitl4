@@ -3,11 +3,17 @@
     margin: 0;
     padding: 0;
 }
+#mainnavbar {
+  display: none;
+}
+#exammeta {
+  margin-bottom: 30px;
+}
 div.exerciserow{
 	width: 100%;
 }
 div.container{
-  margin-top: -30px;
+
 	width: 100%;
   margin-bottom: 10px;
   border-top: 1px solid #000000;
