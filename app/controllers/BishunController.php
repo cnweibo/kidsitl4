@@ -25,7 +25,7 @@ class BishunController extends \BaseController {
 	public function getIndex()
 	{
 		//show the bishun page
-    	$bishuns = Bishun::orderBy('created_at','desc')->take(8)->get();
+    	$bishuns = Bishun::orderByRaw("rand() limit 0,12")->get();
 		// $bishuns = Bishun::where('id', '>','0')->take(8)->get(); 
 		return View::make('site.bishun.bishun', compact('bishuns'));   
 	}
@@ -46,7 +46,7 @@ class BishunController extends \BaseController {
 			// dd($bishuns);
 			return (View::make('site.bishun.bishunSearchPartial',compact('bishuns')));
 		}else{
-			$bishuns = Bishun::all();
+			$bishuns = Bishun::orderByRaw("rand() limit 0,12")->get();
 			return View::make('site.bishun.bishunSearchPartial', compact('bishuns'));   
 		}
 	}
