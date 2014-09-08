@@ -15,7 +15,13 @@
 @stop
 @section('content')
 <div data-ng-app="examApp" data-ng-controller="examAppCtrl">
-<h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 <a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a><a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a><a href="#" data-ng-click="mathexam.showAnswer = !mathexam.showAnswer "><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a></h1>
+<h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 
+	<a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a>
+	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
+	<a href="#" data-ng-click="mathexam.showAnswer = !mathexam.showAnswer "><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a>
+	<div toggle-answer-view-and-animcate trigger="mathexam.showAnswer" ></div>
+	<!-- <a href="#" data-ng-click="mathexam.showAnswer = 'fadeMeIn' "><span style="margin-left:10px;" class="glyphicon glyphicon-comment fa-2x"></span></a> -->
+</h1>
 <h4 id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
 	<div class="container">	
 		<div ng-show="showconf.showSettings" class="aligncenter">
@@ -59,7 +65,7 @@
 						  	<tab heading="在线考试模式">
 						  		<section>
 						  			<h6 class="text-success bg-success inlineblock">计时模式：给定时间，在该时间内，做对的题目越多越好</h6>
-					  					<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="5"> 5分钟</label>
+					  					<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="5" > 5分钟</label>
 					  			    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="10" check="checked">10分钟</label>
 					  					<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="15"> 15分钟</label>
 					  			        <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="20"> 20分钟</label>			
@@ -111,7 +117,7 @@
 				</span>
 			</form>	
 		</div>
-		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  </span></h4>
+		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  </span>         <timer interval="1000" /></h4>
 		<div class="row">
 			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
 				<div class="row	exerciserow">
@@ -122,7 +128,7 @@
 		
 			    		<span style="display:inline-block;width:40px;font-size: 0.8em">[[examrow.operand2]]</span>  
 			    		= <input class="answerInput" type="text" data-ng-model="answerdata" data-ng-hide="mathexam.showAnswer"><span class="answerTF" data-ng-show="answerdata == examrow.sumdata"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
-			    		<span class="answerdata" data-ng-show="mathexam.showAnswer">([[examrow.sumdata]])</span>
+			    		<span class="answerdata" fade-global trigger="mathexam.showAnswer">([[examrow.sumdata]])</span>
 			    		
 			    	</article>
 			    </div>
@@ -133,6 +139,10 @@
 @stop
 @section('scripts')
 	<script src="{{asset('bootstrap/js/angular.js')}}"></script>
+	<script src="{{asset('bootstrap/js/angular-timer.js')}}"></script>
+	<script src="{{asset('bootstrap/js/ng-animate.js')}}"></script>	
+	<script src="{{asset('bootstrap/js/kidsitanimatelib.js')}}"></script>
 	<script src="{{asset('bootstrap/js/ui-bootstrap-tpls-0.11.0.min.js')}}"></script>
+	<script src="{{asset('bootstrap/js/TweenMax.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/examApp.js')}}"></script>
 @stop
