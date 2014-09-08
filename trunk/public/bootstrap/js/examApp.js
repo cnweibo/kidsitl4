@@ -1,4 +1,4 @@
-var app = angular.module('examApp', ['ui.bootstrap'],function($interpolateProvider) {
+var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate'],function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
@@ -9,6 +9,7 @@ app.controller('examAppCtrl', function($scope,$http) {
 		'mathDifficulty': 2,
 		'mathDigitNumbers': 2,
 		'mathCategory': 'plus',
+		'timetodo':10,
 		'showAnswer': false
 	};
 	$scope.viewClassDetails = function(classToView) {
@@ -69,4 +70,27 @@ app.filter('examDifficulty',function(){
 				return "4级";
 			}
 	};
+});
+app.directive("toggleAnswerViewAndAnimcate",function($animate){
+	var linker = function(scope, element, attrs) {
+			var clicktoggle = 0;
+			element.bind('click', function(event) {
+				clicktoggle++;
+				if (clicktoggle%2){
+				    scope.trigger = 'fadeMeIn';
+				}
+				else{
+				    scope.trigger = 'fadeMeOut';
+				}
+				scope.$apply();
+			});
+
+		};
+	return {
+		restrict: 'A',
+		scope: {trigger: '='},
+		template: '<a href="#"><span style="margin-left:10px;" class="glyphicon glyphicon-comment fa-2x"></span></a>',
+		link: linker,
+		replace: true
+	}
 });
