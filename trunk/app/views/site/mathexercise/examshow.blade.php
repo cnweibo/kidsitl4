@@ -31,7 +31,7 @@
 								<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
 								
 								<span style="display:inline-block;width:40px;font-size: 0.8em">{{$exercise['operand2']}}</span>  
-								= <span class="answerdata" data-ng-show="mathexam.showAnswer">(&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp)</span>
+								= <span class="answerdata" data-ng-show="mathexam.showAnswer">({{$exercise['sumdata']}})</span>
 							</article>
 						@endforeach
 					</div>
