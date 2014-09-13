@@ -76,11 +76,12 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 			var clicktoggle = 0;
 			element.bind('click', function(event) {
 				clicktoggle++;
-				if (clicktoggle%2){
-				    scope.trigger = 'fadeMeIn';
+				console.log(scope.trigger);
+				if (clicktoggle % 2){
+				    scope.trigger = "fadeMeIn";
 				}
 				else{
-				    scope.trigger = 'fadeMeOut';
+				    scope.trigger = null;
 				}
 				scope.$apply();
 			});
@@ -89,8 +90,8 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 	return {
 		restrict: 'A',
 		scope: {trigger: '='},
-		template: '<a href="#"><span style="margin-left:10px;" class="glyphicon glyphicon-comment fa-2x"></span></a>',
+		template: '<a href="#"><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a>',
 		link: linker,
 		replace: true
-	}
+	};
 });

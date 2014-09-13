@@ -1,4 +1,9 @@
 angular.module('kidsitAnimate', ["ngAnimate"])
+.directive("hidden",function(){
+    return  function(scope,element,attrs){
+        $(element).css('opacity', 0);
+    };
+})
 .directive("fadeMe", function($animate) {
     var linker = function(scope, element, attrs) {
 
@@ -7,10 +12,12 @@ angular.module('kidsitAnimate', ["ngAnimate"])
             switch (scope.animateStyle)
             {
                 case 'fadeMeIn':
-                    $animate.addClass(element, "fadeMe");
+                    // $animate.addClass(element, "fadeMe");
+                    $animate.enter(element, "fadeMe");
                     break;
                 case 'fadeMeOut':
-                    $animate.removeClass(element, "fadeMe");
+                    // $animate.removeClass(element, "fadeMe");
+                    $animate.leave(element, "fadeMe");
                     break;
             }
         },true);
@@ -49,6 +56,7 @@ angular.module('kidsitAnimate', ["ngAnimate"])
 .directive("fadeMeClick", function($animate) {
     return {
         restrict: 'EA',
+        // set priority to high so that it depress other visibility
         // scope: {},
         require: "fadeMe",
         link: function(scope, element, attrs, fademeCtrl) {
@@ -77,7 +85,7 @@ angular.module('kidsitAnimate', ["ngAnimate"])
                 case 'fadeMeIn':
                     $animate.addClass(element, "fadeMe");
                     break;
-                case 'fadeMeOut':
+                case null:
                     $animate.removeClass(element, "fadeMe");
                     break;
             }
@@ -97,16 +105,26 @@ angular.module('kidsitAnimate', ["ngAnimate"])
         }
     };
 })
-.animation(".fadeMe", function() {
+.animation(".answerdata", function() {
     return {
         addClass: function(element, className) {
+            console.log("fademe triggered");
                    // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
                    TweenMax.to(element, 0.5, {opacity:1});
                
-               },
+                },
         removeClass: function(element, className) {
            // TweenMax.to(element, 0.2, {'fontSize': 10,'marginBottom':2,'width':100,'borderLeft':'10px solid #333'});
             TweenMax.to(element, 0.5, {opacity:0});
-        }
+                },
+        enter: function(element,done) {
+            console.log("fademe triggered");
+                   // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
+                   TweenMax.fromTo(element, 2, {opacity:0},{opacity:1,onComplete:done});
+               
+                },
+        leave: function(element, done) {
+           // TweenMax.to(element, 0.2, {'fontSize': 10,'marginBottom':2,'width':100,'borderLeft':'10px solid #333'});
+                   TweenMax.fromTo(element, 0.1, {opacity:1},{opacity:0,onComplete:done});                }
     };
 });
