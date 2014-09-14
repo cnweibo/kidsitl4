@@ -28,6 +28,9 @@ app.controller('examAppCtrl', function($scope,$http) {
 		$scope.examdata = examdata;
 	});
 	};
+	$scope.isVisualColumn = function(myrow,column){
+		return (myrow.invisualcolumns!=column);
+	};
 });
 app.filter('examTixing',function(){
 	return	function(mathcategory){
@@ -91,6 +94,33 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 		restrict: 'A',
 		scope: {trigger: '='},
 		template: '<a href="#"><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a>',
+		link: linker,
+		replace: true
+	};
+});
+app.directive("checkResult",function($animate){
+	var linker = function(scope, element, attrs) {
+			scope.checkData = function(row,answer){
+				var result = null;
+				if (row.invisualcolumns == "1"){
+					result = (row.operand1 == answer) ;
+					console.log("row: " + row.id + "invisualcolumns:" + row.invisualcolumns + "answer:" + answer+ " result " + result);
+				}
+				if (row.invisualcolumns == "2"){
+					result = (row.operand2 == answer) ;
+					console.log("row: " + row.id + "invisualcolumns:" + row.invisualcolumns + "answer:" + answer+ " result " + result);
+				}
+				if (row.invisualcolumns == "3"){
+					result = (row.sumdata == answer) ;
+					
+					}
+				return result;
+			};
+		};
+	return {
+		restrict: 'A',
+		scope: {myRow: '=', answer: '='},
+		template: '<span class="answerTF" data-ng-if="checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>',
 		link: linker,
 		replace: true
 	};
