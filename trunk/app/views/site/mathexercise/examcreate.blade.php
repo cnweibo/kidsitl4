@@ -17,7 +17,7 @@
 <div data-ng-app="examApp" data-ng-controller="examAppCtrl">
 	<script type="text/ng-template" id="examrow.html">
 	<span>
-		<span style="display:inline-block;width:30px;font-size:0.6em" class="label label-success">[[$index+1]]</span>
+		<span style="display:inline-block;width:30px;font-size:0.6em" class="label label-success">[[id]]</span>
 		
 		<span ng-if="isVisualColumn(row,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">[[row.operand1]]</span> 
 		<span ng-if="!isVisualColumn(row,1) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">([[row.operand1]])</span> 
@@ -142,7 +142,7 @@
 			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
 				<div class="row	exerciserow">
 			    	<article class="col-md-4" data-ng-repeat="examrow in examdata.examdata">
-			    			<exam-row-data row="examrow" show-answer="mathexam.showAnswer" ></exam-row-data>				    		
+			    			<exam-row-data row="examrow" id="$index+1" show-answer="mathexam.showAnswer" ></exam-row-data>				    		
 			    	</article>
 			    </div>
 			</div>   
