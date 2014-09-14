@@ -1,9 +1,10 @@
-var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate'],function($interpolateProvider) {
+var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer'],function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
 
 app.controller('examAppCtrl', function($scope,$http) {
+	$scope.timerRunning = null;
 	$scope.mathexam = {
 		'mathQuantity' : 50,
 		'mathDifficulty': 2,
@@ -14,7 +15,6 @@ app.controller('examAppCtrl', function($scope,$http) {
 	};
 	$scope.viewClassDetails = function(classToView) {
 	// do something
-	console.log('viewing details for ' + classToView.name);
 	};
 	$http.get('/math/exams/create',{params:{mathCategory:'plus',mathDigitNumbers:2,mathDifficulty:2,mathQuantity:50}}).success(function(data)
 	{
@@ -27,6 +27,10 @@ app.controller('examAppCtrl', function($scope,$http) {
 	{
 		$scope.examdata = examdata;
 	});
+	};
+	$scope.startTimer = function(id){
+		$scope.$broadcast('timer-start',id);
+        $scope.timerRunning = true;
 	};
 
 });
@@ -77,7 +81,6 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 			var clicktoggle = 0;
 			element.bind('click', function(event) {
 				clicktoggle++;
-				console.log(scope.trigger);
 				if (clicktoggle % 2){
 				    scope.trigger = "fadeMeIn";
 				}
@@ -106,11 +109,9 @@ app.directive("examRowData",function($animate){
 				var result = null;
 				if (row.invisualcolumns == "1"){
 					result = (row.operand1 == answer) ;
-					console.log("row: " + row.id + "invisualcolumns:" + row.invisualcolumns + "answer:" + answer+ " result " + result);
 				}
 				if (row.invisualcolumns == "2"){
 					result = (row.operand2 == answer) ;
-					console.log("row: " + row.id + "invisualcolumns:" + row.invisualcolumns + "answer:" + answer+ " result " + result);
 				}
 				if (row.invisualcolumns == "3"){
 					result = (row.sumdata == answer) ;
@@ -133,11 +134,9 @@ app.directive("checkResult",function(){
 				var result = null;
 				if (row.invisualcolumns == "1"){
 					result = (row.operand1 == answer) ;
-					console.log("row: " + row.id + "invisualcolumns:" + row.invisualcolumns + "answer:" + answer+ " result " + result);
 				}
 				if (row.invisualcolumns == "2"){
 					result = (row.operand2 == answer) ;
-					console.log("row: " + row.id + "invisualcolumns:" + row.invisualcolumns + "answer:" + answer+ " result " + result);
 				}
 				if (row.invisualcolumns == "3"){
 					result = (row.sumdata == answer) ;

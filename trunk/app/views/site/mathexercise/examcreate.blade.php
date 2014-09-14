@@ -137,7 +137,10 @@
 				</span>
 			</form>	
 		</div>
-		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  </span>         <timer interval="1000" /></h4>
+		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  
+				<span timer timerid="examCountTimer" autostart="false" interval="1000" >已用时：<strong style="color:red">[[minutes]] </strong>分 <strong style="color:red">[[seconds]]</strong> 秒  <a href=""><button ng-click="startTimer('examCountTimer')" type="button" class="btn btn-primary">开始做题</button></a></span>
+			</span>        
+		</h4>
 		<div class="row">
 			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
 				<div class="row	exerciserow">
