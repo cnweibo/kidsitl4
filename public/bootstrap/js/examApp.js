@@ -121,7 +121,7 @@ app.directive("examRowData",function($animate){
 		};
 	return {
 		restrict: 'AE',
-		scope: {row: "=",showAnswer: "="},
+		scope: {row: "=",showAnswer: "=", id: "="},
 		templateUrl: 'examrow.html',
 		link: linker,
 		replace: true
