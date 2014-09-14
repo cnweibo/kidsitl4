@@ -15,6 +15,28 @@
 @stop
 @section('content')
 <div data-ng-app="examApp" data-ng-controller="examAppCtrl">
+	<script type="text/ng-template" id="examrow.html">
+	<span>
+		<span style="display:inline-block;width:30px;font-size:0.6em" class="label label-success">[[$index+1]]</span>
+		
+		<span ng-if="isVisualColumn(row,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">[[row.operand1]]</span> 
+		<span ng-if="!isVisualColumn(row,1) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">([[row.operand1]])</span> 
+		<input ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata">
+		
+		<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
+
+		<span ng-if="isVisualColumn(row,2)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">[[row.operand2]]</span>  
+		<span ng-if="!isVisualColumn(row,2) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">([[row.operand2]])</span> 
+		<input ng-if="!isVisualColumn(row,2) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata">
+		
+		= 
+
+		<span ng-if="isVisualColumn(row,3)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">[[row.sumdata]]</span>  
+		<span ng-if="!isVisualColumn(row,3) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">([[row.sumdata]])</span> 
+		<input ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata">
+		<span check-result my-row="row" answer='row.myanswerdata'></span>
+	</span>
+	</script>
 <h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 
 	<a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a>
 	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
@@ -120,28 +142,17 @@
 			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
 				<div class="row	exerciserow">
 			    	<article class="col-md-4" data-ng-repeat="examrow in examdata.examdata">
-			    		<span style="display:inline-block;width:30px;font-size:0.6em" class="label label-success">[[$index+1]]</span>
-			    		
-			    		<span ng-if="isVisualColumn(examrow,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(examrow,1)]">[[examrow.operand1]]</span> 
-			    		<input ng-if="!isVisualColumn(examrow,1)" class="answerInput" type="text" data-ng-model="examrow.myanswerdata">
-			    		
-			    		<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
-		
-			    		<span ng-if="isVisualColumn(examrow,2)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(examrow,2)]">[[examrow.operand2]]</span>  
-						<input ng-if="!isVisualColumn(examrow,2)" class="answerInput" type="text" data-ng-model="examrow.myanswerdata">
-						
-						= 
-
-						<span ng-if="isVisualColumn(examrow,3)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(examrow,3)]">[[examrow.sumdata]]</span>  
-			    		<input ng-if="!isVisualColumn(examrow,3)"  class="answerInput" type="text" data-ng-model="examrow.myanswerdata">
-			    		<span check-result my-row="examrow" answer='examrow.myanswerdata'></span>
-									    		
+			    			<exam-row-data row="examrow" show-answer="mathexam.showAnswer" ></exam-row-data>				    		
 			    	</article>
 			    </div>
-			</div>    	
+			</div>   
+
 	</div>
+
 </div>
-</div><!-- examAppCtrl -->
+</div>
+
+<!-- examAppCtrl -->
 @stop
 @section('scripts')
 	<script src="{{asset('bootstrap/js/angular.js')}}"></script>

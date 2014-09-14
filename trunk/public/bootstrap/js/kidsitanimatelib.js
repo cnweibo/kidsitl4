@@ -105,7 +105,7 @@ angular.module('kidsitAnimate', ["ngAnimate"])
         }
     };
 })
-.animation(".answerdata", function() {
+.animation(".fadeMeIn", function() {
     return {
         addClass: function(element, className) {
             console.log("fademe triggered");
