@@ -9,6 +9,7 @@ return array(
     'AddApprovedToGuestaddedwordsTable' => $baseDir . '/app/database/migrations/2014_08_01_132953_add_approved_to_guestaddedwords_table.php',
     'AddRegexColumnInFayinguizesTable' => $baseDir . '/app/database/migrations/2014_07_10_211454_add_regex_column_in_fayinguizes_table.php',
     'AddVisuablesColumnToMathsum2exercisesTable' => $baseDir . '/app/database/migrations/2014_09_14_103814_add_visuables_column_to_mathsum2exercises_table.php',
+    'AddVisuablesColumnToMathsum4exercisesTable' => $baseDir . '/app/database/migrations/2014_09_14_202427_add_visuables_column_to_mathsum4exercises_table.php',
     'AddYinbiaoIdToFayinguizesTable' => $baseDir . '/app/database/migrations/2014_07_05_001936_add_yinbiao_id_to_fayinguizes_table.php',
     'AddYinjieshuToRelatedwords' => $baseDir . '/app/database/migrations/2014_07_23_233624_add_yinjieshu_to_relatedwords.php',
     'AdminBishunsController' => $baseDir . '/app/controllers/admin/AdminBishunsController.php',
