@@ -34,7 +34,6 @@ var timerModule = angular.module('timer', [])
         //supporting both "autostart" and "auto-start" as a solution for
         //backward and forward compatibility.
         $scope.autoStart = $attrs.autoStart || $attrs.autostart;
-
         if ($element.html().trim().length === 0) {
           $element.append($compile('<span>[[millis]]</span>')($scope));
         } else {
@@ -47,10 +46,11 @@ var timerModule = angular.module('timer', [])
         $scope.countdown = $scope.countdownattr && parseInt($scope.countdownattr, 10) >= 0 ? parseInt($scope.countdownattr, 10) : undefined;
         $scope.isRunning = false;
 
-        $scope.$on('timer-start', function (id) {
-          if (timerid == id ){
+        $scope.$on('timer-start', function (e,id) {
+                     console.log(id+"and " +$scope.timerid );
+          if ($scope.timerid == id ){
           $scope.start();
-          // console.log(id);
+           console.log(id+"and " +$scope.timerid );
         }
         });
 
