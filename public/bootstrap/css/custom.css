@@ -212,7 +212,7 @@ article.mathexerciseitem{
 /*examdata style*/
 #examcontainer .answerdata{
   display:inline-block;
-  width:45px;
+  width:40px;
   color: blue; 
   font-size: 0.6em
 }

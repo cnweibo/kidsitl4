@@ -27,11 +27,24 @@
 						{{--*/++$layoutloopcount;/*--}}
 							<article class="col-md-4">
 								<span style="display:inline-block;width:30px;font-size:0.6em" class="label label-success">{{$layoutloopcount}}</span>
-								<span style="display:inline-block;width:40px;font-size: 0.8em">{{$exercise['operand1']}}</span> 
+								@if ($exercise['invisualcolumns'] == 1)
+									<span class="answerdata" data-ng-show="mathexam.showAnswer">({{$exercise['operand1']}})</span>
+								@else	
+									<span style="display:inline-block;width:40px;font-size: 0.8em">{{$exercise['operand1']}}</span> 
+								@endif
+
 								<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
-								
-								<span style="display:inline-block;width:40px;font-size: 0.8em">{{$exercise['operand2']}}</span>  
-								= <span class="answerdata" data-ng-show="mathexam.showAnswer">({{$exercise['sumdata']}})</span>
+								@if ($exercise['invisualcolumns'] == 2)
+									<span class="answerdata" data-ng-show="mathexam.showAnswer">({{$exercise['operand2']}})</span>
+								@else
+									<span style="display:inline-block;width:40px;font-size: 0.8em">{{$exercise['operand2']}}</span>  
+								@endif
+								= 
+								@if ($exercise['invisualcolumns'] == 3)
+									<span class="answerdata" data-ng-show="mathexam.showAnswer">({{$exercise['operand1']}})</span>
+								@else
+									<span class="answerdata" data-ng-show="mathexam.showAnswer">({{$exercise['sumdata']}})</span>
+								@endif
 							</article>
 						@endforeach
 					</div>

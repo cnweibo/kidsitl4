@@ -28,9 +28,7 @@ app.controller('examAppCtrl', function($scope,$http) {
 		$scope.examdata = examdata;
 	});
 	};
-	$scope.isVisualColumn = function(myrow,column){
-		return (myrow.invisualcolumns!=column);
-	};
+
 });
 app.filter('examTixing',function(){
 	return	function(mathcategory){
@@ -98,7 +96,38 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 		replace: true
 	};
 });
-app.directive("checkResult",function($animate){
+
+app.directive("examRowData",function($animate){
+	var linker = function(scope, element, attrs) {
+			scope.isVisualColumn = function(row,column){
+				return (row.invisualcolumns!=column);
+			};
+			scope.checkData = function(row,answer){
+				var result = null;
+				if (row.invisualcolumns == "1"){
+					result = (row.operand1 == answer) ;
+					console.log("row: " + row.id + "invisualcolumns:" + row.invisualcolumns + "answer:" + answer+ " result " + result);
+				}
+				if (row.invisualcolumns == "2"){
+					result = (row.operand2 == answer) ;
+					console.log("row: " + row.id + "invisualcolumns:" + row.invisualcolumns + "answer:" + answer+ " result " + result);
+				}
+				if (row.invisualcolumns == "3"){
+					result = (row.sumdata == answer) ;
+					
+					}
+				return result;
+			};
+		};
+	return {
+		restrict: 'AE',
+		scope: {row: "=",showAnswer: "="},
+		templateUrl: 'examrow.html',
+		link: linker,
+		replace: true
+	};
+});
+app.directive("checkResult",function(){
 	var linker = function(scope, element, attrs) {
 			scope.checkData = function(row,answer){
 				var result = null;
