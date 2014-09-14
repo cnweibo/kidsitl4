@@ -43,7 +43,7 @@
 								@if ($exercise['invisualcolumns'] == 3)
 									<span class="answerdata" data-ng-show="mathexam.showAnswer">({{$exercise['operand1']}})</span>
 								@else
-									<span class="answerdata" data-ng-show="mathexam.showAnswer">{{$exercise['sumdata']}}</span>
+									<span style="display:inline-block;width:40px;font-size: 0.8em">{{$exercise['sumdata']}}</span>
 								@endif
 							</article>
 						@endforeach
