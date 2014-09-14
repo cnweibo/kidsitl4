@@ -216,10 +216,15 @@ article.mathexerciseitem{
   color: blue; 
   font-size: 0.6em
 }
+#examcontainer .examdata{
+  display:inline-block;
+  width:40px;
+  font-size: 0.8em
+}
 #examcontainer .answerTF{
-  margin-left: 5px;
+
 }
 #examcontainer .answerInput{
-  width:45px;
+  width:40px;
   font-size:0.6em;
 }

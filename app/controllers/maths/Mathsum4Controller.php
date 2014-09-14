@@ -17,6 +17,8 @@ class Mathsum4Controller extends \BaseController {
 			$operand2 = rand(1000,9999);
 			$Mathsum4row->operand1 = $operand1;
 			$Mathsum4row->operand2 = $operand2;
+			$invisualcolumns = rand(1,3);
+			$Mathsum4row->invisualcolumns = $invisualcolumns;
 			$Mathsum4row->sumdata = $operand1+$operand2;
 			$Mathsum4row->difficulty = 4;
 			try {
@@ -41,6 +43,8 @@ class Mathsum4Controller extends \BaseController {
 			$Mathsum4row = new Mathsum4;
 			$operand1 = rand(100,999);
 			$operand2 = rand(1000,9999);
+			$invisualcolumns = rand(1,3);
+			$Mathsum4row->invisualcolumns = $invisualcolumns;
 			$Mathsum4row->operand1 = $operand1;
 			$Mathsum4row->operand2 = $operand2;
 			$Mathsum4row->sumdata = $operand1+$operand2;
@@ -69,6 +73,8 @@ class Mathsum4Controller extends \BaseController {
 			$operand2 = rand(100,999);
 			$Mathsum4row->operand1 = $operand1;
 			$Mathsum4row->operand2 = $operand2;
+			$invisualcolumns = rand(1,3);
+			$Mathsum4row->invisualcolumns = $invisualcolumns;
 			$Mathsum4row->sumdata = $operand1+$operand2;
 			$Mathsum4row->difficulty = 3;
 			try {
@@ -93,6 +99,8 @@ class Mathsum4Controller extends \BaseController {
 			$Mathsum4row = new Mathsum4;
 			$operand1 = rand(10,99);
 			$operand2 = rand(1000,9999);
+			$invisualcolumns = rand(1,3);
+			$Mathsum4row->invisualcolumns = $invisualcolumns;
 			$Mathsum4row->operand1 = $operand1;
 			$Mathsum4row->operand2 = $operand2;
 			$Mathsum4row->sumdata = $operand1+$operand2;
@@ -112,6 +120,8 @@ class Mathsum4Controller extends \BaseController {
 			$Mathsum4row = new Mathsum4;
 			$operand1 = rand(1000,9999);
 			$operand2 = rand(10,99);
+			$invisualcolumns = rand(1,3);
+			$Mathsum4row->invisualcolumns = $invisualcolumns;
 			$Mathsum4row->operand1 = $operand1;
 			$Mathsum4row->operand2 = $operand2;
 			$Mathsum4row->sumdata = $operand1+$operand2;
@@ -131,6 +141,8 @@ class Mathsum4Controller extends \BaseController {
 			$Mathsum4row = new Mathsum4;
 			$operand1 = rand(1,9);
 			$operand2 = rand(1000,9999);
+			$invisualcolumns = rand(1,3);
+			$Mathsum4row->invisualcolumns = $invisualcolumns;
 			$Mathsum4row->operand1 = $operand1;
 			$Mathsum4row->operand2 = $operand2;
 			$Mathsum4row->sumdata = $operand1+$operand2;
@@ -150,6 +162,8 @@ class Mathsum4Controller extends \BaseController {
 			$Mathsum4row = new Mathsum4;
 			$operand1 = rand(1000,9999);
 			$operand2 = rand(1,9);
+			$invisualcolumns = rand(1,3);
+			$Mathsum4row->invisualcolumns = $invisualcolumns;
 			$Mathsum4row->operand1 = $operand1;
 			$Mathsum4row->operand2 = $operand2;
 			$Mathsum4row->sumdata = $operand1+$operand2;
@@ -171,6 +185,8 @@ class Mathsum4Controller extends \BaseController {
 			$Mathsum2row = new Mathsum2;
 			$operand1 = rand(1,9);
 			$operand2 = rand(10,99);
+			$invisualcolumns = rand(1,3);
+			$Mathsum2row->invisualcolumns = $invisualcolumns;
 			$Mathsum2row->operand1 = $operand1;
 			$Mathsum2row->operand2 = $operand2;
 			$Mathsum2row->sumdata = $operand1+$operand2;
@@ -191,6 +207,8 @@ class Mathsum4Controller extends \BaseController {
 			$Mathsum2row = new Mathsum2;
 			$operand1 = rand(10,99);
 			$operand2 = rand(1,9);
+			$invisualcolumns = rand(1,3);
+			$Mathsum2row->invisualcolumns = $invisualcolumns;
 			$Mathsum2row->operand1 = $operand1;
 			$Mathsum2row->operand2 = $operand2;
 			$Mathsum2row->sumdata = $operand1+$operand2;
@@ -211,6 +229,8 @@ class Mathsum4Controller extends \BaseController {
 			$Mathsum2row = new Mathsum2;
 			$operand1 = rand(10,99);
 			$operand2 = rand(10,99);
+			$invisualcolumns = rand(1,3);
+			$Mathsum2row->invisualcolumns = $invisualcolumns;
 			$Mathsum2row->operand1 = $operand1;
 			$Mathsum2row->operand2 = $operand2;
 			$Mathsum2row->sumdata = $operand1+$operand2;
