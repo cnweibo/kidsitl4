@@ -21,7 +21,7 @@
 		
 		<span ng-if="isVisualColumn(row,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">[[row.operand1]]</span> 
 		<span ng-if="!isVisualColumn(row,1) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">([[row.operand1]])</span> 
-		<input ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata">
+		<input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata">
 		
 		<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
 
@@ -138,7 +138,14 @@
 			</form>	
 		</div>
 		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  
-				<span timer timerid="examCountTimer" autostart="false" interval="1000" >已用时：<strong style="color:red">[[minutes]] </strong>分 <strong style="color:red">[[seconds]]</strong> 秒  <a href=""><button ng-click="startTimer('examCountTimer')" type="button" class="btn btn-primary">开始做题</button></a></span>
+				<span timer timerid="examCountTimer" autostart="false" interval="1000" >已用时：<strong style="color:red">[[minutes]] </strong>分 <strong style="color:red">[[seconds]]</strong> 秒  
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary" ng-click="startExamTimer('examCountTimer')"><i class="glyphicon glyphicon-time"></i> 开始做题</button>
+						<button type="button" class="btn btn-danger" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
+						<button type="button" class="btn btn-success" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i> 继续</button>
+						<button type="button" class="btn btn-warning" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon ok-circle"></i> 交卷</button>
+					</div>
+				</span>
 			</span>        
 		</h4>
 		<div class="row">
