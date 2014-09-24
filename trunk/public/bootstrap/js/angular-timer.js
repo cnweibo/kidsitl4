@@ -53,13 +53,17 @@ var timerModule = angular.module('timer', [])
            console.log(id+"and " +$scope.timerid );
         }
         });
-
-        $scope.$on('timer-resume', function () {
+      
+        $scope.$on('timer-resume', function (e,id) {
+          console.log(id+"and " +$scope.timerid );
+          if ($scope.timerid == id ){ 
           $scope.resume();
+        }
         });
 
-        $scope.$on('timer-stop', function (id) {
-          if (timerid == id ){
+        $scope.$on('timer-stop', function (e,id) {
+          console.log(id+"and " +$scope.timerid );
+          if ($scope.timerid == id ){
                       $scope.stop();
 
              // console.log(id);

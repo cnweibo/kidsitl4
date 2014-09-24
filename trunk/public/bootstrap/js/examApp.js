@@ -3,7 +3,7 @@ var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer'],fun
     $interpolateProvider.endSymbol(']]');
 });
 
-app.controller('examAppCtrl', function($scope,$http) {
+app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 	$scope.timerRunning = null;
 	$scope.mathexam = {
 		'mathQuantity' : 50,
@@ -13,6 +13,7 @@ app.controller('examAppCtrl', function($scope,$http) {
 		'timetodo':10,
 		'showAnswer': false
 	};
+	$scope.canInputAnswer = answeringFactory.canInputAnswer;
 	$scope.viewClassDetails = function(classToView) {
 	// do something
 	};
@@ -28,11 +29,24 @@ app.controller('examAppCtrl', function($scope,$http) {
 		$scope.examdata = examdata;
 	});
 	};
-	$scope.startTimer = function(id){
+	$scope.startExamTimer = function(id){
 		$scope.$broadcast('timer-start',id);
-        $scope.timerRunning = true;
+		answeringFactory.setIsAnswering(true);
+		// $scope.$apply();
+        $scope.examTimerRunning = true;
 	};
-
+	$scope.stopExamTimer = function(id){
+		$scope.$broadcast('timer-stop',id);
+		answeringFactory.setIsAnswering(false);
+        $scope.examTimerRunning = false;
+        // $scope.$apply();
+	};
+	$scope.resumeExamTimer = function(id){
+		$scope.$broadcast('timer-resume',id);
+		answeringFactory.setIsAnswering(true);
+	    $scope.examTimerRunning = true;
+		// $scope.$apply();
+	};
 });
 app.filter('examTixing',function(){
 	return	function(mathcategory){
@@ -76,6 +90,14 @@ app.filter('examDifficulty',function(){
 			}
 	};
 });
+app.value('answeringFactory', {
+	isAnswering : false,
+	canInputAnswer: function() {
+    return this.isAnswering;
+	},
+	setIsAnswering: function(tof){
+  	this.isAnswering = tof ;
+}});
 app.directive("toggleAnswerViewAndAnimcate",function($animate){
 	var linker = function(scope, element, attrs) {
 			var clicktoggle = 0;
@@ -100,8 +122,12 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 	};
 });
 
-app.directive("examRowData",function($animate){
+app.directive("examRowData",function($animate,answeringFactory){
 	var linker = function(scope, element, attrs) {
+			// scope.canInputAnswer = answeringFactory.canInputAnswer();
+			// scope.$watch('canInputAnswer', function(newVal, oldVal) {
+			//     console.log(newVal);
+			// });
 			scope.isVisualColumn = function(row,column){
 				return (row.invisualcolumns!=column);
 			};
