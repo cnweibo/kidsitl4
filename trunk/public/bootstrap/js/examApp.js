@@ -13,7 +13,7 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		'timetodo':10,
 		'showAnswer': false
 	};
-	$scope.canInputAnswer = answeringFactory.canInputAnswer;
+	$scope.canInputAnswer = answeringFactory.canInputAnswer();
 	$scope.viewClassDetails = function(classToView) {
 	// do something
 	};
@@ -29,24 +29,53 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		$scope.examdata = examdata;
 	});
 	};
+	$scope.examTimerRunning = 0;
 	$scope.startExamTimer = function(id){
 		$scope.$broadcast('timer-start',id);
 		answeringFactory.setIsAnswering(true);
-		// $scope.$apply();
-        $scope.examTimerRunning = true;
+		$scope.canInputAnswer = answeringFactory.canInputAnswer();
+        $scope.examTimerRunning = 1;
 	};
 	$scope.stopExamTimer = function(id){
 		$scope.$broadcast('timer-stop',id);
 		answeringFactory.setIsAnswering(false);
-        $scope.examTimerRunning = false;
-        // $scope.$apply();
+        $scope.examTimerRunning = 2;
+        // 由于未能主动$watch变化，所以主动再读一下通知变化
+        $scope.canInputAnswer = answeringFactory.canInputAnswer();
 	};
 	$scope.resumeExamTimer = function(id){
 		$scope.$broadcast('timer-resume',id);
 		answeringFactory.setIsAnswering(true);
-	    $scope.examTimerRunning = true;
-		// $scope.$apply();
+	    $scope.examTimerRunning = 3;
+	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 	};
+	$scope.shouldDisabled = function(btnid){
+		if (btnid==1){
+		if ($scope.examTimerRunning==0){
+			return false;
+		}
+		else{return true;
+		}
+		}
+		if (btnid==2){
+		if ($scope.examTimerRunning==2){
+			return true;
+		}
+		else{return false;
+		}
+		}
+		if (btnid==3){
+		if ($scope.examTimerRunning==3 || $scope.examTimerRunning==1){
+			return true;
+		}
+		else{return false;
+		}
+		}
+		if (btnid==4){
+			return false;
+		}
+
+	}
 });
 app.filter('examTixing',function(){
 	return	function(mathcategory){
@@ -124,6 +153,7 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 
 app.directive("examRowData",function($animate,answeringFactory){
 	var linker = function(scope, element, attrs) {
+			// scope.canInputAnswer = false;
 			// scope.canInputAnswer = answeringFactory.canInputAnswer();
 			// scope.$watch('canInputAnswer', function(newVal, oldVal) {
 			//     console.log(newVal);
@@ -148,10 +178,10 @@ app.directive("examRowData",function($animate,answeringFactory){
 		};
 	return {
 		restrict: 'AE',
-		scope: {row: "=",showAnswer: "=", id: "="},
+		scope: {row: "=",showAnswer: "=", id: "=",canInputAnswer: "="},
 		templateUrl: 'examrow.html',
 		link: linker,
-		replace: true
+		// replace: true
 	};
 });
 app.directive("checkResult",function(){
