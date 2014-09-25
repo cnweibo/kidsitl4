@@ -140,10 +140,10 @@
 		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  
 				<span timer timerid="examCountTimer" autostart="false" interval="1000" >已用时：<strong style="color:red">[[minutes]] </strong>分 <strong style="color:red">[[seconds]]</strong> 秒  
 					<div class="btn-group">
-						<button type="button" class="btn btn-primary" ng-click="startExamTimer('examCountTimer')"><i class="glyphicon glyphicon-time"></i> 开始做题</button>
-						<button type="button" class="btn btn-danger" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
-						<button type="button" class="btn btn-success" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i> 继续</button>
-						<button type="button" class="btn btn-warning" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon ok-circle"></i> 交卷</button>
+						<button type="button" class="btn btn-primary" ng-disabled="shouldDisabled(1)" ng-click="startExamTimer('examCountTimer')"><i class="glyphicon glyphicon-time"></i> 开始做题</button>
+						<button type="button" class="btn btn-danger" ng-disabled="shouldDisabled(2)" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
+						<button type="button" class="btn btn-success" ng-disabled="shouldDisabled(3)" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i> 继续</button>
+						<button type="button" class="btn btn-warning"  ng-disabled="shouldDisabled(4)" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon ok-circle"></i> 交卷</button>
 					</div>
 				</span>
 			</span>        
@@ -152,7 +152,7 @@
 			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
 				<div class="row	exerciserow">
 			    	<article class="col-md-4" data-ng-repeat="examrow in examdata.examdata">
-			    			<exam-row-data row="examrow" id="$index+1" show-answer="mathexam.showAnswer" ></exam-row-data>				    		
+			    			<span exam-row-data can-input-answer="canInputAnswer" row="examrow" id="$index+1" show-answer="mathexam.showAnswer" ></exam-row-data>				    		
 			    	</article>
 			    </div>
 			</div>   
