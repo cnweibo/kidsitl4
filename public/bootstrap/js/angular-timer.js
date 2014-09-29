@@ -10,6 +10,7 @@ var timerModule = angular.module('timer', [])
     return  {
       restrict: 'EAC',
       replace: false,
+      // transclude: element,
       scope: {
         interval: '=interval',
         startTimeAttr: '=startTime',
@@ -47,22 +48,22 @@ var timerModule = angular.module('timer', [])
         $scope.isRunning = false;
 
         $scope.$on('timer-start', function (e,id) {
-                     console.log(id+"and " +$scope.timerid );
+                     // console.log(id+"and " +$scope.timerid );
           if ($scope.timerid == id ){
           $scope.start();
-           console.log(id+"and " +$scope.timerid );
+           // console.log(id+"and " +$scope.timerid );
         }
         });
       
         $scope.$on('timer-resume', function (e,id) {
-          console.log(id+"and " +$scope.timerid );
+          // console.log(id+"and " +$scope.timerid );
           if ($scope.timerid == id ){ 
           $scope.resume();
         }
         });
 
         $scope.$on('timer-stop', function (e,id) {
-          console.log(id+"and " +$scope.timerid );
+          // console.log(id+"and " +$scope.timerid );
           if ($scope.timerid == id ){
                       $scope.stop();
 
