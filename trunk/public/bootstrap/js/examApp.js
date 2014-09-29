@@ -5,6 +5,7 @@ var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer'],fun
 
 app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 	$scope.timerRunning = null;
+	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true};
 	$scope.mathexam = {
 		'mathQuantity' : 50,
 		'mathDifficulty': 2,
@@ -29,43 +30,45 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		$scope.examdata = examdata;
 	});
 	};
-	$scope.examTimerRunning = 0;
+	$scope.metadata.examTimerRunning = 0;
 	$scope.startExamTimer = function(id){
 		$scope.$broadcast('timer-start',id);
 		answeringFactory.setIsAnswering(true);
 		$scope.canInputAnswer = answeringFactory.canInputAnswer();
-        $scope.examTimerRunning = 1;
+        $scope.metadata.examTimerRunning = 1;
 	};
 	$scope.stopExamTimer = function(id){
 		$scope.$broadcast('timer-stop',id);
 		answeringFactory.setIsAnswering(false);
-        $scope.examTimerRunning = 2;
+        $scope.metadata.examTimerRunning = 2;
         // 由于未能主动$watch变化，所以主动再读一下通知变化
         $scope.canInputAnswer = answeringFactory.canInputAnswer();
 	};
 	$scope.resumeExamTimer = function(id){
 		$scope.$broadcast('timer-resume',id);
 		answeringFactory.setIsAnswering(true);
-	    $scope.examTimerRunning = 3;
+	    $scope.metadata.examTimerRunning = 3;
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 	};
+	
 	$scope.shouldDisabled = function(btnid){
+		console.log(btnid);
 		if (btnid==1){
-		if ($scope.examTimerRunning==0){
+		if ($scope.metadata.examTimerRunning==0){
 			return false;
 		}
 		else{return true;
 		}
 		}
 		if (btnid==2){
-		if ($scope.examTimerRunning==2){
+		if ($scope.metadata.examTimerRunning==2){
 			return true;
 		}
 		else{return false;
 		}
 		}
 		if (btnid==3){
-		if ($scope.examTimerRunning==3 || $scope.examTimerRunning==1){
+		if ($scope.metadata.examTimerRunning==3 || $scope.metadata.examTimerRunning==1){
 			return true;
 		}
 		else{return false;
@@ -75,7 +78,16 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 			return false;
 		}
 
-	}
+	};
+
+	$scope.$watch("metadata.examTimerRunning",function(nv,ov){
+		if(nv != ov){
+			$scope.metadata.shouldDisabled1 = $scope.shouldDisabled(1);
+			$scope.metadata.shouldDisabled2 = $scope.shouldDisabled(2);
+			$scope.metadata.shouldDisabled3 = $scope.shouldDisabled(3);
+			$scope.metadata.shouldDisabled4 = $scope.shouldDisabled(4);
+		}
+	});
 });
 app.filter('examTixing',function(){
 	return	function(mathcategory){

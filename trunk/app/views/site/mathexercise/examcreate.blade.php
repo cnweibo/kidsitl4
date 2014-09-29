@@ -27,13 +27,13 @@
 
 		<span ng-if="isVisualColumn(row,2)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">[[row.operand2]]</span>  
 		<span ng-if="!isVisualColumn(row,2) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">([[row.operand2]])</span> 
-		<input ng-if="!isVisualColumn(row,2) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata">
+		<input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,2) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata">
 		
 		= 
 
 		<span ng-if="isVisualColumn(row,3)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">[[row.sumdata]]</span>  
 		<span ng-if="!isVisualColumn(row,3) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">([[row.sumdata]])</span> 
-		<input ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata">
+		<input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata">
 		<span check-result my-row="row" answer='row.myanswerdata'></span>
 	</span>
 	</script>
@@ -138,14 +138,15 @@
 			</form>	
 		</div>
 		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  
-				<span timer timerid="examCountTimer" autostart="false" interval="1000" >已用时：<strong style="color:red">[[minutes]] </strong>分 <strong style="color:red">[[seconds]]</strong> 秒  
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary" ng-disabled="shouldDisabled(1)" ng-click="startExamTimer('examCountTimer')"><i class="glyphicon glyphicon-time"></i> 开始做题</button>
-						<button type="button" class="btn btn-danger" ng-disabled="shouldDisabled(2)" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
-						<button type="button" class="btn btn-success" ng-disabled="shouldDisabled(3)" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i> 继续</button>
-						<button type="button" class="btn btn-warning"  ng-disabled="shouldDisabled(4)" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon ok-circle"></i> 交卷</button>
-					</div>
+				<span timer timerid="examCountTimer" autostart="false" interval="1000">已用时：<strong style="color:red">[[minutes]] </strong>分 <strong style="color:red">[[seconds]]</strong> 秒  
+					
 				</span>
+				<div class="btn-group">
+						<button type="button" class="btn btn-primary" ng-disabled="metadata.shouldDisabled1" ng-click="startExamTimer('examCountTimer')"><i class="glyphicon glyphicon-time"></i> 开始做题</button>
+						<button type="button" class="btn btn-danger"  ng-disabled="metadata.shouldDisabled2" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
+						<button type="button" class="btn btn-success"  ng-disabled="metadata.shouldDisabled3" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i> 继续</button>
+						<button type="button" class="btn btn-warning"  ng-disabled="metadata.shouldDisabled4" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon ok-circle"></i> 交卷</button>
+				</div>
 			</span>        
 		</h4>
 		<div class="row">
