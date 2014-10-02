@@ -25,6 +25,7 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 
 	$scope.createExam = function(){
 		var mathexamreq = $scope.mathexam;
+		$scope.metadata.examTimerRunning = 0;
 		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
 	{
 		$scope.examdata = examdata;
@@ -50,9 +51,13 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 	    $scope.metadata.examTimerRunning = 3;
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 	};
-	
+	$scope.clearExamTimer = function(id){
+		$scope.$broadcast('timer-stop',id);
+		answeringFactory.setIsAnswering(false);
+	    $scope.metadata.examTimerRunning = 0;
+	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
+	}
 	$scope.shouldDisabled = function(btnid){
-		console.log(btnid);
 		if (btnid==1){
 		if ($scope.metadata.examTimerRunning==0){
 			return false;
@@ -61,14 +66,14 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		}
 		}
 		if (btnid==2){
-		if ($scope.metadata.examTimerRunning==2){
+		if ($scope.metadata.examTimerRunning==2 || $scope.metadata.examTimerRunning==0 ){
 			return true;
 		}
 		else{return false;
 		}
 		}
 		if (btnid==3){
-		if ($scope.metadata.examTimerRunning==3 || $scope.metadata.examTimerRunning==1){
+		if ($scope.metadata.examTimerRunning==3 || $scope.metadata.examTimerRunning==1 || $scope.metadata.examTimerRunning==0){
 			return true;
 		}
 		else{return false;

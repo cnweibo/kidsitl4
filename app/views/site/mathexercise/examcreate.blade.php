@@ -55,7 +55,7 @@
 								<span class="label label-default">[[mathexam.mathDigitNumbers]]位数</span> 
 								<span class="label label-default">[[mathexam.mathDifficulty]]级</span> 
 								<span class="label label-default">[[mathexam.mathQuantity]]题</span>
-								<button type="submit" data-ng-click="createExam();showconf.showSettings = null " class="btn btn-danger btn-lg">生成试卷开始做题</button>
+								<button type="submit" data-ng-click="createExam();showconf.showSettings = null;clearExamTimer('examCountTimer') " class="btn btn-danger btn-lg">调阅试卷</button>
 							</p>
 						    <tab heading="题型">
 				    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="plus" check="checked"> 加</label>
@@ -138,14 +138,14 @@
 			</form>	
 		</div>
 		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  
-				<span timer timerid="examCountTimer" autostart="false" interval="1000">已用时：<strong style="color:red">[[minutes]] </strong>分 <strong style="color:red">[[seconds]]</strong> 秒  
+				<span timer timerid="examCountTimer" autostart="false" interval="1000">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
 					
 				</span>
 				<div class="btn-group">
 						<button type="button" class="btn btn-primary" ng-disabled="metadata.shouldDisabled1" ng-click="startExamTimer('examCountTimer')"><i class="glyphicon glyphicon-time"></i> 开始做题</button>
 						<button type="button" class="btn btn-danger"  ng-disabled="metadata.shouldDisabled2" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
 						<button type="button" class="btn btn-success"  ng-disabled="metadata.shouldDisabled3" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i> 继续</button>
-						<button type="button" class="btn btn-warning"  ng-disabled="metadata.shouldDisabled4" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon ok-circle"></i> 交卷</button>
+						<button type="button" class="btn btn-warning"  ng-disabled="metadata.shouldDisabled4" ng-click=""><i class="glyphicon ok-circle"></i> 交卷</button>
 				</div>
 			</span>        
 		</h4>
