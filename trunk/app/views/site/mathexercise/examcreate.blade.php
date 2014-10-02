@@ -138,7 +138,7 @@
 			</form>	
 		</div>
 		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  
-				<span timer timerid="examCountTimer" autostart="false" interval="1000">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
+				<span ng-cloak timer timerid="examCountTimer" autostart="false" interval="1000">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
 					
 				</span>
 				<div class="btn-group">
