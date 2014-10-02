@@ -228,3 +228,7 @@ article.mathexerciseitem{
   width:40px;
   font-size:0.6em;
 }
+/*ngcloak solve the flash issue*/
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
