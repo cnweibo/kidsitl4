@@ -178,6 +178,7 @@ class UserController extends BaseController {
         // with the second parameter as true.
         // logAttempt will check if the 'email' perhaps is the username.
         // Check that the user is confirmed.
+        return Redirect::to('/');
         if ( Confide::logAttempt( $input, true ) )
         {
             $r = Session::get('loginRedirect');
