@@ -20,6 +20,10 @@
         body {
             padding: 60px 0;
         }
+        /*ngcloak solve the flash issue*/
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+          display: none !important;
+        }
 		@section('styles')
 		@show
 		</style>
