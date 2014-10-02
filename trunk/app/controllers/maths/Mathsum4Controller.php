@@ -244,6 +244,29 @@ class Mathsum4Controller extends \BaseController {
 		}
 		return "done!";
 	}
+	// 1位数题库populate
+	// difficulty = 1 digitnumber = 1
+	public function index1_11()
+	{
+		for ($i=0;$i<100;$i++){
+			$Mathsum1row = new Mathsum1;
+			$operand1 = rand(0,9);
+			$operand2 = rand(0,9);
+			$invisualcolumns = rand(1,3);
+			$Mathsum1row->invisualcolumns = $invisualcolumns;
+			$Mathsum1row->operand1 = $operand1;
+			$Mathsum1row->operand2 = $operand2;
+			$Mathsum1row->sumdata = $operand1+$operand2;
+			$Mathsum1row->difficulty = 1;
+			try {
+			    $Mathsum1row->save();
+			} catch (Exception $e) {
+			    echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+		}
+		return "done!";
+	}
 	public function exercise4(){
 		$difficulty = Input::get('difficulty')? Input::get('difficulty') : 4;
 		$quantity = Input::get('quantity')? Input::get('quantity'): 100;

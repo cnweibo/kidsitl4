@@ -24,7 +24,8 @@ Route::group(array('prefix' => 'math'), function(){
     Route::get('mathsum12populate', 'Mathsum4Controller@index12');
     Route::get('mathsum2_12populate', 'Mathsum4Controller@index2_12');
     Route::get('mathsum2_21populate', 'Mathsum4Controller@index2_21');
-    Route::get('mathsum2_22populate', 'Mathsum4Controller@index2_22');    
+    Route::get('mathsum2_22populate', 'Mathsum4Controller@index2_22');   
+    Route::get('mathsum1_11populate', 'Mathsum4Controller@index1_11');     
 });
 Route::get('givetojs', function(){
     Give::javascript(['kidsit'=>'give to javascript']);
