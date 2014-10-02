@@ -21,6 +21,12 @@ class MathexamsController extends \BaseController {
 			case 'mathsum2exercises':
 				$exerciseModel = 'Mathsum2';
 				break;
+			case 'mathsum1exercises':
+				$exerciseModel = 'Mathsum1';
+				break;	
+			case 'mathsum3exercises':
+				$exerciseModel = 'Mathsum3';
+				break;	
 			default:
 				# code...
 				break;
@@ -79,6 +85,14 @@ class MathexamsController extends \BaseController {
 					array_push($examdata,$exercises[$i]['id']);
 				}	
 				break;
+			case '1':
+				$mathexam-> exercisetab = "mathsum1exercises";
+				$exercises = Mathsum1::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+				//保存卷子题目字典信息到试卷数据库mathexams
+				for ($i=0;$i<$quantity;$i++){
+					array_push($examdata,$exercises[$i]['id']);
+				}	
+				break;	
 			default:
 				break;
 		}
