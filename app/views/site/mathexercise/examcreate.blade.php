@@ -42,9 +42,9 @@
 	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
 	<div toggle-answer-view-and-animcate trigger="mathexam.showAnswer" ></div>
 </h1>
-<h4 id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
+<h4 ng-cloak id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
 	<div class="container">	
-		<div ng-show="showconf.showSettings" class="aligncenter">
+		<div ng-cloak ng-show="showconf.showSettings" class="aligncenter">
 			<div class="panel panel-info">
 				  <div class="panel-heading">
 						<h3 class="panel-title">试卷配置及考试配置面板</h3>
