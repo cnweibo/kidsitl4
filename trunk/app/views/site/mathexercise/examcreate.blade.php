@@ -38,8 +38,8 @@
 	</span>
 	</script>
 <h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 
-	<a href="javascript:window.print()"><span class="glyphicon glyphicon-print fa-2x"></span></a>
-	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
+	<a href="javascript:window.print()"><span tooltip-placement="top" tooltip="打印本试卷" class="glyphicon glyphicon-print fa-2x"></span></a>
+	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span tooltip-placement="top" tooltip="打开配置面板，按需重新调阅" style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
 	<div toggle-answer-view-and-animcate trigger="mathexam.showAnswer" ></div>
 </h1>
 <h4 ng-cloak id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
@@ -132,7 +132,7 @@
 			    	<label class="radio inline"><input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="50" check="checked">50</label>
 				    <label class="radio inline"><input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="100"> 100</label>			
 				</div>
-						<button type="submit" data-ng-click="createExam()" class="btn btn-info btn-xs btn-large">开始做题</button>
+						<button tooltip-placement="top" tooltip="启动考试计时" type="submit" data-ng-click="createExam()" class="btn btn-info btn-xs btn-large">开始做题</button>
 							
 				</span>
 			</form>	
@@ -146,6 +146,8 @@
 						<button type="button" class="btn btn-danger"  ng-disabled="metadata.shouldDisabled2" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
 						<button type="button" class="btn btn-success"  ng-disabled="metadata.shouldDisabled3" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i> 继续</button>
 						<button type="button" class="btn btn-warning"  ng-disabled="metadata.shouldDisabled4" ng-click=""><i class="glyphicon ok-circle"></i> 交卷</button>
+						<button tooltip-placement="bottom" tooltip="1.点击开始做题启动计时才能答题;2.答题中可以暂停和继续;3.交卷需要登录" type="button" class="btn btn-info"  ng-click=""><i class="glyphicon glyphicon-question-sign"></i></button>
+				
 				</div>
 			</span>        
 		</h4>
