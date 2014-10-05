@@ -2544,7 +2544,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
               createTooltip();
 
               // Set the initial positioning.
-              tooltip.css({ top: 0, left: 0, display: 'block' });
+              tooltip.css({ top: 0, left: 0, display: 'block' , opacity : 0.8});
 
               // Now we add it to the DOM because need some info about it. But it's not 
               // visible yet anyway.

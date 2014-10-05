@@ -162,7 +162,7 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 	return {
 		restrict: 'A',
 		scope: {trigger: '='},
-		template: '<a href="#"><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a>',
+		template: '<a href="#"><span tooltip-placement="top" tooltip="显示/隐藏答案" style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a>',
 		link: linker,
 		replace: true
 	};
