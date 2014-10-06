@@ -13,8 +13,79 @@
 @section('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/printmath.css') }}" media="print"/>
 @stop
+@section('loginctrlform')
+<ul class="nav navbar-nav pull-right" id="top-nav-right" login-menu login="login()" logout="logout()" signup="signup()" ng-controller="loginCtrl">
+    @if (Auth::check())
+    @if (Auth::user()->hasRole('admin'))
+    <li><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
+    @endif
+    <li><a href="{{{ URL::to('user') }}}">登录为： {{{ Auth::user()->username }}}</a></li>
+    <li><a href=""><button ng-click="logout()" type="button" class="btn btn-primary">退出</button></a></li> 
+    @else
+    <li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="#" ng-click="login()">登录</a></li>
+    <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="#" ng-click="signup()">{{{ Lang::get('site.sign_up') }}}</a></li>
+    @endif
+</ul>
+@overwrite
 @section('content')
-<div data-ng-app="examApp" data-ng-controller="examAppCtrl">
+<div >
+
+	<script type="text/ng-template" id="loginmenu.html">
+		<ul class="nav navbar-nav pull-right" id="top-nav-right" >
+		</ul>
+	</script>
+	<script type="text/ng-template" id="loginform.html">
+		<div id="loginform" class="well" ng-show="user.showLogin">
+			<div class="page-header">
+				<h1>登录进入系统</h1>
+			</div>
+			<form class="form-horizontal" accept-charset="UTF-8">
+			    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+			    <fieldset>
+			        <div class="form-group">
+			            <label class="col-md-5 control-label" for="email">{{ Lang::get('confide::confide.username_e_mail') }}</label>
+			            <div class="col-md-7">
+			                <input class="form-control" tabindex="1" placeholder="{{ Lang::get('confide::confide.username_e_mail') }}" type="text" name="email" id="email" value="{{ Input::old('email') }}">
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-md-5 control-label" for="password">
+			                {{ Lang::get('confide::confide.password') }}
+			            </label>
+			            <div class="col-md-7">
+			                <input class="form-control" tabindex="2" placeholder="{{ Lang::get('confide::confide.password') }}" type="password" name="password" id="password">
+			            </div>
+			        </div>
+
+			        <div class="form-group">
+			            <div class="col-md-offset-5 col-md-7">
+			                <div class="checkbox">
+			                    <label for="remember">{{ Lang::get('confide::confide.login.remember') }}
+			                        <input type="hidden" name="remember" value="0">
+			                        <input tabindex="4" type="checkbox" name="remember" id="remember" value="1">
+			                    </label>
+			                </div>
+			            </div>
+			        </div>
+
+			        @if ( Session::get('error') )
+			        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+			        @endif
+
+			        @if ( Session::get('notice') )
+			        <div class="alert">{{ Session::get('notice') }}</div>
+			        @endif
+
+			        <div class="form-group">
+			            <div class="col-md-offset-2 col-md-10">
+			                <button tabindex="3" type="submit" class="btn btn-primary" data-ng-submit="doLogin()">{{ Lang::get('confide::confide.login.submit') }}</button>
+			                <a class="btn btn-default" href="forgot">{{ Lang::get('confide::confide.login.forgot_password') }}</a>
+			            </div>
+			        </div>
+			    </fieldset>
+			</form>
+		</div>	
+	</script>
 	<script type="text/ng-template" id="examrow.html">
 	<span>
 		<span style="display:inline-block;width:30px;font-size:0.6em" class="label label-success">[[id]]</span>
@@ -37,6 +108,11 @@
 		<span check-result my-row="row" answer='row.myanswerdata'></span>
 	</span>
 	</script>
+	<div class="row">
+		<div login-form class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-lg-push-3">
+			
+		</div>
+	</div>
 <h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 
 	<a href="javascript:window.print()"><span tooltip-placement="top" tooltip="打印本试卷" class="glyphicon glyphicon-print fa-2x"></span></a>
 	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span tooltip-placement="top" tooltip="打开配置面板，按需重新调阅" style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>

@@ -43,7 +43,7 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
 
-	<body>
+	<body data-ng-app="examApp" data-ng-controller="examAppCtrl">
 		<!-- To make sticky footer need to wrap in a div -->
 		<div id="wrap">
 			<!-- Navbar -->
@@ -78,6 +78,7 @@
 								</ul>
 							</li>
 						</ul>
+					@section('loginctrlform')	
 	                    <ul class="nav navbar-nav pull-right" id="top-nav-right">
 	                        @if (Auth::check())
 	                        @if (Auth::user()->hasRole('admin'))
@@ -90,6 +91,7 @@
 	                        <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
 	                        @endif
 	                    </ul>
+	                @show    
 					</div><!-- ./ nav-collapse end --> 
 				</div> <!-- container end -->
 			</div> <!-- ./ navbar end-->
