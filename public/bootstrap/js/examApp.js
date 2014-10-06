@@ -5,6 +5,7 @@ var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer'],fun
 
 app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 	$scope.timerRunning = null;
+	$scope.user={};	
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true};
 	$scope.mathexam = {
 		'mathQuantity' : 50,
@@ -93,6 +94,19 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 			$scope.metadata.shouldDisabled4 = $scope.shouldDisabled(4);
 		}
 	});
+});
+app.controller('loginCtrl',function($scope,$http){
+
+	$scope.login = function(){
+		console.log("logining in");
+		$scope.user.showLogin = true;
+	};
+	$scope.logout = function(){
+		console.log("logining out");
+	};
+	$scope.signup = function(){
+		console.log("signup ...");
+	};
 });
 app.filter('examTixing',function(){
 	return	function(mathcategory){
@@ -225,4 +239,30 @@ app.directive("checkResult",function(){
 		link: linker,
 		replace: true
 	};
+});
+app.directive("loginMenu",function(){
+	var linker = function(scope, element, attrs, ctrl, transclude) {
+		      transclude(scope, function(clone, scope) {
+		        element.append(clone);
+		      });
+		    };
+	return{
+		restrict: 'AE',
+		transclude: true,
+		scope: {
+			login: '&',
+			logout: '&',
+			signup: '&'
+		},
+		link : linker,
+		// controller: 'loginCtrl',
+		templateUrl: 'loginmenu.html'
+	}
+});
+app.directive("loginForm",function(){
+	return{
+		restrict: 'AE',
+		// controller: 'loginCtrl',
+		templateUrl: 'loginform.html'
+	}
 });
