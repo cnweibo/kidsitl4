@@ -205,7 +205,45 @@ class UserController extends BaseController {
                 ->with( 'error', $err_msg );
         }
     }
+    /**
+     * Attempt to do login by ajax
+     *
+     */
+    public function postLoginX()
+    {
+        $input = array(
+            'email'    => Input::get( 'email' ), // May be the username too
+            'username' => Input::get( 'email' ), // May be the username too
+            'password' => Input::get( 'password' ),
+            'remember' => Input::get( 'remember' ),
+        );
 
+        if ( Confide::logAttempt( $input, true ) )
+        {   
+            $data = array(
+                'status' => 'ok',
+                'username' => Auth::user()? Auth::user()->username : null,
+                'isAdmin' => Auth::user()? Auth::user()->hasRole('admin') : null
+                 );
+            return Response::json($data, 200);
+        }
+        else
+        {
+            // Check if there was too many login attempts
+            if ( Confide::isThrottled( $input ) ) {
+                $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
+            } elseif ( $this->user->checkUserExists( $input ) && ! $this->user->isConfirmed( $input ) ) {
+                $err_msg = Lang::get('confide::confide.alerts.not_confirmed');
+            } else {
+                $err_msg = Lang::get('confide::confide.alerts.wrong_credentials');
+            }
+            $data = array(
+                'status' => 'wrong_credentials',
+                'username' => (Auth::user()? Auth::user()->username : null)
+                 );
+            return Response::json($data, 200);
+        }
+    }
     /**
      * Attempt to confirm account with code
      *
@@ -300,6 +338,20 @@ class UserController extends BaseController {
         Confide::logout();
 
         return Redirect::to('/');
+    }
+    /**
+     * Log the user out of the application from ajax.
+     *
+     */
+    public function postLogoutX()
+    {
+        Confide::logout();
+        $data = array(
+            'status' => 'ok',
+            'username' => Auth::user()? Auth::user()->username : null,
+            'isAdmin' => Auth::user()? Auth::user()->hasRole('admin') : null
+             );
+        return Response::json($data, 200);
     }
 
     /**

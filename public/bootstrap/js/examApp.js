@@ -15,6 +15,28 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		'timetodo':10,
 		'showAnswer': false
 	};
+	$scope.logininput = {};
+	$scope.user = {};
+	$scope.userloggedinfo = {};
+	
+	$scope.doLogin = function(){
+		$scope.logininput._token = angular.element(document.getElementsByName('_token')[0]).val();
+		$http.post('/user/loginx',$scope.logininput).success(function(logindata)
+	{
+		$scope.userloggedinfo = logindata;
+		console.log($scope.userloggedinfo);
+	});
+		$scope.user.showLogin = false ;
+	};
+	$scope.doLogout = function(){
+		$scope.logininput._token = angular.element(document.getElementsByName('_token')[0]).val();
+		$http.post('/user/logoutx',$scope.logininput).success(function(logindata)
+	{
+		$scope.userloggedinfo = logindata;
+		console.log($scope.userloggedinfo);
+	});
+		$scope.user.showLogin = false ;
+	};
 	$scope.canInputAnswer = answeringFactory.canInputAnswer();
 	$scope.viewClassDetails = function(classToView) {
 	// do something
@@ -249,13 +271,7 @@ app.directive("loginMenu",function(){
 	return{
 		restrict: 'AE',
 		transclude: true,
-		scope: {
-			login: '&',
-			logout: '&',
-			signup: '&'
-		},
 		link : linker,
-		// controller: 'loginCtrl',
 		templateUrl: 'loginmenu.html'
 	}
 });

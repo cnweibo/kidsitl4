@@ -14,17 +14,14 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/printmath.css') }}" media="print"/>
 @stop
 @section('loginctrlform')
-<ul class="nav navbar-nav pull-right" id="top-nav-right" login-menu login="login()" logout="logout()" signup="signup()" ng-controller="loginCtrl">
-    @if (Auth::check())
-    @if (Auth::user()->hasRole('admin'))
-    <li><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
-    @endif
-    <li><a href="{{{ URL::to('user') }}}">登录为： {{{ Auth::user()->username }}}</a></li>
-    <li><a href=""><button ng-click="logout()" type="button" class="btn btn-primary">退出</button></a></li> 
-    @else
-    <li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="#" ng-click="login()">登录</a></li>
-    <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="#" ng-click="signup()">{{{ Lang::get('site.sign_up') }}}</a></li>
-    @endif
+<ul class="nav navbar-nav pull-right" id="top-nav-right" ng-controller="loginCtrl">
+    <li ng-if="userloggedinfo.isAdmin"><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
+
+    <li ng-if="userloggedinfo.username"><a href="{{{ URL::to('user') }}}">登录为： [[userloggedinfo.username]]</a></li>
+    <li ng-if="userloggedinfo.username"><a href="" ng-click="doLogout()">退出</a></li> 
+
+    <li ng-if="!userloggedinfo.username"><a href="#" ng-click="login()">登录</a></li>
+    <li ng-if="!userloggedinfo.username"><a href="#" ng-click="signup()">{{{ Lang::get('site.sign_up') }}}</a></li>
 </ul>
 @overwrite
 @section('content')
@@ -39,13 +36,13 @@
 			<div class="page-header">
 				<h1>登录进入系统</h1>
 			</div>
-			<form class="form-horizontal" accept-charset="UTF-8">
+			<form name="loginform" class="form-horizontal" accept-charset="UTF-8" data-ng-submit="doLogin()">
 			    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 			    <fieldset>
 			        <div class="form-group">
 			            <label class="col-md-5 control-label" for="email">{{ Lang::get('confide::confide.username_e_mail') }}</label>
 			            <div class="col-md-7">
-			                <input class="form-control" tabindex="1" placeholder="{{ Lang::get('confide::confide.username_e_mail') }}" type="text" name="email" id="email" value="{{ Input::old('email') }}">
+			                <input ng-model="logininput.email" class="form-control" tabindex="1" placeholder="{{ Lang::get('confide::confide.username_e_mail') }}" type="text" name="email" id="email" value="{{ Input::old('email') }}">
 			            </div>
 			        </div>
 			        <div class="form-group">
@@ -53,7 +50,7 @@
 			                {{ Lang::get('confide::confide.password') }}
 			            </label>
 			            <div class="col-md-7">
-			                <input class="form-control" tabindex="2" placeholder="{{ Lang::get('confide::confide.password') }}" type="password" name="password" id="password">
+			                <input ng-model="logininput.password" class="form-control" tabindex="2" placeholder="{{ Lang::get('confide::confide.password') }}" type="password" name="password" id="password">
 			            </div>
 			        </div>
 
@@ -61,7 +58,7 @@
 			            <div class="col-md-offset-5 col-md-7">
 			                <div class="checkbox">
 			                    <label for="remember">{{ Lang::get('confide::confide.login.remember') }}
-			                        <input type="hidden" name="remember" value="0">
+			                        <input ng-model="logininput.remember" type="hidden" name="remember" value="0">
 			                        <input tabindex="4" type="checkbox" name="remember" id="remember" value="1">
 			                    </label>
 			                </div>
@@ -78,7 +75,7 @@
 
 			        <div class="form-group">
 			            <div class="col-md-offset-2 col-md-10">
-			                <button tabindex="3" type="submit" class="btn btn-primary" data-ng-submit="doLogin()">{{ Lang::get('confide::confide.login.submit') }}</button>
+			                <button tabindex="3" type="submit" class="btn btn-primary">{{ Lang::get('confide::confide.login.submit') }}</button>
 			                <a class="btn btn-default" href="forgot">{{ Lang::get('confide::confide.login.forgot_password') }}</a>
 			            </div>
 			        </div>
