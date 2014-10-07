@@ -13,7 +13,8 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		'mathDigitNumbers': 2,
 		'mathCategory': 'plus',
 		'timetodo':10,
-		'showAnswer': false
+		'showAnswer': false,
+		'checkAnswerRealtime': true
 	};
 	$scope.logininput = {};
 	$scope.user = {};
@@ -235,7 +236,7 @@ app.directive("examRowData",function($animate,answeringFactory){
 		};
 	return {
 		restrict: 'AE',
-		scope: {row: "=",showAnswer: "=", id: "=",canInputAnswer: "="},
+		scope: {row: "=",showAnswer: "=", id: "=",canInputAnswer: "=",checkAnswerRealtime: "=checkAnswerMode"},
 		templateUrl: 'examrow.html',
 		link: linker,
 		// replace: true
@@ -260,8 +261,9 @@ app.directive("checkResult",function(){
 		};
 	return {
 		restrict: 'A',
-		scope: {myRow: '=', answer: '='},
-		template: '<span class="answerTF" data-ng-if="checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>',
+		scope: {myRow: '=', answer: '=',checkAnswerRealtime: '=',hasInput: '='},
+		templateUrl: 'checkresult.html',
+		
 		link: linker,
 		replace: true
 	};

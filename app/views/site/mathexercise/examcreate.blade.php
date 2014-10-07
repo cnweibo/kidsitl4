@@ -89,21 +89,27 @@
 		
 		<span ng-if="isVisualColumn(row,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">[[row.operand1]]</span> 
 		<span ng-if="!isVisualColumn(row,1) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">([[row.operand1]])</span> 
-		<input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata">
+		<span ng-form="inputform1"><input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
 		
 		<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
 
 		<span ng-if="isVisualColumn(row,2)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">[[row.operand2]]</span>  
 		<span ng-if="!isVisualColumn(row,2) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">([[row.operand2]])</span> 
-		<input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,2) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata">
+		<span ng-form="inputform2"><input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,2) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
 		
 		= 
 
 		<span ng-if="isVisualColumn(row,3)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">[[row.sumdata]]</span>  
 		<span ng-if="!isVisualColumn(row,3) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">([[row.sumdata]])</span> 
-		<input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata">
-		<span check-result my-row="row" answer='row.myanswerdata'></span>
+		<span ng-form="inputform3"><input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
+		<span check-result my-row="row" has-input="inputform1.$dirty || inputform2.$dirty || inputform3.$dirty" answer='row.myanswerdata' check-answer-realtime="checkAnswerRealtime"></span>
 	</span>
+	<script type="text/ng-template" id="checkresult.html">
+		<span>
+			<span class="answerTF" data-ng-if="hasInput && checkAnswerRealtime && checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
+			<span class="answerTF" data-ng-if="hasInput && checkAnswerRealtime && (!checkData(myRow,answer))"><label class="label label-danger"><span class="glyphicon glyphicon-remove"></span></label></span>
+		</span>
+	</script>
 	</script>
 	<div class="row">
 		<div login-form class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-lg-push-3">
@@ -228,7 +234,7 @@
 			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
 				<div class="row	exerciserow">
 			    	<article class="col-md-4" data-ng-repeat="examrow in examdata.examdata">
-			    			<span exam-row-data can-input-answer="canInputAnswer" row="examrow" id="$index+1" show-answer="mathexam.showAnswer" ></exam-row-data>				    		
+			    			<span exam-row-data can-input-answer="canInputAnswer" row="examrow" id="$index+1" show-answer="mathexam.showAnswer" check-answer-mode="mathexam.checkAnswerRealtime"></exam-row-data>				    		
 			    	</article>
 			    </div>
 			</div>   
