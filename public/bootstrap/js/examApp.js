@@ -14,7 +14,8 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		'mathCategory': 'plus',
 		'timetodo':10,
 		'showAnswer': false,
-		'checkAnswerRealtime': true
+		'checkAnswerRealtime': true,
+		'score': 0
 	};
 	$scope.logininput = {};
 	$scope.user = {};
