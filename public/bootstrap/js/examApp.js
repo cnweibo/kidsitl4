@@ -18,7 +18,11 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 	$scope.logininput = {};
 	$scope.user = {};
 	$scope.userloggedinfo = {};
-	
+	$http.get('/user/loginstatusx',$scope.logininput).success(function(logindata)
+	{
+		$scope.userloggedinfo = logindata;
+		console.log($scope.userloggedinfo);
+	});	
 	$scope.doLogin = function(){
 		$scope.logininput._token = angular.element(document.getElementsByName('_token')[0]).val();
 		$http.post('/user/loginx',$scope.logininput).success(function(logindata)

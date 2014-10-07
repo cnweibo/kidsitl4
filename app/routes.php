@@ -91,6 +91,8 @@ Route::post('user/loginx', 'UserController@postLoginX');
 
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::post('user/logoutx','UserController@postLogoutX');
+Route::get('user/loginstatusx','UserController@getLoginStatusX');
+
 Route::controller('user', 'UserController');
 
 //:: Application Routes ::
