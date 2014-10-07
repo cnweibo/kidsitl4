@@ -217,7 +217,8 @@
 @section('scripts')
 	<script src="{{asset('bootstrap/js/angular.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/angular-timer.js')}}"></script>
-	<script src="{{asset('bootstrap/js/angular-animate.min.js')}}"></script>	
+	<script src="{{asset('bootstrap/js/angular-animate.min.js')}}"></script>
+	<script src="{{asset('bootstrap/js/angular-toastr.js')}}"></script>	
 	<script src="{{asset('bootstrap/js/kidsitanimatelib.js')}}"></script>
 	<script src="{{asset('bootstrap/js/ui-bootstrap-tpls-0.11.0.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/TweenMax.min.js')}}"></script>

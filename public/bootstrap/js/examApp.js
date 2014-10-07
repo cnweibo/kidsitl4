@@ -1,9 +1,9 @@
-var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer'],function($interpolateProvider) {
+var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer','toastr'],function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
 
-app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory) {
+app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr) {
 	$scope.timerRunning = null;
 	$scope.user={};	
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true};
@@ -147,6 +147,7 @@ app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory)
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 	};
 	$scope.submitAnswers = function(){
+		toastr.error('请登录后再提交','需要登录',{closeButton: true,positionClass: 'toast-bottom-full-width'});
 		$scope.mathexam.hasSubmitted = true;
 		$scope.metadata.examTimerRunning = 4;
 		$rootScope.$broadcast('userHasSubmittedAnswers');
