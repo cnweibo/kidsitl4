@@ -226,6 +226,7 @@ article.mathexerciseitem{
 }
 #examcontainer .answerInput{
   width:40px;
+  color: blue;
   font-size:0.6em;
 }
 /*ngcloak solve the flash issue*/
