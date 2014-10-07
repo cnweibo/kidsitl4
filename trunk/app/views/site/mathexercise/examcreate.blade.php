@@ -89,7 +89,7 @@
 		
 		<span ng-if="isVisualColumn(row,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">[[row.operand1]]</span> 
 		<span ng-if="!isVisualColumn(row,1) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">([[row.operand1]])</span> 
-		<span ng-form="inputform1"><input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
+		<span ng-form="inputform1"><input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata" ng-model-options="{debounce: 1000}"></span>
 		
 		<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
 
@@ -183,44 +183,8 @@
 						</tabset>
 				  </div>
 			</div>
-			
-			<form id="examcustom" style="display:inline" class="form-inline" data-ng-submit="createExam()">
-			    <span style="display:inline-block">   
-			    <div class="form-group">
-			    	<label class="radio inline"><input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="plus" check="checked"> 加</label>
-			    	<label class="radio inline"><input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="minus"> 减</label>
-				    <label class="radio inline"><input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="times"> 乘</label>
-					<label class="radio inline"><input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="division"> 除</label>				
-				</div>
-				
-				<div class="form-group">
-					<span> | 位数:</span>
-			    	<label class="radio inline"><input type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="1"> 1位数</label>
-			    	<label class="radio inline"><input type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="2"> 2位数</label>
-				    <label class="radio inline"><input type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="3"> 3位数</label>
-					<label class="radio inline"><input type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="4" check="checked"> 4位数</label>				
-				</div>
-				
-				<div class="form-group">
-					<span> | 难度:</span>
-			    	<label class="radio inline"><input type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="1"> 1级</label>
-			    	<label class="radio inline"><input type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="2"> 2级</label>
-				    <label class="radio inline"><input type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="3"> 3级</label>
-					<label class="radio inline"><input type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="4" check="checked"> 4级</label>				
-				</div>
-				
-				<div class="form-group">
-					<span> | 题数:</span>
-					<label class="radio inline"><input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="20"> 20</label>
-			    	<label class="radio inline"><input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="50" check="checked">50</label>
-				    <label class="radio inline"><input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="100"> 100</label>			
-				</div>
-						<button tooltip-placement="top" tooltip="启动考试计时" type="submit" data-ng-click="createExam()" class="btn btn-info btn-xs btn-large">开始做题</button>
-							
-				</span>
-			</form>	
 		</div>
-		<h4><span class="aligncenter inlineblock"><strong>班级:</strong>________ <strong>姓名:</strong>__________  
+		<h4><span class="aligncenter inlineblock"><strong>姓名:</strong>__________  <strong>分数:</strong> <strong style="color:red"> [[mathexam.score|number]] </strong>
 				<span ng-cloak timer timerid="examCountTimer" autostart="false" interval="1000">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
 					
 				</span>
@@ -251,9 +215,9 @@
 <!-- examAppCtrl -->
 @stop
 @section('scripts')
-	<script src="{{asset('bootstrap/js/angular.js')}}"></script>
+	<script src="{{asset('bootstrap/js/angular.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/angular-timer.js')}}"></script>
-	<script src="{{asset('bootstrap/js/ng-animate.js')}}"></script>	
+	<script src="{{asset('bootstrap/js/angular-animate.min.js')}}"></script>	
 	<script src="{{asset('bootstrap/js/kidsitanimatelib.js')}}"></script>
 	<script src="{{asset('bootstrap/js/ui-bootstrap-tpls-0.11.0.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/TweenMax.min.js')}}"></script>
