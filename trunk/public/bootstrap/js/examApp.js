@@ -3,7 +3,7 @@ var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer'],fun
     $interpolateProvider.endSymbol(']]');
 });
 
-app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
+app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory) {
 	$scope.timerRunning = null;
 	$scope.user={};	
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true};
@@ -14,8 +14,63 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		'mathCategory': 'plus',
 		'timetodo':10,
 		'showAnswer': false,
-		'checkAnswerRealtime': true,
-		'score': 0
+		'checkAnswerRealtime': false,
+		'scorePerQuestion' : 2,
+		'score': 0,
+		'userAnsweredData':[],
+		'hasSubmitted': false
+	};
+	var searchAnsweredData = function(rowtosearch){
+		var index = -1;
+		for (i=0;i<$scope.mathexam.userAnsweredData.length;i++)
+			if (rowtosearch.id == $scope.mathexam.userAnsweredData[i].id){
+				index = i;
+				break;
+			}
+			return index;
+	};
+	$scope.$on('updateScoreAndAnswer',function (e,rowdata) {
+			var result = null;
+			var index = -2;
+			index = searchAnsweredData (rowdata);
+			console.log(index);
+			if (rowdata.invisualcolumns == "1"){
+				result = (rowdata.operand1 == rowdata.myanswerdata) ;
+			}
+			if (rowdata.invisualcolumns == "2"){
+				result = (rowdata.operand2 == rowdata.myanswerdata) ;}
+			if (rowdata.invisualcolumns == "3"){
+				result = (rowdata.sumdata == rowdata.myanswerdata) ;
+			}
+			if (result){// if the answer is right
+				if (index == -1){//not found yet, we push in and add the score
+					$scope.mathexam.score += $scope.mathexam.scorePerQuestion;
+					$scope.mathexam.userAnsweredData.push({'id': rowdata.id,'invisualcolumns': rowdata.invisualcolumns,'myanswerdata': rowdata.myanswerdata, 'scoreAddedTimes':1});
+				}else{
+					// have found ,we should check whether or not had added the score
+					if ($scope.mathexam.userAnsweredData[index].scoreAddedTimes == 0){
+						$scope.mathexam.score += $scope.mathexam.scorePerQuestion;
+						$scope.mathexam.userAnsweredData[index].scoreAddedTimes = 1;
+					}else if ($scope.mathexam.userAnsweredData[index].scoreAddedTimes == 1){
+						// do nothing, ignore it
+					}
+				}
+			}else{
+				// the answer is not right
+				if (index == -1){//not found yet, we push in and NOT add the score
+					$scope.mathexam.userAnsweredData.push({'id': rowdata.id,'invisualcolumns': rowdata.invisualcolumns,'myanswerdata': rowdata.myanswerdata, 'scoreAddedTimes':0});
+				}else{
+					// have found and score had been added, so we should decrease the score
+					if ($scope.mathexam.userAnsweredData[index].scoreAddedTimes == 1){
+						$scope.mathexam.score -= $scope.mathexam.scorePerQuestion;
+						$scope.mathexam.userAnsweredData[index].scoreAddedTimes = 0;
+				}
+				}
+			}
+			
+});
+	$scope.changeQuantity = function(newvalue){
+		$scope.mathexam.scorePerQuestion = 100 / newvalue ;
 	};
 	$scope.logininput = {};
 	$scope.user = {};
@@ -55,6 +110,9 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 	$scope.createExam = function(){
 		var mathexamreq = $scope.mathexam;
 		$scope.metadata.examTimerRunning = 0;
+		$scope.mathexam.userAnsweredData = {};
+		$scope.mathexam.score = 0;
+		$scope.mathexam.hasSubmitted = false;
 		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
 	{
 		$scope.examdata = examdata;
@@ -79,13 +137,20 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		answeringFactory.setIsAnswering(true);
 	    $scope.metadata.examTimerRunning = 3;
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
+	    $scope.mathexam.hasSubmitted = false;
+	    $rootScope.$broadcast('userContinueAfterSubmittedAnswers');
 	};
 	$scope.clearExamTimer = function(id){
 		$scope.$broadcast('timer-stop',id);
 		answeringFactory.setIsAnswering(false);
 	    $scope.metadata.examTimerRunning = 0;
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
-	}
+	};
+	$scope.submitAnswers = function(){
+		$scope.mathexam.hasSubmitted = true;
+		$scope.metadata.examTimerRunning = 4;
+		$rootScope.$broadcast('userHasSubmittedAnswers');
+	};
 	$scope.shouldDisabled = function(btnid){
 		if (btnid==1){
 		if ($scope.metadata.examTimerRunning==0){
@@ -95,7 +160,7 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		}
 		}
 		if (btnid==2){
-		if ($scope.metadata.examTimerRunning==2 || $scope.metadata.examTimerRunning==0 ){
+		if ($scope.metadata.examTimerRunning==2 || $scope.metadata.examTimerRunning==0 || $scope.metadata.examTimerRunning==4){
 			return true;
 		}
 		else{return false;
@@ -109,7 +174,11 @@ app.controller('examAppCtrl', function($scope,$http,answeringFactory) {
 		}
 		}
 		if (btnid==4){
-			return false;
+			if ($scope.metadata.examTimerRunning==0 || $scope.metadata.examTimerRunning==1 || $scope.metadata.examTimerRunning==3 || $scope.metadata.examTimerRunning==4){
+				return true;
+			}
+			else{return false;
+			}
 		}
 
 	};
@@ -217,6 +286,12 @@ app.directive("examRowData",function($animate,answeringFactory){
 			// scope.$watch('canInputAnswer', function(newVal, oldVal) {
 			//     console.log(newVal);
 			// });
+			// scope.$watch('row.myanswerdata',function(nv,ov){
+			// 	console.log(nv);
+			// })
+			scope.updateScore = function(){
+					scope.$emit('updateScoreAndAnswer',scope.row);
+			};
 			scope.isVisualColumn = function(row,column){
 				return (row.invisualcolumns!=column);
 			};
@@ -245,21 +320,28 @@ app.directive("examRowData",function($animate,answeringFactory){
 });
 app.directive("checkResult",function(){
 	var linker = function(scope, element, attrs) {
-			scope.checkData = function(row,answer){
-				var result = null;
-				if (row.invisualcolumns == "1"){
-					result = (row.operand1 == answer) ;
+		scope. hasSubmittedAnsweres = false;
+		scope.checkData = function(row,answer){
+			var result = null;
+			if (row.invisualcolumns == "1"){
+				result = (row.operand1 == answer) ;
+			}
+			if (row.invisualcolumns == "2"){
+				result = (row.operand2 == answer) ;
+			}
+			if (row.invisualcolumns == "3"){
+				result = (row.sumdata == answer) ;
+				
 				}
-				if (row.invisualcolumns == "2"){
-					result = (row.operand2 == answer) ;
-				}
-				if (row.invisualcolumns == "3"){
-					result = (row.sumdata == answer) ;
-					
-					}
-				return result;
-			};
+			return result;
 		};
+		scope.$on('userHasSubmittedAnswers',function(){
+			scope.hasSubmittedAnsweres = true;
+		});
+		scope.$on('userContinueAfterSubmittedAnswers',function(){
+			scope.hasSubmittedAnsweres = false;
+		});
+	};
 	return {
 		restrict: 'A',
 		scope: {myRow: '=', answer: '=',checkAnswerRealtime: '=',hasInput: '='},

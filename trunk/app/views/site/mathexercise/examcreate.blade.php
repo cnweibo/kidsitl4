@@ -89,25 +89,25 @@
 		
 		<span ng-if="isVisualColumn(row,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">[[row.operand1]]</span> 
 		<span ng-if="!isVisualColumn(row,1) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">([[row.operand1]])</span> 
-		<span ng-form="inputform1"><input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata" ng-model-options="{debounce: 1000}"></span>
+		<span ng-form="inputform1"><input ng-blur="updateScore()" ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata" ng-model-options="{debounce: 100}"></span>
 		
 		<span style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
 
 		<span ng-if="isVisualColumn(row,2)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">[[row.operand2]]</span>  
 		<span ng-if="!isVisualColumn(row,2) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">([[row.operand2]])</span> 
-		<span ng-form="inputform2"><input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,2) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
+		<span ng-form="inputform2"><input ng-blur="updateScore()" ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,2) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata" ng-model-options="{debounce: 100}"></span>
 		
 		= 
 
 		<span ng-if="isVisualColumn(row,3)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">[[row.sumdata]]</span>  
 		<span ng-if="!isVisualColumn(row,3) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">([[row.sumdata]])</span> 
-		<span ng-form="inputform3"><input ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
+		<span ng-form="inputform3"><input ng-blur="updateScore()" ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata" ng-model-options="{debounce: 100}"></span>
 		<span check-result my-row="row" has-input="inputform1.$dirty || inputform2.$dirty || inputform3.$dirty" answer='row.myanswerdata' check-answer-realtime="checkAnswerRealtime"></span>
 	</span>
 	<script type="text/ng-template" id="checkresult.html">
 		<span>
-			<span class="answerTF" data-ng-if="hasInput && checkAnswerRealtime && checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
-			<span class="answerTF" data-ng-if="hasInput && checkAnswerRealtime && (!checkData(myRow,answer))"><label class="label label-danger"><span class="glyphicon glyphicon-remove"></span></label></span>
+			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres) && checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
+			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres) && (!checkData(myRow,answer))"><label class="label label-danger"><span class="glyphicon glyphicon-remove"></span></label></span>
 		</span>
 	</script>
 	</script>
@@ -118,7 +118,7 @@
 	</div>
 <h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 
 	<a href="javascript:window.print()"><span tooltip-placement="top" tooltip="打印本试卷" class="glyphicon glyphicon-print fa-2x"></span></a>
-	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span tooltip-placement="top" tooltip="打开配置面板，按需重新调阅" style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
+	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span tooltip-placement="top" tooltip="打开配置面板，配置当前试卷答题模式，或按需调阅新试卷" style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
 	<div toggle-answer-view-and-animcate trigger="mathexam.showAnswer" ></div>
 </h1>
 <h4 ng-cloak id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
@@ -134,7 +134,7 @@
 								<span class="label label-default">[[mathexam.mathDigitNumbers]]位数</span> 
 								<span class="label label-default">[[mathexam.mathDifficulty]]级</span> 
 								<span class="label label-default">[[mathexam.mathQuantity]]题</span>
-								<button type="submit" data-ng-click="createExam();showconf.showSettings = null;clearExamTimer('examCountTimer') " class="btn btn-danger btn-lg">调阅试卷</button>
+								<button type="submit" data-ng-click="createExam();showconf.showSettings = null;clearExamTimer('examCountTimer') " class="btn btn-danger">调阅新试卷</button>
 							</p>
 						    <tab heading="题型">
 				    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="plus" check="checked"> 加</label>
@@ -156,9 +156,9 @@
 						    			<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="4" check="checked"> 4级</label>				
 						    		</tab>
 						  	<tab heading="题数">
-				  				<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="20"> 20</label>
-				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="50" check="checked">50</label>
-				  			    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" value="100"> 100</label>			
+				  				<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" ng-change='changeQuantity(mathexam.mathQuantity)' ng-value=20> 20</label>
+				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" ng-change='changeQuantity(mathexam.mathQuantity)'  ng-value=50 check="checked">50</label>
+				  			    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" ng-change='changeQuantity(mathexam.mathQuantity)'  ng-value=100> 100</label>			
 				  			
 						  	</tab>
 						  	<tab heading="在线考试模式">
@@ -184,15 +184,15 @@
 				  </div>
 			</div>
 		</div>
-		<h4><span class="aligncenter inlineblock"><strong>姓名:</strong>__________  <strong>分数:</strong> <strong style="color:red"> [[mathexam.score|number]] </strong>
+		<h4><span class="aligncenter inlineblock"><strong>姓名:</strong><strong style="color:red" ng-show="userloggedinfo.username"> [[userloggedinfo.username]] </strong><strong ng-show="!userloggedinfo.username">_____ </strong> <strong>分数:</strong><strong ng-show="(!mathexam.hasSubmitted)&&(!mathexam.checkAnswerRealtime)"> ______</strong> <strong ng-show="mathexam.hasSubmitted || mathexam.checkAnswerRealtime" style="color:red"> [[mathexam.score|number]] </strong>
 				<span ng-cloak timer timerid="examCountTimer" autostart="false" interval="1000">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
 					
 				</span>
 				<div class="btn-group">
 						<button type="button" class="btn btn-primary" ng-disabled="metadata.shouldDisabled1" ng-click="startExamTimer('examCountTimer')"><i class="glyphicon glyphicon-time"></i> 开始做题</button>
 						<button type="button" class="btn btn-danger"  ng-disabled="metadata.shouldDisabled2" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
-						<button type="button" class="btn btn-success"  ng-disabled="metadata.shouldDisabled3" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i> 继续</button>
-						<button type="button" class="btn btn-warning"  ng-disabled="metadata.shouldDisabled4" ng-click=""><i class="glyphicon ok-circle"></i> 交卷</button>
+						<button type="button" class="btn btn-success"  ng-disabled="metadata.shouldDisabled3" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i>订正/继续</button>
+						<button type="button" class="btn btn-warning"  ng-disabled="metadata.shouldDisabled4" ng-click="submitAnswers()"><i class="glyphicon ok-circle"></i> 交卷</button>
 						<button tooltip-placement="bottom" tooltip="1.点击开始做题启动计时才能答题;2.答题中可以暂停和继续;3.交卷需要登录" type="button" class="btn btn-info"  ng-click=""><i class="glyphicon glyphicon-question-sign"></i></button>
 				
 				</div>
