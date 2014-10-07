@@ -353,6 +353,27 @@ class UserController extends BaseController {
              );
         return Response::json($data, 200);
     }
+    /**
+     * get the Login status from ajax.
+     *
+     */
+    public function getLoginStatusX()
+    {
+        if (Auth::check()){
+            $data = array(
+                'status' => 'ok',
+                'username' => Auth::user()? Auth::user()->username : null,
+                'isAdmin' => Auth::user()? Auth::user()->hasRole('admin') : null
+                 );
+        }else{
+            $data = array(
+                'status' => 'NotLoggedin',
+                'username' => Auth::user()? Auth::user()->username : null,
+                'isAdmin' => Auth::user()? Auth::user()->hasRole('admin') : null
+                 );
+        }
+        return Response::json($data, 200);
+    }    
 
     /**
      * Get user's profile
