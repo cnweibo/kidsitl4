@@ -176,6 +176,10 @@
 										<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathqtocount" data-ng-model="mathexam.mathQuantity" value="100"> 100道题</label>	
 								</section>
 						  	</tab>
+				  		  	<tab heading="批卷模式">
+				  		  		<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathPijuanMode" data-ng-model="mathexam.checkAnswerRealtime" ng-value="true" check="checked"> 边答题边批卷</label>
+				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathPijuanMode" data-ng-model="mathexam.checkAnswerRealtime" ng-value="false"> 交卷时一次性批卷 </label>		
+				  		  	</tab>
 						</tabset>
 				  </div>
 			</div>
