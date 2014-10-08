@@ -33,7 +33,6 @@ app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,
 			var result = null;
 			var index = -2;
 			index = searchAnsweredData (rowdata);
-			console.log(index);
 			if (rowdata.invisualcolumns == "1"){
 				result = (rowdata.operand1 == rowdata.myanswerdata) ;
 			}
