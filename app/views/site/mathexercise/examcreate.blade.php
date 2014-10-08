@@ -106,8 +106,8 @@
 	</span>
 	<script type="text/ng-template" id="checkresult.html">
 		<span>
-			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres) && checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
-			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres) && (!checkData(myRow,answer))"><label class="label label-danger"><span class="glyphicon glyphicon-remove"></span></label></span>
+			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres) && !isRevisioning && checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
+			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres || isRevisioning) && (!checkData(myRow,answer))"><label class="label label-danger"><span class="glyphicon glyphicon-remove"></span></label></span>
 		</span>
 	</script>
 	</script>
@@ -190,10 +190,11 @@
 				</span>
 				<div class="btn-group">
 						<button type="button" class="btn btn-primary" ng-disabled="metadata.shouldDisabled1" ng-click="startExamTimer('examCountTimer')"><i class="glyphicon glyphicon-time"></i> 开始做题</button>
-						<button type="button" class="btn btn-danger"  ng-disabled="metadata.shouldDisabled2" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i> 暂停</button>
-						<button type="button" class="btn btn-success"  ng-disabled="metadata.shouldDisabled3" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i>订正/继续</button>
-						<button type="button" class="btn btn-warning"  ng-disabled="metadata.shouldDisabled4" ng-click="submitAnswers()"><i class="glyphicon ok-circle"></i> 交卷</button>
-						<button tooltip-placement="bottom" tooltip="1.点击开始做题启动计时才能答题;2.答题中可以暂停和继续;3.交卷需要登录" type="button" class="btn btn-info"  ng-click=""><i class="glyphicon glyphicon-question-sign"></i></button>
+						<button type="button" class="btn btn-danger"  ng-disabled="metadata.shouldDisabled2" ng-click="stopExamTimer('examCountTimer')"><i class="glyphicon glyphicon glyphicon-pause"></i>暂停</button>
+						<button type="button" class="btn btn-success"  ng-disabled="metadata.shouldDisabled3" ng-click="resumeExamTimer('examCountTimer')"><i class="glyphicon glyphicon-play"></i>继续</button>
+						<button type="button" class="btn btn-warning"  ng-disabled="metadata.shouldDisabled4" ng-click="submitAnswers()"><i class="glyphicon glyphicon-ok"></i> 交卷</button>
+						<button type="button" class="btn btn-info"  ng-disabled="metadata.shouldDisabled5" ng-click="revisionAnswers()"><i class="glyphicon glyphicon-pencil"></i>订正</button>
+						<button tooltip-placement="bottom" tooltip="1.点击开始做题启动计时才能答题;2.答题中可以暂停和继续;3.交卷需要登录" type="button" class="btn btn-info"  ng-click=""><i class="glyphicon glyphicon-info-sign"></i></button>
 				
 				</div>
 			</span>        

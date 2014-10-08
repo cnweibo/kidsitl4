@@ -6,7 +6,7 @@ var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer','toa
 app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr) {
 	$scope.timerRunning = null;
 	$scope.user={};	
-	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true};
+	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
 	$scope.mathexam = {
 		'mathQuantity' : 50,
 		'mathDifficulty': 2,
@@ -109,7 +109,7 @@ app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,
 	$scope.createExam = function(){
 		var mathexamreq = $scope.mathexam;
 		$scope.metadata.examTimerRunning = 0;
-		$scope.mathexam.userAnsweredData = {};
+		$scope.mathexam.userAnsweredData = [];
 		$scope.mathexam.score = 0;
 		$scope.mathexam.hasSubmitted = false;
 		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
@@ -137,7 +137,7 @@ app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,
 	    $scope.metadata.examTimerRunning = 3;
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 	    $scope.mathexam.hasSubmitted = false;
-	    $rootScope.$broadcast('userContinueAfterSubmittedAnswers');
+
 	};
 	$scope.clearExamTimer = function(id){
 		$scope.$broadcast('timer-stop',id);
@@ -149,7 +149,16 @@ app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,
 		toastr.error('请登录后再提交','需要登录',{closeButton: true,positionClass: 'toast-bottom-full-width'});
 		$scope.mathexam.hasSubmitted = true;
 		$scope.metadata.examTimerRunning = 4;
+		answeringFactory.setIsAnswering(false);
+	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 		$rootScope.$broadcast('userHasSubmittedAnswers');
+	};
+	$scope.revisionAnswers = function(){
+		$scope.mathexam.hasSubmitted = false;
+		$scope.metadata.examTimerRunning = 5;
+		answeringFactory.setIsAnswering(true);
+	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
+		$rootScope.$broadcast('revisionAfterSubmittedAnswers');
 	};
 	$scope.shouldDisabled = function(btnid){
 		if (btnid==1){
@@ -160,14 +169,14 @@ app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,
 		}
 		}
 		if (btnid==2){
-		if ($scope.metadata.examTimerRunning==2 || $scope.metadata.examTimerRunning==0 || $scope.metadata.examTimerRunning==4){
+		if ($scope.metadata.examTimerRunning==2 || $scope.metadata.examTimerRunning==0 || $scope.metadata.examTimerRunning==4 || $scope.metadata.examTimerRunning==5){
 			return true;
 		}
 		else{return false;
 		}
 		}
 		if (btnid==3){
-		if ($scope.metadata.examTimerRunning==3 || $scope.metadata.examTimerRunning==1 || $scope.metadata.examTimerRunning==0){
+		if ($scope.metadata.examTimerRunning==3 || $scope.metadata.examTimerRunning==1 || $scope.metadata.examTimerRunning==0 || $scope.metadata.examTimerRunning==4 || $scope.metadata.examTimerRunning==5){
 			return true;
 		}
 		else{return false;
@@ -180,7 +189,12 @@ app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,
 			else{return false;
 			}
 		}
-
+		if (btnid==5){
+			if ($scope.metadata.examTimerRunning==0 || $scope.metadata.examTimerRunning==1 || $scope.metadata.examTimerRunning==2 || $scope.metadata.examTimerRunning==3 || $scope.metadata.examTimerRunning==5){
+				return true;
+			}
+			else if( $scope.metadata.examTimerRunning==4 ){return false;}
+		}
 	};
 
 	$scope.$watch("metadata.examTimerRunning",function(nv,ov){
@@ -189,6 +203,7 @@ app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,
 			$scope.metadata.shouldDisabled2 = $scope.shouldDisabled(2);
 			$scope.metadata.shouldDisabled3 = $scope.shouldDisabled(3);
 			$scope.metadata.shouldDisabled4 = $scope.shouldDisabled(4);
+			$scope.metadata.shouldDisabled5 = $scope.shouldDisabled(5);
 		}
 	});
 });
@@ -335,11 +350,14 @@ app.directive("checkResult",function(){
 				}
 			return result;
 		};
+		scope.isRevisioning = false;
 		scope.$on('userHasSubmittedAnswers',function(){
 			scope.hasSubmittedAnsweres = true;
+			scope.isRevisioning = false;
 		});
-		scope.$on('userContinueAfterSubmittedAnswers',function(){
+		scope.$on('revisionAfterSubmittedAnswers',function(){
 			scope.hasSubmittedAnsweres = false;
+			scope.isRevisioning = true;
 		});
 	};
 	return {
