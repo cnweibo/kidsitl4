@@ -21,7 +21,7 @@
     <li ng-if="userloggedinfo.username"><a href="" ng-click="doLogout()">退出</a></li> 
 
     <li ng-if="!userloggedinfo.username"><a href="#" ng-click="login()">登录</a></li>
-    <li ng-if="!userloggedinfo.username"><a href="#" ng-click="signup()">{{{ Lang::get('site.sign_up') }}}</a></li>
+    <li ng-if="!userloggedinfo.username"><a href="{{{ URL::to('user/create') }}}" target="_blank">{{{ Lang::get('site.sign_up') }}}</a></li>
 </ul>
 @overwrite
 @section('content')
