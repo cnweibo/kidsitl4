@@ -120,11 +120,20 @@ angular.module('kidsitAnimate', ["ngAnimate"])
         enter: function(element,done) {
             console.log("fademe triggered");
                    // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
-                   TweenMax.fromTo(element, 2, {opacity:0},{opacity:1,onComplete:done});
+                   TweenMax.to(element, 1, {opacity:0});
                
                 },
         leave: function(element, done) {
            // TweenMax.to(element, 0.2, {'fontSize': 10,'marginBottom':2,'width':100,'borderLeft':'10px solid #333'});
                    TweenMax.fromTo(element, 0.1, {opacity:1},{opacity:0,onComplete:done});                }
+    };
+})
+.directive("fadeValueChange", function() {
+    return function(scope,element,attrs){
+        scope.$watch(attrs.fadeValueChange,function(nv){
+            if(nv){
+                TweenMax.fromTo(element,1,{fontSize:30},{fontSize:18});
+            }
+        });
     };
 });
