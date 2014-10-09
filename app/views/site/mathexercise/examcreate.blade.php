@@ -13,6 +13,9 @@
 @section('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/printmath.css') }}" media="print"/>
 @stop
+@section('bodyhead')
+<body ng-app="kidsitApp" ng-controller="kidsitAppCtrl">
+@overwrite
 @section('loginctrlform')
 <ul ng-cloak class="nav navbar-nav pull-right" id="top-nav-right" ng-controller="loginCtrl">
     <li ng-if="userloggedinfo.isAdmin"><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>

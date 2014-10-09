@@ -42,8 +42,9 @@
 		<link rel="apple-touch-icon-precomposed" href="{{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}}">
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 	</head>
-
-	<body data-ng-app="examApp" data-ng-controller="examAppCtrl">
+	@section('bodyhead')	
+	<body>
+	@show
 		<!-- To make sticky footer need to wrap in a div -->
 		<div id="wrap">
 			<!-- Navbar -->
