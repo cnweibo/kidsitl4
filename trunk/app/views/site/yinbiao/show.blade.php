@@ -13,8 +13,22 @@
 @section('css')
 	<link rel="stylesheet" href={{ asset('bootstrap/css/printyinbiaoshow.css')}}>
 @stop
+@section('bodyhead')
+<body ng-app="kidsitApp" ng-controller="kidsitAppCtrl">
+@overwrite
 @section('content')
-	<div class="container" ng-app="guestaddwordapp" ng-controller="mp3playerController">
+<script type="text/ng-template" id="guestaddedwords.html">
+	<ul class="nopadding guestaddwordul">
+		<li class="inlineblock guestaddword" ng-repeat="wordadded in wordsadded"><span class="label label-default label-sm wordaddlabel"><small ng-bind="wordadded.wordtext"></small></span></li>
+		<form style="display:inline" class="form-inline" ng-submit="addword()">
+		    <span style="display:inline-block">
+		    	<input type="text" name="wordadded" id="inputWordadded" class="guestaddwordinput" ng-model="newwordadded">
+				<button type="submit" class="btn btn-info btn-xs">我来加词</button>
+			</span>
+		</form>		
+	</ul>
+</script>
+	<div class="container" ng-controller="mp3playerController">
 		<ul class="list-unstyled">
 		<li>
 		<div class="yinbiaoshowheader row" style="margin-bottom:10px;margin-left:13px;font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
@@ -35,25 +49,25 @@
 				<div class="row">				
 			@endif
 		{{--*/$layoutloopcount++;/*--}}
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<div class="panel panel-success" ng-controller="guestaddwordController_<?php echo $fayinguize->id ?>">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-controller="playlistController">
+					<div class="panel panel-success">
 						<div class="panel-heading">
 							<?php Give::javascript(['ppatternregex_'.$layoutloopcount =>$fayinguize->regex?$fayinguize->regex : "No_Regex_Defined",'admin'=>'king of kidist']);?>
 						<h3 style="display:inline;margin-right:20px" class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
 						<em style="font-weight: bolder">{{$fayinguize->description}}</em>
-						<span ng-click="sequentialfollow(<?php $words=[];?> <?php foreach ( Fayinguize::find(4)->relatedwords->toArray() as $relateword) ?> <?php array_push($words,'#wd_'.$relateword["id"]); ?> <?php echo json_encode($words); ?>) ">顺序跟读</span>
+						<!-- <?php $words=[];?> <?php foreach ( Fayinguize::find(4)->relatedwords->toArray() as $relateword) ?> <?php array_push($words,'#wd_'.$relateword["id"]); ?> <?php echo json_encode($words); ?> -->
+						<span >顺序跟读</span>
 						</div>
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<p id="wd_{{$fayinguize->id}}_{{$relatedword->id}}" class="inlineblock wordyinbiaoblock">
-								<span ng-mouseenter="playmp3('{{$relatedword->mp3}}','#wd_{{$fayinguize->id}}_{{$relatedword->id}}')" class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
+								<span class="elementblock wordtext"> {{link_to_route('relatedword.show',$relatedword->wordtext,$relatedword->id,['class'=>'wordtextatag'])}} </span>
 								<em class="elementblock wordyinbiao"> {{$relatedword->wordyinbiao}} </em>
 								<small class="elementblock yinbiaoshu"> 音节数:{{$relatedword->yinjieshu}}</small>
 								</p>
 							@endforeach
 							<hr class = "guestaddwordhr">
-						<ul class="nopadding guestaddwordul" ng-init="wordinfo = {fayinguizeid : <?php echo $fayinguize->id ?>, yinbiaoid : <?php echo $yinbiao->id ?>}">
-							@include('site/partials/guestaddword')
+						<ul guest-added-words fayinguizeid = {{$fayinguize->id}} yinbiaoid = {{$yinbiao->id}} >
 						</ul>
 							<div class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font2e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></div>
 						</div>
@@ -77,9 +91,7 @@
 	<script type="text/javascript" src="{{ asset('bootstrap/js/angular.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/angularinit.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
-	@foreach ($yinbiao->fayinguizes as $fayinguize)
-		<script type="text/javascript" src="http://kidsit.cn/getjs?fayinguizeid={{$fayinguize->id}}&yinbiaoid={{$yinbiao->id}}"></script>
-	@endforeach
+	<script type="text/javascript" src="{{ asset('bootstrap/js/guestaddword.js') }}"></script>
 	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';//var ppatternregex='{{(is_null($yinbiao->fayinguizes->first())) ? 'Not_assigned_ppattern' : $yinbiao->fayinguizes->first()->regex}}';</script>
     @include('phptojsvariables')
 @stop

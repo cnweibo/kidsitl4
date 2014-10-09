@@ -1,8 +1,14 @@
-var guestaddwordapplication = angular.module('guestaddwordapp', [],function($interpolateProvider) {
+var kidsitApplication = angular.module('kidsitApp', [],function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
-guestaddwordapplication.controller('mp3playerController', function($scope,$window,$log,$http){
+kidsitApplication.controller('kidsitAppCtrl',function(){
+	// dummy controller for the top most level
+});
+kidsitApplication.controller('playlistController',function($scope){
+	playlistdata = [];
+});
+kidsitApplication.controller('mp3playerController', function($scope,$window,$log,$http){
 	var wordiddombg = "#FFE6FA";
 	var previousanimatingID;
 
@@ -21,10 +27,10 @@ guestaddwordapplication.controller('mp3playerController', function($scope,$windo
 		console.log(wordslist);
 	};
 });
-guestaddwordapplication.controller('wordinfoController',function($scope){
+kidsitApplication.controller('wordinfoController',function($scope){
 	$scope.$parent.wordstoplay = $scope.wordtoplay;	
 	$scope.parentwordstoplay = $scope.$parent.wordstoplay;
 });
-guestaddwordapplication.controller('wordstoplayController',function($scope){
+kidsitApplication.controller('wordstoplayController',function($scope){
 	$scope.wordstoplay = 1;
 });

@@ -1,9 +1,9 @@
-var app = angular.module('examApp', ['ui.bootstrap','kidsitAnimate','timer','toastr'],function($interpolateProvider) {
+var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr'],function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
 
-app.controller('examAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr) {
+app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr) {
 	$scope.timerRunning = null;
 	$scope.user={};	
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
