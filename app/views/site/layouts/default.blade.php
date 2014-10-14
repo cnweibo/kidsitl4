@@ -51,7 +51,7 @@
 			<div id="mainnavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-top-background">
 				<div class="container">
 	                <div class="navbar-header">
-	                	<img src="{{{asset('assets/img/logo.png')}}}" alt="IT宝贝网" />
+	                	<img style="width:150;height:40px;margin:5px" src="{{{asset('assets/img/Logo_175x60.png')}}}" alt="IT宝贝网" />
 	                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 	                        <span class="sr-only">切换</span>
 	                        <span class="icon-bar"></span>
