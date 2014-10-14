@@ -25,7 +25,7 @@
 	</div>
 	</div>
     <div class="item">
-		<img src="{{asset('assets/img/ITPowered.jpg')}}" class="carouselimg" alt="">
+		<img src="{{asset('assets/img/LearnIT.png')}}" class="carouselimg" alt="">
 		<div class="carousel-caption">
 		<h4>IT技术辅助日常学习</h4>
 		<p>现代IT技术发展带来学习的革命，网络也让学生获取信息更加简洁便利</p>
