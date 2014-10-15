@@ -114,6 +114,8 @@ kidsitApplication.directive('highlightChars',function($window,$log,$http){
     restrict: 'AE',
     scope: {domId: "@",pt: "@"},
     link: linker,
+    transclude:true,
+    template: '<div><div ng-transclude></div></div>',
     replace: true
   };
 });
