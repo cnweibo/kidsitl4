@@ -2,7 +2,7 @@
 // Original JavaScript code by Chirp Internet: www.chirp.com.au
 // Please acknowledge use of this code by including this header.
 // porting the highlight library into angular directive
-kidsitApplication.directive('highlightChars',function($window,$log,$http){
+kidsitApplication.directive('highlightChars',['$timeout',function(timer){
   var linker = function(scope, element, attrs){
       function Hilitor(id, tag){
         var targetNode = document.getElementById(id);
@@ -42,7 +42,6 @@ kidsitApplication.directive('highlightChars',function($window,$log,$http){
           // if(!this.openLeft) re = "\\b" + re;
           // if(!this.openRight) re = re + "\\b";
           matchRegex = new RegExp(re, "i");
-          // console.log('setRegex:matchRex',matchRegex);
         };
 
         this.getRegex = function()
@@ -62,13 +61,11 @@ kidsitApplication.directive('highlightChars',function($window,$log,$http){
 
           if(node.hasChildNodes()) {
             for(var i=0; i < node.childNodes.length; i++){
-              // console.log(node.childNodes[i]);
               this.hiliteWords(node.childNodes[i]);}
           }
           if(node.nodeType == 3) { // NODE_TEXT
             
             if((nv = node.nodeValue) && (regs = matchRegex.exec(nv))) {
-              // console.log('regs:',regs);
               if(!wordColor[regs[0].toLowerCase()]) {
                 wordColor[regs[0].toLowerCase()] = colors[colorIdx % colors.length];
               }
@@ -102,13 +99,15 @@ kidsitApplication.directive('highlightChars',function($window,$log,$http){
         this.apply = function(input)
         {
           if(input == undefined || !input) return;
-          // console.log(this);
-          // this.remove();
           this.setRegex(input);
           this.hiliteWords(targetNode);
         };
       }; //Hilitor
-      (new Hilitor(scope.domId)).apply((scope.pt));
+      // console.log("highlighting directive linker...");
+      timer(function() { //shedule the linker after DOM rendering finished!!
+        // console.log("highlighting triggered after dom rendered");
+        (new Hilitor(scope.domId)).apply((scope.pt));
+      },0);
   }; //linker
   return {
     restrict: 'AE',
@@ -118,4 +117,4 @@ kidsitApplication.directive('highlightChars',function($window,$log,$http){
     template: '<div><div ng-transclude></div></div>',
     replace: true
   };
-});
+}]);

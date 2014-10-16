@@ -1,5 +1,6 @@
 kidsitApplication.directive('mp3Player',function(){
   var linker = function(scope, element, attrs){
+    // console.log("linker for mp3Player...");
   }; //linker
   return {
     restrict: 'AE',
@@ -26,6 +27,7 @@ kidsitApplication.directive('singleWord',function() {
     templateUrl: "singleword.html",
     scope: { mp3File:'@',wordText:'@',wordYinjieshu:'@',wordFollowUrl:'@',wordYinbiao:'@',wordDom:'@'},
     link: function(scope, element, attrs, mp3PlayerCtrl) {
+      // console.log("linker for "+scope.wordText);
       scope.mp3Play = function(mp3Url) {
         mp3PlayerCtrl.mp3Play(mp3Url);
       };

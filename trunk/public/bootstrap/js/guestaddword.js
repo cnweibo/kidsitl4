@@ -8,6 +8,7 @@ kidsitApplication.directive('guestAddedWords',function($window,$log,$http){
 	{
 		scope.wordsadded = guestaddedwords;
 	});
+	// console.log("guestaddedword diretive linker........");
 	scope.addword = function(){
 		var wordadded = {};
 			wordadded._token = scope.csrf_token;
