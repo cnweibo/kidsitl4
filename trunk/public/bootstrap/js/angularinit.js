@@ -1,4 +1,4 @@
-var kidsitApplication = angular.module('kidsitApp', [],function($interpolateProvider) {
+var kidsitApplication = angular.module('kidsitApp', ['kidsitAnimate'],function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
