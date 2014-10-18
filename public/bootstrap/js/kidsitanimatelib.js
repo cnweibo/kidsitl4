@@ -136,4 +136,39 @@ angular.module('kidsitAnimate', ["ngAnimate"])
             }
         });
     };
-});
+})
+// hover animation: direvtive hoverAnimate + hoverAnimation $animation service doing job done
+.directive("hoverAnimate", function($animate) {
+    return {
+        restrict: 'EA',
+        link: function(scope, element, attrs) {
+            element.bind('mouseenter',function(event) {
+                scope.$apply($animate.addClass(element, "hoverAnimation"));
+            });
+            element.bind('mouseleave',function(event) {
+                scope.$apply($animate.removeClass(element, "hoverAnimation"));
+            });
+        }
+};})
+.animation(".hoverAnimation", function() {
+    return {
+        addClass: function(element, className) {
+                   // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
+                   TweenMax.to(element, 0.1, {border: "2px #57AA2C solid",zindex: "1", scale:"1.3"});
+               
+                },
+        removeClass: function(element, className) {
+           // TweenMax.to(element, 0.2, {'fontSize': 10,'marginBottom':2,'width':100,'borderLeft':'10px solid #333'});
+            TweenMax.to(element, 0.1, {border: "0px #57AA2C solid",zindex: "0",scale:"1"});
+                },
+        enter: function(element,done) {
+            console.log("fademe triggered");
+                   // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
+                   TweenMax.to(element, 1, {opacity:0});
+               
+                },
+        leave: function(element, done) {
+           // TweenMax.to(element, 0.2, {'fontSize': 10,'marginBottom':2,'width':100,'borderLeft':'10px solid #333'});
+                   TweenMax.fromTo(element, 0.1, {opacity:1},{opacity:0,onComplete:done});                }
+    };
+})

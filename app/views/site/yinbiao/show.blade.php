@@ -11,6 +11,8 @@
 	@parent
 @stop
 @section('css')
+	<link rel="stylesheet" href={{ asset('bootstrap/css/ixedit.css')}}>
+	<link rel="stylesheet" href={{ asset('bootstrap/css/ui-sui.css')}}>	
 	<link rel="stylesheet" href={{ asset('bootstrap/css/printyinbiaoshow.css')}}>
 @stop
 @section('bodyhead')
@@ -68,7 +70,7 @@
 						</div>
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							@foreach ($fayinguize->relatedwords as $relatedword)
-								<p single-word mp3-file="{{$relatedword->mp3}}" word-dom="wd_{{$fayinguize->id}}_{{$relatedword->id}}" word-follow-url="http://kidsit.cn/relatedword/{{$relatedword->id}}" 
+								<p hover-animate single-word mp3-file="{{$relatedword->mp3}}" word-dom="wd_{{$fayinguize->id}}_{{$relatedword->id}}" word-follow-url="http://kidsit.cn/relatedword/{{$relatedword->id}}" 
 								   word-yinbiao = "{{$relatedword->wordyinbiao}}" word-yinjieshu="{{$relatedword->yinjieshu}}" class="inlineblock wordyinbiaoblock" word-text="{{$relatedword->wordtext}}"></p>
 							@endforeach
 							<hr class = "guestaddwordhr">
@@ -94,6 +96,9 @@
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('bootstrap/js/angular.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/angularinit.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bootstrap/js/ng-animate.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bootstrap/js/TweenMax.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bootstrap/js/kidsitanimatelib.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/highlightppattern.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/guestaddword.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bootstrap/js/yinbiaoapp.js') }}"></script>
