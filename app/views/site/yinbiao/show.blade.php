@@ -11,8 +11,6 @@
 	@parent
 @stop
 @section('css')
-	<link rel="stylesheet" href={{ asset('bootstrap/css/ixedit.css')}}>
-	<link rel="stylesheet" href={{ asset('bootstrap/css/ui-sui.css')}}>	
 	<link rel="stylesheet" href={{ asset('bootstrap/css/printyinbiaoshow.css')}}>
 @stop
 @section('bodyhead')
@@ -32,9 +30,9 @@
 </script>
 <script type="text/ng-template" id="singleword.html">
 	<p id="[[wordDom]]" class="inlineblock wordyinbiaoblock">
-	<span class="elementblock wordtext"> <a href="[[wordFollowUrl]]">[[wordText]]</a> </span>
-	<em class="elementblock wordyinbiao"> [[wordYinbiao]] </em>
-	<small class="elementblock yinbiaoshu" ng-click="mp3Play(mp3File)"> <i class="clickable glyphicon glyphicon-music"></i>:[[wordYinjieshu]]</small>
+		<span class="elementblock wordtext"> <a href="[[wordFollowUrl]]">[[wordText]]</a> </span>
+		<em class="elementblock wordyinbiao"> [[wordYinbiao]] </em>
+		<small class="elementblock yinbiaoshu" ng-click="mp3Play(mp3File)"> <i class="clickable glyphicon glyphicon-music"></i>:[[wordYinjieshu]]</small>
 	</p>
 </script>
 	<div class="container" mp3-player>
