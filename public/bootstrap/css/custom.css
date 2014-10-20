@@ -143,6 +143,7 @@ p.wordyinbiaoblock:after{
 .wordyinbiaoblock{
   margin-right: 10px;
   background-color: #FFE6FA;
+  box-sizing: border-box;
   position: relative;
 }
 /*clickable*/

@@ -153,8 +153,9 @@ angular.module('kidsitAnimate', ["ngAnimate"])
 .animation(".hoverAnimation", function() {
     return {
         addClass: function(element, className) {
+
                    // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
-                   TweenMax.to(element, 0.1, {border: "2px #57AA2C solid",zIndex: "1", scale:"1.3"});
+                   TweenMax.to(element, 0.1, {border: "2px #57AA2C solid",zIndex: "1", scale:""});
                
                 },
         removeClass: function(element, className) {
