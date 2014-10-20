@@ -136,10 +136,14 @@ p.wordyinbiaoblock:after{
 .yinbiaoshu{
   color: blue;
   font-size: 0.5em;
+  border-top: 1px dashed #FF4A17 ;
+  background-color: #BDFF4B;
+  padding: 0 2px;
 }
 .wordyinbiaoblock{
   margin-right: 10px;
   background-color: #FFE6FA;
+  position: relative;
 }
 /*clickable*/
 .clickable{
@@ -237,3 +241,4 @@ article.mathexerciseitem{
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
+span.

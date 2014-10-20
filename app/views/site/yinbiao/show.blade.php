@@ -29,10 +29,10 @@
 	</ul>
 </script>
 <script type="text/ng-template" id="singleword.html">
-	<p id="[[wordDom]]" class="inlineblock wordyinbiaoblock">
+	<p id="[[wordDom]]" class="inlineblock wordyinbiaoblock pull-left">
 		<span class="elementblock wordtext"> <a href="[[wordFollowUrl]]">[[wordText]]</a> </span>
 		<em class="elementblock wordyinbiao"> [[wordYinbiao]] </em>
-		<small class="elementblock yinbiaoshu" ng-click="mp3Play(mp3File)"> <i class="clickable glyphicon glyphicon-music"></i>:[[wordYinjieshu]]</small>
+		<small class="elementblock yinbiaoshu clickable" ng-click="mp3Play(mp3File)"> <i class="clickable glyphicon glyphicon-music"></i>:[[wordYinjieshu]] <span class="pull-right"> <i class="clickable glyphicon glyphicon-play "></i> </span> </small>
 	</p>
 </script>
 	<div class="container" mp3-player>
@@ -67,11 +67,13 @@
 						<span >顺序跟读</span>
 						</div>
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
+							<div class="row wordslist">
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<p hover-animate single-word mp3-file="{{$relatedword->mp3}}" word-dom="wd_{{$fayinguize->id}}_{{$relatedword->id}}" word-follow-url="http://kidsit.cn/relatedword/{{$relatedword->id}}" 
 								   word-yinbiao = "{{$relatedword->wordyinbiao}}" word-yinjieshu="{{$relatedword->yinjieshu}}" class="inlineblock wordyinbiaoblock" word-text="{{$relatedword->wordtext}}"></p>
 							@endforeach
-							<hr class = "guestaddwordhr">
+							</div>
+							<hr class = "guestaddwordhr clearfix">
 						<ul guest-added-words fayinguizeid ={{ $fayinguize->id }} yinbiaoid = {{$yinbiao->id}}>
 						</ul>
 							<div class="rightbottom"> <a href="http://kidsit.cn/yinbiao/"><i class="font2e glyphicon glyphicon-tree-conifer kidsittreeback"></i></a></div>
