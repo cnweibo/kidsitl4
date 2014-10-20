@@ -154,12 +154,12 @@ angular.module('kidsitAnimate', ["ngAnimate"])
     return {
         addClass: function(element, className) {
                    // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
-                   TweenMax.to(element, 0.1, {border: "2px #57AA2C solid",zindex: "1", scale:"1.3"});
+                   TweenMax.to(element, 0.1, {border: "2px #57AA2C solid",zIndex: "1", scale:"1.3"});
                
                 },
         removeClass: function(element, className) {
            // TweenMax.to(element, 0.2, {'fontSize': 10,'marginBottom':2,'width':100,'borderLeft':'10px solid #333'});
-            TweenMax.to(element, 0.1, {border: "0px #57AA2C solid",zindex: "0",scale:"1"});
+            TweenMax.to(element, 0.1, {border: "0px #57AA2C solid",zIndex: "0",scale:"1.3"});
                 },
         enter: function(element,done) {
             console.log("fademe triggered");
