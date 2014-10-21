@@ -138,6 +138,7 @@ p.wordyinbiaoblock:after{
   font-size: 0.5em;
   border-top: 1px dashed #FF4A17 ;
   background-color: #BDFF4B;
+  margin-top: 5px;
   padding: 0 2px;
 }
 .wordyinbiaoblock{
@@ -145,6 +146,7 @@ p.wordyinbiaoblock:after{
   background-color: #FFE6FA;
   box-sizing: border-box;
   position: relative;
+  border: 2px solid #FFF;
 }
 /*clickable*/
 .clickable{
