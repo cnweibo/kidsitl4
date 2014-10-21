@@ -58,7 +58,7 @@
 			@endif
 		{{--*/$layoutloopcount++;/*--}}
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" highlight-chars dom-id="ppatternregex_{{$layoutloopcount}}" pt="<?php echo $fayinguize->regex?$fayinguize->regex : "No_Regex_Defined";?>">
-					<div class="panel panel-success">
+					<div class="panel panel-success" words-play-list>
 						<div class="panel-heading">
 							<span  ></span> 
 						<h3 style="display:inline;margin-right:20px" class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
@@ -68,10 +68,12 @@
 						</div>
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							<div class="row wordslist">
+							<div class="well clearfix">
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<p hover-animate single-word mp3-file="{{$relatedword->mp3}}" word-dom="wd_{{$fayinguize->id}}_{{$relatedword->id}}" word-follow-url="http://kidsit.cn/relatedword/{{$relatedword->id}}" 
 								   word-yinbiao = "{{$relatedword->wordyinbiao}}" word-yinjieshu="{{$relatedword->yinjieshu}}" class="inlineblock wordyinbiaoblock" word-text="{{$relatedword->wordtext}}">{{$relatedword->wordtext}}</p>
 							@endforeach
+							</div>
 							</div>
 							<hr class = "guestaddwordhr clearfix">
 						<ul guest-added-words fayinguizeid ={{ $fayinguize->id }} yinbiaoid = {{$yinbiao->id}}>
