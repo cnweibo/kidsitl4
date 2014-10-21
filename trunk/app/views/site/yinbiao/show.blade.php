@@ -68,7 +68,7 @@
 									<em style="font-weight: bolder">{{$fayinguize->description}}</em>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<span class="pull-right"><button type="button" class="btn btn-sm btn-info"><i class="clickable glyphicon glyphicon-volume-up"></i> 顺序跟读</button></span>
+									<span class="pull-right"><button type="button" class="btn btn-sm btn-warning"><i class="clickable glyphicon glyphicon-volume-up"></i> 顺序跟读</button></span>
 								</div>
 							</div>	
 						</div>
