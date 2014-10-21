@@ -160,7 +160,7 @@ angular.module('kidsitAnimate', ["ngAnimate"])
                 },
         removeClass: function(element, className) {
            // TweenMax.to(element, 0.2, {'fontSize': 10,'marginBottom':2,'width':100,'borderLeft':'10px solid #333'});
-            TweenMax.to(element, 0.1, {border: "0px #57AA2C solid",zIndex: "0",scale:"1"});
+            TweenMax.to(element, 0.1, {border: "2px #FFF solid",zIndex: "0",scale:"1"});
                 },
         enter: function(element,done) {
             console.log("fademe triggered");
