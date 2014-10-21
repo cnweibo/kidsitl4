@@ -60,11 +60,17 @@
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" highlight-chars dom-id="ppatternregex_{{$layoutloopcount}}" pt="<?php echo $fayinguize->regex?$fayinguize->regex : "No_Regex_Defined";?>">
 					<div class="panel panel-success" words-play-list>
 						<div class="panel-heading">
-							<span  ></span> 
-						<h3 style="display:inline;margin-right:20px" class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
-						<em style="font-weight: bolder">{{$fayinguize->description}}</em>
-						<!-- <?php $words=[];?> <?php foreach ( Fayinguize::find(4)->relatedwords->toArray() as $relateword) ?> <?php array_push($words,'#wd_'.$relateword["id"]); ?> <?php echo json_encode($words); ?> -->
-						<span >顺序跟读</span>
+							<div class="row">
+								<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+									<h3 class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
+								</div>
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<em style="font-weight: bolder">{{$fayinguize->description}}</em>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+									<span class="pull-right"><button type="button" class="btn btn-sm btn-info"><i class="clickable glyphicon glyphicon-volume-up"></i> 顺序跟读</button></span>
+								</div>
+							</div>	
 						</div>
 						<div class="panel-body" id='ppatternregex_{{$layoutloopcount}}'>
 							<div class="row wordslist">
