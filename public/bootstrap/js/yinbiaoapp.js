@@ -18,18 +18,35 @@ kidsitApplication.controller('mp3PlayerCtrl', function($scope) {
   this.mp3Pause = function() {
 
   };
-});
-kidsitApplication.directive('singleWord',function() {
+}); 
+kidsitApplication.directive('wordsPlayList',function() {
+
   return {
     restrict: 'A',
-    require: '^mp3Player',
-    replace: true,
-    templateUrl: "singleword.html",
-    scope: { mp3File:'@',wordText:'@',wordYinjieshu:'@',wordFollowUrl:'@',wordYinbiao:'@',wordDom:'@'},
-    link: function(scope, element, attrs, mp3PlayerCtrl) {
-      // console.log("linker for "+scope.wordText);
-      scope.mp3Play = function(mp3Url) {
-        mp3PlayerCtrl.mp3Play(mp3Url);
+    scope: true,
+    controller: function($scope) {
+      $scope.mp3PlayList = [];
+      this.mp3Add = function(wordinfo) {
+        $scope.mp3PlayList.push(wordinfo);
       };
     }
   };});
+kidsitApplication.directive('singleWord',['$timeout',function(timer) {
+  return {
+    restrict: 'A',
+    require: ['^mp3Player','^wordsPlayList'],
+    replace: true,
+    templateUrl: "singleword.html",
+    scope: { mp3File:'@',wordText:'@',wordYinjieshu:'@',wordFollowUrl:'@',wordYinbiao:'@',wordDom:'@'},
+    link: function(scope, element, attrs, ctrls) {
+      // console.log("linker for "+scope.wordText);
+      scope.mp3Play = function(mp3Url) {
+        ctrls[0].mp3Play(mp3Url);
+      };
+      // console.log("populating the single word data into playerlist...");
+      timer(function() { //shedule the linker after DOM rendering finished!!
+        console.log("mp3Add for playlist word"+scope.wordText+" Dom:"+ scope.wordDom);
+        ctrls[1].mp3Add({'mp3File': scope.mp3File,'wordDom':scope.wordDom});
+      },0);
+    }
+  };}]);
