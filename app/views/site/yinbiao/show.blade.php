@@ -70,7 +70,7 @@
 							<div class="row wordslist">
 							@foreach ($fayinguize->relatedwords as $relatedword)
 								<p hover-animate single-word mp3-file="{{$relatedword->mp3}}" word-dom="wd_{{$fayinguize->id}}_{{$relatedword->id}}" word-follow-url="http://kidsit.cn/relatedword/{{$relatedword->id}}" 
-								   word-yinbiao = "{{$relatedword->wordyinbiao}}" word-yinjieshu="{{$relatedword->yinjieshu}}" class="inlineblock wordyinbiaoblock" word-text="{{$relatedword->wordtext}}"></p>
+								   word-yinbiao = "{{$relatedword->wordyinbiao}}" word-yinjieshu="{{$relatedword->yinjieshu}}" class="inlineblock wordyinbiaoblock" word-text="{{$relatedword->wordtext}}">{{$relatedword->wordtext}}</p>
 							@endforeach
 							</div>
 							<hr class = "guestaddwordhr clearfix">
