@@ -34,6 +34,21 @@ class YinbiaoController extends BaseController {
 	}
 
 	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function getWordlist()
+	{
+		// Get all the yinbiao with eager loading 
+		// instead of N+1 performance issue  
+		// $yinbiaos = Yinbiao::all();
+		// $wordslist = Yinbiao::with('yinbiaocategory','fayinguizes')->get();
+		dd(Fayinguize::find(Input::get('fayinguizeid'))->relatedwords);
+		return View::make('site.yinbiao.index',compact('yinbiaos'));
+	}
+
+	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
@@ -63,7 +78,8 @@ class YinbiaoController extends BaseController {
 	{
 		
 		$yinbiao = Yinbiao::with('yinbiaocategory','fayinguizes')->findOrFail($id);
-		Give::javascript(['ppatternregexcount'=>$yinbiao->fayinguizes->count()]);
+		$ppatternCount = (string)($yinbiao->fayinguizes->count()) ;
+		Give::javascript(['ppatternregexcount'=>$ppatternCount]);
 		Give::javascript(['csrf_token'=> csrf_token()]);
 		// $words=[]; 
 		// foreach ( Fayinguize::find(4)->relatedwords->toArray() as $relateword) {

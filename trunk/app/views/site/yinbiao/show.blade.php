@@ -58,7 +58,7 @@
 			@endif
 		{{--*/$layoutloopcount++;/*--}}
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" highlight-chars dom-id="ppatternregex_{{$layoutloopcount}}" pt="<?php echo $fayinguize->regex?$fayinguize->regex : "No_Regex_Defined";?>">
-					<div class="panel panel-success" words-play-list>
+					<div class="panel panel-success" words-play-list ng-controller="WordsPlayListCtrl as wplvm">
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -68,7 +68,7 @@
 									<em style="font-weight: bolder">{{$fayinguize->description}}</em>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<span class="pull-right"><button type="button" class="btn btn-sm btn-warning"><i class="clickable glyphicon glyphicon-volume-up"></i> 顺序跟读</button></span>
+									<span class="pull-right"><button ng-click="wplvm.wordsPlay()" type="button" class="btn btn-sm btn-warning"><i class="clickable glyphicon glyphicon-volume-up"></i> 顺序跟读</button></span>
 								</div>
 							</div>	
 						</div>
