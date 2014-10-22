@@ -70,6 +70,7 @@ Route::get('getjs', 'JSController@index');
 // guest added english words
 Route::resource('guestaddedword','GuestaddedwordsController');
 // yinbiao routes
+Route::get('yinbiao/wordlist', 'YinbiaoController@getWordlist');
 Route::resource('yinbiao','YinbiaoController');
 // yinbiao category routes
 Route::resource('yinbiaocategory','YinbiaocategoryController');

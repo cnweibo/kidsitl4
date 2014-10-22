@@ -8,7 +8,6 @@ angular.module('kidsitAnimate', ["ngAnimate"])
     var linker = function(scope, element, attrs) {
 
         scope.$watch('animateStyle',function(){
-            console.log(scope.animateStyle);
             switch (scope.animateStyle)
             {
                 case 'fadeMeIn':
@@ -79,7 +78,6 @@ angular.module('kidsitAnimate', ["ngAnimate"])
     var linker = function(scope, element, attrs) {
 
         scope.$watch('trigger',function(){
-            console.log(scope.trigger);
             switch (scope.trigger)
             {
                 case 'fadeMeIn':
@@ -108,7 +106,6 @@ angular.module('kidsitAnimate', ["ngAnimate"])
 .animation(".fadeMeIn", function() {
     return {
         addClass: function(element, className) {
-            console.log("fademe triggered");
                    // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
                    TweenMax.to(element, 0.5, {opacity:1});
                
@@ -118,7 +115,6 @@ angular.module('kidsitAnimate', ["ngAnimate"])
             TweenMax.to(element, 0.5, {opacity:0});
                 },
         enter: function(element,done) {
-            console.log("fademe triggered");
                    // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
                    TweenMax.to(element, 1, {opacity:0});
                
@@ -153,17 +149,14 @@ angular.module('kidsitAnimate', ["ngAnimate"])
 .animation(".hoverAnimation", function() {
     return {
         addClass: function(element, className) {
-
                    // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
-                   TweenMax.to(element, 0.1, {border: "2px #57AA2C solid",zIndex: "1", scale:""});
-               
+                   TweenMax.to(element, 0.1, {border: "2px #57AA2C solid",zIndex: "1"});
                 },
         removeClass: function(element, className) {
            // TweenMax.to(element, 0.2, {'fontSize': 10,'marginBottom':2,'width':100,'borderLeft':'10px solid #333'});
-            TweenMax.to(element, 0.1, {border: "2px #FFF solid",zIndex: "0",scale:"1"});
+            TweenMax.to(element, 0.1, {border: "2px #FFF solid",zIndex: "0"});
                 },
         enter: function(element,done) {
-            console.log("fademe triggered");
                    // TweenMax.to(element, 0.2, {'fontSize': 50,'marginBottom':10,'width':200,'borderLeft':'20px solid #89cd25'});
                    TweenMax.to(element, 1, {opacity:0});
                
