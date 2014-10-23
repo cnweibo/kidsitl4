@@ -148,6 +148,10 @@ p.wordyinbiaoblock:after{
   position: relative;
   border: 2px solid #FFF;
 }
+.pull-right-streched{
+  position: absolute;
+  right: 0px;
+}
 .wellyinjie1 {
   min-height: 20px;
   padding: 19px;
