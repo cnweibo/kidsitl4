@@ -13,8 +13,11 @@ kidsitApplication.service('mp3PlayerService',function() {
     }
   }
 });
-kidsitApplication.directive('mp3Player',function(){
+kidsitApplication.directive('mp3Player',function($rootScope){
   var linker = function(scope, element, attrs){
+    $("#yinbiaoplayer").bind( "ended", function() {
+    $rootScope.$broadcast('wordPlayFinished');
+});
   }; //linker
   return {
     restrict: 'AE',
@@ -32,18 +35,49 @@ kidsitApplication.controller('mp3PlayerCtrl', function($scope,mp3PlayerService) 
 }); 
 
 kidsitApplication.controller('WordsPlayListCtrl', function($scope,mp3PlayerService) {
+  var thisctrl = this;
   $scope.mp3PlayList = [];
+  var currentWordIndex = 0;
   this.wordsPlay = function(){
-    mp3PlayerService.wordPlay($scope.mp3PlayList[0]);
+    // start the playlist playing 
+    mp3PlayerService.wordPlay($scope.mp3PlayList[currentWordIndex]);
   }
   this.mp3Add = function(wordinfo) {
     $scope.mp3PlayList.push(wordinfo);
   };
+
 });
-kidsitApplication.directive('wordsPlayList',function(mp3PlayerService) {
+kidsitApplication.directive('wordsPlayList',function(mp3PlayerService,$rootScope) {
   return {
     restrict: 'A',
-    scope: true,
+    scope: {id:'='},
+    link: function(scope,element,attrs){
+      scope.$on('startToPlayList',function(e,listID){
+        // only triggered for the specified list
+        if (listID == scope.id){
+          currentWordIndex = 0;
+          // firstly reset the border color to white
+          for (var i = scope.mp3PlayList.length - 1; i >= 0; i--) {
+            angular.element("#"+scope.mp3PlayList[i].wordDom).css("border-color","#FFF");
+          };
+          mp3PlayerService.wordPlay(scope.mp3PlayList[currentWordIndex]);
+      }
+      });
+      scope.$on('wordPlayFinished',function(){
+        if ($rootScope.currentListID == scope.id){
+        if (currentWordIndex == scope.mp3PlayList.length-1){
+          currentWordIndex = 0;
+          // change the words list word boarder to white indicating finished
+          for (var i = scope.mp3PlayList.length - 1; i >= 0; i--) {
+            angular.element("#"+scope.mp3PlayList[i].wordDom).css("border-color","#FFF");
+          };
+      }else{
+        currentWordIndex++;
+        mp3PlayerService.wordPlay(scope.mp3PlayList[currentWordIndex]);
+      }
+    }
+      })
+    },
     controller: 'WordsPlayListCtrl'
   };});
 kidsitApplication.directive('singleWord',['$timeout',function(timer) {
@@ -62,3 +96,10 @@ kidsitApplication.directive('singleWord',['$timeout',function(timer) {
       },0);
     }
   };}]);
+kidsitApplication.controller('playListsCtrl',function($rootScope){
+  this.wordsPlay = function(listID){
+    // start the playlist playing 
+    $rootScope.currentListID = listID;
+    $rootScope.$broadcast('startToPlayList',listID);
+  }
+});

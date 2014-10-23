@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href={{ asset('bootstrap/css/printyinbiaoshow.css')}}>
 @stop
 @section('bodyhead')
-<body ng-app="kidsitApp" ng-controller="kidsitAppCtrl">
+<body ng-app="kidsitApp" ng-controller="playListsCtrl as wplvm">
 @overwrite
 @section('content')
 <script type="text/ng-template" id="guestaddedwords.html">
@@ -32,10 +32,10 @@
 	<p id="[[wordDom]]" class="inlineblock wordyinbiaoblock pull-left">
 		<span class="elementblock wordtext"> <a href="[[wordFollowUrl]]">[[wordText]]</a> </span>
 		<em class="elementblock wordyinbiao"> [[wordYinbiao]] </em>
-		<small class="elementblock yinbiaoshu clickable" ng-click="mp3Play(mp3File)"> <i class="clickable glyphicon glyphicon-music"></i>:[[wordYinjieshu]] <span class="pull-right"> <i class="clickable glyphicon glyphicon-play "></i> </span> </small>
+		<small class="elementblock yinbiaoshu clickable" ng-click="mp3Play(mp3File)"> <i class="clickable glyphicon glyphicon-music"></i>:[[wordYinjieshu]] <span class="pull-right pull-right-streched"> <i class="clickable glyphicon glyphicon-play "></i> </span> </small>
 	</p>
 </script>
-	<div class="container" mp3-player>
+	<div class="container" mp3-player ng-controller="playListsCtrl" >
 		<ul class="list-unstyled">
 		<li>
 		<div class="yinbiaoshowheader row" style="margin-bottom:10px;margin-left:13px;font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
@@ -58,7 +58,8 @@
 			@endif
 		{{--*/$layoutloopcount++;/*--}}
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" highlight-chars dom-id="ppatternregex_{{$layoutloopcount}}" pt="<?php echo $fayinguize->regex?$fayinguize->regex : "No_Regex_Defined";?>">
-					<div class="panel panel-success" words-play-list ng-controller="WordsPlayListCtrl as wplvm">
+					<div class="panel panel-success" words-play-list id="{{ $layoutloopcount }}">
+					<!--  ng-controller="WordsPlayListCtrl as wplvm"        ng-click="wplvm.wordsPlay()" -->
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -68,7 +69,7 @@
 									<em style="font-weight: bolder">{{$fayinguize->description}}</em>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<span class="pull-right"><button ng-click="wplvm.wordsPlay()" type="button" class="btn btn-sm btn-warning"><i class="clickable glyphicon glyphicon-volume-up"></i> 顺序跟读</button></span>
+									<span class="pull-right"><button ng-click="wplvm.wordsPlay({{$layoutloopcount}})" type="button" class="btn btn-sm btn-warning"><i class="clickable glyphicon glyphicon-volume-up"></i> 顺序跟读</button></span>
 								</div>
 							</div>	
 						</div>
