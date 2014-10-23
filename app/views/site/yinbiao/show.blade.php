@@ -35,7 +35,7 @@
 		<small class="elementblock yinbiaoshu clickable" ng-click="mp3Play(mp3File)"> <i class="clickable glyphicon glyphicon-music"></i>:[[wordYinjieshu]] <span class="pull-right pull-right-streched"> <i class="clickable glyphicon glyphicon-play "></i> </span> </small>
 	</p>
 </script>
-	<div class="container" mp3-player ng-controller="playListsCtrl" >
+	<div class="container" mp3-player >
 		<ul class="list-unstyled">
 		<li>
 		<div class="yinbiaoshowheader row" style="margin-bottom:10px;margin-left:13px;font-family:Lucida Sans Unicode,Arial Unicode MS;letter-spacing: 5px;font-size:20px">
