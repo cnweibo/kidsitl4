@@ -80,7 +80,7 @@ kidsitApplication.directive('wordsPlayList',function(mp3PlayerService,$rootScope
     },
     controller: 'WordsPlayListCtrl'
   };});
-kidsitApplication.directive('singleWord',['$timeout',function(timer) {
+kidsitApplication.directive('singleWord',['$timeout','$rootScope',function(timer,$rootScope) {
   return {
     restrict: 'A',
     require: ['^mp3Player','^wordsPlayList'],
@@ -89,6 +89,7 @@ kidsitApplication.directive('singleWord',['$timeout',function(timer) {
     scope: { mp3File:'@',wordText:'@',wordYinjieshu:'@',wordFollowUrl:'@',wordYinbiao:'@',wordDom:'@'},
     link: function(scope, element, attrs, ctrls) {
       scope.mp3Play = function(mp3Url) {
+        $rootScope.currentListID = 0xffff;
         ctrls[0].mp3Play(mp3Url);
       };
       timer(function() { //shedule the linker after DOM rendering finished!!
