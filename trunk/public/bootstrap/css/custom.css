@@ -148,6 +148,9 @@ p.wordyinbiaoblock:after{
   position: relative;
   border: 2px solid #FFF;
 }
+.wordyinbiaoblock:hover{
+  background-color: #FFFFFF;
+}
 .pull-right-streched{
   position: absolute;
   right: 0px;
