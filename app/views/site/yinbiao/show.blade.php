@@ -62,13 +62,13 @@
 					<!--  ng-controller="WordsPlayListCtrl as wplvm"        ng-click="wplvm.wordsPlay()" -->
 						<div class="panel-heading">
 							<div class="row">
-								<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+								<div class="wordblock col-xs-4 col-sm-4 col-md-4 col-lg-4">
 									<h3 class="panel-title">{{link_to_route('fayinguize.show',$fayinguize->title,$fayinguize->id,['class'=>'yinbiaocatatag'])}}</h3>
 								</div>
-								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+								<div class="wordblock col-xs-6 col-sm-6 col-md-6 col-lg-6">
 									<em style="font-weight: bolder">{{$fayinguize->description}}</em>
 								</div>
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<div class="wordblock col-xs-2 col-sm-2 col-md-2 col-lg-2">
 									<span class="pull-right"><button ng-click="wplvm.wordsPlay({{$layoutloopcount}})" type="button" class="btn btn-sm btn-warning"><i class="clickable glyphicon glyphicon-volume-up"></i> 顺序跟读</button></span>
 								</div>
 							</div>	
