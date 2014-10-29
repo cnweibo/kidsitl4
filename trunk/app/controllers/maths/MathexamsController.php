@@ -27,8 +27,9 @@ class MathexamsController extends \BaseController {
 			case 'mathsum3exercises':
 				$exerciseModel = 'Mathsum3';
 				break;	
+			case 'mathmultiply2exercises':
+				$exerciseModel = 'Mathmultiply2';
 			default:
-				# code...
 				break;
 		}
 		// dd(($mathexamExerciseIDs));
@@ -68,35 +69,50 @@ class MathexamsController extends \BaseController {
 		$exercises = [];
 		$exam=[];
 		$examdata = [];
-		switch ($digitnumbers) {
-			case '4':
-				$mathexam-> exercisetab = "mathsum4exercises";
-				$exercises = Mathsum4::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
-				//保存卷子题目字典信息到试卷数据库mathexams
-				for ($i=0;$i<$quantity;$i++){
-					array_push($examdata,$exercises[$i]['id']);
-				}	
-				break;
-			case '2':
-				$mathexam-> exercisetab = "mathsum2exercises";
-				$exercises = Mathsum2::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
-				//保存卷子题目字典信息到试卷数据库mathexams
-				for ($i=0;$i<$quantity;$i++){
-					array_push($examdata,$exercises[$i]['id']);
-				}	
-				break;
-			case '1':
-				$mathexam-> exercisetab = "mathsum1exercises";
-				$exercises = Mathsum1::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
-				//保存卷子题目字典信息到试卷数据库mathexams
-				for ($i=0;$i<$quantity;$i++){
-					array_push($examdata,$exercises[$i]['id']);
-				}	
-				break;	
-			default:
-				break;
+		if ($category == 'plus') {
+			switch ($digitnumbers) {
+				case '4':
+					$mathexam-> exercisetab = "mathsum4exercises";
+					$exercises = Mathsum4::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					//保存卷子题目字典信息到试卷数据库mathexams
+					for ($i=0;$i<$quantity;$i++){
+						array_push($examdata,$exercises[$i]['id']);
+					}	
+					break;
+				case '2':
+					$mathexam-> exercisetab = "mathsum2exercises";
+					$exercises = Mathsum2::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					//保存卷子题目字典信息到试卷数据库mathexams
+					for ($i=0;$i<$quantity;$i++){
+						array_push($examdata,$exercises[$i]['id']);
+					}	
+					break;
+				case '1':
+					$mathexam-> exercisetab = "mathsum1exercises";
+					$exercises = Mathsum1::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					//保存卷子题目字典信息到试卷数据库mathexams
+					for ($i=0;$i<$quantity;$i++){
+						array_push($examdata,$exercises[$i]['id']);
+					}	
+					break;	
+				default:
+					break;
+			}
+		}else if ($category == 'times'){
+			switch ($digitnumbers) {
+				case '2':
+					$mathexam-> exercisetab = "mathmultiply2exercises";
+					$exercises = Mathmultiply2::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					//保存卷子题目字典信息到试卷数据库mathexams
+					for ($i=0;$i<$quantity;$i++){
+						array_push($examdata,$exercises[$i]['id']);
+					}	
+					break;
+			
+				default:
+					break;
+			}
 		}
-		
 		$exam_exercisesrows= json_encode($examdata);
 		$mathexam-> exerciseids = $exam_exercisesrows;
 		$mathexam->save();
