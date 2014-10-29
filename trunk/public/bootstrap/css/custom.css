@@ -133,6 +133,10 @@ a.wordyinjieshuatag{
 p.wordyinbiaoblock:after{
   /*content:"";*/
 }
+.row > .wordblock{
+  padding-right:0;
+  padding-left: 0;
+}
 .yinbiaoshu{
   color: blue;
   font-size: 0.5em;
