@@ -7,15 +7,16 @@ app.config(function($routeProvider) {
             {
                 templateUrl:'http://kidsit.cn/assets/atpls/examplus.html'
             })
-        	.when('times',{
+        	.when('/times',{
         		templateUrl:'http://kidsit.cn/assets/atpls/examtimes.html'
         	})
             .otherwise({redirectTo: '/plus'});
 });
 
-app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr) {
+app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;
 	$scope.user={};	
+	console.log($location.url());
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
 	$scope.mathexam = {
 		'mathQuantity' : 50,
@@ -116,18 +117,24 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 		$scope.examdata = data;
 	});
 
-	$scope.createExam = function($location){
+	$scope.createExam = function(){
 		var mathexamreq = $scope.mathexam;
 		$scope.metadata.examTimerRunning = 0;
 		$scope.mathexam.userAnsweredData = [];
 		$scope.mathexam.score = 0;
-		$scope.mathexam.hasSubmitted = false;
-		// $location.path("/times");
+		$scope.mathexam.hasSubmitted = false;		
+		// $location.$path("/times");
 		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
 	{
 		$scope.examdata = examdata;
 	});
-		
+		switch (mathexamreq.mathCategory){
+			case 'plus':
+				$location.url('/plus');
+				break;
+			case 'times':
+				$location.url('/times');
+		}
 	};
 	$scope.metadata.examTimerRunning = 0;
 	$scope.startExamTimer = function(id){
@@ -339,7 +346,7 @@ app.directive("examRowData",function($animate,answeringFactory){
 		};
 	return {
 		restrict: 'AE',
-		scope: {row: "=",showAnswer: "=", id: "=",canInputAnswer: "=",checkAnswerRealtime: "=checkAnswerMode"},
+		scope: {row: "=",showAnswer: "=", id: "=",canInputAnswer: "=",checkAnswerRealtime: "=checkAnswerMode",category: "@"},
 		templateUrl: 'examrow.html',
 		link: linker,
 		// replace: true
