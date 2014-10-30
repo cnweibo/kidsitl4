@@ -122,7 +122,7 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 		$scope.mathexam.userAnsweredData = [];
 		$scope.mathexam.score = 0;
 		$scope.mathexam.hasSubmitted = false;
-		$location.path("/times");
+		// $location.path("/times");
 		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
 	{
 		$scope.examdata = examdata;
