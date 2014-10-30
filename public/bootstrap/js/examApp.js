@@ -1,6 +1,16 @@
-var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr'],function($interpolateProvider) {
+var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute'],function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
+});
+app.config(function($routeProvider) {
+        $routeProvider.when('/plus',
+            {
+                templateUrl:'http://kidsit.cn/assets/atpls/examplus.html'
+            })
+        	.when('times',{
+        		templateUrl:'http://kidsit.cn/assets/atpls/examtimes.html'
+        	})
+            .otherwise({redirectTo: '/plus'});
 });
 
 app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr) {
@@ -106,16 +116,18 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 		$scope.examdata = data;
 	});
 
-	$scope.createExam = function(){
+	$scope.createExam = function($location){
 		var mathexamreq = $scope.mathexam;
 		$scope.metadata.examTimerRunning = 0;
 		$scope.mathexam.userAnsweredData = [];
 		$scope.mathexam.score = 0;
 		$scope.mathexam.hasSubmitted = false;
+		$location.path("/times");
 		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
 	{
 		$scope.examdata = examdata;
 	});
+		
 	};
 	$scope.metadata.examTimerRunning = 0;
 	$scope.startExamTimer = function(id){

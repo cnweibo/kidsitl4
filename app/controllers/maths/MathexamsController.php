@@ -117,6 +117,20 @@ class MathexamsController extends \BaseController {
 		$mathexam-> exerciseids = $exam_exercisesrows;
 		$mathexam->save();
 		$mathexamID = $mathexam -> id ;	
+		switch ($mathexam->exercisetab) {
+			case 'mathsum1exercises':
+			case 'mathsum2exercises':
+			case 'mathsum3exercises':
+			case 'mathsum4exercises':
+				$exam["examType"] = "plus";
+				break;
+			case 'mathmultiply2exercises':
+				$exam["examType"] = "times";
+				break;
+			default:
+				# code...
+				break;
+		}
 		$exam["examID"] = $mathexamID;
 		$exam["examCreatedate"] = date('m/d/Y h:i:s a', time());
 		$exam["examdata"] = $exercises;

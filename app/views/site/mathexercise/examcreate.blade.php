@@ -107,13 +107,27 @@
 		<span ng-form="inputform3"><input ng-blur="updateScore()" ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
 		<span check-result my-row="row" has-input="inputform1.$dirty || inputform2.$dirty || inputform3.$dirty" answer='row.myanswerdata' check-answer-realtime="checkAnswerRealtime"></span>
 	</span>
+	</script>
 	<script type="text/ng-template" id="checkresult.html">
 		<span>
 			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres) && !isRevisioning && checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
 			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres || isRevisioning) && (!checkData(myRow,answer))"><label class="label label-danger"><span class="glyphicon glyphicon-remove"></span></label></span>
 		</span>
 	</script>
+	<script type="text/ng-template" id="examplus.html">
+		<div class="row">
+			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
+				<div class="row	exerciserow">
+			    	<article class="col-md-4" data-ng-repeat="examrow in examdata.examdata">
+			    			we are here!
+		    			<span exam-row-data can-input-answer="canInputAnswer" row="examrow" id="$index+1" show-answer="mathexam.showAnswer" check-answer-mode="mathexam.checkAnswerRealtime"></exam-row-data>				    		
+			    	</article>
+			    </div>
+			</div>   
+
+		</div>
 	</script>
+
 	<div class="row">
 		<div login-form class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-lg-push-3">
 			
@@ -202,16 +216,7 @@
 				</div>
 			</span>        
 		</h4>
-		<div class="row">
-			<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
-				<div class="row	exerciserow">
-			    	<article class="col-md-4" data-ng-repeat="examrow in examdata.examdata">
-			    			<span exam-row-data can-input-answer="canInputAnswer" row="examrow" id="$index+1" show-answer="mathexam.showAnswer" check-answer-mode="mathexam.checkAnswerRealtime"></exam-row-data>				    		
-			    	</article>
-			    </div>
-			</div>   
-
-	</div>
+		<ng-view></ng-view>
 
 </div>
 </div>
@@ -220,6 +225,7 @@
 @stop
 @section('scripts')
 	<script src="{{asset('bootstrap/js/angular.min.js')}}"></script>
+	<script src="{{asset('bootstrap/js/angular-route.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/angular-timer.js')}}"></script>
 	<script src="{{asset('bootstrap/js/angular-animate.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/angular-toastr.js')}}"></script>	
