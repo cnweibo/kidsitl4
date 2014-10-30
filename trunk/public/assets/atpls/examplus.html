@@ -1,0 +1,10 @@
+<div class="row">
+	<div id="examcontainer" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-lg-push-1">
+		<div class="row	exerciserow">
+	    	<article class="col-md-4" data-ng-repeat="examrow in examdata.examdata">
+    			<span exam-row-data can-input-answer="canInputAnswer" row="examrow" id="$index+1" show-answer="mathexam.showAnswer" check-answer-mode="mathexam.checkAnswerRealtime"></exam-row-data>				    		
+	    	</article>
+	    </div>
+	</div>   
+
+</div>
