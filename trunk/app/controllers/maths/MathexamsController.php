@@ -73,7 +73,7 @@ class MathexamsController extends \BaseController {
 			switch ($digitnumbers) {
 				case '4':
 					$mathexam-> exercisetab = "mathsum4exercises";
-					$exercises = Mathsum4::where('mathDifficulty','=',$difficulty)->orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					$exercises = Mathsum4::where('difficulty','=',$difficulty)->orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
 					//保存卷子题目字典信息到试卷数据库mathexams
 					for ($i=0;$i<$quantity;$i++){
 						array_push($examdata,$exercises[$i]['id']);
@@ -81,7 +81,7 @@ class MathexamsController extends \BaseController {
 					break;
 				case '2':
 					$mathexam-> exercisetab = "mathsum2exercises";
-					$exercises = Mathsum2::where('mathDifficulty','=',$difficulty)->orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					$exercises = Mathsum2::where('difficulty','=',$difficulty)->orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
 					//保存卷子题目字典信息到试卷数据库mathexams
 					for ($i=0;$i<$quantity;$i++){
 						array_push($examdata,$exercises[$i]['id']);

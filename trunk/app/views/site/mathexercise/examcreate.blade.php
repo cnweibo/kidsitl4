@@ -123,7 +123,7 @@
 	</div>
 <h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 
 	<a href="javascript:window.print()"><span tooltip-placement="top" tooltip="打印本试卷" class="glyphicon glyphicon-print fa-2x"></span></a>
-	<a href="#" data-ng-click="showconf.showSettings = !showconf.showSettings"><span tooltip-placement="top" tooltip="打开配置面板，配置当前试卷答题模式，或按需调阅新试卷" style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
+	<a href="#" data-ng-click="toggleShowSetting($event)"><span tooltip-placement="top" tooltip="打开配置面板，配置当前试卷答题模式，或按需调阅新试卷" style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
 	<div toggle-answer-view-and-animcate trigger="mathexam.showAnswer" ></div>
 </h1>
 <h4 ng-cloak id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 

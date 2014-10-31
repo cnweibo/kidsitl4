@@ -16,6 +16,7 @@ app.config(function($routeProvider) {
 app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;
 	$scope.user={};	
+	$scope.showconf={};
 	var currentcategory = $location.url();
 	if (currentcategory == '/times')
 		currentcategory = "times";
@@ -222,7 +223,11 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 			else if( $scope.metadata.examTimerRunning==4 ){return false;}
 		}
 	};
-
+	$scope.toggleShowSetting= function($event){
+		$scope.showconf.showSettings = !$scope.showconf.showSettings;
+		$event.preventDefault();
+		console.log($event);
+	}
 	$scope.$watch("metadata.examTimerRunning",function(nv,ov){
 		if(nv != ov){
 			$scope.metadata.shouldDisabled1 = $scope.shouldDisabled(1);
@@ -300,6 +305,7 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 	var linker = function(scope, element, attrs) {
 			var clicktoggle = 0;
 			element.bind('click', function(event) {
+				event.preventDefault();
 				clicktoggle++;
 				if (clicktoggle % 2){
 				    scope.trigger = "fadeMeIn";
