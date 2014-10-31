@@ -17,14 +17,6 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 	$scope.timerRunning = null;
 	$scope.user={};	
 	$scope.showconf={};
-	var currentcategory = $location.url();
-	if (currentcategory == '/times')
-		currentcategory = "times";
-	else if(currentcategory == '/plus')
-		currentcategory = "plus";
-	else
-		currentcategory = "plus";
-	console.log($location.url());
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
 	$scope.mathexam = {
 		'mathQuantity' : 50,
@@ -39,6 +31,19 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 		'userAnsweredData':[],
 		'hasSubmitted': false
 	};
+	var currentcategory = $location.url();
+	if (currentcategory == '/times'){
+		currentcategory = "times";
+		$scope.mathexam.mathCategory = currentcategory;
+	}
+	else if(currentcategory == '/plus'){
+		currentcategory = "plus";
+		$scope.mathexam.mathCategory = currentcategory;
+	}
+	else{
+		currentcategory = "plus";
+		$scope.mathexam.mathCategory = currentcategory;
+	}
 	var searchAnsweredData = function(rowtosearch){
 		var index = -1;
 		for (i=0;i<$scope.mathexam.userAnsweredData.length;i++)
