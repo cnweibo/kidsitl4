@@ -53,22 +53,27 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 			}
 			return index;
 	};
-	$scope.$on('updateScoreAndAnswer',function (e,rowdata) {
+	$scope.$on('updateScoreAndAnswer',function (e,rowinfo) {
 			var result = null;
 			var index = -2;
-			index = searchAnsweredData (rowdata);
-			if (rowdata.invisualcolumns == "1"){
-				result = (rowdata.operand1 == rowdata.myanswerdata) ;
+			console.log(rowinfo.rowdata);
+			index = searchAnsweredData (rowinfo.rowdata);
+			if (rowinfo.rowdata.invisualcolumns == "1"){
+				result = (rowinfo.rowdata.operand1 == rowinfo.rowdata.myanswerdata) ;
 			}
-			if (rowdata.invisualcolumns == "2"){
-				result = (rowdata.operand2 == rowdata.myanswerdata) ;}
-			if (rowdata.invisualcolumns == "3"){
-				result = (rowdata.sumdata == rowdata.myanswerdata) ;
+			if (rowinfo.rowdata.invisualcolumns == "2"){
+				result = (rowinfo.rowdata.operand2 == rowinfo.rowdata.myanswerdata) ;}
+			if (rowinfo.rowdata.invisualcolumns == "3"){
+				if (rowinfo.category == "plus"){
+					result = (rowinfo.rowdata.sumdata == rowinfo.rowdata.myanswerdata) ;
+				}else if (rowinfo.category == "times"){
+					result = (rowinfo.rowdata.multiplydata == rowinfo.rowdata.myanswerdata) ;
+				}
 			}
 			if (result){// if the answer is right
 				if (index == -1){//not found yet, we push in and add the score
 					$scope.mathexam.score += $scope.mathexam.scorePerQuestion;
-					$scope.mathexam.userAnsweredData.push({'id': rowdata.id,'invisualcolumns': rowdata.invisualcolumns,'myanswerdata': rowdata.myanswerdata, 'scoreAddedTimes':1});
+					$scope.mathexam.userAnsweredData.push({'id': rowinfo.rowdata.id,'invisualcolumns': rowinfo.rowdata.invisualcolumns,'myanswerdata': rowinfo.rowdata.myanswerdata, 'scoreAddedTimes':1});
 				}else{
 					// have found ,we should check whether or not had added the score
 					if ($scope.mathexam.userAnsweredData[index].scoreAddedTimes == 0){
@@ -81,7 +86,7 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 			}else{
 				// the answer is not right
 				if (index == -1){//not found yet, we push in and NOT add the score
-					$scope.mathexam.userAnsweredData.push({'id': rowdata.id,'invisualcolumns': rowdata.invisualcolumns,'myanswerdata': rowdata.myanswerdata, 'scoreAddedTimes':0});
+					$scope.mathexam.userAnsweredData.push({'id': rowinfo.rowdata.id,'invisualcolumns': rowinfo.rowdata.invisualcolumns,'myanswerdata': rowinfo.rowdata.myanswerdata, 'scoreAddedTimes':0});
 				}else{
 					// have found and score had been added, so we should decrease the score
 					if ($scope.mathexam.userAnsweredData[index].scoreAddedTimes == 1){
@@ -342,7 +347,8 @@ app.directive("examRowData",function($animate,answeringFactory){
 			// 	console.log(nv);
 			// })
 			scope.updateScore = function(){
-					scope.$emit('updateScoreAndAnswer',scope.row);
+				console.log(scope.row);
+					scope.$emit('updateScoreAndAnswer',{"rowdata":scope.row,"category":scope.category});
 			};
 			scope.isVisualColumn = function(row,column){
 				return (row.invisualcolumns!=column);
