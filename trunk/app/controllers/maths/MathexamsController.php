@@ -64,7 +64,7 @@ class MathexamsController extends \BaseController {
 		// return View::make('site.mathexercise.examcreate');
 		$digitnumbers = Input::get('mathDigitNumbers')? Input::get('mathDigitNumbers') : 4;
 		$category = Input::get('mathCategory')? Input::get('mathCategory') : 'plus'; 
-		$difficulty = Input::get('mathDifficulty')? Input::get('mathDifficulty') : 4;
+		$difficulty = Input::get('mathDifficulty')? Input::get('mathDifficulty') : 1;
 		$quantity = Input::get('mathQuantity')? Input::get('mathQuantity'): 100;
 		$exercises = [];
 		$exam=[];
@@ -73,7 +73,7 @@ class MathexamsController extends \BaseController {
 			switch ($digitnumbers) {
 				case '4':
 					$mathexam-> exercisetab = "mathsum4exercises";
-					$exercises = Mathsum4::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					$exercises = Mathsum4::where('mathDifficulty','=',$difficulty)->orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
 					//保存卷子题目字典信息到试卷数据库mathexams
 					for ($i=0;$i<$quantity;$i++){
 						array_push($examdata,$exercises[$i]['id']);
@@ -81,7 +81,7 @@ class MathexamsController extends \BaseController {
 					break;
 				case '2':
 					$mathexam-> exercisetab = "mathsum2exercises";
-					$exercises = Mathsum2::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					$exercises = Mathsum2::where('mathDifficulty','=',$difficulty)->orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
 					//保存卷子题目字典信息到试卷数据库mathexams
 					for ($i=0;$i<$quantity;$i++){
 						array_push($examdata,$exercises[$i]['id']);
@@ -89,7 +89,7 @@ class MathexamsController extends \BaseController {
 					break;
 				case '1':
 					$mathexam-> exercisetab = "mathsum1exercises";
-					$exercises = Mathsum1::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					$exercises = Mathsum1::where('difficulty','=',$difficulty)->orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
 					//保存卷子题目字典信息到试卷数据库mathexams
 					for ($i=0;$i<$quantity;$i++){
 						array_push($examdata,$exercises[$i]['id']);
@@ -102,7 +102,7 @@ class MathexamsController extends \BaseController {
 			switch ($digitnumbers) {
 				case '2':
 					$mathexam-> exercisetab = "mathmultiply2exercises";
-					$exercises = Mathmultiply2::orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
+					$exercises = Mathmultiply2::where('difficulty','=',$difficulty)->orderByRaw("rand() limit 0,{$quantity}")->get()->toArray();
 					//保存卷子题目字典信息到试卷数据库mathexams
 					for ($i=0;$i<$quantity;$i++){
 						array_push($examdata,$exercises[$i]['id']);
@@ -115,6 +115,7 @@ class MathexamsController extends \BaseController {
 		}
 		$exam_exercisesrows= json_encode($examdata);
 		$mathexam-> exerciseids = $exam_exercisesrows;
+		$mathexam-> difficultydata = $difficulty;
 		$mathexam->save();
 		$mathexamID = $mathexam -> id ;	
 		switch ($mathexam->exercisetab) {
