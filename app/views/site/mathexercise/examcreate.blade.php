@@ -106,7 +106,7 @@
 		<span ng-if="isVisualColumn(row,3)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]"><span  ng-if="category == 'plus'">[[row.sumdata]]</span><span  ng-if="category == 'times'">[[row.multiplydata]]</span></span>  
 		<span ng-if="!isVisualColumn(row,3) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">(<span  ng-if="category == 'plus'">[[row.sumdata]]</span><span  ng-if="category == 'times'">[[row.multiplydata]]</span>)</span> 
 		<span ng-form="inputform3"><input ng-blur="updateScore()" ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
-		<span check-result my-row="row" has-input="inputform1.$dirty || inputform2.$dirty || inputform3.$dirty" answer='row.myanswerdata' check-answer-realtime="checkAnswerRealtime"></span>
+		<span check-result category="category" my-row="row" has-input="inputform1.$dirty || inputform2.$dirty || inputform3.$dirty" answer='row.myanswerdata' check-answer-realtime="checkAnswerRealtime"></span>
 	</span>
 	</script>
 	<script type="text/ng-template" id="checkresult.html">
