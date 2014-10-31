@@ -27,7 +27,7 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
 	$scope.mathexam = {
 		'mathQuantity' : 50,
-		'mathDifficulty': 2,
+		'mathDifficulty': 1,
 		'mathDigitNumbers': 2,
 		'mathCategory': 'plus',
 		'timetodo':10,
@@ -119,7 +119,7 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 	$scope.viewClassDetails = function(classToView) {
 	// do something
 	};
-	$http.get('/math/exams/create',{params:{mathCategory:currentcategory,mathDigitNumbers:2,mathDifficulty:2,mathQuantity:50}}).success(function(data)
+	$http.get('/math/exams/create',{params:{mathCategory:currentcategory,mathDigitNumbers:2,mathDifficulty:1,mathQuantity:50}}).success(function(data)
 	{
 		$scope.examdata = data;
 	});
