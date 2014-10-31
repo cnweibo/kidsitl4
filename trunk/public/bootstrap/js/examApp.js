@@ -16,6 +16,13 @@ app.config(function($routeProvider) {
 app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;
 	$scope.user={};	
+	var currentcategory = $location.url();
+	if (currentcategory == '/times')
+		currentcategory = "times";
+	else if(currentcategory == '/plus')
+		currentcategory = "plus";
+	else
+		currentcategory = "plus";
 	console.log($location.url());
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
 	$scope.mathexam = {
@@ -112,7 +119,7 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 	$scope.viewClassDetails = function(classToView) {
 	// do something
 	};
-	$http.get('/math/exams/create',{params:{mathCategory:'plus',mathDigitNumbers:2,mathDifficulty:2,mathQuantity:50}}).success(function(data)
+	$http.get('/math/exams/create',{params:{mathCategory:currentcategory,mathDigitNumbers:2,mathDifficulty:2,mathQuantity:50}}).success(function(data)
 	{
 		$scope.examdata = data;
 	});
@@ -329,20 +336,20 @@ app.directive("examRowData",function($animate,answeringFactory){
 			scope.isVisualColumn = function(row,column){
 				return (row.invisualcolumns!=column);
 			};
-			scope.checkData = function(row,answer){
-				var result = null;
-				if (row.invisualcolumns == "1"){
-					result = (row.operand1 == answer) ;
-				}
-				if (row.invisualcolumns == "2"){
-					result = (row.operand2 == answer) ;
-				}
-				if (row.invisualcolumns == "3"){
-					result = (row.sumdata == answer) ;
+			// scope.checkData = function(row,answer){
+			// 	var result = null;
+			// 	if (row.invisualcolumns == "1"){
+			// 		result = (row.operand1 == answer) ;
+			// 	}
+			// 	if (row.invisualcolumns == "2"){
+			// 		result = (row.operand2 == answer) ;
+			// 	}
+			// 	if (row.invisualcolumns == "3"){
+			// 		result = (row.sumdata == answer) ;
 					
-					}
-				return result;
-			};
+			// 		}
+			// 	return result;
+			// };
 		};
 	return {
 		restrict: 'AE',
@@ -364,9 +371,12 @@ app.directive("checkResult",function(){
 				result = (row.operand2 == answer) ;
 			}
 			if (row.invisualcolumns == "3"){
-				result = (row.sumdata == answer) ;
-				
+				if (scope.category=="plus"){
+					result = (row.sumdata == answer) ;
+				}else if (scope.category == "times"){
+					result = (row.multiplydata == answer) ;
 				}
+			}
 			return result;
 		};
 		scope.isRevisioning = false;
@@ -381,7 +391,7 @@ app.directive("checkResult",function(){
 	};
 	return {
 		restrict: 'A',
-		scope: {myRow: '=', answer: '=',checkAnswerRealtime: '=',hasInput: '='},
+		scope: {myRow: '=', answer: '=',checkAnswerRealtime: '=',hasInput: '=',category: '='},
 		templateUrl: 'checkresult.html',
 		
 		link: linker,
