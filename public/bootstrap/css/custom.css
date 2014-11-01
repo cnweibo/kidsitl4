@@ -151,6 +151,7 @@ p.wordyinbiaoblock:after{
   box-sizing: border-box;
   position: relative;
   border: 2px solid #FFF;
+  min-width:50px;
 }
 .wordyinbiaoblock:hover{
   background-color: #FFFFFF;
