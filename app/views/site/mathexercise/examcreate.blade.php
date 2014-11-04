@@ -190,7 +190,7 @@
 			</div>
 		</div>
 		<h4><span ng-cloak class="aligncenter inlineblock"><strong>姓名:</strong><strong style="color:red" ng-show="userloggedinfo.username"> [[userloggedinfo.username]] </strong><strong ng-show="!userloggedinfo.username">_____ </strong> <strong>分数:</strong><strong ng-show="(!mathexam.hasSubmitted)&&(!mathexam.checkAnswerRealtime)"> ______</strong> <strong ng-show="mathexam.hasSubmitted || mathexam.checkAnswerRealtime" style="color:red" fade-value-change="mathexam.score"> [[mathexam.score|number]] </strong>
-				<span ng-cloak timer timerid="examCountTimer" autostart="false" interval="1000">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
+				<span ng-cloak timer timerid="examCountTimer" autostart="false" interval="1000" exported-timer-val="exportedTimerVal">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
 					
 				</span>
 				<div class="btn-group">
