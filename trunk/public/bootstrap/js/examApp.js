@@ -31,6 +31,7 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 		'userAnsweredData':[],
 		'hasSubmitted': false
 	};
+	$scope.exportedTimerVal = {};
 	var currentcategory = $location.url();
 	if (currentcategory == '/times'){
 		currentcategory = "times";
@@ -56,7 +57,6 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 	$scope.$on('updateScoreAndAnswer',function (e,rowinfo) {
 			var result = null;
 			var index = -2;
-			console.log(rowinfo.rowdata);
 			index = searchAnsweredData (rowinfo.rowdata);
 			if (rowinfo.rowdata.invisualcolumns == "1"){
 				result = (rowinfo.rowdata.operand1 == rowinfo.rowdata.myanswerdata) ;
@@ -193,7 +193,17 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 		answeringFactory.setIsAnswering(false);
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 		$rootScope.$broadcast('userHasSubmittedAnswers');
-
+		console.log($scope.exportedTimerVal);
+		console.log($scope.mathexam.score);
+		var submitData = {
+			timerData: $scope.exportedTimerVal,
+			examId: $scope.examdata.examID,
+			score: $scope.mathexam.score
+		};
+		$http.get('/math/exams/submitanswer',{params:submitData}).success(function(data)
+		{
+			console.log(data);
+		});
 	};
 	$scope.revisionAnswers = function(){
 		$scope.mathexam.hasSubmitted = false;
@@ -344,35 +354,12 @@ app.directive("toggleAnswerViewAndAnimcate",function($animate){
 
 app.directive("examRowData",function($animate,answeringFactory){
 	var linker = function(scope, element, attrs) {
-			// scope.canInputAnswer = false;
-			// scope.canInputAnswer = answeringFactory.canInputAnswer();
-			// scope.$watch('canInputAnswer', function(newVal, oldVal) {
-			//     console.log(newVal);
-			// });
-			// scope.$watch('row.myanswerdata',function(nv,ov){
-			// 	console.log(nv);
-			// })
 			scope.updateScore = function(){
-				console.log(scope.row);
 					scope.$emit('updateScoreAndAnswer',{"rowdata":scope.row,"category":scope.category});
 			};
 			scope.isVisualColumn = function(row,column){
 				return (row.invisualcolumns!=column);
 			};
-			// scope.checkData = function(row,answer){
-			// 	var result = null;
-			// 	if (row.invisualcolumns == "1"){
-			// 		result = (row.operand1 == answer) ;
-			// 	}
-			// 	if (row.invisualcolumns == "2"){
-			// 		result = (row.operand2 == answer) ;
-			// 	}
-			// 	if (row.invisualcolumns == "3"){
-			// 		result = (row.sumdata == answer) ;
-					
-			// 		}
-			// 	return result;
-			// };
 		};
 	return {
 		restrict: 'AE',

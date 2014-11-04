@@ -19,7 +19,8 @@ var timerModule = angular.module('timer', [])
         finishCallback: '&finishCallback',
         autoStart: '&autoStart',
         maxTimeUnit: '=',
-        timerid: '@timerid'
+        timerid: '@timerid',
+        exportedTimerVal: '='
       },
       controller: ['$scope', '$element', '$attrs', '$timeout', function ($scope, $element, $attrs, $timeout) {
 
@@ -188,6 +189,10 @@ var timerModule = angular.module('timer', [])
           $scope.mmonths = $scope.months < 10 ? '0' + $scope.months : $scope.months;
           $scope.yyears = $scope.years < 10 ? '0' + $scope.years : $scope.years;
 
+          // exported the time values outside the directive
+          $scope.exportedTimerVal.mminutes = $scope.mminutes;
+          $scope.exportedTimerVal.sseconds = $scope.sseconds;
+          $scope.exportedTimerVal.hhours = $scope.hhours;
         }
 
         //determine initial values of time units and add AddSeconds functionality

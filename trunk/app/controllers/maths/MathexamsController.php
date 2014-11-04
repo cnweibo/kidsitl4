@@ -138,4 +138,21 @@ class MathexamsController extends \BaseController {
 		return $exam;
 		// return View::make('site.mathexercise.mathsum4',compact('exercises','mathexamID'));
 	}
+
+	public function submitAnswer(){
+		$examid = Input::get('examId')? Input::get('examId') : 0;
+		$score =  Input::get('score')? Input::get('score') : 10000;
+		$timerData = json_decode(Input::get('timerData'));
+		$mathexam = Mathexam::findOrFail($examid);
+		
+		$timeconsumed =  (string)$timerData->hhours . "_" . (string)$timerData->mminutes . "_" . (string)$timerData->sseconds; 
+		Log::info("timer data is: $timerData->sseconds  minutes is: $timerData->mminutes and final result: $timeconsumed\n\r");
+		// dd($timeconsumed);
+		// $mathexam ->score = $score;
+
+		if($mathexam->update(array('score' =>$score,'timeconsumed'=>$timeconsumed)));
+		{
+			return "ok";
+		}
+	}
 }
