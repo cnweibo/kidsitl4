@@ -184,17 +184,23 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 	};
 	$scope.submitAnswers = function(){
 		toastr.error('请登录后再提交','需要登录',{closeButton: true,positionClass: 'toast-bottom-full-width'});
+		if ($scope.metadata.examTimerRunning == 5){
+			// if timer not stopped previously
+			$scope.$broadcast('timer-stop','examCountTimer');
+		}
 		$scope.mathexam.hasSubmitted = true;
 		$scope.metadata.examTimerRunning = 4;
 		answeringFactory.setIsAnswering(false);
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 		$rootScope.$broadcast('userHasSubmittedAnswers');
+
 	};
 	$scope.revisionAnswers = function(){
 		$scope.mathexam.hasSubmitted = false;
 		$scope.metadata.examTimerRunning = 5;
 		answeringFactory.setIsAnswering(true);
 	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
+	    $scope.$broadcast('timer-resume','examCountTimer');
 		$rootScope.$broadcast('revisionAfterSubmittedAnswers');
 	};
 	$scope.shouldDisabled = function(btnid){
