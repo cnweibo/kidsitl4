@@ -212,6 +212,9 @@
 <!-- examAppCtrl -->
 @stop
 @section('scripts')
+	<script src="{{asset('dist/appMath.min.js')}}"></script>
+
+<!-- 
 	<script src="{{asset('bootstrap/js/angular.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/angular-route.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/angular-timer.js')}}"></script>
@@ -221,4 +224,5 @@
 	<script src="{{asset('bootstrap/js/ui-bootstrap-tpls-0.11.0.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/TweenMax.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/examApp.js')}}"></script>
+-->
 @stop
