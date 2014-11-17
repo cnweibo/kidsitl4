@@ -1,7 +1,7 @@
-var kidsitApplication = angular.module('kidsitApp', ['kidsitAnimate'],function($interpolateProvider) {
+var kidsitApplication = angular.module('kidsitApp', ['kidsitAnimate']).config(['$interpolateProvider',function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
-});
+}]);
 kidsitApplication.controller('kidsitAppCtrl',function(){
 	// dummy controller for the top most level
 });
