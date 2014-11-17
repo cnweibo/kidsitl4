@@ -30,8 +30,8 @@
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-		  <script src="{{asset('bootstrap/js/html5shiv.js')}}"></script>
-		  <script src="{{asset('bootstrap/js/respond.min.js')}}"></script>		  
+		  <script src="{{asset('htmlapp/libs/html5shiv.js')}}"></script>
+		  <script src="{{asset('htmlapp/libs/respond.min.js')}}"></script>		  
 		<![endif]-->
 		
 		<!-- Favicons
@@ -128,11 +128,7 @@
 	    </div>
 
 		<!-- Javascripts
-		================================================== -->
-        <script src="{{asset('bootstrap/js/jquery.min.js,jquery.color.min.js,bootstrap.min.js')}}"></script>        
-        <!-- <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script> -->
-        <script src="{{asset('bootstrap/js/custom.js')}}"></script> 
-
+		================================================== -->    
         @yield('scripts')
 		<!-- daiyanbao -->
         <!--<div id="daiyanbao_com_content" style="position: fixed;_position: absolute;text-align: left;overflow: visible;bottom :0;right:0;display:block; z-index:999;">
