@@ -1,20 +1,66 @@
 module.exports = function (grunt){
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
+		ngAnnotate: {
+	        options: {
+	            singleQuotes: true,
+	        },
+	        examapp: {
+	            files: [
+	                {
+	                    expand: true,
+	                    src: ['htmlapp/examApp/examApp.js','htmlapp/syscommon/kidsitanimatelib.js'],
+	                    ext: '.annotated.js', // Dest filepaths will have this extension.
+	                    extDot: 'last',       // Extensions in filenames begin after the last dot
+	                },
+	            ],
+	        },
+	        yinbiaoapp: {
+	            files: [
+	                {
+	                    expand: true,
+	                    src: ['htmlapp/yinbiaoApp/angularinit.js','htmlapp/yinbiaoApp/highlightpattern.js',
+							'htmlapp/syscommon/kidsitanimatelib','htmlapp/yinbiaoApp/guestaddword.js','htmlapp/yinbiaoApp/yinbiaoapp.js',],
+	                    ext: '.annotated.js', // Dest filepaths will have this extension.
+	                    extDot: 'last',       // Extensions in filenames begin after the last dot
+	                },
+	            ],
+	        },
+	    },
+		concat: {
+			options: {
+				seperator: ";",
+				banner: "/*kidsit concat*/\n"
+			},
+			math: {
+				src: ["htmlapp/libs/jquery/dist/jquery.min.js","htmlapp/libs/jquery-color/jquery.color.js","htmlapp/libs/bootstrap/dist/bootstrap.min.js","htmlapp/syscommon/custom.js","htmlapp/libs/angular/angular.min.js",
+					  "htmlapp/libs/angular-route/angular-route.min.js","htmlapp/libs/angular-timer.js","htmlapp/libs/angular-animate/angular-animate.min.js","htmlapp/libs/angular-toastr/dist/angular-toastr.js",
+					  "htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.min.js","htmlapp/libs/TweenMax.min.js","htmlapp/examApp/examApp.annotated.js","htmlapp/examApp/kidsitanimatelib.annotated.js"],
+				dest: "concat/appMath.concat.js"
+			},
+			yinbiao: {
+				src: ["htmlapp/libs/jquery/dist/jquery.min.js","htmlapp/libs/jquery-color/jquery.color.js","htmlapp/libs/bootstrap/dist/bootstrap.min.js","htmlapp/syscommon/custom.js","htmlapp/libs/angular/angular.min.js",
+					  "htmlapp/libs/angular-route/angular-route.min.js","htmlapp/yinbiaoApp/angularinit.annotated.js",
+					  "htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.min.js","htmlapp/libs/TweenMax.min.js",
+					   "htmlapp/yinbiaoApp/highlightpattern.annotated.js","htmlapp/syscommon/kidsitanimatelib.annotated.js","htmlapp/yinbiaoApp/guestaddword.annotated.js",
+					   "htmlapp/libs/angular-animate/angular-animate.min.js","htmlapp/yinbiaoApp/yinbiaoapp.annotated.js"],
+				dest: "concat/appYinbiao.concat.js"
+			},
+		},
 		uglify: {
 			options: {
 				compress: true,
 				sourceMap: "dist/app.map",
-				mangle: false,
+				mangle: true,
 				banner: "/* copyright <%= pkg.author %> | <%= pkg.license %> " + 
 				        " @<%= grunt.template.today('yyyy-mm-dd') %> */"
 			},
 			math: {
-				src: "dest/appMath.concat.js",
+				src: "concat/appMath.concat.js",
 				dest: "dist/appMath.min.js"
 			},
 			yinbiao: {
-				src: "dest/appYinbiao.concat.js",
+				src: "concat/appYinbiao.concat.js",
 				dest: "dist/appYinbiao.min.js"
 			}
 		},
@@ -29,34 +75,14 @@ module.exports = function (grunt){
 				src: "src/*.js"
 			}
 		},
-		concat: {
-			options: {
-				seperator: ";",
-				banner: "/*kidsit concat*/\n"
-			},
-			math: {
-				src: ["htmlapp/libs/jquery.min.js","htmlapp/libs/jquery.color.min.js","htmlapp/libs/bootstrap.min.js","htmlapp/js/custom.js","htmlapp/libs/angular.min.js",
-					  "htmlapp/libs/angular-route.min.js","htmlapp/libs/angular-timer.js","htmlapp/libs/angular-animate.min.js","htmlapp/libs/angular-toastr.js",
-					  "htmlapp/js/kidsitanimatelib.js","htmlapp/libs/ui-bootstrap-tpls-0.11.0.min.js","htmlapp/libs/TweenMax.min.js","htmlapp/js/examApp.js"],
-				dest: "dest/appMath.concat.js"
-			},
-			yinbiao: {
-				src: ["htmlapp/libs/jquery.min.js","htmlapp/libs/jquery.color.min.js","htmlapp/libs/bootstrap.min.js","htmlapp/js/custom.js","htmlapp/libs/angular.min.js",
-					  "htmlapp/libs/angular-route.min.js","htmlapp/js/angularinit.js",
-					  "htmlapp/libs/ui-bootstrap-tpls-0.11.0.min.js","htmlapp/libs/TweenMax.min.js",
-					   "htmlapp/js/highlightpattern.js","htmlapp/js/kidsitanimatelib.js","htmlapp/js/guestaddword.js",
-					   "htmlapp/libs/ng-animate.js","htmlapp/js/yinbiaoapp.js"],
-				dest: "dest/appYinbiao.concat.js"
-			},
-		},
 		watch: {
 			scripts: {
-				files: ['src/*.js'],
-				tasks: ['jshint']
+				files: ['htmlapp/js/*.js'],
+				tasks: ['concat:math','uglify:math']
 			}
 		},
 		clean: {
-			target: ['dist','dest']
+			target: ['dist','concat']
 		}
 	});
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -65,6 +91,10 @@ module.exports = function (grunt){
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
-	grunt.registerTask("default",['concat:math','uglify:math']);
+	grunt.loadNpmTasks('grunt-ng-annotate');
+
+	grunt.registerTask("default",['math','yinbiao']);
+	grunt.registerTask("math",['ngAnnotate:examapp','concat:math','uglify:math']);
+	grunt.registerTask("yinbiao",['ngAnnotate:yinbiaoapp','concat:yinbiao','uglify:yinbiao']);
 	grunt.registerTask("rebuild",['clean','default']);
 };
