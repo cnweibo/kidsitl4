@@ -19,8 +19,8 @@ module.exports = function (grunt){
 	            files: [
 	                {
 	                    expand: true,
-	                    src: ['htmlapp/yinbiaoApp/angularinit.js','htmlapp/yinbiaoApp/highlightpattern.js',
-							'htmlapp/syscommon/kidsitanimatelib','htmlapp/yinbiaoApp/guestaddword.js','htmlapp/yinbiaoApp/yinbiaoapp.js',],
+	                    src: ['htmlapp/yinbiaoApp/angularinit.js','htmlapp/yinbiaoApp/highlightppattern.js',
+							'htmlapp/syscommon/kidsitanimatelib.js','htmlapp/yinbiaoApp/guestaddword.js','htmlapp/yinbiaoApp/yinbiaoapp.js',],
 	                    ext: '.annotated.js', // Dest filepaths will have this extension.
 	                    extDot: 'last',       // Extensions in filenames begin after the last dot
 	                },
@@ -42,7 +42,7 @@ module.exports = function (grunt){
 				src: ["htmlapp/libs/jquery/dist/jquery.min.js","htmlapp/libs/jquery-color/jquery.color.js","htmlapp/libs/bootstrap/dist/bootstrap.min.js","htmlapp/syscommon/custom.js","htmlapp/libs/angular/angular.min.js",
 					  "htmlapp/libs/angular-route/angular-route.min.js","htmlapp/yinbiaoApp/angularinit.annotated.js",
 					  "htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.min.js","htmlapp/libs/TweenMax.min.js",
-					   "htmlapp/yinbiaoApp/highlightpattern.annotated.js","htmlapp/syscommon/kidsitanimatelib.annotated.js","htmlapp/yinbiaoApp/guestaddword.annotated.js",
+					   "htmlapp/yinbiaoApp/highlightppattern.annotated.js","htmlapp/syscommon/kidsitanimatelib.annotated.js","htmlapp/yinbiaoApp/guestaddword.annotated.js",
 					   "htmlapp/libs/angular-animate/angular-animate.min.js","htmlapp/yinbiaoApp/yinbiaoapp.annotated.js"],
 				dest: "concat/appYinbiao.concat.js"
 			},
@@ -51,7 +51,7 @@ module.exports = function (grunt){
 			options: {
 				compress: true,
 				sourceMap: "dist/app.map",
-				mangle: true,
+				mangle: false,
 				banner: "/* copyright <%= pkg.author %> | <%= pkg.license %> " + 
 				        " @<%= grunt.template.today('yyyy-mm-dd') %> */"
 			},

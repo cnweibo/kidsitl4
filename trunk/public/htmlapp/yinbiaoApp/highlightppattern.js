@@ -14,7 +14,6 @@ kidsitApplication.directive('highlightChars',['$timeout',function(timer){
         var matchRegex = "";
         var openLeft = false;
         var openRight = false;
-        // console.log('targetNode:',targetNode);
         this.setMatchType = function(type)
         {
           switch(type)
@@ -103,9 +102,7 @@ kidsitApplication.directive('highlightChars',['$timeout',function(timer){
           this.hiliteWords(targetNode);
         };
       }; //Hilitor
-      // console.log("highlighting directive linker...");
       timer(function() { //shedule the linker after DOM rendering finished!!
-        // console.log("highlighting triggered after dom rendered");
         (new Hilitor(scope.domId)).apply((scope.pt));
       },0);
   }; //linker
