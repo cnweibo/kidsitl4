@@ -21,7 +21,7 @@ app.value('answeringFactory', {
 	setIsAnswering: function(tof){
   	this.isAnswering = tof ;
 }});
-var kidsitAppCtrl = app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
+var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$http', 'answeringFactory', 'toastr', '$location', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;
 	$scope.user={};	
 	$scope.showconf={};
@@ -271,10 +271,10 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', function($scope,$rootScope,$
 			$scope.metadata.shouldDisabled5 = $scope.shouldDisabled(5);
 		}
 	});
-});
+}]);
 // min safe pattern
 kidsitAppCtrl.$inject = ['$scope','$rootScope','$http','answeringFactory','toastr','$location'];
-var loginCtrl = app.controller('loginCtrl',function($scope,$http){
+var loginCtrl = app.controller('loginCtrl',['$scope', '$http', function($scope,$http){
 
 	$scope.login = function(){
 		console.log("logining in");
@@ -286,7 +286,7 @@ var loginCtrl = app.controller('loginCtrl',function($scope,$http){
 	$scope.signup = function(){
 		console.log("signup ...");
 	};
-});
+}]);
 loginCtrl.$inject = ['$scope','$http'];
 app.filter('examTixing',function(){
 	return	function(mathcategory){
