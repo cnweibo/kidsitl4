@@ -1,8 +1,8 @@
-var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute'],function($interpolateProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-});
-app.config(function($routeProvider) {
+var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute']);
+app.config(['$interpolateProvider','$routeProvider', function($interpolateProvider,$routeProvider) {
+		$interpolateProvider.startSymbol('[[');
+		$interpolateProvider.endSymbol(']]');
+
         $routeProvider.when('/plus',
             {
                 templateUrl:'http://kidsit.cn/assets/atpls/examplus.html'
@@ -11,7 +11,7 @@ app.config(function($routeProvider) {
         		templateUrl:'http://kidsit.cn/assets/atpls/examtimes.html'
         	})
             .otherwise({redirectTo: '/plus'});
-});
+}]);
 
 app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;

@@ -214,7 +214,7 @@
 
 
 @section('scripts')
-	
+	<!--(if target mathdev)><!-->
 		<script src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
 		<script src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
 		<script src="{{asset('htmlapp/libs/angular-timer.js')}}"></script>
@@ -224,6 +224,8 @@
 		<script src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>
 		<script src="{{asset('htmlapp/libs/TweenMax.min.js')}}"></script>
 		<script src="{{asset('htmlapp/examApp/examApp.js')}}"></script>
-	
-	
+	<!--<!(endif)-->
+	<!--(if target mathrelease)><!-->
+		<script src="{{asset('dist/appMath.min.js')}}"></script>
+	<!--<!(endif)-->
 @stop

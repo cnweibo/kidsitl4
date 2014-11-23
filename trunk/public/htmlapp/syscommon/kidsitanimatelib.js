@@ -25,14 +25,14 @@ angular.module('kidsitAnimate', ["ngAnimate"])
         restrict: 'EA',
         scope: {},
         link: linker,
-        controller: function($scope){
+        controller: ['$scope', function($scope){
             // data which used to trigger animate
             $scope.animateStyle=null;
             // lib api
             this.setAnimateStyle = function(style){
                 $scope.animateStyle = style;
             };
-        }
+        }]
     };
 }])
 .directive("fadeMeHover", function() {
@@ -93,14 +93,14 @@ angular.module('kidsitAnimate', ["ngAnimate"])
         restrict: 'EA',
         scope: {trigger: '='},
         link: linker,
-        controller: function($scope){
+        controller: ['$scope', function($scope){
             // data which used to trigger animate
             // $scope.animateStyle=null;
             // // lib api
             // this.setAnimateStyle = function(style){
             //     $scope.animateStyle = style;
             // };
-        }
+        }]
     };
 }])
 .animation(".fadeMeIn", function() {
