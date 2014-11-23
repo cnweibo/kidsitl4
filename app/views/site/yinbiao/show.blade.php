@@ -103,9 +103,8 @@
 	</div>
 @stop
 @section('scripts')
-<!--
 	<script type="text/javascript" src="{{ asset('dist/appYinbiao.min.js') }}"></script>
--->
+<!--
 	<script type="text/javascript" src="{{ asset('htmlapp/libs/jquery/dist/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('htmlapp/libs/angular/angular.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('htmlapp/yinbiaoApp/angularinit.js') }}"></script>
@@ -115,6 +114,6 @@
 	<script type="text/javascript" src="{{ asset('htmlapp/yinbiaoApp/highlightppattern.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('htmlapp/yinbiaoApp/guestaddword.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('htmlapp/yinbiaoApp/yinbiaoapp.js') }}"></script>
-	<script type="text/javascript">var mp3='{{$yinbiao->mp3}}';//var ppatternregex='{{(is_null($yinbiao->fayinguizes->first())) ? 'Not_assigned_ppattern' : $yinbiao->fayinguizes->first()->regex}}';</script>
+-->
     @include('phptojsvariables')
 @stop
