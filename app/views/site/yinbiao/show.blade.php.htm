@@ -103,10 +103,20 @@
 	</div>
 @stop
 @section('scripts')
-
-
+<!--(if target yinbiaodev)><!-->
+	<script type="text/javascript" src="{{ asset('htmlapp/libs/jquery/dist/jquery.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('htmlapp/libs/angular/angular.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('htmlapp/yinbiaoApp/angularinit.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('htmlapp/libs/angular-animate/angular-animate.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('htmlapp/libs/TweenMax.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('htmlapp/syscommon/kidsitanimatelib.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('htmlapp/yinbiaoApp/highlightppattern.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('htmlapp/yinbiaoApp/guestaddword.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('htmlapp/yinbiaoApp/yinbiaoapp.js') }}"></script>
+<!--<!(endif)-->
+<!--(if target yinbiaorelease)><!-->
 	<script type="text/javascript" src="{{asset('dist/appYinbiao.min.js')}}"></script>
-
+<!--<!(endif)-->
 
     @include('phptojsvariables')
 @stop

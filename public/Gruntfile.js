@@ -77,12 +77,12 @@ module.exports = function (grunt){
 		  },
 		  yinbiaorelease: {
 		    files: {
-		      '../app/views/site/mathexercise/examcreate.blade.php': '../app/views/site/mathexercise/examcreate.blade.php.htm'
+		      '../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
 		    }
 		  },
 		  yinbiaodev: {
 		    files: {
-		      '../app/views/site/mathexercise/examcreate.blade.php': '../app/views/site/mathexercise/examcreate.blade.php.htm'
+		      '../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
 		    }
 		  }
 		},
@@ -117,10 +117,14 @@ module.exports = function (grunt){
 
 	grunt.loadNpmTasks('grunt-targethtml');
 
-	grunt.registerTask("default",['math','yinbiao']);
+	grunt.registerTask("default",['mathdev','yinbiaodev']);
+	grunt.registerTask("release",['mathrelease','yinbiaorelease']);
 
 	grunt.registerTask("mathdev",['targethtml:mathdev']);
 	grunt.registerTask("mathrelease",['targethtml:mathrelease','ngAnnotate:examapp','concat:math','uglify:math']);
+	grunt.registerTask("yinbiaodev",['targethtml:yinbiaodev']);
+	grunt.registerTask("yinbiaorelease",['targethtml:yinbiaorelease','ngAnnotate:yinbiaoapp','concat:yinbiao','uglify:yinbiao']);
+
 	grunt.registerTask("yinbiao",['ngAnnotate:yinbiaoapp','concat:yinbiao','uglify:yinbiao']);
 	grunt.registerTask("rebuild",['clean','default']);
 };
