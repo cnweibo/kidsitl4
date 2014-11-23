@@ -215,15 +215,7 @@
 
 @section('scripts')
 	
-		<script src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
-		<script src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
-		<script src="{{asset('htmlapp/libs/angular-timer.js')}}"></script>
-		<script src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
-		<script src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
-		<script src="{{asset('htmlapp/syscommon/kidsitanimatelib.js')}}"></script>
-		<script src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>
-		<script src="{{asset('htmlapp/libs/TweenMax.min.js')}}"></script>
-		<script src="{{asset('htmlapp/examApp/examApp.js')}}"></script>
 	
+		<script type="text/javascript" src="{{asset('dist/appMath.min.js')}}"></script>
 	
 @stop
