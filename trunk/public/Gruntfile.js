@@ -26,6 +26,23 @@ module.exports = function (grunt){
 	                },
 	            ],
 	        },
+	        todoapp: {
+	            files: [
+	                {
+	                    expand: true,
+			            src:[
+			            		'htmlapp/todoApp/common/base.js',
+								'htmlapp/todoApp/app.js',
+								'htmlapp/todoApp/todoCtrl.js',
+								'htmlapp/todoApp/todoStorage.js',
+								'htmlapp/todoApp/todoFocus.js',
+								'htmlapp/todoApp/todoEscape.js'
+							],
+	                    ext: '.annotated.js', // Dest filepaths will have this extension.
+	                    extDot: 'last',       // Extensions in filenames begin after the last dot
+	                },
+	            ],
+	        },
 	    },
 		concat: {
 			options: {
@@ -46,6 +63,18 @@ module.exports = function (grunt){
 					   "htmlapp/libs/angular-animate/angular-animate.min.js","htmlapp/yinbiaoApp/yinbiaoapp.annotated.js"],
 				dest: "concat/appYinbiao.concat.js"
 			},
+			todo: {
+				src: [
+						'htmlapp/todoApp/common/base.js',
+						'htmlapp/libs/angular/angular.js',
+						'htmlapp/todoApp/app.js',
+						'htmlapp/todoApp/todoCtrl.js',
+						'htmlapp/todoApp/todoStorage.js',
+						'htmlapp/todoApp/todoFocus.js',
+						'htmlapp/todoApp/todoEscape.js'
+					],
+				dest: "concat/appTodo.concat.js"
+			}
 		},
 		uglify: {
 			options: {
@@ -62,6 +91,10 @@ module.exports = function (grunt){
 			yinbiao: {
 				src: "concat/appYinbiao.concat.js",
 				dest: "dist/appYinbiao.min.js"
+			},
+			todo: {
+				src: "concat/appTodo.concat.js",
+				dest: "dist/appTodo.min.js"
 			}
 		},
 		targethtml: {
@@ -83,6 +116,16 @@ module.exports = function (grunt){
 		  yinbiaodev: {
 		    files: {
 		      '../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
+		    }
+		  },
+		  tododev: {
+		    files: {
+		      '../app/views/site/todo/index.blade.php': '../app/views/site/todo/index.blade.php.htm'
+		    }
+		  },
+		  todorelease: {
+		    files: {
+		      '../app/views/site/todo/index.blade.php': '../app/views/site/todo/index.blade.php.htm'
 		    }
 		  }
 		},
@@ -117,13 +160,15 @@ module.exports = function (grunt){
 
 	grunt.loadNpmTasks('grunt-targethtml');
 
-	grunt.registerTask("default",['mathdev','yinbiaodev']);
-	grunt.registerTask("release",['mathrelease','yinbiaorelease']);
+	grunt.registerTask("default",['mathdev','yinbiaodev','tododev']);
+	grunt.registerTask("release",['mathrelease','yinbiaorelease','todorelease']);
 
 	grunt.registerTask("mathdev",['targethtml:mathdev']);
 	grunt.registerTask("mathrelease",['targethtml:mathrelease','ngAnnotate:examapp','concat:math','uglify:math']);
 	grunt.registerTask("yinbiaodev",['targethtml:yinbiaodev']);
 	grunt.registerTask("yinbiaorelease",['targethtml:yinbiaorelease','ngAnnotate:yinbiaoapp','concat:yinbiao','uglify:yinbiao']);
+	grunt.registerTask("tododev",['targethtml:tododev']);
+	grunt.registerTask("todorelease",['targethtml:todorelease','ngAnnotate:todoapp','concat:todo','uglify:todo']);
 
 	grunt.registerTask("yinbiao",['ngAnnotate:yinbiaoapp','concat:yinbiao','uglify:yinbiao']);
 	grunt.registerTask("rebuild",['clean','default']);
