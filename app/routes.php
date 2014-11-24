@@ -72,6 +72,9 @@ Route::get('mm', function(){
  *  Frontend Routes
  *  ------------------------------------------
  */
+Route::get('todo',function(){
+    return View::make('site.todo.index');
+} );
 Route::get('getjs', 'JSController@index');
 // guest added english words
 Route::resource('guestaddedword','GuestaddedwordsController');
