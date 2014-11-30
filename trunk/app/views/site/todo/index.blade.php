@@ -63,8 +63,14 @@
 @stop
 @section('scripts')
 
+    <script type="text/javascript" src="{{ asset('htmlapp/todoApp/common/base.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('htmlapp/libs/angular/angular.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('htmlapp/todoApp/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('htmlapp/todoApp/todoCtrl.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('htmlapp/todoApp/todoStorage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('htmlapp/todoApp/todoFocus.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('htmlapp/todoApp/todoEscape.js') }}"></script>
 
-    <script type="text/javascript" src="{{asset('dist/appTodo.min.js')}}"></script>
 
 
     @include('phptojsvariables')
