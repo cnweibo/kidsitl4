@@ -1,4 +1,5 @@
 /*global todomvc, angular */
+/*jslint node: true */
 'use strict';
 
 /**
@@ -6,17 +7,23 @@
  * - retrieves and persists the model via the todoStorage service
  * - exposes the model to the template and provides event handlers
  */
-todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $filter, todoStorage) {
-    var todos = $scope.todos = todoStorage.get();
-
+todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $filter, todoStorage,$window) {
+    var todos;
+    todoStorage.getAll().then(
+            function(todosdata) {/*success*/
+                    todos = $scope.todos = todosdata;
+                    $scope.remainingCount = $filter('filter')(todos, {completed: false}).length;
+                },
+            function(status) {console.log("error status code:"+status);}
+        );
     $scope.newTodo = '';
-    $scope.remainingCount = $filter('filter')(todos, {completed: false}).length;
+
     $scope.editedTodo = null;
 
     if ($location.path() === '') {
         $location.path('/');
     }
-
+    $scope.csrf_token = $window.csrf_token;
     $scope.location = $location;
 
     $scope.$watch('location.path()', function (path) {
@@ -37,7 +44,11 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $filter, tod
             title: newTodo,
             completed: false
         });
-        todoStorage.put(todos);
+        todoStorage.put({
+            title: newTodo,
+            completed: false,
+            _token: $scope.csrf_token
+        });
 
         $scope.newTodo = '';
         $scope.remainingCount++;
@@ -57,7 +68,12 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $filter, tod
             $scope.removeTodo(todo);
         }
 
-        todoStorage.put(todos);
+        todoStorage.put(
+            {
+                title: todo.title,
+                _token: $scope.csrf_token
+            }
+        );
     };
 
     $scope.revertEditing = function (todo) {
