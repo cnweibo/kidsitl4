@@ -74,6 +74,15 @@ module.exports = function (grunt){
 						'htmlapp/todoApp/todoEscape.js'
 					],
 				dest: "concat/appTodo.concat.js"
+			},
+			siteindex: {
+				src: [
+						"htmlapp/libs/jquery/dist/jquery.min.js",
+						"htmlapp/libs/jquery-color/jquery.color.js",
+						"htmlapp/libs/bootstrap/dist/js/bootstrap.min.js",
+						"htmlapp/syscommon/custom.js"
+					],
+				dest: "concat/siteindex.concat.js"
 			}
 		},
 		uglify: {
@@ -95,6 +104,10 @@ module.exports = function (grunt){
 			todo: {
 				src: "concat/appTodo.concat.js",
 				dest: "dist/appTodo.min.js"
+			},
+			siteindex: {
+				src: "concat/siteindex.concat.js",
+				dest: "dist/siteindex.min.js"
 			}
 		},
 		targethtml: {
@@ -107,27 +120,27 @@ module.exports = function (grunt){
 			files: {
 				'../app/views/site/mathexercise/examcreate.blade.php': '../app/views/site/mathexercise/examcreate.blade.php.htm'
 			}
-		  },
-		  yinbiaorelease: {
-		    files: {
-		      '../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
-		    }
-		  },
-		  yinbiaodev: {
-		    files: {
-		      '../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
-		    }
-		  },
-		  tododev: {
-		    files: {
-		      '../app/views/site/todo/index.blade.php': '../app/views/site/todo/index.blade.php.htm'
-		    }
-		  },
-		  todorelease: {
-		    files: {
-		      '../app/views/site/todo/index.blade.php': '../app/views/site/todo/index.blade.php.htm'
-		    }
-		  }
+		},
+			yinbiaorelease: {
+			files: {
+				'../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
+			}
+		},
+			yinbiaodev: {
+			files: {
+				'../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
+			}
+		},
+			tododev: {
+			files: {
+				'../app/views/site/todo/index.blade.php': '../app/views/site/todo/index.blade.php.htm'
+			}
+		},
+			todorelease: {
+			files: {
+				'../app/views/site/todo/index.blade.php': '../app/views/site/todo/index.blade.php.htm'
+			}
+		}
 		},
 		jshint: {
 			options: {
@@ -161,7 +174,7 @@ module.exports = function (grunt){
 	grunt.loadNpmTasks('grunt-targethtml');
 
 	grunt.registerTask("default",['mathdev','yinbiaodev','tododev']);
-	grunt.registerTask("release",['mathrelease','yinbiaorelease','todorelease']);
+	grunt.registerTask("release",['mathrelease','yinbiaorelease','todorelease','siteindexrelease']);
 
 	grunt.registerTask("mathdev",['targethtml:mathdev']);
 	grunt.registerTask("mathrelease",['targethtml:mathrelease','ngAnnotate:examapp','concat:math','uglify:math']);
@@ -169,6 +182,7 @@ module.exports = function (grunt){
 	grunt.registerTask("yinbiaorelease",['targethtml:yinbiaorelease','ngAnnotate:yinbiaoapp','concat:yinbiao','uglify:yinbiao']);
 	grunt.registerTask("tododev",['targethtml:tododev']);
 	grunt.registerTask("todorelease",['targethtml:todorelease','ngAnnotate:todoapp','concat:todo','uglify:todo']);
+	grunt.registerTask("siteindexrelease",['concat:siteindex','uglify:siteindex']);
 
 	grunt.registerTask("yinbiao",['ngAnnotate:yinbiaoapp','concat:yinbiao','uglify:yinbiao']);
 	grunt.registerTask("rebuild",['clean','default']);
