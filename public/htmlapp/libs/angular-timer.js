@@ -37,7 +37,7 @@ var timerModule = angular.module('timer', [])
         //backward and forward compatibility.
         $scope.autoStart = $attrs.autoStart || $attrs.autostart;
         if ($element.html().trim().length === 0) {
-          $element.append($compile('<span>[[millis]]</span>')($scope));
+          $element.append($compile('<span>{{millis}}</span>')($scope));
         } else {
           $element.append($compile($element.contents())($scope));
         }
