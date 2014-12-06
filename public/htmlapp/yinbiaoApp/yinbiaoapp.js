@@ -21,9 +21,11 @@ kidsitApplication.directive('mp3Player',function($rootScope){
     });
     $("#yinbiaoplayer").on( "loadstart", function() {
       $rootScope.isLoading = true;
+      $rootScope.$apply();
     });
     $("#yinbiaoplayer").on( "loadedmetadata", function() {
       $rootScope.isLoading = false;
+      $rootScope.$apply();
     });
 }; //linker
   return {
