@@ -15,6 +15,7 @@
 @stop
 @section('bodyhead')
 <body ng-app="kidsitApp" ng-controller="playListsCtrl as wplvm">
+	<div id="isLoading" ng-show="isLoading"><img src={{asset('htmlapp/assets/ajax-loading.gif')}} alt=""></div>	
 @overwrite
 @section('content')
 <script type="text/ng-template" id="guestaddedwords.html">
