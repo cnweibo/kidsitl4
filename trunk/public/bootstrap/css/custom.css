@@ -269,4 +269,9 @@ article.mathexerciseitem{
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
-span.
+#isLoading{
+  position: absolute;
+  top: 45%;
+  left: 47%;
+  z-index: 1000;
+}

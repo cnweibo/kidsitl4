@@ -11,14 +11,21 @@ kidsitApplication.service('mp3PlayerService',function() {
       var element = angular.element("#"+wordtoplay.wordDom);
       TweenMax.to(element, 0.5, {border: "2px #57AA2C solid",zIndex: "1"});
     }
-  }
+  };
 });
 kidsitApplication.directive('mp3Player',function($rootScope){
   var linker = function(scope, element, attrs){
-    $("#yinbiaoplayer").bind( "ended", function() {
-    $rootScope.$broadcast('wordPlayFinished');
-});
-  }; //linker
+    $rootScope.isLoading = false;
+    $("#yinbiaoplayer").on( "ended", function() {
+      $rootScope.$broadcast('wordPlayFinished');
+    });
+    $("#yinbiaoplayer").on( "loadstart", function() {
+      $rootScope.isLoading = true;
+    });
+    $("#yinbiaoplayer").on( "loadedmetadata", function() {
+      $rootScope.isLoading = false;
+    });
+}; //linker
   return {
     restrict: 'AE',
     link: linker,
@@ -32,7 +39,7 @@ kidsitApplication.controller('mp3PlayerCtrl', function($scope,mp3PlayerService) 
   this.mp3Pause = function() {
 
   };
-}); 
+});
 
 kidsitApplication.controller('WordsPlayListCtrl', function($scope,mp3PlayerService) {
   var thisctrl = this;
@@ -41,7 +48,7 @@ kidsitApplication.controller('WordsPlayListCtrl', function($scope,mp3PlayerServi
   this.wordsPlay = function(){
     // start the playlist playing 
     mp3PlayerService.wordPlay($scope.mp3PlayList[currentWordIndex]);
-  }
+  };
   this.mp3Add = function(wordinfo) {
     $scope.mp3PlayList.push(wordinfo);
   };
@@ -59,7 +66,7 @@ kidsitApplication.directive('wordsPlayList',function(mp3PlayerService,$rootScope
           // firstly reset the border color to white
           for (var i = scope.mp3PlayList.length - 1; i >= 0; i--) {
             angular.element("#"+scope.mp3PlayList[i].wordDom).css("border-color","#FFF");
-          };
+          }
           mp3PlayerService.wordPlay(scope.mp3PlayList[currentWordIndex]);
       }
       });
@@ -70,13 +77,13 @@ kidsitApplication.directive('wordsPlayList',function(mp3PlayerService,$rootScope
           // change the words list word boarder to white indicating finished
           for (var i = scope.mp3PlayList.length - 1; i >= 0; i--) {
             angular.element("#"+scope.mp3PlayList[i].wordDom).css("border-color","#FFF");
-          };
+          }
       }else{
         currentWordIndex++;
         mp3PlayerService.wordPlay(scope.mp3PlayList[currentWordIndex]);
       }
     }
-      })
+      });
     },
     controller: 'WordsPlayListCtrl'
   };});
@@ -102,5 +109,5 @@ kidsitApplication.controller('playListsCtrl',function($rootScope){
     // start the playlist playing 
     $rootScope.currentListID = listID;
     $rootScope.$broadcast('startToPlayList',listID);
-  }
+  };
 });
