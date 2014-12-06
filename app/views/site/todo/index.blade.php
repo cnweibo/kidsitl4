@@ -12,6 +12,8 @@
 @stop
 @section('css')
     <link rel="stylesheet" href={{ asset('htmlapp/todoApp/assets/base.css')}}>
+    <link rel="stylesheet" href={{ asset('htmlapp/libs/angular-busy/dist/angular-busy.css')}}>
+
 @stop
 @section('bodyhead')
 <body ng-app="todomvc" data-framework="angularjs">
@@ -19,6 +21,7 @@
 @section('content')
 <div class="container">
     <section id="todoapp" ng-controller="TodoCtrl">
+        <div cg-busy="getAllPromise"></div>
         <header id="header">
             <h1>todos</h1>
             <form id="todo-form" ng-submit="addTodo()">
