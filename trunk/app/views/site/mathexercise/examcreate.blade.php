@@ -20,7 +20,7 @@
 <ul ng-cloak class="nav navbar-nav pull-right" id="top-nav-right" ng-controller="loginCtrl">
     <li ng-if="userloggedinfo.isAdmin"><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
 
-    <li ng-cloak ng-if="userloggedinfo.username"><a href="{{{ URL::to('user') }}}">登录为： @[[userloggedinfo.username]]</a></li>
+    <li ng-cloak ng-if="userloggedinfo.username"><a href="{{{ URL::to('user') }}}">登录为： [[userloggedinfo.username]]</a></li>
     <li ng-if="userloggedinfo.username"><a href="" ng-click="doLogout()">退出</a></li> 
 
     <li ng-if="!userloggedinfo.username"><a href="#" ng-click="login()">登录</a></li>
@@ -215,15 +215,7 @@
 
 @section('scripts')
 	
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-timer.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
-		<script type="text/javascript" src="{{asset('htmlapp/syscommon/kidsitanimatelib.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/TweenMax.min.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/examApp/examApp.js')}}"></script>
 	
+		<script type="text/javascript" src="{{asset('dist/appMath.min.js')}}"></script>
 	
 @stop
