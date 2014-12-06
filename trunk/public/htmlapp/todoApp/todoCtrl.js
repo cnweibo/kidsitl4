@@ -9,7 +9,9 @@
  */
 todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $filter, todoStorage,$window) {
     var todos;
-    todoStorage.getAll().then(
+    var promise;
+    $scope.getAllPromise = promise = todoStorage.getAll();
+        promise.then(
             function(todosdata) {/*success*/
                     todos = $scope.todos = todosdata;
                     $scope.remainingCount = $filter('filter')(todos, {completed: false}).length;

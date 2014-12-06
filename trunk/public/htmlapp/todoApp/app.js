@@ -7,7 +7,7 @@
  *
  * @type {angular.Module}
  */
-var todomvc = angular.module('todomvc', []);
+var todomvc = angular.module('todomvc', ['cgBusy']);
 todomvc.config(function($interpolateProvider) {
 		$interpolateProvider.startSymbol('[[');
 		$interpolateProvider.endSymbol(']]');

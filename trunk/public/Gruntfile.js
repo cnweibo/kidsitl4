@@ -1,6 +1,8 @@
 module.exports = function (grunt){
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
+
+		// ngAnnotate for standardize angular module injection
 		ngAnnotate: {
 			options: {
 				singleQuotes: true,
@@ -44,6 +46,8 @@ module.exports = function (grunt){
 				],
 			},
 		},
+
+		// to concat all the js files together
 		concat: {
 			options: {
 				seperator: ";",
@@ -68,6 +72,7 @@ module.exports = function (grunt){
 						'htmlapp/todoApp/common/base.js',
 						'htmlapp/libs/angular/angular.js',
 						'htmlapp/todoApp/app.js',
+						'htmlapp/libs/angular-busy/dist/angular-busy.js',
 						'htmlapp/todoApp/todoCtrl.js',
 						'htmlapp/todoApp/todoStorage.js',
 						'htmlapp/todoApp/todoFocus.js',
@@ -85,6 +90,8 @@ module.exports = function (grunt){
 				dest: "concat/siteindex.concat.js"
 			}
 		},
+
+		// to minimize/uglify JS into one production
 		uglify: {
 			options: {
 				compress: true,
@@ -110,38 +117,42 @@ module.exports = function (grunt){
 				dest: "dist/siteindex.min.js"
 			}
 		},
+
+		// create two version template for dev and release
 		targethtml: {
 			mathrelease: {
 			files: {
 				'../app/views/site/mathexercise/examcreate.blade.php': '../app/views/site/mathexercise/examcreate.blade.php.htm'
 			}
 			},
-		mathdev: {
+			mathdev: {
 			files: {
 				'../app/views/site/mathexercise/examcreate.blade.php': '../app/views/site/mathexercise/examcreate.blade.php.htm'
-			}
-		},
+				}
+			},
 			yinbiaorelease: {
 			files: {
 				'../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
-			}
-		},
+				}
+			},
 			yinbiaodev: {
 			files: {
 				'../app/views/site/yinbiao/show.blade.php': '../app/views/site/yinbiao/show.blade.php.htm'
-			}
-		},
+				}
+			},
 			tododev: {
 			files: {
 				'../app/views/site/todo/index.blade.php': '../app/views/site/todo/index.blade.php.htm'
-			}
-		},
+				}
+			},
 			todorelease: {
 			files: {
 				'../app/views/site/todo/index.blade.php': '../app/views/site/todo/index.blade.php.htm'
+				}
 			}
-		}
 		},
+
+		// to do static code checking in realtime
 		jshint: {
 			options: {
 				eqeqeq: true,
@@ -153,12 +164,16 @@ module.exports = function (grunt){
 				src: "src/*.js"
 			}
 		},
+
+		// to watch the file change and automate build process
 		watch: {
 			scripts: {
 				files: ['htmlapp/js/*.js'],
 				tasks: ['concat:math','uglify:math']
 			}
 		},
+
+		// to clean up unneeded files and directories
 		clean: {
 			target: ['dist','concat']
 		}

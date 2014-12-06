@@ -1,16 +1,16 @@
 var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute']);
 app.config(['$interpolateProvider', '$routeProvider' , function($interpolateProvider,$routeProvider) {
 
-	    $interpolateProvider.startSymbol('[[');
-	    $interpolateProvider.endSymbol(']]');
+	$interpolateProvider.startSymbol('[[');
+	$interpolateProvider.endSymbol(']]');
 
         $routeProvider.when('/plus',
             {
                 templateUrl:'http://kidsit.cn/assets/atpls/examplus.html'
             })
-        	.when('/times',{
-        		templateUrl:'http://kidsit.cn/assets/atpls/examtimes.html'
-        	})
+			.when('/times',{
+				templateUrl:'http://kidsit.cn/assets/atpls/examtimes.html'
+			})
             .otherwise({redirectTo: '/plus'});
 }]);
 app.value('answeringFactory', {
@@ -19,11 +19,11 @@ app.value('answeringFactory', {
     return this.isAnswering;
 	},
 	setIsAnswering: function(tof){
-  	this.isAnswering = tof ;
+	this.isAnswering = tof ;
 }});
 var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$http', 'answeringFactory', 'toastr', '$location', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;
-	$scope.user={};	
+	$scope.user={};
 	$scope.showconf={};
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
 	$scope.mathexam = {
@@ -115,7 +115,7 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 	{
 		$scope.userloggedinfo = logindata;
 		console.log($scope.userloggedinfo);
-	});	
+	});
 	$scope.doLogin = function(){
 		$scope.logininput._token = angular.element(document.getElementsByName('_token')[0]).val();
 		$http.post('/user/loginx',$scope.logininput).success(function(logindata)
@@ -148,7 +148,7 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		$scope.metadata.examTimerRunning = 0;
 		$scope.mathexam.userAnsweredData = [];
 		$scope.mathexam.score = 0;
-		$scope.mathexam.hasSubmitted = false;		
+		$scope.mathexam.hasSubmitted = false;
 		// $location.$path("/times");
 		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
 	{
@@ -179,16 +179,16 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 	$scope.resumeExamTimer = function(id){
 		$scope.$broadcast('timer-resume',id);
 		answeringFactory.setIsAnswering(true);
-	    $scope.metadata.examTimerRunning = 3;
-	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
-	    $scope.mathexam.hasSubmitted = false;
+		$scope.metadata.examTimerRunning = 3;
+		$scope.canInputAnswer = answeringFactory.canInputAnswer();
+		$scope.mathexam.hasSubmitted = false;
 
 	};
 	$scope.clearExamTimer = function(id){
 		$scope.$broadcast('timer-stop',id);
 		answeringFactory.setIsAnswering(false);
-	    $scope.metadata.examTimerRunning = 0;
-	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
+		$scope.metadata.examTimerRunning = 0;
+		$scope.canInputAnswer = answeringFactory.canInputAnswer();
 	};
 	$scope.submitAnswers = function(){
 		toastr.error('请登录后再提交','需要登录',{closeButton: true,positionClass: 'toast-bottom-full-width'});
@@ -199,7 +199,7 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		$scope.mathexam.hasSubmitted = true;
 		$scope.metadata.examTimerRunning = 4;
 		answeringFactory.setIsAnswering(false);
-	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
+		$scope.canInputAnswer = answeringFactory.canInputAnswer();
 		$rootScope.$broadcast('userHasSubmittedAnswers');
 		console.log($scope.exportedTimerVal);
 		console.log($scope.mathexam.score);
@@ -217,8 +217,8 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		$scope.mathexam.hasSubmitted = false;
 		$scope.metadata.examTimerRunning = 5;
 		answeringFactory.setIsAnswering(true);
-	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
-	    $scope.$broadcast('timer-resume','examCountTimer');
+		$scope.canInputAnswer = answeringFactory.canInputAnswer();
+		$scope.$broadcast('timer-resume','examCountTimer');
 		$rootScope.$broadcast('revisionAfterSubmittedAnswers');
 	};
 	$scope.shouldDisabled = function(btnid){
@@ -261,7 +261,7 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		$scope.showconf.showSettings = !$scope.showconf.showSettings;
 		$event.preventDefault();
 		console.log($event);
-	}
+	};
 	$scope.$watch("metadata.examTimerRunning",function(nv,ov){
 		if(nv != ov){
 			$scope.metadata.shouldDisabled1 = $scope.shouldDisabled(1);
@@ -338,10 +338,10 @@ app.directive("toggleAnswerViewAndAnimcate",['$animate',function($animate){
 				event.preventDefault();
 				clicktoggle++;
 				if (clicktoggle % 2){
-				    scope.trigger = "fadeMeIn";
+					scope.trigger = "fadeMeIn";
 				}
 				else{
-				    scope.trigger = null;
+					scope.trigger = null;
 				}
 				scope.$apply();
 			});
@@ -414,21 +414,21 @@ app.directive("checkResult",function(){
 });
 app.directive("loginMenu",function(){
 	var linker = function(scope, element, attrs, ctrl, transclude) {
-		      transclude(scope, function(clone, scope) {
-		        element.append(clone);
-		      });
-		    };
+				transclude(scope, function(clone, scope) {
+				element.append(clone);
+			});
+			};
 	return{
 		restrict: 'AE',
 		transclude: true,
 		link : linker,
 		templateUrl: 'loginmenu.html'
-	}
+	};
 });
 app.directive("loginForm",function(){
 	return{
 		restrict: 'AE',
 		// controller: 'loginCtrl',
 		templateUrl: 'loginform.html'
-	}
+	};
 });

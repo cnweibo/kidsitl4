@@ -20,7 +20,7 @@ todomvc.factory('todoStorage', function ($http,$q) {
                 });
               return deferred.promise;
         },
-        get: function (id) {
+        getOne: function (id) {
             $http({method: 'GET', url: '/api/todo/'+id}).
                 success(function(){}).
                 error(function  (data,status,headers,config) {
@@ -30,7 +30,7 @@ todomvc.factory('todoStorage', function ($http,$q) {
 
         },
             // return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
-        put: function (todos) {
+        putOne: function (todos) {
             $http({method: 'POST', url: '/api/todo',data: todos}).
                 success(function(data,status,headers,config){
                     deferred.resolve(data);
