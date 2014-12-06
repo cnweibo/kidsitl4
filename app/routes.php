@@ -9,9 +9,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-// change the blade template delimiter since conflict with angular
-Blade::setEscapedContentTags('[[', ']]');
-Blade::setContentTags('[[[', ']]]');
 
 Route::group(array('prefix' => 'math'), function(){
     Route::get('exams/create', 'MathexamsController@create' );  

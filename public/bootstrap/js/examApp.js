@@ -1,18 +1,21 @@
 var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute']);
-app.config(['$interpolateProvider','$routeProvider', function($routeProvider) {
+app.config(['$interpolateProvider','$routeProvider', function($interpolateProvider,$routeProvider) {
+		$interpolateProvider.startSymbol('[[');
+		$interpolateProvider.endSymbol(']]');
+
         $routeProvider.when('/plus',
             {
                 templateUrl:'http://kidsit.cn/assets/atpls/examplus.html'
             })
-			.when('/times',{
-				templateUrl:'http://kidsit.cn/assets/atpls/examtimes.html'
-			})
+        	.when('/times',{
+        		templateUrl:'http://kidsit.cn/assets/atpls/examtimes.html'
+        	})
             .otherwise({redirectTo: '/plus'});
 }]);
 
 app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;
-	$scope.user={};
+	$scope.user={};	
 	$scope.showconf={};
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
 	$scope.mathexam = {
@@ -104,7 +107,7 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 	{
 		$scope.userloggedinfo = logindata;
 		console.log($scope.userloggedinfo);
-	});
+	});	
 	$scope.doLogin = function(){
 		$scope.logininput._token = angular.element(document.getElementsByName('_token')[0]).val();
 		$http.post('/user/loginx',$scope.logininput).success(function(logindata)
@@ -137,7 +140,7 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 		$scope.metadata.examTimerRunning = 0;
 		$scope.mathexam.userAnsweredData = [];
 		$scope.mathexam.score = 0;
-		$scope.mathexam.hasSubmitted = false;
+		$scope.mathexam.hasSubmitted = false;		
 		// $location.$path("/times");
 		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
 	{
@@ -168,16 +171,16 @@ app.controller('kidsitAppCtrl', function($scope,$rootScope,$http,answeringFactor
 	$scope.resumeExamTimer = function(id){
 		$scope.$broadcast('timer-resume',id);
 		answeringFactory.setIsAnswering(true);
-		$scope.metadata.examTimerRunning = 3;
-		$scope.canInputAnswer = answeringFactory.canInputAnswer();
-		$scope.mathexam.hasSubmitted = false;
+	    $scope.metadata.examTimerRunning = 3;
+	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
+	    $scope.mathexam.hasSubmitted = false;
 
 	};
 	$scope.clearExamTimer = function(id){
 		$scope.$broadcast('timer-stop',id);
 		answeringFactory.setIsAnswering(false);
-		$scope.metadata.examTimerRunning = 0;
-		$scope.canInputAnswer = answeringFactory.canInputAnswer();
+	    $scope.metadata.examTimerRunning = 0;
+	    $scope.canInputAnswer = answeringFactory.canInputAnswer();
 	};
 	$scope.submitAnswers = function(){
 		toastr.error('请登录后再提交','需要登录',{closeButton: true,positionClass: 'toast-bottom-full-width'});

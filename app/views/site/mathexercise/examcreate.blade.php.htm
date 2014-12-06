@@ -11,20 +11,20 @@
 	@parent
 @stop
 @section('css')
-	<link rel="stylesheet" type="text/css" href="[[ asset('bootstrap/css/printmath.css') ]]" media="print"/>
+	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/printmath.css') }}" media="print"/>
 @stop
 @section('bodyhead')
 <body ng-app="kidsitApp" ng-controller="kidsitAppCtrl" ng-strict-di>
 @overwrite
 @section('loginctrlform')
 <ul ng-cloak class="nav navbar-nav pull-right" id="top-nav-right" ng-controller="loginCtrl">
-    <li ng-if="userloggedinfo.isAdmin"><a href="[[[ URL::to('admin') ]]]">管理控制台</a></li>
+    <li ng-if="userloggedinfo.isAdmin"><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
 
-    <li ng-cloak ng-if="userloggedinfo.username"><a href="[[[ URL::to('user') ]]]">登录为： {{userloggedinfo.username}}</a></li>
+    <li ng-cloak ng-if="userloggedinfo.username"><a href="{{{ URL::to('user') }}}">登录为： [[userloggedinfo.username]]</a></li>
     <li ng-if="userloggedinfo.username"><a href="" ng-click="doLogout()">退出</a></li> 
 
     <li ng-if="!userloggedinfo.username"><a href="#" ng-click="login()">登录</a></li>
-    <li ng-if="!userloggedinfo.username"><a href="[[[ URL::to('user/create') ]]]" target="_blank">[[[ Lang::get('site.sign_up') ]]]</a></li>
+    <li ng-if="!userloggedinfo.username"><a href="{{{ URL::to('user/create') }}}" target="_blank">{{{ Lang::get('site.sign_up') }}}</a></li>
 </ul>
 @overwrite
 @section('content')
@@ -40,27 +40,27 @@
 				<h1>登录进入系统</h1>
 			</div>
 			<form name="loginform" class="form-horizontal" accept-charset="UTF-8" data-ng-submit="doLogin()">
-			    <input type="hidden" name="_token" value="[[ csrf_token() ]]">
+			    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 			    <fieldset>
 			        <div class="form-group">
-			            <label class="col-md-5 control-label" for="email">[[ Lang::get('confide::confide.username_e_mail') ]]</label>
+			            <label class="col-md-5 control-label" for="email">{{ Lang::get('confide::confide.username_e_mail') }}</label>
 			            <div class="col-md-7">
-			                <input ng-model="logininput.email" class="form-control" tabindex="1" placeholder="[[ Lang::get('confide::confide.username_e_mail') ]]" type="text" name="email" id="email" value="[[ Input::old('email') ]]">
+			                <input ng-model="logininput.email" class="form-control" tabindex="1" placeholder="{{ Lang::get('confide::confide.username_e_mail') }}" type="text" name="email" id="email" value="{{ Input::old('email') }}">
 			            </div>
 			        </div>
 			        <div class="form-group">
 			            <label class="col-md-5 control-label" for="password">
-			                [[ Lang::get('confide::confide.password') ]]
+			                {{ Lang::get('confide::confide.password') }}
 			            </label>
 			            <div class="col-md-7">
-			                <input ng-model="logininput.password" class="form-control" tabindex="2" placeholder="[[ Lang::get('confide::confide.password') ]]" type="password" name="password" id="password">
+			                <input ng-model="logininput.password" class="form-control" tabindex="2" placeholder="{{ Lang::get('confide::confide.password') }}" type="password" name="password" id="password">
 			            </div>
 			        </div>
 
 			        <div class="form-group">
 			            <div class="col-md-offset-5 col-md-7">
 			                <div class="checkbox">
-			                    <label for="remember">[[ Lang::get('confide::confide.login.remember') ]]
+			                    <label for="remember">{{ Lang::get('confide::confide.login.remember') }}
 			                        <input ng-model="logininput.remember" type="hidden" name="remember" value="0">
 			                        <input tabindex="4" type="checkbox" name="remember" id="remember" value="1">
 			                    </label>
@@ -69,17 +69,17 @@
 			        </div>
 
 			        @if ( Session::get('error') )
-			        <div class="alert alert-danger">[[ Session::get('error') ]]</div>
+			        <div class="alert alert-danger">{{ Session::get('error') }}</div>
 			        @endif
 
 			        @if ( Session::get('notice') )
-			        <div class="alert">[[ Session::get('notice') ]]</div>
+			        <div class="alert">{{ Session::get('notice') }}</div>
 			        @endif
 
 			        <div class="form-group">
 			            <div class="col-md-offset-2 col-md-10">
-			                <button tabindex="3" type="submit" class="btn btn-primary">[[ Lang::get('confide::confide.login.submit') ]]</button>
-			                <a class="btn btn-default" href="forgot">[[ Lang::get('confide::confide.login.forgot_password') ]]</a>
+			                <button tabindex="3" type="submit" class="btn btn-primary">{{ Lang::get('confide::confide.login.submit') }}</button>
+			                <a class="btn btn-default" href="forgot">{{ Lang::get('confide::confide.login.forgot_password') }}</a>
 			            </div>
 			        </div>
 			    </fieldset>
@@ -88,23 +88,23 @@
 	</script>
 	<script type="text/ng-template" id="examrow.html">
 	<span>
-		<span style="display:inline-block;width:30px;font-size:0.6em" class="label label-success">{{id}}</span>
+		<span style="display:inline-block;width:30px;font-size:0.6em" class="label label-success">[[id]]</span>
 		
-		<span ng-if="isVisualColumn(row,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">{{row.operand1}}</span> 
-		<span ng-if="!isVisualColumn(row,1) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">({{row.operand1}})</span> 
+		<span ng-if="isVisualColumn(row,1)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">[[row.operand1]]</span> 
+		<span ng-if="!isVisualColumn(row,1) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,1)]">([[row.operand1]])</span> 
 		<span ng-form="inputform1"><input ng-blur="updateScore()" ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,1) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
 		
 		<span ng-if="category == 'plus'" style="display:inline-block;width:20px;font-size: 0.8em">+</span>  
 		<span ng-if="category == 'times'" style="display:inline-block;width:20px;font-size: 0.8em">x</span>  
 
-		<span ng-if="isVisualColumn(row,2)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">{{row.operand2}}</span>  
-		<span ng-if="!isVisualColumn(row,2) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">({{row.operand2}})</span> 
+		<span ng-if="isVisualColumn(row,2)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">[[row.operand2]]</span>  
+		<span ng-if="!isVisualColumn(row,2) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,2)]">([[row.operand2]])</span> 
 		<span ng-form="inputform2"><input ng-blur="updateScore()" ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,2) && !showAnswer " class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
 		
 		= 
 
-		<span ng-if="isVisualColumn(row,3)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]"><span  ng-if="category == 'plus'">{{row.sumdata}}</span><span  ng-if="category == 'times'">{{row.multiplydata}}</span></span>  
-		<span ng-if="!isVisualColumn(row,3) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">(<span  ng-if="category == 'plus'">{{row.sumdata}}</span><span  ng-if="category == 'times'">{{row.multiplydata}}</span>)</span> 
+		<span ng-if="isVisualColumn(row,3)" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]"><span  ng-if="category == 'plus'">[[row.sumdata]]</span><span  ng-if="category == 'times'">[[row.multiplydata]]</span></span>  
+		<span ng-if="!isVisualColumn(row,3) && showAnswer" ng-class="{true: 'examdata', false: 'answerdata'}[isVisualColumn(row,3)]">(<span  ng-if="category == 'plus'">[[row.sumdata]]</span><span  ng-if="category == 'times'">[[row.multiplydata]]</span>)</span> 
 		<span ng-form="inputform3"><input ng-blur="updateScore()" ng-disabled="!canInputAnswer" ng-if="!isVisualColumn(row,3) && !showAnswer "  class="answerInput" type="text" data-ng-model="row.myanswerdata"></span>
 		<span check-result category="category" my-row="row" has-input="inputform1.$dirty || inputform2.$dirty || inputform3.$dirty" answer='row.myanswerdata' check-answer-realtime="checkAnswerRealtime"></span>
 	</span>
@@ -126,7 +126,7 @@
 	<a href="#" data-ng-click="toggleShowSetting($event)"><span tooltip-placement="top" tooltip="打开配置面板，配置当前试卷答题模式，或按需调阅新试卷" style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
 	<div toggle-answer-view-and-animcate trigger="mathexam.showAnswer" ></div>
 </h1>
-<h4 ng-cloak id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 {{examdata.examCreatedate}} <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/{{examdata.examID}}" target="_blank">http://kidsit.cn/math/exams/{{examdata.examID}}</a></h4> 
+<h4 ng-cloak id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
 	<div class="container">	
 		<div ng-cloak ng-show="showconf.showSettings" class="aligncenter">
 			<div class="panel panel-info">
@@ -135,10 +135,10 @@
 				  </div>
 				  <div class="panel-body">
 						<tabset>
-							<p><span class="label label-default">{{mathexam.mathCategory | examTixing}}</span> 
-								<span class="label label-default">{{mathexam.mathDigitNumbers}}位数</span> 
-								<span class="label label-default">{{mathexam.mathDifficulty}}级</span> 
-								<span class="label label-default">{{mathexam.mathQuantity}}题</span>
+							<p><span class="label label-default">[[mathexam.mathCategory | examTixing]]</span> 
+								<span class="label label-default">[[mathexam.mathDigitNumbers]]位数</span> 
+								<span class="label label-default">[[mathexam.mathDifficulty]]级</span> 
+								<span class="label label-default">[[mathexam.mathQuantity]]题</span>
 								<button type="submit" data-ng-click="createExam();showconf.showSettings = null;clearExamTimer('examCountTimer') " class="btn btn-danger">调阅新试卷</button>
 							</p>
 						    <tab heading="题型">
@@ -189,8 +189,8 @@
 				  </div>
 			</div>
 		</div>
-		<h4><span ng-cloak class="aligncenter inlineblock"><strong>姓名:</strong><strong style="color:red" ng-show="userloggedinfo.username"> {{userloggedinfo.username}} </strong><strong ng-show="!userloggedinfo.username">_____ </strong> <strong>分数:</strong><strong ng-show="(!mathexam.hasSubmitted)&&(!mathexam.checkAnswerRealtime)"> ______</strong> <strong ng-show="mathexam.hasSubmitted || mathexam.checkAnswerRealtime" style="color:red" fade-value-change="mathexam.score"> {{mathexam.score|number}} </strong>
-				<span ng-cloak timer timerid="examCountTimer" autostart="false" interval="1000" exported-timer-val="exportedTimerVal">已用时：<strong style="color:red">{{mminutes}} </strong>分 <strong style="color:red">{{sseconds}}</strong> 秒  
+		<h4><span ng-cloak class="aligncenter inlineblock"><strong>姓名:</strong><strong style="color:red" ng-show="userloggedinfo.username"> [[userloggedinfo.username]] </strong><strong ng-show="!userloggedinfo.username">_____ </strong> <strong>分数:</strong><strong ng-show="(!mathexam.hasSubmitted)&&(!mathexam.checkAnswerRealtime)"> ______</strong> <strong ng-show="mathexam.hasSubmitted || mathexam.checkAnswerRealtime" style="color:red" fade-value-change="mathexam.score"> [[mathexam.score|number]] </strong>
+				<span ng-cloak timer timerid="examCountTimer" autostart="false" interval="1000" exported-timer-val="exportedTimerVal">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
 					
 				</span>
 				<div class="btn-group">
@@ -215,17 +215,17 @@
 
 @section('scripts')
 	<!--(if target mathdev)><!-->
-		<script type="text/javascript" src="[[asset('htmlapp/libs/angular/angular.js')]]"></script>
-		<script type="text/javascript" src="[[asset('htmlapp/libs/angular-route/angular-route.js')]]"></script>
-		<script type="text/javascript" src="[[asset('htmlapp/libs/angular-timer.js')]]"></script>
-		<script type="text/javascript" src="[[asset('htmlapp/libs/angular-animate/angular-animate.js')]]"></script>
-		<script type="text/javascript" src="[[asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')]]"></script>	
-		<script type="text/javascript" src="[[asset('htmlapp/syscommon/kidsitanimatelib.js')]]"></script>
-		<script type="text/javascript" src="[[asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')]]"></script>
-		<script type="text/javascript" src="[[asset('htmlapp/libs/TweenMax.min.js')]]"></script>
-		<script type="text/javascript" src="[[asset('htmlapp/examApp/examApp.js')]]"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-timer.js')}}"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
+		<script type="text/javascript" src="{{asset('htmlapp/syscommon/kidsitanimatelib.js')}}"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/TweenMax.min.js')}}"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/examApp/examApp.js')}}"></script>
 	<!--<!(endif)-->
 	<!--(if target mathrelease)><!-->
-		<script type="text/javascript" src="[[asset('dist/appMath.min.js')]]"></script>
+		<script type="text/javascript" src="{{asset('dist/appMath.min.js')}}"></script>
 	<!--<!(endif)-->
 @stop

@@ -2,6 +2,20 @@
 
 class MathexamsController extends \BaseController {
 
+
+    /**
+     * Inject the models.
+     * @param User $user
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        // change the blade template delimiter since conflict with angular
+		// Blade::setEscapedContentTags('[[', ']]');
+		// Blade::setContentTags('[[[', ']]]');
+    }	
+
+
 	/**
 	 * Display a listing of the resource.
 	 *
