@@ -1,4 +1,4 @@
-var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute']);
+var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute','cgBusy']);
 app.config(['$interpolateProvider', '$routeProvider' , function($interpolateProvider,$routeProvider) {
 
 	$interpolateProvider.startSymbol('[[');
@@ -138,7 +138,9 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 	$scope.viewClassDetails = function(classToView) {
 	// do something
 	};
-	$http.get('/math/exams/create',{params:{mathCategory:currentcategory,mathDigitNumbers:2,mathDifficulty:1,mathQuantity:50}}).success(function(data)
+	var currentReq;
+	$scope.currentPromise = currentReq = $http.get('/math/exams/create',{params:{mathCategory:currentcategory,mathDigitNumbers:2,mathDifficulty:1,mathQuantity:50}});
+	currentReq.success(function(data)
 	{
 		$scope.examdata = data;
 	});
@@ -150,10 +152,11 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		$scope.mathexam.score = 0;
 		$scope.mathexam.hasSubmitted = false;
 		// $location.$path("/times");
-		$http.get('/math/exams/create',{params:mathexamreq}).success(function(examdata)
-	{
-		$scope.examdata = examdata;
-	});
+		$scope.currentPromise = currentReq= $http.get('/math/exams/create',{params:mathexamreq});
+		currentReq.success(function(examdata)
+		{
+			$scope.examdata = examdata;
+		});
 		switch (mathexamreq.mathCategory){
 			case 'plus':
 				$location.url('/plus');

@@ -12,9 +12,11 @@
 @stop
 @section('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/printmath.css') }}" media="print"/>
+	<link rel="stylesheet" href={{ asset('htmlapp/libs/angular-busy/dist/angular-busy.css')}}>
 @stop
 @section('bodyhead')
-<body ng-app="kidsitApp" ng-controller="kidsitAppCtrl" ng-strict-di>
+<body style="position:relative" ng-app="kidsitApp" ng-controller="kidsitAppCtrl" ng-strict-di>
+	<div cg-busy="currentPromise" style="position:absolute;top:50%;left:50%" ></div>
 @overwrite
 @section('loginctrlform')
 <ul ng-cloak class="nav navbar-nav pull-right" id="top-nav-right" ng-controller="loginCtrl">
