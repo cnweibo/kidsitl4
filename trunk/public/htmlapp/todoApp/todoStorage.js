@@ -29,9 +29,28 @@ todomvc.factory('todoStorage', function ($http,$q) {
               return deferred.promise;
 
         },
+        store: function (id) {
+            $http({method: 'GET', url: '/api/todo/'+id}).
+                success(function(){}).
+                error(function  (data,status,headers,config) {
+                    deferred.reject(status);
+                });
+              return deferred.promise;
+
+        },
             // return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
-        putOne: function (todos) {
-            $http({method: 'POST', url: '/api/todo',data: todos}).
+        update: function (parameters) {
+            var postData={};
+            postData._token = parameters._token;
+            postData.title = parameters.todo.title;
+            postData.id = parameters.todo.id;
+        
+            $http({method: 'POST', url: '/api/todo/'+parameters.todo.id,
+                    // params: {
+                    //     _token: parameters._token
+                    // },
+                    data: postData
+                }).
                 success(function(data,status,headers,config){
                     deferred.resolve(data);
                 }).

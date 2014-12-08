@@ -70,9 +70,9 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $filter, tod
             $scope.removeTodo(todo);
         }
 
-        todoStorage.put(
+        todoStorage.update(
             {
-                title: todo.title,
+                todo: todo,
                 _token: $scope.csrf_token
             }
         );

@@ -84,9 +84,16 @@ class TodoController extends \BaseController {
 	 * @param  int  
 	 * @return Response
 	 */
-	public function update()
+	public function update($id)
 	{
-		//
+
+		$todo = Todo::find($id);
+		$todoTitle = Input::get('title');
+		if($todoTitle){
+			$todo ->title = $todoTitle;
+			$todo ->save();
+		}
+		return Response::json(['status' => 'ok'],200);
 	}
 
 
