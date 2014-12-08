@@ -77,6 +77,7 @@ Route::get('todo','TodoController@indexhtml');
 Route::group(array('prefix'=>'api/todo'), function(){
     Route::get('/','TodoController@index');
     Route::get('/{id}','TodoController@show');
+    Route::post('/{id}','TodoController@update');
     Route::post('/', 'TodoController@store');
 });
 
