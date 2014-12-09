@@ -270,7 +270,7 @@ article.mathexerciseitem{
   display: none !important;
 }
 #isLoading{
-  position: absolute;
+  position: fixed;
   top: 45%;
   left: 47%;
   z-index: 1000;
