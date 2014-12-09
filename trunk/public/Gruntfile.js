@@ -2,6 +2,7 @@ module.exports = function (grunt){
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
 
+		// FOLLOWING IS THE JS BUILD PROCESS //
 		// ngAnnotate for standardize angular module injection
 		ngAnnotate: {
 			options: {
@@ -118,6 +119,25 @@ module.exports = function (grunt){
 			}
 		},
 
+		// FOLLOWING IS FOR CSS BUILD PROCESS //
+		cssmin: {
+			layoutConcat: {
+			files: {
+			  'dist/css/bladelayout.concat.css': ['htmlapp/libs/bootstrap/dist/css/bootstrap.css', 'bootstrap/css/bootstrap-theme.min.css',
+			  'htmlapp/libs/angular-toastr/dist/angular-toastr.css','htmlapp/assets/custom.css']
+			}
+			},
+			layoutmin: {
+			  files: [{
+			    expand: true,
+			    cwd: 'dist/',
+			    src: ['bladelayout.concat.css', '!*.min.css'],
+			    dest: 'dist/css/',
+			    ext: '.min.css'
+			  }]
+			}
+		},
+
 		// create two version template for dev and release
 		targethtml: {
 			mathrelease: {
@@ -187,6 +207,8 @@ module.exports = function (grunt){
 	grunt.loadNpmTasks('grunt-ng-annotate');
 
 	grunt.loadNpmTasks('grunt-targethtml');
+
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 	grunt.registerTask("default",['mathdev','yinbiaodev','tododev']);
 	grunt.registerTask("release",['mathrelease','yinbiaorelease','todorelease','siteindexrelease']);
