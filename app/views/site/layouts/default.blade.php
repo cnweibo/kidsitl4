@@ -13,8 +13,9 @@
 		@show"
 		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css,bootstrap-theme.min.css,angular-toastr.css')}}">
-        <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}">
+
+		<link rel="stylesheet" type="text/css" href="{{asset('dist/css/bladelayout.min.css')}}">
+		
         @yield('css')
  		<style>
         body {
