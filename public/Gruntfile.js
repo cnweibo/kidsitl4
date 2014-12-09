@@ -123,18 +123,18 @@ module.exports = function (grunt){
 		cssmin: {
 			layoutConcat: {
 			files: {
-			  'dist/css/bladelayout.concat.css': ['htmlapp/libs/bootstrap/dist/css/bootstrap.css', 'bootstrap/css/bootstrap-theme.min.css',
-			  'htmlapp/libs/angular-toastr/dist/angular-toastr.css','htmlapp/assets/custom.css']
+				'dist/css/bladelayout.concat.css': ['htmlapp/libs/bootstrap/dist/css/bootstrap.css', 'bootstrap/css/bootstrap-theme.min.css',
+				'htmlapp/libs/angular-toastr/dist/angular-toastr.css','htmlapp/assets/custom.css']
 			}
 			},
 			layoutmin: {
-			  files: [{
-			    expand: true,
-			    cwd: 'dist/',
-			    src: ['bladelayout.concat.css', '!*.min.css'],
-			    dest: 'dist/css/',
-			    ext: '.min.css'
-			  }]
+				files: [{
+					expand: true,
+					cwd: 'dist/css',
+					src: ['bladelayout.concat.css', '!*.min.css'],
+					dest: 'dist/css/',
+					ext: '.min.css'
+				}]
 			}
 		},
 
