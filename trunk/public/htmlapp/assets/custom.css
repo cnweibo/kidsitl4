@@ -1,0 +1,277 @@
+/*@import url(bootstrap.css);*/
+ul#top-nav-left > li >a {
+color: white;
+font-weight: 800;
+}
+ul#top-nav-right > li >a {
+font-weight: 800;
+color: white;
+}
+ul#top-nav-left > li >a:hover {
+background-color: #FF9900;
+color:black;
+}
+ul#top-nav-right > li >a:hover {
+background-color: #FF9900;
+color:black;
+}
+.dropdown,.dropdown-menu{
+	z-index: 10000;
+}
+body{
+    font-family: tahoma,arial,"微软雅黑",sans-serif;	
+	background-color: #eee;
+}
+.label-lg {
+    font-size: 150%;
+}
+
+.navbar-inverse{
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff9800), to(#f60));
+	background-image: -webkit-linear-gradient(#ff9800, #f60);
+	background-image: linear-gradient(#ff9800, #f60);
+	background-color: #ff9800;
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9800', endColorstr='#f60',GradientType=0 );*/
+}
+/*.navbar-top-background{
+	background-color: blue;
+}
+*/
+/*.navbar-inverse{
+	background-color: #00D200;
+	border:1px dashed thick green;
+}*/
+/*active navbar styling*/
+.navbar-inverse .navbar-nav > .active > a {
+    background-image: linear-gradient(to bottom, #228bca 0px, #428bca 100%);
+    background-color: #428bca;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#228bca', endColorstr='#428bca', GradientType=0);
+    /*color: #FFFFFF;*/
+}
+.carousel-inner > .item > img.carouselimg
+{
+	/*width:80%;
+	height:400px;*/
+}
+.carousel-control.right {
+  right: 0;
+  left: auto;
+  background-image: -webkit-linear-gradient(left, color-stop(rgba(80, 90, 100, .0001) 0%), color-stop(rgba(30, 0, 90, .5) 100%));
+  background-image: linear-gradient(to right, rgba(80, 90, 100, .0001) 0%, rgba(30, 0, 90, .5) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+.carousel-control {
+  color: purple;
+  font-size: 18px;
+}
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.75);
+  right:0;
+  left:0;
+}
+.carousel-indicators{
+/*  top:15px;
+  left:95%;*/
+}
+/*bishun*/
+.bishunwrapper{
+  margin:10px;
+}
+#bishuncontainer{
+  margin:10px 0;
+  background: rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+/* row margin reset to 0*/
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/*some helper css*/
+.inlineblock{
+	display:inline-block;
+}
+.elementblock,#elementblock{
+  display:block;
+}
+.aligncenter{
+	margin:0 auto;
+  display:block;
+  text-align: center;
+}
+.nopadding{
+  padding-left:0;
+  padding-right: 0;
+  padding-top: 0
+}
+#ppatternregex_*{
+  position: relative;
+}
+/*hover for the  table row*/
+.table-hover > tbody > tr:hover >td{
+  background-color: #f60;
+}
+/*custom a tag styles*/
+a.yinbiaoatag{
+  color:green;
+}
+a.yinbiaocatatag{
+  color:blue;
+}
+a.wordtextatag{
+  color: #0F48D7;
+}
+a.wordyinbiaoatag{
+  color: #3C3838;
+}
+a.wordyinjieshuatag{
+  color: #blue;
+}
+p.wordyinbiaoblock:after{
+  /*content:"";*/
+}
+.row > .wordblock{
+  padding-right:0;
+  padding-left: 0;
+}
+.yinbiaoshu{
+  color: blue;
+  font-size: 0.5em;
+  border-top: 1px dashed #FF4A17 ;
+  background-color: #BDFF4B;
+  margin-top: 5px;
+  padding: 0 2px;
+}
+.wordyinbiaoblock{
+  margin-right: 10px;
+  background-color: #FFE6FA;
+  box-sizing: border-box;
+  position: relative;
+  border: 2px solid #FFF;
+  min-width:50px;
+}
+.wordyinbiaoblock:hover{
+  background-color: #FFFFFF;
+}
+.pull-right-streched{
+  right: 0px;
+}
+.wellyinjie1 {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  background-image: linear-gradient(to bottom,#ACE2EC 0,#f5f5f5 100%);
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+/*clickable*/
+.clickable{
+  cursor:pointer;
+}
+.adminlegend{
+  margin: 10px auto;
+}
+/*admin section*/
+.adminyinbiaohref{
+  color:green;
+}
+.font4e{
+  font-size: 4em;
+}
+.font2e{
+  font-size: 2em;
+}
+div.rightbottom{
+  position: absolute;
+  right:0px;
+  bottom:0px;
+}
+.relatedsentence{
+  background: rgba(200,100,100,.2);
+}
+::selection{
+  background: rgba(230,30,230,.7);
+  color: white;
+};
+.kidsittreeback{
+  background-color: green;
+}
+/*音标show页面style*/
+.wordtext{
+  font-family:Lucida Sans Unicode,Arial Unicode MS;
+  letter-spacing: 2px;
+  font-size:20px;
+}
+.wordyinbiao{
+  font-family:Lucida Sans Unicode,Arial Unicode MS;
+  letter-spacing: 0px;font-size:13px
+}
+.panel-body{
+  position: relative;
+}
+/*guest add word css*/
+.guestaddword{
+  margin-right: 10px;
+  margin-bottom: 8px;
+}
+.guestaddwordinput{
+  line-height: 0.6em;
+  width:70px;
+}
+.guestaddwordhr{
+  margin: 5px auto;
+  border-top: 1px solid rgba(59, 9, 92, 0.22);
+}
+.adminprocessitem{
+  display:inline-block;
+  margin-bottom: 10px;
+}
+
+div.exerciserow{
+
+  font-size: 160%;
+}
+
+article.mathexerciseitem{
+  margin-bottom: 10px;
+}
+
+/*examdata style*/
+#examcontainer .answerdata{
+  display:inline-block;
+  width:40px;
+  color: blue; 
+  font-size: 0.6em
+}
+#examcontainer .examdata{
+  display:inline-block;
+  width:40px;
+  font-size: 0.8em
+}
+#examcontainer .answerTF{
+
+}
+#examcontainer .answerInput{
+  width:40px;
+  color: blue;
+  font-size:0.6em;
+}
+/*ngcloak solve the flash issue*/
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+#isLoading{
+  position: absolute;
+  top: 45%;
+  left: 47%;
+  z-index: 1000;
+}
