@@ -13,17 +13,27 @@ kidsitApplication.service('mp3PlayerService',function() {
     }
   };
 });
-kidsitApplication.directive('mp3Player',function($rootScope){
+kidsitApplication.directive('mp3Player',function($timeout,$rootScope){
   var linker = function(scope, element, attrs){
+    var hasLoadedInTime = false;
+    var timeoutHappened = false;
     $rootScope.isLoading = false;
     $("#yinbiaoplayer").on( "ended", function() {
       $rootScope.$broadcast('wordPlayFinished');
     });
     $("#yinbiaoplayer").on( "loadstart", function() {
-      $rootScope.isLoading = true;
-      $rootScope.$apply();
+      // Here we introduce debounce function: only after 300ms we have not
+      // received the media, we start the loading indication
+      $rootScope.auditMP3ReadyTimeoutPromise = $timeout(function(){
+        timeoutHappened = true;
+        $rootScope.isLoading = true;
+        $rootScope.$apply();
+      },300);
+      
     });
     $("#yinbiaoplayer").on( "loadedmetadata", function() {
+      // receive the media intime, we cancel the timer
+      $timeout.cancel($rootScope.auditMP3ReadyTimeoutPromise);
       $rootScope.isLoading = false;
       $rootScope.$apply();
     });
