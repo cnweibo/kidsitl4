@@ -8,11 +8,12 @@
 @stop
 @section('description')	
 	小学数学数学同步练习出题系统，适合一年级二年级三年级小学生二位数三位数四位数加减乘除同步练习，自动出题，自动批卷
-	@parent
+	@parent 
 @stop
 @section('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/printmath.css') }}" media="print"/>
 	<link rel="stylesheet" href={{ asset('htmlapp/libs/angular-busy/dist/angular-busy.css')}}>
+	<link rel="stylesheet" href="{{asset('htmlapp/assets/custom.css')}}">
 @stop
 @section('bodyhead')
 <body style="position:relative" ng-app="kidsitApp" ng-controller="kidsitAppCtrl" ng-strict-di>
@@ -113,8 +114,8 @@
 	</script>
 	<script type="text/ng-template" id="checkresult.html">
 		<span>
-			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres) && !isRevisioning && checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
-			<span class="answerTF" data-ng-if="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres || isRevisioning) && (!checkData(myRow,answer))"><label class="label label-danger"><span class="glyphicon glyphicon-remove"></span></label></span>
+			<span class="answerTF" data-ng-show="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres) && !isRevisioning && checkData(myRow,answer)"><label class="label label-danger"><span class="glyphicon glyphicon-ok"></span></label></span>
+			<span class="answerTF" data-ng-show="hasInput && (checkAnswerRealtime || hasSubmittedAnsweres || isRevisioning) && (!checkData(myRow,answer))"><label class="label label-danger"><span class="glyphicon glyphicon-remove"></span></label></span>
 		</span>
 	</script>
 
@@ -125,72 +126,125 @@
 	</div>
 <h1 style="text-align: center;">IT宝贝网低年级数学计算同步练习题库 
 	<a href="javascript:window.print()"><span tooltip-placement="top" tooltip="打印本试卷" class="glyphicon glyphicon-print fa-2x"></span></a>
+	<!-- toggleShowSetting($event); -->
 	<a href="#" data-ng-click="toggleShowSetting($event)"><span tooltip-placement="top" tooltip="打开配置面板，配置当前试卷答题模式，或按需调阅新试卷" style="margin-left:10px;" class="glyphicon glyphicon-cog fa-2x"></span></a>
 	<div toggle-answer-view-and-animcate trigger="mathexam.showAnswer" ></div>
 </h1>
+<div pageslide ps-open="isOpened">
+        <div ng-cloak ng-show="isOpened" class="text-left sidetoolbar">
+			<h3>试卷配置面板</h3>
+
+
+
+
+			<form name="helpForm" novalidate role="form">
+				<hr>
+				<div>
+					<span>题目类型：</span>
+					<label class="radio-inline">
+					  <input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" id="inlineRadio1" value="plus"> 加
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" id="inlineRadio2" value="minus"> 减
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" id="inlineRadio3" value="times"> 乘
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" id="inlineRadio4" value="division"> 除
+					</label>
+				</div>
+				<hr>
+				
+				<div>
+					<span>位数：</span>
+					<label class="radio-inline">
+					  <input type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" id="inlineRadio1" value="1"> 1位
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" id="inlineRadio2" value="2"> 2位
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" id="inlineRadio3" value="3"> 3位
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" id="inlineRadio4" value="4"> 4位
+					</label>
+				</div>
+				<hr>
+			    <div>
+			    	<span>难度：</span>
+			    	<label class="radio-inline">
+			    	  <input type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" id="inlineRadio1" value="1"> 1级
+			    	</label>
+			    	<label class="radio-inline">
+			    	  <input type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" id="inlineRadio2" value="2"> 2级
+			    	</label>
+			    	<label class="radio-inline">
+			    	  <input type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" id="inlineRadio3" value="3"> 3级
+			    	</label>
+			    	<label class="radio-inline">
+			    	  <input type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" id="inlineRadio4" value="4"> 4级
+			    	</label>
+			    </div>
+				<hr>
+
+				<div>
+					<span>题数：</span>
+					<label class="radio-inline">
+					  <input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" id="inlineRadio1" value=20> 20
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" id="inlineRadio2" value=50> 50
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" id="inlineRadio3" value=100> 100
+					</label>
+				</div>
+				<hr>
+
+				<div>
+					<span>限时模式：</span>
+					<label class="radio-inline">
+					  <input type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" id="inlineRadio1" value="5"> 5
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" id="inlineRadio2" value="10"> 10
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" id="inlineRadio3" value="15"> 15
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" id="inlineRadio4" value="20"> 20
+					</label>
+				</div>
+
+				<hr>
+
+				<hr>
+				<div>
+					<span>批卷模式：</span>
+					<label class="radio-inline">
+					  <input type="radio" name="mathPijuanMode" data-ng-model="mathexam.checkAnswerRealtime" id="inlineRadio1" ng-value="true"> 边答题边批卷
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="mathPijuanMode" data-ng-model="mathexam.checkAnswerRealtime" id="inlineRadio2" ng-value="false"> 交卷时一次性批卷
+					</label>
+				</div>
+
+		    </form>
+        	
+        	<p class="ng-scope"><span class="label label-default">加法</span> 
+				<span class="label label-default">[[mathexam.mathDigitNumbers]]</span> 
+				<span class="label label-default">[[mathexam.mathDifficulty]]</span> 
+				<span class="label label-default">[[mathexam.mathQuantity]]</span>
+				<button type="submit" data-ng-click="createExam();isOpened=false;clearExamTimer('examCountTimer') " class="btn btn-danger">调阅新试卷</button>
+			</p>
+        </div>
+</div>
 <h4 ng-cloak id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
 	<div class="container">	
-		<div ng-cloak ng-show="showconf.showSettings" class="aligncenter">
-			<div class="panel panel-info">
-				  <div class="panel-heading">
-						<h3 class="panel-title">试卷配置及考试配置面板</h3>
-				  </div>
-				  <div class="panel-body">
-						<tabset>
-							<p><span class="label label-default">[[mathexam.mathCategory | examTixing]]</span> 
-								<span class="label label-default">[[mathexam.mathDigitNumbers]]位数</span> 
-								<span class="label label-default">[[mathexam.mathDifficulty]]级</span> 
-								<span class="label label-default">[[mathexam.mathQuantity]]题</span>
-								<button type="submit" data-ng-click="createExam();showconf.showSettings = null;clearExamTimer('examCountTimer') " class="btn btn-danger">调阅新试卷</button>
-							</p>
-						    <tab heading="题型">
-				    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="plus" check="checked"> 加</label>
-				    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="minus"> 减</label>
-				    		    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="times"> 乘</label>
-				    			<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathCategory" data-ng-model="mathexam.mathCategory" value="division"> 除</label>				
-						    </tab>
-						  	<tab heading="位数">
-				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="1"> 1位数</label>
-				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="2"> 2位数</label>
-				  			    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="3"> 3位数</label>
-				  				<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDigitNumbers" data-ng-model="mathexam.mathDigitNumbers" value="4" check="checked"> 4位数</label>				
-				  			
-						  	</tab>
-						  	<tab heading="难度">
-						    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="1"> 1级</label>
-						    	    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="2"> 2级</label>
-						    		    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="3"> 3级</label>
-						    			<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathDifficulty" data-ng-model="mathexam.mathDifficulty" value="4" check="checked"> 4级</label>				
-						    		</tab>
-						  	<tab heading="题数">
-				  				<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" ng-change='changeQuantity(mathexam.mathQuantity)' ng-value=20> 20</label>
-				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" ng-change='changeQuantity(mathexam.mathQuantity)'  ng-value=50 check="checked">50</label>
-				  			    <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathQuantity" data-ng-model="mathexam.mathQuantity" ng-change='changeQuantity(mathexam.mathQuantity)'  ng-value=100> 100</label>			
-				  			
-						  	</tab>
-						  	<tab heading="在线考试模式">
-						  		<section>
-						  			<h6 class="text-success bg-success inlineblock">计时模式：给定时间，在该时间内，做对的题目越多越好</h6>
-					  					<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="5" > 5分钟</label>
-					  			    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="10" check="checked">10分钟</label>
-					  					<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="15"> 15分钟</label>
-					  			        <label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathTimeToDo" data-ng-model="mathexam.timetodo" value="20"> 20分钟</label>			
-						  		</section>
-								<section>
-									<h6 class="text-success bg-success inlineblock">计量模式：给定题目数量，计算时间，时间越短成绩越好</h6>
-										<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathqtocount" data-ng-model="mathexam.mathQuantity" value="20"> 20道题</label>
-								    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathqtocount" data-ng-model="mathexam.mathQuantity" value="50" check="checked">50道题</label>
-										<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathqtocount" data-ng-model="mathexam.mathQuantity" value="100"> 100道题</label>	
-								</section>
-						  	</tab>
-				  		  	<tab heading="批卷模式">
-				  		  		<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathPijuanMode" data-ng-model="mathexam.checkAnswerRealtime" ng-value="true" check="checked"> 边答题边批卷</label>
-				  		    	<label style="display:inline" class="radio inline"><input style="float:none" type="radio" name="mathPijuanMode" data-ng-model="mathexam.checkAnswerRealtime" ng-value="false"> 交卷时一次性批卷 </label>		
-				  		  	</tab>
-						</tabset>
-				  </div>
-			</div>
-		</div>
+	
 		<h4><span ng-cloak class="aligncenter inlineblock"><strong>姓名:</strong><strong style="color:red" ng-show="userloggedinfo.username"> [[userloggedinfo.username]] </strong><strong ng-show="!userloggedinfo.username">_____ </strong> <strong>分数:</strong><strong ng-show="(!mathexam.hasSubmitted)&&(!mathexam.checkAnswerRealtime)"> ______</strong> <strong ng-show="mathexam.hasSubmitted || mathexam.checkAnswerRealtime" style="color:red" fade-value-change="mathexam.score"> [[mathexam.score|number]] </strong>
 				<span ng-cloak timer timerid="examCountTimer" autostart="false" interval="1000" exported-timer-val="exportedTimerVal">已用时：<strong style="color:red">[[mminutes]] </strong>分 <strong style="color:red">[[sseconds]]</strong> 秒  
 					
@@ -217,21 +271,22 @@
 
 @section('scripts')
 	<!--(if target mathdev)><!-->
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-timer.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
-		<script type="text/javascript" src="{{asset('htmlapp/syscommon/kidsitanimatelib.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/TweenMax.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-timer.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
+	<script type="text/javascript" src="{{asset('htmlapp/syscommon/kidsitanimatelib.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/TweenMax.min.js')}}"></script>
 
-	    <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/ng-pageslide/dist/angular-pageslide-directive.js')}}"></script>
 
 		
-		<script type="text/javascript" src="{{asset('htmlapp/examApp/examApp.js')}}"></script>
-	<!--<!(endif)-->
-	<!--(if target mathrelease)><!-->
-		<script type="text/javascript" src="{{asset('dist/appMath.min.js')}}"></script>
-	<!--<!(endif)-->
+	<script type="text/javascript" src="{{asset('htmlapp/examApp/examApp.js')}}"></script>
+<!--<!(endif)-->
+<!--(if target mathrelease)><!-->
+	<script type="text/javascript" src="{{asset('dist/appMath.min.js')}}"></script>
+<!--<!(endif)-->
 @stop

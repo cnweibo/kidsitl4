@@ -17,6 +17,7 @@
     "jquery-color": "~2.1.2",
     "bootstrap": "~3.3.1",
     "angular-toastr": "~0.5.1",
-    "angular-busy": "~4.1.2"
+    "angular-busy": "~4.1.2",
+    "ng-pageslide": "~0.1.8"
   }
 }

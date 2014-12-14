@@ -1,4 +1,4 @@
-var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute','cgBusy']);
+var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute','cgBusy','pageslide-directive']);
 app.config(['$interpolateProvider', '$routeProvider' , function($interpolateProvider,$routeProvider) {
 
 	$interpolateProvider.startSymbol('[[');
@@ -23,6 +23,7 @@ app.value('answeringFactory', {
 }});
 var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$http', 'answeringFactory', 'toastr', '$location', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;
+	$scope.isOpened = undefined;
 	$scope.user={};
 	$scope.showconf={};
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
@@ -261,7 +262,8 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		}
 	};
 	$scope.toggleShowSetting= function($event){
-		$scope.showconf.showSettings = !$scope.showconf.showSettings;
+		// $scope.showconf.showSettings = !$scope.showconf.showSettings;
+		$scope.isOpened=!$scope.isOpened;
 		$event.preventDefault();
 		console.log($event);
 	};
