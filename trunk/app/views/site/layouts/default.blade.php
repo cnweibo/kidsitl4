@@ -50,7 +50,6 @@
 		<div id="wrap">
 			<!-- Navbar -->
 			<div id="mainnavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-top-background">
-				<div class="container">
 	                <div class="navbar-header">
 	                	<img style="width:150;height:40px;margin:5px" src="{{{asset('assets/img/Logo_175x60.png')}}}" alt="IT宝贝网" />
 	                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -59,7 +58,7 @@
 	                        <span class="icon-bar"></span>
 	                        <span class="icon-bar"></span>
 	                    </button>
-	                </div>
+	                </div> <!-- navabar-header end -->
 	                <div class="collapse navbar-collapse navbar-ex1-collapse">
 	                    <ul class="nav navbar-nav"  id="top-nav-left">
 							<li {{set_active('/')}}><a href="{{{ URL::to('') }}}">首页</a></li>
@@ -95,8 +94,8 @@
 	                    </ul>
 	                @show    
 					</div><!-- ./ nav-collapse end --> 
-				</div> <!-- container end -->
-			</div> <!-- ./ navbar end-->
+				</div> <!-- mainnavbar end -->
+			</div> <!-- ./ wrap end-->
 			<div class="container"><!--  container of content start-->
 				<!-- Notifications -->
 				@include('notifications')
