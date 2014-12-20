@@ -35,12 +35,12 @@
 		<script>
 			var paceOptions = {
 			  ajax: false, // disabled
-			  document: false, // disabled
+			  document: true, // disabled
 			  eventLag: false, // disabled
 			  target: '#loadingBar'
 			};
 		</script>
-		<script type="text/javascript" src="{{asset('htmlapp/libs/PACE/pace.min.js')}}"></script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/PACE/pace.js')}}"></script>
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 		  <script src="{{asset('htmlapp/libs/html5shiv.js')}}"></script>
