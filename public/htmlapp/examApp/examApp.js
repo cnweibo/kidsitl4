@@ -115,14 +115,12 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 	$http.get('/user/loginstatusx',$scope.logininput).success(function(logindata)
 	{
 		$scope.userloggedinfo = logindata;
-		console.log($scope.userloggedinfo);
 	});
 	$scope.doLogin = function(){
 		$scope.logininput._token = angular.element(document.getElementsByName('_token')[0]).val();
 		$http.post('/user/loginx',$scope.logininput).success(function(logindata)
 	{
 		$scope.userloggedinfo = logindata;
-		console.log($scope.userloggedinfo);
 	});
 		$scope.user.showLogin = false ;
 	};
@@ -131,7 +129,6 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		$http.post('/user/logoutx',$scope.logininput).success(function(logindata)
 	{
 		$scope.userloggedinfo = logindata;
-		console.log($scope.userloggedinfo);
 	});
 		$scope.user.showLogin = false ;
 	};
@@ -205,8 +202,6 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		answeringFactory.setIsAnswering(false);
 		$scope.canInputAnswer = answeringFactory.canInputAnswer();
 		$rootScope.$broadcast('userHasSubmittedAnswers');
-		console.log($scope.exportedTimerVal);
-		console.log($scope.mathexam.score);
 		var submitData = {
 			timerData: $scope.exportedTimerVal,
 			examId: $scope.examdata.examID,
@@ -214,7 +209,7 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		};
 		$http.get('/math/exams/submitanswer',{params:submitData}).success(function(data)
 		{
-			console.log(data);
+
 		});
 	};
 	$scope.revisionAnswers = function(){
@@ -265,7 +260,6 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		// $scope.showconf.showSettings = !$scope.showconf.showSettings;
 		$scope.isOpened=!$scope.isOpened;
 		$event.preventDefault();
-		console.log($event);
 	};
 	$scope.$watch("metadata.examTimerRunning",function(nv,ov){
 		if(nv != ov){
@@ -282,14 +276,11 @@ kidsitAppCtrl.$inject = ['$scope','$rootScope','$http','answeringFactory','toast
 var loginCtrl = app.controller('loginCtrl',['$scope', '$http', function($scope,$http){
 
 	$scope.login = function(){
-		console.log("logining in");
 		$scope.user.showLogin = true;
 	};
 	$scope.logout = function(){
-		console.log("logining out");
 	};
 	$scope.signup = function(){
-		console.log("signup ...");
 	};
 }]);
 loginCtrl.$inject = ['$scope','$http'];

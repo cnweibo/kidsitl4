@@ -15,9 +15,6 @@ pageslideDirective.directive('pageslide', [
             },
             link: function ($scope, el, attrs) {
                 /* Inspect */
-                //console.log($scope);
-                //console.log(el);
-                //console.log(attrs);
 
                 /* parameters */
                 var param = {};
@@ -121,7 +118,6 @@ pageslideDirective.directive('pageslide', [
                                 break;
                         }
                         setTimeout(function(){
-                            console.log(slider);
                             content.style.display = 'block';
                         },(param.speed * 1000));
 
@@ -140,7 +136,6 @@ pageslideDirective.directive('pageslide', [
                         // Close
                         psClose(slider,param);
                     }
-                    console.log(value);
                 });
 
                 // close panel on location change

@@ -257,6 +257,7 @@
     };
 
     Bar.prototype.finish = function() {
+      console.log("document.readyState is:"+document.readyState);
       var el;
       el = this.getElement();
       el.className = el.className.replace('pace-active', '');
@@ -267,6 +268,7 @@
 
     Bar.prototype.update = function(prog) {
       this.progress = prog;
+      console.log("document.readyState is:"+document.readyState);
       return this.render();
     };
 
@@ -305,6 +307,7 @@
     };
 
     Bar.prototype.done = function() {
+      console.log("document.readyState is:"+document.readyState);
       return this.progress >= 100;
     };
 
@@ -693,9 +696,12 @@
       document.onreadystatechange = function() {
         if (_this.states[document.readyState] != null) {
           _this.progress = _this.states[document.readyState];
+      console.log("document.readyState is:"+document.readyState);
+
         }
         return typeof _onreadystatechange === "function" ? _onreadystatechange.apply(null, arguments) : void 0;
       };
+      console.log("document.readyState is:"+document.readyState);
     }
 
     return DocumentMonitor;
