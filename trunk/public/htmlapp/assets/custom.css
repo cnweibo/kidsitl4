@@ -284,3 +284,7 @@ article.mathexerciseitem{
   padding-left: 10px;
   background: #FFF;
 }
+#loadingBar .pace{
+  top: 50px;
+  left: 0;
+}

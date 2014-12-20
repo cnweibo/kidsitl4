@@ -220,10 +220,9 @@
 				</div>
 
 				<hr>
-
-				<hr>
 				<div>
 					<span>批卷模式：</span>
+					<br>
 					<label class="radio-inline">
 					  <input type="radio" name="mathPijuanMode" data-ng-model="mathexam.checkAnswerRealtime" id="inlineRadio1" ng-value="true"> 边答题边批卷
 					</label>
@@ -233,11 +232,12 @@
 				</div>
 
 		    </form>
-        	
-        	<p class="ng-scope"><span class="label label-default">加法</span> 
-				<span class="label label-default">[[mathexam.mathDigitNumbers]]</span> 
-				<span class="label label-default">[[mathexam.mathDifficulty]]</span> 
-				<span class="label label-default">[[mathexam.mathQuantity]]</span>
+        	<hr>
+        	<p class="ng-scope"><span class="label label-default">[[mathexam.mathCategory|examTixing]]</span> 
+				<span class="label label-default">[[mathexam.mathDigitNumbers]]位数</span> 
+				<span class="label label-default">[[mathexam.mathDifficulty]]级难度</span> 
+				<span class="label label-default">[[mathexam.mathQuantity]]题</span>
+				<hr>
 				<button type="submit" data-ng-click="createExam();isOpened=false;clearExamTimer('examCountTimer') " class="btn btn-danger">调阅新试卷</button>
 			</p>
         </div>
@@ -271,7 +271,20 @@
 
 @section('scripts')
 	
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-timer.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
+	<script type="text/javascript" src="{{asset('htmlapp/syscommon/kidsitanimatelib.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/TweenMax.min.js')}}"></script>
 
-	<script type="text/javascript" src="{{asset('dist/appMath.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/ng-pageslide/dist/angular-pageslide-directive.js')}}"></script>
+
+		
+	<script type="text/javascript" src="{{asset('htmlapp/examApp/examApp.js')}}"></script>
+
 
 @stop

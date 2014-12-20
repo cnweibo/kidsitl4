@@ -18,17 +18,29 @@
 		
         @yield('css')
  		<style>
-        body {
-            padding: 60px 0;
-        }
-        /*ngcloak solve the flash issue*/
-        [ng\:cloak], [ng-cloak], .ng-cloak {
-          display: none !important;
-        }
-		@section('styles')
-		@show
+		    body {
+		        padding: 60px 0;
+		    }
+		    /*ngcloak solve the flash issue*/
+		    [ng\:cloak], [ng-cloak], .ng-cloak {
+		      display: none !important;
+		    }
+			@section('styles')
+			@show
+			/*pacejs*/
+			/* This is a compiled file, you should be editing the file in the templates directory */
 		</style>
-
+		<link rel="stylesheet" href="{{asset('htmlapp/libs/PACE/themes/blue/pace-theme-barber-shop.css')}}">
+		<!-- pacejs -->
+		<script>
+			var paceOptions = {
+			  ajax: false, // disabled
+			  document: false, // disabled
+			  eventLag: false, // disabled
+			  target: '#loadingBar'
+			};
+		</script>
+		<script type="text/javascript" src="{{asset('htmlapp/libs/PACE/pace.min.js')}}"></script>
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 		  <script src="{{asset('htmlapp/libs/html5shiv.js')}}"></script>
@@ -96,6 +108,7 @@
 					</div><!-- ./ nav-collapse end --> 
 				</div> <!-- mainnavbar end -->
 			</div> <!-- ./ wrap end-->
+			<div id="loadingBar"></div> <!-- global loading bar placeholder-->
 			<div class="container"><!--  container of content start-->
 				<!-- Notifications -->
 				@include('notifications')
