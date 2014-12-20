@@ -225,7 +225,7 @@
 						  <input type="radio" name="mathPijuanMode" data-ng-model="mathexam.checkAnswerRealtime" id="inlineRadio2" ng-value="false"> 交卷时一次性批卷
 						</label>
 					</p>
-					<button type="submit" data-ng-click="createExam();isOpened=false;clearExamTimer('examCountTimer') " class="btn btn-danger">应用到本试卷</button>
+					<button type="submit" data-ng-click="isOpened=false" class="btn btn-danger">应用到本试卷</button>
 				</div>
 		    </form>
         	
