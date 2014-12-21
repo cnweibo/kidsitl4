@@ -299,3 +299,9 @@ article.mathexerciseitem{
 .ng-pageslide{
   background: whitesmoke;
 }
+/*score block for math*/
+.score{
+  position: relative;
+  width: 68px;
+  display: inline-block;
+}
