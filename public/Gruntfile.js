@@ -58,7 +58,10 @@ module.exports = function (grunt){
 				src: ["htmlapp/libs/jquery/dist/jquery.min.js","htmlapp/libs/jquery-color/jquery.color.js","htmlapp/libs/bootstrap/dist/bootstrap.min.js","htmlapp/syscommon/custom.js","htmlapp/libs/angular/angular.min.js",
 						"htmlapp/libs/angular-route/angular-route.min.js","htmlapp/libs/angular-timer.js","htmlapp/libs/angular-animate/angular-animate.min.js","htmlapp/libs/angular-toastr/dist/angular-toastr.js",
 						"htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.min.js","htmlapp/libs/TweenMax.min.js",
-						"htmlapp/libs/ng-pageslide/dist/angular-pageslide-directive.js","htmlapp/examApp/examApp.annotated.js","htmlapp/syscommon/kidsitanimatelib.annotated.js","htmlapp/libs/angular-busy/dist/angular-busy.js"],
+						"htmlapp/libs/ng-pageslide/dist/angular-pageslide-directive.js",
+						"htmlapp/libs/highcharts/highcharts.js","htmlapp/libs/highcharts-ng/dist/highcharts-ng.min.js",
+						"htmlapp/examApp/improvementCharts.ctrl.js",
+						"htmlapp/examApp/examApp.annotated.js","htmlapp/syscommon/kidsitanimatelib.annotated.js","htmlapp/libs/angular-busy/dist/angular-busy.js"],
 				dest: "concat/appMath.concat.js"
 			},
 			yinbiao: {
