@@ -19,6 +19,10 @@
     "angular-toastr": "~0.5.1",
     "angular-busy": "~4.1.2",
     "ng-pageslide": "~0.1.8",
-    "PACE": "https://github.com/HubSpot/pace.git#~1.0.2"
+    "PACE": "https://github.com/HubSpot/pace.git#~1.0.2",
+    "highcharts": "http://code.highcharts.com/highcharts.js",
+    "highcharts-ng": "~0.0.7",
+    "underscore": "~1.7.0",
+    "angular-underscore": "~0.5.0"
   }
 }
