@@ -228,8 +228,23 @@
 					<button type="submit" data-ng-click="isOpened=false" class="btn btn-danger">应用到本试卷</button>
 				</div>
 		    </form>
-        	
-        </div>
+        	<!-- imporvement chart section -->
+        	<div ng-controller="improvementChartsCtrl">
+        	<div class="row">
+        		<div class="col-sm-10">
+        			<input ng-model="chartConfig.title.text">
+			        <button ng-click="addSeries()">Add Series</button>
+                    <button ng-click="addPoints()">Add Points to Random Series</button>
+                    <button ng-click="removeRandomSeries()">Remove Random Series</button>
+                  	<button ng-click="swapChartType()">line/bar</button>
+
+        		</div>
+        	</div>
+        	<div class="row">
+        		<highchart id="chart1" config="chartConfig" class="span10"></highchart>
+        	</div>
+        	</div>	
+        </div> <!-- end of side toolbar content -->
 </div>
 <h4 ng-cloak id="exammeta" style="margin-bottom: 10px;" class="aligncenter">本试卷创建于 [[examdata.examCreatedate]] <span class="label label-warning">试卷查询地址:</span> <a data-ng-href="http://kidsit.cn/math/exams/[[examdata.examID]]" target="_blank">http://kidsit.cn/math/exams/[[examdata.examID]]</a></h4> 
 	<div class="container">	
@@ -260,6 +275,7 @@
 
 @section('scripts')
 	<!--(if target mathdev)><!-->
+	<script type="text/javascript" src="{{asset('htmlapp/libs/jquery/dist/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-timer.js')}}"></script>
@@ -272,8 +288,12 @@
     <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/ng-pageslide/dist/angular-pageslide-directive.js')}}"></script>
 
-		
+	<script type="text/javascript" src="{{asset('htmlapp/libs/highcharts/highcharts.src.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/highcharts-ng/dist/highcharts-ng.js')}}"></script>
+
+	<script type="text/javascript" src="{{asset('htmlapp/examApp/improvementCharts.ctrl.js')}}"></script>	
 	<script type="text/javascript" src="{{asset('htmlapp/examApp/examApp.js')}}"></script>
+
 <!--<!(endif)-->
 <!--(if target mathrelease)><!-->
 	<script type="text/javascript" src="{{asset('dist/appMath.min.js')}}"></script>
