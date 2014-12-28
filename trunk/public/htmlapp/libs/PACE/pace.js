@@ -268,7 +268,6 @@
 
     Bar.prototype.update = function(prog) {
       this.progress = prog;
-      console.log("document.readyState is:"+document.readyState);
       return this.render();
     };
 
@@ -307,7 +306,6 @@
     };
 
     Bar.prototype.done = function() {
-      console.log("document.readyState is:"+document.readyState);
       return this.progress >= 100;
     };
 
