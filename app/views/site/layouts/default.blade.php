@@ -62,52 +62,51 @@
 		<div id="wrap">
 			<!-- Navbar -->
 			<div id="mainnavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-top-background">
-	                <div class="navbar-header">
-	                	<img style="width:150;height:40px;margin:5px" src="{{{asset('assets/img/Logo_175x60.png')}}}" alt="IT宝贝网" />
-	                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-	                        <span class="sr-only">切换</span>
-	                        <span class="icon-bar"></span>
-	                        <span class="icon-bar"></span>
-	                        <span class="icon-bar"></span>
-	                    </button>
-	                </div> <!-- navabar-header end -->
-	                <div class="collapse navbar-collapse navbar-ex1-collapse">
-	                    <ul class="nav navbar-nav"  id="top-nav-left">
-							<li {{set_active('/')}}><a href="{{{ URL::to('') }}}">首页</a></li>
-							<li {{set_active('bishun')}}><a href="{{{ URL::to('/bishun') }}}">笔顺学习</a></li>
-							<li {{set_active('pinyin')}}><a href="{{{ URL::to('/pinyin') }}}">拼音速学</a></li>
-							<li {{set_active('game')}}><a href="{{{ URL::to('/game') }}}">键盘练习</a></li>
-							<li {{set_active('yinbiao')}}><a href="{{{ URL::to('yinbiaocategory') }}}">英语音标</a></li>
-							<li {{set_active('exercise')}}><a href="{{{ URL::to('math/exams') }}}">中小学同步课堂</a></li>						
-							<li {{set_active('kidsinternet')}}><a href="{{{ URL::to('kidsinternet') }}}">互联网那点事儿</a></li>						
-							<li class="dropdown hidden">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li class="divider"></li>
-									<li><a href="#">Separated link</a></li>
-								</ul>
-							</li>
-						</ul>
-					@section('loginctrlform')	
-	                    <ul class="nav navbar-nav pull-right" id="top-nav-right">
-	                        @if (Auth::check())
-	                        @if (Auth::user()->hasRole('admin'))
-	                        <li><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
-	                        @endif
-	                        <li><a href="{{{ URL::to('user') }}}">登录为： {{{ Auth::user()->username }}}</a></li>
-	                        <li><a href="{{{ URL::to('user/logout') }}}">退出</a></li>
-	                        @else
-	                        <li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">登录</a></li>
-	                        <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
-	                        @endif
-	                    </ul>
-	                @show    
-					</div><!-- ./ nav-collapse end --> 
-				</div> <!-- mainnavbar end -->
-			</div> <!-- ./ wrap end-->
+                <div class="navbar-header">
+                	<img style="width:150;height:40px;margin:5px" src="{{{asset('assets/img/Logo_175x60.png')}}}" alt="IT宝贝网" />
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">切换</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div> <!-- navabar-header end -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav"  id="top-nav-left">
+						<li {{set_active('/')}}><a href="{{{ URL::to('') }}}">首页</a></li>
+						<li {{set_active('bishun')}}><a href="{{{ URL::to('/bishun') }}}">笔顺学习</a></li>
+						<li {{set_active('pinyin')}}><a href="{{{ URL::to('/pinyin') }}}">拼音速学</a></li>
+						<li {{set_active('game')}}><a href="{{{ URL::to('/game') }}}">键盘练习</a></li>
+						<li {{set_active('yinbiao')}}><a href="{{{ URL::to('yinbiaocategory') }}}">英语音标</a></li>
+						<li {{set_active('exercise')}}><a href="{{{ URL::to('math/exams') }}}">中小学同步课堂</a></li>						
+						<li {{set_active('kidsinternet')}}><a href="{{{ URL::to('kidsinternet') }}}">互联网那点事儿</a></li>						
+						<li class="dropdown hidden">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</li>
+					</ul>
+				@section('loginctrlform')	
+                    <ul class="nav navbar-nav pull-right" id="top-nav-right">
+                        @if (Auth::check())
+                        @if (Auth::user()->hasRole('admin'))
+                        <li><a href="{{{ URL::to('admin') }}}">管理控制台</a></li>
+                        @endif
+                        <li><a href="{{{ URL::to('user') }}}">登录为： {{{ Auth::user()->username }}}</a></li>
+                        <li><a href="{{{ URL::to('user/logout') }}}">退出</a></li>
+                        @else
+                        <li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">登录</a></li>
+                        <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
+                        @endif
+                    </ul>
+                @show    
+				</div><!-- ./ nav-collapse end --> 
+			</div> <!-- mainnavbar end -->
 			<div id="loadingBar"></div> <!-- global loading bar placeholder-->
 			<div class="container"><!--  container of content start-->
 				<!-- Notifications -->

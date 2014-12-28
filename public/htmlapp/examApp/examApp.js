@@ -1,4 +1,7 @@
-var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute','cgBusy','pageslide-directive']);
+// examApp.js created by zhenghua@kidsit.cn on 08/08/2014 
+(function () {
+var app = angular.module('kidsitApp', ['ui.bootstrap','kidsitAnimate','timer','toastr','ngRoute',
+										'cgBusy','pageslide-directive','improvementCharts']);
 app.config(['$interpolateProvider', '$routeProvider' , function($interpolateProvider,$routeProvider) {
 
 	$interpolateProvider.startSymbol('[[');
@@ -24,6 +27,7 @@ app.value('answeringFactory', {
 var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$http', 'answeringFactory', 'toastr', '$location', function($scope,$rootScope,$http,answeringFactory,toastr,$location) {
 	$scope.timerRunning = null;
 	$scope.isOpened = undefined;
+	$scope.showReports = undefined;
 	$scope.user={};
 	$scope.showconf={};
 	$scope.metadata = {shouldDisabled1: false,shouldDisabled2: true, shouldDisabled3: true, shouldDisabled4: true, shouldDisabled5: true};
@@ -261,6 +265,17 @@ var kidsitAppCtrl = app.controller('kidsitAppCtrl', ['$scope', '$rootScope', '$h
 		$scope.isOpened=!$scope.isOpened;
 		$event.preventDefault();
 	};
+	$scope.toggleshowReports= function($event){
+		// $scope.$apply(
+			// function(){
+				$scope.showReports =!$scope.showReports;
+				$event.preventDefault();
+			// }
+		// );
+	};
+	$scope.viewReport = function(){
+
+	};
 	$scope.$watch("metadata.examTimerRunning",function(nv,ov){
 		if(nv != ov){
 			$scope.metadata.shouldDisabled1 = $scope.shouldDisabled(1);
@@ -346,7 +361,7 @@ app.directive("toggleAnswerViewAndAnimcate",['$animate',function($animate){
 	return {
 		restrict: 'A',
 		scope: {trigger: '='},
-		template: '<a href="#"><span tooltip-placement="top" tooltip="显示/隐藏答案" style="margin-left:10px;" class="glyphicon glyphicon-eye-open fa-2x"></span></a>',
+		template: '<a href="#" class="sidebarhref" tooltip-placement="left" tooltip="显示/隐藏答案"><span class="glyphicon glyphicon-eye-open"></span></a>',
 		link: linker,
 		replace: true
 	};
@@ -427,4 +442,4 @@ app.directive("loginForm",function(){
 		// controller: 'loginCtrl',
 		templateUrl: 'loginform.html'
 	};
-});
+});})();
