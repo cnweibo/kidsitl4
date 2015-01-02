@@ -157,7 +157,7 @@
 				<!-- toggleShowSetting($event); -->
 				<a href="#" data-ng-click="toggleShowSetting($event)" class="sidebarhref" tooltip-placement="left" tooltip="打开配置面板，配置当前试卷答题模式，或按需调阅新试卷"><span class="glyphicon glyphicon-cog fa-2x"></span></a>
 				<div toggle-answer-view-and-animcate trigger="mathexam.showAnswer" ></div>
-				<a href="#" data-ng-click="toggleshowReports($event)" class="sidebarhref" tooltip-placement="left" tooltip="学习成绩和进度报告"><span class="glyphicon glyphicon-stats fa-2x"></span></a>
+				<a href="#" data-ng-click="toggleshowReports($event)" class="sidebarhref" tooltip-placement="left" tooltip="学习成绩和进度报告" data-trigger="mouseenter"><span class="glyphicon glyphicon-stats fa-2x"></span></a>
 			</div>
 			<div pageslide ps-speed="0.5" ps-size="300px" ps-open="isOpened" ps-custom-right="41px" class="pageslidesidebar">
 			        <div ng-cloak ng-show="isOpened" class="text-left sidetoolbar">
@@ -264,7 +264,7 @@
 		        <div ng-show="showReports" class="text-left sidetoolbar">
 		        	<!-- imporvement chart section -->
 		        	<div ng-controller="improvementChartsCtrl">
-		        	<div class="row">
+		        <!-- 	<div class="row">
 		        		<div class="col-sm-10">
 		        			<input ng-model="chartConfig.title.text">
 					        <button ng-click="addSeries()">Add Series</button>
@@ -273,7 +273,7 @@
 		                  	<button ng-click="swapChartType()">line/bar</button>
 
 		        		</div>
-		        	</div>
+		        	</div> -->
 		        	<div class="row">
 		        		<highchart id="chart1" config="chartConfig" class="span10"></highchart>
 		        	</div>
