@@ -45,20 +45,33 @@
 		        this.chartConfig.loading = !this.chartConfig.loading
 		    }
 
+		    $scope.chartSeries = [
+		        {"name": "贾宝宝", "data": [10, 11, 9, 8, 12,12,13,11]},
+		        {"name": "徐成婷", "data": [12, 13, 8, 10, 11,12,12,10]},
+
+		        {"name": "贾宝宝", "data": [9, 8, 7, 13, 13,10,11,13]},
+		        {"name": "张子墨", "data": [13, 12, 7, 6, 10,10,12,13]}
+		      ];
+
 		    $scope.chartConfig = {
 		        options: {
 		            chart: {
-		                type: 'bar'
-		            }
+		                type: 'line'
+		            },
+		            xAxis: {
+                        categories: ['12月20日', '12月21日', '12月22日', '12月23日', '12月24日', '12月27日',
+                            '12月28日', '12月30日']
+                    },
+		            tooltip: {
+	                    valueSuffix: '分钟'
+	                },        
 		        },
 		        credits: {
 					enabled: false
 				},
-		        series: [{
-		            data: [10, 15, 12, 8, 7]
-		        }],
+		        series: $scope.chartSeries,
 		        title: {
-		            text: 'Hello'
+		            text: '数学计算用时'
 		        },
 
 		        loading: false

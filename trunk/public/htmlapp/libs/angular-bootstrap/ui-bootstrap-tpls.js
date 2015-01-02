@@ -2532,7 +2532,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
         restrict: 'EA',
         compile: function (tElem, tAttrs) {
           var tooltipLinker = $compile( template );
-
+console.log(template);
           return function link ( scope, element, attrs ) {
             var tooltip;
             var tooltipLinkedScope;
@@ -2715,6 +2715,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
               unregisterTriggers();
 
               triggers = getTriggers( val );
+console.log(triggers);              
 
               if ( triggers.show === triggers.hide ) {
                 element.bind( triggers.show, toggleTooltipBind );
