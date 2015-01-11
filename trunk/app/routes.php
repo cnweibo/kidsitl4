@@ -10,6 +10,10 @@
 |
 */
 
+Route::resource('grade', 'GradesController');
+Route::resource('teacher', 'TeachersController');
+Route::resource('student', 'StudentsController');
+Route::resource('classroom', 'ClassroomsController');
 Route::group(array('prefix' => 'math'), function(){
     Route::get('exams/create', 'MathexamsController@create' );  
     Route::get('sum4', 'Mathsum4Controller@exercise4' );
@@ -33,6 +37,20 @@ Route::group(array('prefix' => 'math'), function(){
     Route::get('mathmulti2_12populate','Mathmultiply2Controller@index2_12');
     Route::get('mathmulti2_21populate','Mathmultiply2Controller@index2_21');
     Route::get('mathmulti2_22populate','Mathmultiply2Controller@index2_22');
+
+    Route::resource('skillcat','MathskillcatsController');
+    Route::resource('skill','MathskillsController');
+    Route::resource('exercisecat', 'MathexercisecatsController');
+    Route::resource('exercise', 'MathexercisesController');
+    Route::resource('opdata', 'MathexerciseopdatasController');
+    Route::resource('opsession', 'MathexerciseopsessionsController');
+    Route::resource('difficulty', 'MathexercisedifficultiesController');
+    Route::resource('score', 'MathscoresController');
+
+    Route::resource('syntheticalexam', 'MathsyntheticalexamsController');
+    Route::resource('syntheticalexamrow', 'MathsyntheticalexamrowsController');
+    Route::resource('syntheticalexamopdata', 'MathsyntheticalexamopdatasController');
+
 });
 Route::get('givetojs', function(){
     Give::javascript(['kidsit'=>'give to javascript']);
