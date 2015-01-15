@@ -20,7 +20,8 @@ class AdminGradesController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$title = "创建年级";
+		return View::make('admin.grades.create',compact('title'));
 	}
 
 	/**
@@ -29,8 +30,12 @@ class AdminGradesController extends \BaseController {
 	 * @return Response
 	 */
 	public function store()
-	{
-		//
+	{	$title = "创建年级";
+	    $grade = new Grade;
+	    $grade->skillgradetitle = Input::get('skillgradetitle');
+	    $grade->skillgradedescription = Input::get('skillgradedescription');
+	    $grade->save();
+	    return View::make('admin/grades/create', compact('title'))->with('success', Lang::get('admin/blogs/messages.create.success'));
 	}
 
 	/**

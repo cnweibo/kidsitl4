@@ -112,7 +112,7 @@
                                 <i class="glyphicon glyphicon-cog"></i> 系统<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li {{ (Request::is('admin/system/grade*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><span class="glyphicon glyphicon-list"></span> 年级管理</a></li>
+                                <li {{ (Request::is('admin/system/grade*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/system/grade') }}}"><span class="glyphicon glyphicon-list"></span> 年级管理</a></li>
                                 <li {{ (Request::is('admin/system/teacher*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 老师管理</a></li>
                                 <li {{ (Request::is('admin/system/classroom*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/fayinguizes') }}}"><span class="shock-edu-classroom"></span> 教室管理</a></li>
                                 <li {{ (Request::is('admin/system/student*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaorelatedwords') }}}"><span class="glyphicon glyphicon-paperclip"></span> 学生管理</a></li>
