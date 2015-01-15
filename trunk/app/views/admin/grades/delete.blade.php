@@ -1,0 +1,1 @@
+app/views/admin/grades/delete.blade.php
