@@ -19,6 +19,7 @@ return array(
     'AdminController' => $baseDir . '/app/controllers/AdminController.php',
     'AdminDashboardController' => $baseDir . '/app/controllers/admin/AdminDashboardController.php',
     'AdminFayinguizeController' => $baseDir . '/app/controllers/admin/AdminFayinguizeController.php',
+    'AdminGradesController' => $baseDir . '/app/controllers/admin/AdminGradesController.php',
     'AdminGuestaddedwordsController' => $baseDir . '/app/controllers/admin/AdminGuestaddedwordsController.php',
     'AdminRelatedsentenceController' => $baseDir . '/app/controllers/admin/AdminRelatedsentenceController.php',
     'AdminRolesController' => $baseDir . '/app/controllers/admin/AdminRolesController.php',

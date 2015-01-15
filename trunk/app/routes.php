@@ -369,6 +369,25 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('guestaddedwords/{fayinguize}/delete', array('as'=>'guestaddedwordsdelete', 'uses' => 'AdminGuestaddedwordsController@postDelete'));
     Route::controller('guestaddedwords', 'AdminGuestaddedwordsController');
 
+    // math relative resource admin
+    Route::resource('math/skillcat','AdminMathskillcatsController');
+    Route::resource('math/skill','AdminMathskillsController');
+    Route::resource('math/exercisecat', 'AdminMathexercisecatsController');
+    Route::resource('math/exercise', 'AdminMathexercisesController');
+    // Route::resource('math/opdata', 'AdminMathexerciseopdatasController');
+    // Route::resource('math/opsession', 'AdminMathexerciseopsessionsController');
+    Route::resource('math/difficulty', 'AdminMathexercisedifficultiesController');
+    // Route::resource('math/score', 'AdminMathscoresController');
+
+    // Route::resource('math/syntheticalexam', 'AdminMathsyntheticalexamsController');
+    // Route::resource('math/syntheticalexamrow', 'AdminMathsyntheticalexamrowsController');
+    // Route::resource('math/syntheticalexamopdata', 'AdminMathsyntheticalexamopdatasController');
+
+    // global grade information admin
+    Route::get('system/grade/data', 'AdminGradesController@getData'); 
+    Route::resource('system/grade', 'AdminGradesController');
+
+
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
 });

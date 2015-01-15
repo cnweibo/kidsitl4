@@ -11,7 +11,7 @@
 
 	<title>
 		@section('title')
-			Administration
+            Administration
 		@show
 	</title>
 
@@ -45,6 +45,7 @@
 
 	<!-- CSS   ,prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css,custom.css-->
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css,bootstrap-theme.min.css,bootstrap-prettify.css,bootstrap-wysihtml5.css,datatables-bootstrap.css,colorbox.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/shockiconedu/stylesheet.css')}}">
     <link rel="stylesheet" href="{{asset('bootstrap/css/custom.css')}}">
     <link rel="stylesheet" href="{{asset('bootstrap/fonts/font-awesome-4.1.0/css/font-awesome.min.css')}}">
     @yield('css')
@@ -98,13 +99,25 @@
                                 <i class="glyphicon glyphicon-sort-by-alphabet"></i> 音标<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li{{ (Request::is('admin/yinbiaocategory*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><span class="glyphicon glyphicon-list"></span> 音标类别管理</a></li>
-                                <li{{ (Request::is('admin/yinbiaos*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 音标管理</a></li>
-                                <li{{ (Request::is('admin/fayinguizes*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/fayinguizes') }}}"><span class="glyphicon glyphicon-retweet"></span> 发音规则管理</a></li>
-                                <li{{ (Request::is('admin/yinbiaorelatedwords*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaorelatedwords') }}}"><span class="glyphicon glyphicon-paperclip"></span> 相关单词管理</a></li>
-                                <li{{ (Request::is('admin/relatedsentences*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/relatedsentences') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 例句管理</a></li>
-                                <li{{ (Request::is('admin/relatedsentences*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/guestaddedwords') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 客词管理</a></li>
-                    </ul>
+                                <li {{ (Request::is('admin/yinbiaocategory*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><span class="glyphicon glyphicon-list"></span> 音标类别管理</a></li>
+                                <li {{ (Request::is('admin/yinbiaos*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 音标管理</a></li>
+                                <li {{ (Request::is('admin/fayinguizes*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/fayinguizes') }}}"><span class="glyphicon glyphicon-retweet"></span> 发音规则管理</a></li>
+                                <li {{ (Request::is('admin/yinbiaorelatedwords*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaorelatedwords') }}}"><span class="glyphicon glyphicon-paperclip"></span> 相关单词管理</a></li>
+                                <li {{ (Request::is('admin/relatedsentences*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/relatedsentences') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 例句管理</a></li>
+                                <li {{ (Request::is('admin/relatedsentences*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/guestaddedwords') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 客词管理</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown {{(Request::is('admin/system/grade*') ? ' active' : '') }}">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/yinbiaos') }}}">
+                                <i class="glyphicon glyphicon-cog"></i> 系统<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li {{ (Request::is('admin/system/grade*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaocategory') }}}"><span class="glyphicon glyphicon-list"></span> 年级管理</a></li>
+                                <li {{ (Request::is('admin/system/teacher*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 老师管理</a></li>
+                                <li {{ (Request::is('admin/system/classroom*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/fayinguizes') }}}"><span class="shock-edu-classroom"></span> 教室管理</a></li>
+                                <li {{ (Request::is('admin/system/student*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaorelatedwords') }}}"><span class="glyphicon glyphicon-paperclip"></span> 学生管理</a></li>
+                                <li {{ (Request::is('admin/system/editor*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/relatedsentences') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 网站编辑管理</a></li>
+                            </ul>
                         </li>
                         <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
     						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
