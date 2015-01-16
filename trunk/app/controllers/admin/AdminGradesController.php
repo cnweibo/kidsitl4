@@ -69,6 +69,10 @@ class AdminGradesController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		$title = "年级编辑";
+		$grade = Grade::find($id)->first();
+		// dd($skillgrade);
+		return View::make('admin/grades/edit',compact('grade','title'));
 	}
 
 	/**
@@ -79,7 +83,11 @@ class AdminGradesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$newgrade = Grade::find($id)->first();
+		$newgrade->skillgradetitle = Input::get('skillgradetitle');
+		$newgrade->skillgradedescription = Input::get('skillgradedescription');
+		$newgrade->save();
+		return Redirect::to('admin/system/grade/'.$newgrade->id.'/edit')->with('success', "修改成功！");
 	}
 
 	/**
