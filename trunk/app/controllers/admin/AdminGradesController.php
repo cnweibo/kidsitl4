@@ -30,12 +30,23 @@ class AdminGradesController extends \BaseController {
 	 * @return Response
 	 */
 	public function store()
-	{	$title = "创建年级";
+	{	
+		$title = "创建年级";
 	    $grade = new Grade;
 	    $grade->skillgradetitle = Input::get('skillgradetitle');
 	    $grade->skillgradedescription = Input::get('skillgradedescription');
-	    $grade->save();
-	    return View::make('admin/grades/create', compact('title'))->with('success', Lang::get('admin/blogs/messages.create.success'));
+	    try {
+		    $grade->save();	    	
+	    } catch (Exception $e) {
+	    	$errorcode = $e->getCode();
+	    	if ($errorcode==23000) {
+	    			$errorinfo = "$grade->skillgradetitle 年级已经存在！";
+	    		}	
+	    	// dd($errorinfo);
+		    return Redirect::to('admin/system/grade/create')->with('error', $errorinfo);
+
+	    }
+	    return Redirect::to('admin/system/grade/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
 	}
 
 	/**
