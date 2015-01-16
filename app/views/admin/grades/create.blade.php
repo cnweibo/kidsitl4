@@ -3,7 +3,7 @@
 	{{ Form::open(['action' => 'AdminGradesController@store']) }}
 		<div class="form-group">
 			{{ Form::label('skillgradetitle', '年级') }}
-			{{ Form::text('skillgradetitle', null, ['class' => 'form-control']) }}
+			{{ Form::text('skillgradetitle', null, ['class' => 'form-control','autofocus']) }}
 		</div>
 		<div class="form-group">
 			{{ Form::label('skillgradedescription', '详细描述') }}
