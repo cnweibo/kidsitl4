@@ -70,8 +70,7 @@ class AdminGradesController extends \BaseController {
 	{
 		//
 		$title = "年级编辑";
-		$grade = Grade::find($id)->first();
-		// dd($skillgrade);
+		$grade = Grade::findOrFail($id);
 		return View::make('admin/grades/edit',compact('grade','title'));
 	}
 
