@@ -71,7 +71,22 @@ class AdminGradesController extends \BaseController {
 		//
 		$title = "年级编辑";
 		$grade = Grade::findOrFail($id);
-		return View::make('admin/grades/edit',compact('grade','title'));
+		$gradeids = DB::table('grades')->orderBy('id')->lists('id');
+		$currentgradekey = array_search($id, $gradeids);
+		$preivousindex = $currentgradekey -1;
+		$nextindex = $currentgradekey +1;
+		$totoalids = count($gradeids);
+		if ($currentgradekey==0) {
+			$preivousindex = $totoalids-1;
+			$nextindex = $currentgradekey+1;
+		}
+		if ($currentgradekey==($totoalids-1)) {
+			$preivousindex = $currentgradekey-1;
+			$nextindex = 0;
+		}
+		$previousid = $gradeids[$preivousindex];
+		$nextid = $gradeids[$nextindex];
+		return View::make('admin/grades/edit',compact('grade','title','previousid','nextid','totoalids'));
 	}
 
 	/**
