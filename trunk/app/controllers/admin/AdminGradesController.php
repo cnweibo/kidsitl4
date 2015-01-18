@@ -3,14 +3,26 @@
 class AdminGradesController extends \BaseController {
 
 	/**
+	 * Display the index frontend page for angular
+	 *
+	 * @return Response
+	 */
+	public function indexpage()
+	{
+
+		$title = "年级管理";
+		return View::make('admin.grades.index',compact('title'));
+	}
+
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$title = "年级管理";
-		return View::make('admin.grades.index',compact('title'));
+
+		return Grade::all();
 	}
 
 	/**
@@ -105,6 +117,19 @@ class AdminGradesController extends \BaseController {
 	}
 
 	/**
+	 * display page for deleting the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function getDelete($id)
+	{
+		//
+		$title = "删除年级";
+		$grade = Grade::find($id);
+		return View::make('admin/grades/delete',compact('title','grade'));
+	}
+	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
@@ -113,6 +138,9 @@ class AdminGradesController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		$grade = Grade::findOrFail($id);
+		$grade->delete();
+		return Redirect::to('admin/system/grade');
 	}
 
 	/**

@@ -12,50 +12,45 @@
 	{{-- expr --}}
 @stop
 @section('content')
-	<div class="page-header">
-		<h3>
-			{{{ $title }}}
 
-			<div class="pull-right">
-				<a href="{{{ URL::to('admin/system/grade/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 新增年级</a>
-			</div>
-		</h3>
+	<div class="container" ng-app="gradeApp">
+		<div cg-busy="currentPromise" style="position:absolute;top:50%;left:50%" ></div>
+		<div class="page-header">
+			<h3>
+				{{{ $title }}}
+
+				<div class="pull-right">
+					<a href="#/create" class="btn btn-primary">新增</a>
+					<a href="#/grade-list" class="btn btn-primary">列表展示</a>
+					<a href="#grade-list/1" class="btn btn-primary">单个展示</a>
+					<!-- <a href="{{{ URL::to('admin/system/grade/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 新增年级</a>  -->
+				</div>
+			</h3>
+		</div>
+		<div ng-view></div> <!-- web app view -->
+		
 	</div>
-	@include('admin.partials.mathprocess')
-	
-	<table id="grade" class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th class="col-md-1">ID</th>
-				<th class="col-md-1">年级：</th>
-				<th class="col-md-4">描述</th>
-				<th class="col-md-2">创建于：</th>
-				<th class="col-md-2">操作：</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
 @stop
 
 {{-- Scripts --}}
 @section('scripts')
-	<script type="text/javascript">
-		var oTable;
-		$(document).ready(function() {
-			oTable = $('#grade').dataTable( {
-				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-				"sPaginationType": "bootstrap",
-				"oLanguage": {
-					"sLengthMenu": "_MENU_ records per page"
-				},
-				"bProcessing": true,
-		        "bServerSide": true,
-		        "sAjaxSource": "{{ URL::to('admin/system/grade/data') }}",
-		        "fnDrawCallback": function ( oSettings ) {
-	           		$(".iframe").colorbox({iframe:true, width:"99%", height:"98%"});
-	     		}
-			});
-		});
-	</script>
+	<!--(if target mathdev)><!-->
+	<script type="text/javascript" src="{{asset('htmlapp/libs/jquery/dist/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
+
+	
+    <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>
+
+
+	<script type="text/javascript" src="{{asset('htmlapp/system/grade/gradeApp.mod.js')}}"></script>
+
+	<script type="text/javascript" src="{{asset('htmlapp/system/grade/gradeList.ctrl.js')}}"></script>
+
+	<script type="text/javascript" src="{{asset('htmlapp/syscommon/khttp.srv.js')}}"></script>
+	
+<!--<!(endif)-->
+<!--(if target mathrelease)><!-->
+<!-- <script type="text/javascript" src="{{asset('dist/appGrade.min.js')}}"></script>-->
+<!--<!(endif)-->
 @stop

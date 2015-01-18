@@ -1,0 +1,52 @@
+<div ng-controller="gradeListCtrl as vm">	
+	<div class="panel panel-danger"> <!--  come from admin.partials.mathprocess -->
+			<div class="panel-heading">
+			<h3 class="panel-title">Math模块管理流程图：</h3>
+			</div>
+			<div class="panel-body">
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/system/grade">
+  				<i class="fa fa-flag fa-2x pull-left"></i> 创建年级</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/skillcat">
+  				<i class="fa fa-flag fa-2x pull-left"></i> 创建知识点类别</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/skill">
+  				<i class="fa fa-flag fa-2x pull-left"></i> 创建知识点</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/exercisecat">
+  				<i class="fa fa-flag fa-2x pull-left"></i> 创建习题类别</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/exercisedifficulty">
+  				<i class="fa fa-flag fa-2x pull-left"></i> 创建习题难度</a>
+  				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/exercise">
+  				<i class="fa fa-flag fa-2x pull-left"></i> 创建习题</a>
+
+			</div>
+    </div>
+
+	<table id="grade" class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th class="col-md-1">ID</th>
+				<th class="col-md-1">年级：</th>
+				<th class="col-md-4">描述</th>
+				<th class="col-md-2">创建于：</th>
+				<th class="col-md-2">操作：</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="grade in vm.grades">
+				<td>[[grade.id]]</td>
+				<td>[[grade.skillgradetitle]]</td>
+				<td>[[grade.skillgradedescription]]</td>
+				<td>[[grade.created_at]]</td>
+				<td> 
+					<a ng-click="vm.editGrade([[grade.id]])" class="btn btn-primary">编辑</a>
+					<a ng-click="vm.editGrade([[grade.id]])" class="btn btn-danger">删除</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a ng-click="vm.createGrade()" class="btn btn-primary"><span></span>新增年级</a>
+</div>
