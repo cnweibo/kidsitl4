@@ -3,15 +3,16 @@
     'use strict';
             var scripts = document.getElementsByTagName("script");
             var currentScriptPath = scripts[scripts.length-1].src;
-    console.log(currentScriptPath);
+    // console.log(currentScriptPath);
 
     angular
         .module('khttp',[])
         .factory('khttp',['$http','$q',function($http,$q){
-			var deferred = $q.defer();
+			
 			return {
 
 				getAll: function (baseurl) {
+					var deferred = $q.defer();
 					$http({method: 'GET', url: baseurl}).
 						success(function(data,status,headers,config){
 							deferred.resolve(data);
@@ -22,14 +23,21 @@
 					return deferred.promise;
 				},
 				getOne: function (baseurl,id) {
+					var deferred = $q.defer();
 					$http({method: 'GET', url: baseurl+id}).
-						success(function(){}).
+						success(function(data,status,headers,config){
+							deferred.resolve(data);
+							console.log(data);
+						}).
 						error(function  (data,status,headers,config) {
-							deferred.reject(status);
+							
+							console.log(status);
+						    deferred.reject(status);
 						});
 					return deferred.promise;
 				},
 				store: function (baseurl,id) {
+					var deferred = $q.defer();
 					$http({method: 'GET', url: baseurl+id}).
 						success(function(){}).
 						error(function  (data,status,headers,config) {
@@ -39,6 +47,7 @@
 				},
 				// return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
 				update: function (baseurl,id,parameters) {
+					var deferred = $q.defer();
 					var postData={};
 					// postData._token = parameters._token;
 					// postData.title = parameters.todo.title;
@@ -57,6 +66,18 @@
 					});
 					return deferred.promise;
 					// localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+				},
+				destroy: function(baseurl, id){
+					var deferred = $q.defer();
+					$http.delete(baseurl+id)
+					.success(function(data,status,headers,config){
+						deferred.resolve(data);
+					}).
+					error(function(data,status,headers,config) {
+						deferred.reject(status);
+					});
+					return deferred.promise;
+
 				}
 			};
 		}]);

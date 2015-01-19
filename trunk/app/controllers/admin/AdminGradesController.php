@@ -58,7 +58,7 @@ class AdminGradesController extends \BaseController {
 		    return Redirect::to('admin/system/grade/create')->with('error', $errorinfo);
 
 	    }
-	    return Redirect::to('admin/system/grade/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
+	    return Redirect::to('admin/api/system/grade/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
 	}
 
 	/**
@@ -69,7 +69,7 @@ class AdminGradesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return Grade::find($id);
 	}
 
 	/**
@@ -98,7 +98,7 @@ class AdminGradesController extends \BaseController {
 		}
 		$previousid = $gradeids[$preivousindex];
 		$nextid = $gradeids[$nextindex];
-		return View::make('admin/grades/edit',compact('grade','title','previousid','nextid','totoalids'));
+		return View::make('admin/api/grades/edit',compact('grade','title','previousid','nextid','totoalids'));
 	}
 
 	/**
@@ -113,7 +113,7 @@ class AdminGradesController extends \BaseController {
 		$newgrade->skillgradetitle = Input::get('skillgradetitle');
 		$newgrade->skillgradedescription = Input::get('skillgradedescription');
 		$newgrade->save();
-		return Redirect::to('admin/system/grade/'.$newgrade->id.'/edit')->with('success', "修改成功！");
+		return Redirect::to('admin/api/system/grade/'.$newgrade->id.'/edit')->with('success', "修改成功！");
 	}
 
 	/**
@@ -127,7 +127,7 @@ class AdminGradesController extends \BaseController {
 		//
 		$title = "删除年级";
 		$grade = Grade::find($id);
-		return View::make('admin/grades/delete',compact('title','grade'));
+		return View::make('admin/api/grades/delete',compact('title','grade'));
 	}
 	/**
 	 * Remove the specified resource from storage.
@@ -140,7 +140,8 @@ class AdminGradesController extends \BaseController {
 		//
 		$grade = Grade::findOrFail($id);
 		$grade->delete();
-		return Redirect::to('admin/system/grade');
+		return 'delete ok';
+		// return Redirect::to('admin/api/system/grade');
 	}
 
 	/**

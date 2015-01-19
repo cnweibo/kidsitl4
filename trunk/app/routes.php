@@ -384,7 +384,11 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     // Route::resource('math/syntheticalexamopdata', 'AdminMathsyntheticalexamopdatasController');
 
     // global grade information admin
-    Route::resource('system/grade/api', 'AdminGradesController');
+    Route::group(array('prefix' => 'api'), function(){
+        Route::resource('system/grade', 'AdminGradesController');
+    });
+
+    // Route::resource('system/grade/api', 'AdminGradesController');
     Route::get('system/grade/', 'AdminGradesController@indexpage');
     Route::get('system/grade/{id}/delete','AdminGradesController@getDelete');
     Route::get('system/grade/data', 'AdminGradesController@getData'); 

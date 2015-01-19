@@ -13,6 +13,7 @@
 @stop
 @section('css')
 	<link rel="stylesheet" href="{{asset('htmlapp/libs/angular-xeditable-0.1.8/css/xeditable.css')}}">
+	<link rel="stylesheet" href="{{asset('htmlapp/assets/custom.css')}}">
 @stop
 @section('content')
 
