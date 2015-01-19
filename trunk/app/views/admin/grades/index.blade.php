@@ -11,6 +11,9 @@
 @section('description')
 	{{-- expr --}}
 @stop
+@section('css')
+	<link rel="stylesheet" href="{{asset('htmlapp/libs/angular-xeditable-0.1.8/css/xeditable.css')}}">
+@stop
 @section('content')
 
 	<div class="container" ng-app="gradeApp">
@@ -48,6 +51,8 @@
 	<script type="text/javascript" src="{{asset('htmlapp/system/grade/gradeList.ctrl.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('htmlapp/syscommon/khttp.srv.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-xeditable-0.1.8/js/xeditable.js')}}"></script>
+
 	
 <!--<!(endif)-->
 <!--(if target mathrelease)><!-->

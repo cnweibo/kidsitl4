@@ -38,16 +38,16 @@
 					return deferred.promise;
 				},
 				// return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
-				update: function (baseurl,parameters) {
+				update: function (baseurl,id,parameters) {
 					var postData={};
-					postData._token = parameters._token;
-					postData.title = parameters.todo.title;
-					postData.id = parameters.todo.id;
-					$http({method: 'POST', url: baseurl+parameters.todo.id,
+					// postData._token = parameters._token;
+					// postData.title = parameters.todo.title;
+					// postData.id = parameters.todo.id;
+					$http({method: 'POST', url: baseurl+id,
 						// params: {
 						//     _token: parameters._token
 						// },
-							data: postData
+							data: parameters
 					}).
 					success(function(data,status,headers,config){
 						deferred.resolve(data);
