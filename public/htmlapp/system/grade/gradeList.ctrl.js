@@ -3,43 +3,49 @@
     'use strict';
             var scripts = document.getElementsByTagName("script");
             var currentScriptPath = scripts[scripts.length-1].src;
-    console.log(currentScriptPath);
 
     angular
         .module('gradeApp')
-        .controller('gradeListCtrl',['$scope','khttp','$q',function($scope,khttp,$q){
+        .controller('gradeListCtrl',['$scope','khttp','$q','$http',function($scope,khttp,$q,$http){
         /*jshint validthis: true */
         var vm = this;
         var promise;
         // var grades;
-        vm.currentPromise = promise = khttp.getAll("http://kidsit.cn/admin/system/grade/api");
+        vm.currentPromise = promise = khttp.getAll("http://kidsit.cn/admin/api/system/grade/");
         promise.then(
             function(gradesdata) {/*success*/
                 $scope.grades = vm.gradesOrginal = gradesdata;
-                console.log($scope.grades);
                 },
             function(status) {console.log("error status code:"+status);}
         );
-        vm.checkAndSaveGradeTitle = function($data,grade){
+        vm.checkAndSaveGradeTitle = function(data,grade){
+
             var d = $q.defer();
-            vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/system/grade/api",grade.id,grade);
-            promise.then(
-                function(gradesdata) {/*success*/
-                    d.resolve(gradesdata);
-                },
-                function(status) {
-                    d.resolve(status);
-                    console.log("error status code:"+status);
-                }
-            );
+            // khttp.getOne("http://kidsit.cn/admin/api/system/grade/",grade.id)
+            // .then(
+            //     function(gradesdata) {/*success*/
+            //         d.resolve(); // resolve empty for onbeforesave continue to go
+            //         console.log(gradesdata);
+            //     },
+            //     function(status) {
+            //         d.reject('server error');
+            //         console.log("error status code:"+status);
+            //     }
+            // );
+
+
             return d.promise;
         };
-        vm.testmodel="this is from controller!";
-        $scope.$watchGroup('grades',function(nv,ov){
-            console.log(nv);
-            console.log(ov);
-
-        });
+        vm.deleteGrade = function(grade){
+            khttp.destroy("http://kidsit.cn/admin/api/system/grade/",grade.id).then(
+                function(res){
+                    // console.log(res);
+                },
+                function(error){
+                    // console.log(error);
+                }
+            );
+        };
         vm.saveGrades = function(){
 
         };

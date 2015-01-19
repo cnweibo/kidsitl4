@@ -333,3 +333,13 @@ article.mathexerciseitem{
   top: 50px;
   right: 41px;
 }
+/*for grade admin css*/
+#grade.table tr td{
+  vertical-align: middle;
+}
+.editable-click, a.editable-click {
+text-decoration: none;
+color: #428bca;
+cursor: pointer;
+border-bottom: none;
+}
