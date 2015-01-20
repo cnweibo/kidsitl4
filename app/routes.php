@@ -383,21 +383,37 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     // Route::resource('math/syntheticalexamrow', 'AdminMathsyntheticalexamrowsController');
     // Route::resource('math/syntheticalexamopdata', 'AdminMathsyntheticalexamopdatasController');
 
-    // global grade information admin
+    // global grade information admin apis for data feeding
     Route::group(array('prefix' => 'api'), function(){
         Route::resource('system/grade', 'AdminGradesController');
     });
 
-    // Route::resource('system/grade/api', 'AdminGradesController');
-    Route::get('system/grade/', 'AdminGradesController@indexpage');
-    Route::get('system/grade/{id}/delete','AdminGradesController@getDelete');
-    Route::get('system/grade/data', 'AdminGradesController@getData'); 
-    Route::get('system/grade/{id}/delete','AdminGradesController@getDelete');
+    // Following is the GET request for laravel rendered html page funcioning as angular templates
+    Route::get('system/grade/', 'AdminGradesController@indexpage'); // index page
+    Route::get('system/grade/create', 'AdminGradesController@create'); // create page
+    Route::get('system/grade/{id}','AdminGradesController@show'); // show page
+    Route::get('system/grade/{id}/delete','AdminGradesController@getDelete'); //delete page
+    Route::get('system/grade/data', 'AdminGradesController@getData'); // ajax data feeding page
+
     
 
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
+
+
+    Route::resource('math/skillcat','MathskillcatsController');
+    Route::resource('math/skill','MathskillsController');
+    Route::resource('math/exercisecat', 'MathexercisecatsController');
+    Route::resource('math/exercise', 'MathexercisesController');
+    Route::resource('math/opdata', 'MathexerciseopdatasController');
+    Route::resource('math/opsession', 'MathexerciseopsessionsController');
+    Route::resource('math/difficulty', 'MathexercisedifficultiesController');
+    Route::resource('math/score', 'MathscoresController');
+    Route::resource('math/syntheticalexam', 'MathsyntheticalexamsController');
+    Route::resource('math/syntheticalexamrow', 'MathsyntheticalexamrowsController');
+    Route::resource('math/syntheticalexamopdata', 'MathsyntheticalexamopdatasController');
+
 });
 
 # Posts - Second to last set, match slug

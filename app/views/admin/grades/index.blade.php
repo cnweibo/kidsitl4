@@ -48,6 +48,7 @@
 
 
 	<script type="text/javascript" src="{{asset('htmlapp/system/grade/gradeApp.mod.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/system/grade/gradeCreate.ctrl.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('htmlapp/system/grade/gradeList.ctrl.js')}}"></script>
 

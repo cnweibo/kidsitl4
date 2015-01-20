@@ -36,9 +36,9 @@
 						});
 					return deferred.promise;
 				},
-				store: function (baseurl,id) {
+				store: function (baseurl,parameters) {
 					var deferred = $q.defer();
-					$http({method: 'GET', url: baseurl+id}).
+					$http({method: 'POST', url: baseurl,data:parameters}).
 						success(function(){}).
 						error(function  (data,status,headers,config) {
 							deferred.reject(status);

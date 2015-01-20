@@ -33,6 +33,7 @@ class AdminGradesController extends \BaseController {
 	public function create()
 	{
 		$title = "创建年级";
+		// feed the html partial template to angular 
 		return View::make('admin.grades.create',compact('title'));
 	}
 
@@ -43,22 +44,24 @@ class AdminGradesController extends \BaseController {
 	 */
 	public function store()
 	{	
-		$title = "创建年级";
-	    $grade = new Grade;
-	    $grade->skillgradetitle = Input::get('skillgradetitle');
-	    $grade->skillgradedescription = Input::get('skillgradedescription');
-	    try {
-		    $grade->save();	    	
-	    } catch (Exception $e) {
-	    	$errorcode = $e->getCode();
-	    	if ($errorcode==23000) {
-	    			$errorinfo = "$grade->skillgradetitle 年级已经存在！";
-	    		}	
-	    	// dd($errorinfo);
-		    return Redirect::to('admin/system/grade/create')->with('error', $errorinfo);
+		Log::info("store request  \r\n",Input::all());
 
-	    }
-	    return Redirect::to('admin/api/system/grade/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
+		// $title = "创建年级";
+	 //    $grade = new Grade;
+	 //    $grade->skillgradetitle = Input::get('skillgradetitle');
+	 //    $grade->skillgradedescription = Input::get('skillgradedescription');
+	 //    try {
+		//     $grade->save();	    	
+	 //    } catch (Exception $e) {
+	 //    	$errorcode = $e->getCode();
+	 //    	if ($errorcode==23000) {
+	 //    			$errorinfo = "$grade->skillgradetitle 年级已经存在！";
+	 //    		}	
+	 //    	// dd($errorinfo);
+		//     return Redirect::to('admin/system/grade/create')->with('error', $errorinfo);
+
+	 //    }
+	 //    return Redirect::to('admin/api/system/grade/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
 	}
 
 	/**
