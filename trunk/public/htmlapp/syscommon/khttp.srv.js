@@ -39,7 +39,9 @@
 				store: function (baseurl,parameters) {
 					var deferred = $q.defer();
 					$http({method: 'POST', url: baseurl,data:parameters}).
-						success(function(){}).
+						success(function(data){
+							deferred.resolve(data);
+						}).
 						error(function  (data,status,headers,config) {
 							deferred.reject(status);
 						});

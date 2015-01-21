@@ -48,6 +48,7 @@ class AdminGradesController extends \BaseController {
 		// return 'hit he route';
 
 		// $title = "创建年级";
+		$errorinfo="ok";
 	    $grade = new Grade;
 	    $grade->skillgradetitle = Input::get('skillgradetitle');
 	    $grade->skillgradedescription = Input::get('skillgradedescription');
@@ -58,10 +59,11 @@ class AdminGradesController extends \BaseController {
 	    	if ($errorcode==23000) {
 	    			$errorinfo = "$grade->skillgradetitle 年级已经存在！";
 	    		}	
-	    	// dd($errorinfo);
+	    	dd($errorinfo);
 		    return Redirect::to('admin/system/grade/create')->with('error', $errorinfo);
 
 	    }
+	    dd($errorinfo);
 	    return Redirect::to('admin/api/system/grade/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
 	}
 

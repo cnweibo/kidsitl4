@@ -6,7 +6,7 @@
 
     angular
         .module('gradeApp')
-        .controller('gradeListCtrl',['$scope','khttp','$q','$http',function($scope,khttp,$q,$http){
+        .controller('gradeListCtrl',['$scope','khttp','$q','$http','$location',function($scope,khttp,$q,$http,$location){
         /*jshint validthis: true */
         var vm = this;
         var promise;
@@ -20,7 +20,7 @@
         );
         vm.checkAndSaveGradeTitle = function(data,grade){
 
-            var d = $q.defer();
+            // var d = $q.defer();
             // khttp.getOne("http://kidsit.cn/admin/api/system/grade/",grade.id)
             // .then(
             //     function(gradesdata) {/*success*/
@@ -34,9 +34,21 @@
             // );
 
 
+            var d = $q.defer();
+            vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/grade/",grade.id,grade);
+            promise.then(
+                function(gradesdata) {/*success*/
+                    d.resolve();
+                },
+                function(status) {
+                    d.resolve(status);
+                    console.log("error status code:"+status);
+                }
+            );
             return d.promise;
         };
         vm.deleteGrade = function(grade){
+            $scope.grades.splice($scope.grades.indexOf(grade),1);
             khttp.destroy("http://kidsit.cn/admin/api/system/grade/",grade.id).then(
                 function(res){
                     // console.log(res);
@@ -45,6 +57,7 @@
                     // console.log(error);
                 }
             );
+            $location.path('/grade-list');
         };
         vm.saveGrades = function(){
 
