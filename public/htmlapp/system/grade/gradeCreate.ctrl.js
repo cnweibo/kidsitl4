@@ -19,8 +19,8 @@
 			vm.newGrade._token = $window._token;
 			vhttp.store("http://kidsit.cn/admin/api/system/grade",vm.newGrade)
 			.then(
-				function () {
-					console.log('success');
+				function (data) {
+					console.log(data);
 				},
 				function () {
 					console.log('error');

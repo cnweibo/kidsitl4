@@ -13,7 +13,7 @@
 		</div>
 
 		<!-- Content -->
-			<form method="POST" action="http://kidsit.cn/admin/api/system/grade" accept-charset="UTF-8"><input name="_token" type="hidden" ng-value={{csrf_token()}} >
+			<form method="POST" action="http://kidsit.cn/admin/api/system/grade" accept-charset="UTF-8">
 				<div class="form-group">
 					{{ Form::label('skillgradetitle', '年级') }}
 					{{ Form::text('skillgradetitle', null, ['class' => 'form-control','autofocus','ng-model' => 'vm.newGrade.skillgradetitle']) }}
