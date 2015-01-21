@@ -5,9 +5,9 @@
         .module('gradeApp')
         .controller('gradeCreateCtrl',gradeCreateCtrl);
 
-    gradeCreateCtrl.$inject = ['$scope','$window','khttp'];
+    gradeCreateCtrl.$inject = ['$scope','$window','khttp','$location'];
 
-    function gradeCreateCtrl($scope,$window,vhttp) {
+    function gradeCreateCtrl($scope,$window,vhttp,$location) {
         /*jshint validthis: true */
         var vm = this;
         vm.newGrade = null;
@@ -26,6 +26,8 @@
 					console.log('error');
 				}
 				);
+			$location.path('/grade-list');
 		};
+		
     }
 })();
