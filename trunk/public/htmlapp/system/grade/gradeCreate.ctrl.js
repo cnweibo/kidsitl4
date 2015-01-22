@@ -11,7 +11,6 @@
         /*jshint validthis: true */
         var vm = this;
         vm.newGrade = null;
-        console.log("create control");
         vm.goBack = function () {
 			$window.history.back();
 		};

@@ -115,11 +115,22 @@ class AdminGradesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$newgrade = Grade::find($id)->first();
+		$newgrade = Grade::find($id);
 		$newgrade->skillgradetitle = Input::get('skillgradetitle');
 		$newgrade->skillgradedescription = Input::get('skillgradedescription');
-		$newgrade->save();
-		return Redirect::to('admin/api/system/grade/'.$newgrade->id.'/edit')->with('success', "修改成功！");
+	    try {
+		    $newgrade->save();   	
+	    } catch (Exception $e) {
+	    	$errorcode = $e->getCode();
+	    	if ($errorcode==23000) {
+	    			$errorinfo = "$newgrade->skillgradetitle 年级已经存在！";
+	    		}	
+	    	dd($errorinfo);
+
+	    }
+
+		return "update success for $newgrade->skillgradetitle!";
+		// return Redirect::to('admin/api/system/grade/'.$newgrade->id.'/edit')->with('success', "修改成功！");
 	}
 
 	/**

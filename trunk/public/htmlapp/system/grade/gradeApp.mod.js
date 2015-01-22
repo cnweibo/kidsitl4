@@ -10,7 +10,7 @@
         $interpolateProvider.endSymbol(']]');
 
         
-		$routeProvider.when('/create', {templateUrl: 'http://kidsit.cn/admin/system/grade/create', controller: 'gradeCreateCtrl'});
+		$routeProvider.when('/create', {templateUrl: 'http://kidsit.cn/htmlapp/system/grade/partials/create.html', controller: 'gradeCreateCtrl'});
 		$routeProvider.when('/grade-list', {templateUrl: 'http://kidsit.cn/htmlapp/system/grade/partials/index.html'});
 		$routeProvider.when('/grade-detail/:id', {templateUrl: 'http://kidsit.cn/htmlapp/system/grade/partials/show.html', controller: 'gradeDetailCtrl'});
 		$routeProvider.otherwise({redirectTo: '/grade-list'});
