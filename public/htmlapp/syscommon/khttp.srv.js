@@ -48,13 +48,13 @@
 					return deferred.promise;
 				},
 				// return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
-				update: function (baseurl,id,parameters) {
+				update: function (baseurl,parameters) {
 					var deferred = $q.defer();
 					var postData={};
 					// postData._token = parameters._token;
 					// postData.title = parameters.todo.title;
 					// postData.id = parameters.todo.id;
-					$http({method: 'POST', url: baseurl+id,
+					$http({method: 'PUT', url: baseurl,
 						// params: {
 						//     _token: parameters._token
 						// },

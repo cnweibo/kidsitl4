@@ -31,7 +31,5 @@
 		<footer class="clearfix">
 					</footer>
 		<!-- ./ Footer -->
-		<script type="text/javascript">
-			var _token ="{{csrf_token()}}";
-		</script>
+
 </div>

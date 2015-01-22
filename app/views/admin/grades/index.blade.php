@@ -38,6 +38,10 @@
 
 {{-- Scripts --}}
 @section('scripts')
+	@include('admin.partials.csrf_token')
+	<script type="text/javascript">
+
+	</script>
 	<!--(if target mathdev)><!-->
 	<script type="text/javascript" src="{{asset('htmlapp/libs/jquery/dist/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>

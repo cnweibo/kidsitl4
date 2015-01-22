@@ -388,7 +388,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         Route::resource('system/grade', 'AdminGradesController');
     });
 
-    // Following is the GET request for laravel rendered html page funcioning as angular templates
+    // Following is the GET request for laravel rendered html page funcioning as angular template partials
     Route::get('system/grade/', 'AdminGradesController@indexpage'); // index page
     Route::get('system/grade/create', 'AdminGradesController@create'); // create page
     Route::get('system/grade/{id}','AdminGradesController@show'); // show page

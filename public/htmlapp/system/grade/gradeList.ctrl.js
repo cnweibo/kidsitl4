@@ -6,7 +6,7 @@
 
     angular
         .module('gradeApp')
-        .controller('gradeListCtrl',['$scope','khttp','$q','$http','$location',function($scope,khttp,$q,$http,$location){
+        .controller('gradeListCtrl',['$scope','khttp','$q','$http','$location','$window',function($scope,khttp,$q,$http,$location,$window){
         /*jshint validthis: true */
         var vm = this;
         var promise;
@@ -32,12 +32,15 @@
             //         console.log("error status code:"+status);
             //     }
             // );
-
-
             var d = $q.defer();
-            vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/grade/",grade.id,grade);
+            grade._token = $window._token;
+            grade.skillgradetitle = data;
+            vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/grade/"+grade.id,grade);
             promise.then(
                 function(gradesdata) {/*success*/
+                if (gradesdata.indexOf("年级") >= 0)
+                        d.resolve(gradesdata);
+                else
                     d.resolve();
                 },
                 function(status) {
