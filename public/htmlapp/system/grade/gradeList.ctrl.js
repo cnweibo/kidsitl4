@@ -6,7 +6,7 @@
 
     angular
         .module('gradeApp')
-        .controller('gradeListCtrl',['$scope','khttp','$q','$http','$location','$window',function($scope,khttp,$q,$http,$location,$window){
+        .controller('gradeListCtrl',['$scope','khttp','$q','$http','$location','$window','toastr',function($scope,khttp,$q,$http,$location,$window,toastr){
         /*jshint validthis: true */
         var vm = this;
         var promise;
@@ -48,15 +48,17 @@
                     console.log("error status code:"+status);
                 }
             );
+            toastr.error(grade.skillgradetitle+' 该年级已经存在！');
             return d.promise;
         };
         vm.deleteGrade = function(grade){
             $scope.grades.splice($scope.grades.indexOf(grade),1);
             khttp.destroy("http://kidsit.cn/admin/api/system/grade/",grade.id).then(
                 function(res){
-                    // console.log(res);
+                    toastr.success(grade.skillgradetitle+'删除成功！');
                 },
                 function(error){
+                    toastr.error(grade.skillgradetitle+'删除出错！');
                     // console.log(error);
                 }
             );

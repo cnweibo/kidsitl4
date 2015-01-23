@@ -12,7 +12,7 @@
 		</div>
 
 		<!-- Content -->
-		<form method="POST" action="http://kidsit.cn/admin/api/system/grade" accept-charset="UTF-8">
+		<form method="POST" action="http://kidsit.cn/admin/api/system/grade" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createGrade()'}">
 			<div class="form-group">
 				<label for="skillgradetitle">年级</label>			
 				<input class="form-control" autofocus="autofocus" name="skillgradetitle" type="text" id="skillgradetitle" ng-model="vm.newGrade.skillgradetitle">			

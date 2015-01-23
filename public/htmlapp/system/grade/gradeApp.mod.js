@@ -4,7 +4,7 @@
     document.write("<base href='http://kidsit.cn/admin/system/grade' />");
     var assetbase = "http://kidsit.cn/htmlapp/system/grade/";
     var indexpagebase = "http://kidsit.cn/admin/system/grade#";
-    angular.module('gradeApp',['ngRoute','khttp','cgBusy','xeditable'])
+    angular.module('gradeApp',['ngRoute','khttp','cgBusy','xeditable','toastr','ui.utils'])
     .config(['$routeProvider','$interpolateProvider', function ($routeProvider,$interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');

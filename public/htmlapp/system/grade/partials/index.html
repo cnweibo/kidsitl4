@@ -42,12 +42,10 @@
 				<td editable-text="grade.skillgradedescription">[[grade.skillgradedescription]]</td>
 				<td>[[grade.created_at]]</td>
 				<td> 
-					<a ng-click="vm.editGrade(grade)" class="btn btn-primary">编辑</a>
 					<a ng-click="vm.deleteGrade(grade)" class="btn btn-danger">删除</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<a href="#/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>新增年级</a>
-	<a ng-click="vm.saveGrades()" class="btn btn-danger"><span></span>保存</a>
+	<a href="#/create" class="btn btn-primary push-right"><span class="glyphicon glyphicon-plus"></span> 新增年级</a>
 </div>
