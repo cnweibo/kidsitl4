@@ -113,10 +113,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li {{ (Request::is('admin/system/grade*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/system/grade') }}}"><span class="glyphicon glyphicon-list"></span> 年级管理</a></li>
-                                <li {{ (Request::is('admin/system/teacher*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaos') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 老师管理</a></li>
-                                <li {{ (Request::is('admin/system/classroom*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/fayinguizes') }}}"><span class="shock-edu-classroom"></span> 教室管理</a></li>
-                                <li {{ (Request::is('admin/system/student*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/yinbiaorelatedwords') }}}"><span class="glyphicon glyphicon-paperclip"></span> 学生管理</a></li>
-                                <li {{ (Request::is('admin/system/editor*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/relatedsentences') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 网站编辑管理</a></li>
+                                <li {{ (Request::is('admin/system/teacher*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/system/teacher') }}}"><span class="glyphicon glyphicon-sort-by-alphabet"></span> 老师管理</a></li>
+                                <li {{ (Request::is('admin/system/classroom*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/system/classroom') }}}"><span class="shock-edu-classroom"></span> 教室管理</a></li>
+                                <li {{ (Request::is('admin/system/student*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/system/student') }}}"><span class="glyphicon glyphicon-paperclip"></span> 学生管理</a></li>
+                                <li {{ (Request::is('admin/system/editor*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/system/editor') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 网站编辑管理</a></li>
                             </ul>
                         </li>
                         <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">

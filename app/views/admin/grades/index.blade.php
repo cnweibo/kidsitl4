@@ -18,7 +18,7 @@
 @stop
 @section('content')
 
-	<div class="container" ng-app="gradeApp">
+	<div class="container" ng-app="gradeApp" ng-controller="containerCtrl">
 		@include('admin.partials.indicatorcontainer')
 		
 		<div class="page-header">
@@ -58,7 +58,7 @@
 
 	<script type="text/javascript" src="{{asset('htmlapp/system/grade/gradeApp.mod.js')}}"></script>
 
-	<script type="text/javascript" src="{{asset('htmlapp/system/grade/gradeApp.mod.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/system/container.ctrl.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('htmlapp/syscommon/khttp.srv.js')}}"></script>
 
