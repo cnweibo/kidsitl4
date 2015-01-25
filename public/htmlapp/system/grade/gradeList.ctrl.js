@@ -18,38 +18,26 @@
                 },
             function(status) {console.log("error status code:"+status);}
         );
-        vm.checkAndSaveGradeTitle = function(data,grade){
+        vm.checkAndSaveGrade = function(data,field,grade){
 
-            // var d = $q.defer();
-            // khttp.getOne("http://kidsit.cn/admin/api/system/grade/",grade.id)
-            // .then(
-            //     function(gradesdata) {/*success*/
-            //         d.resolve(); // resolve empty for onbeforesave continue to go
-            //         console.log(gradesdata);
-            //     },
-            //     function(status) {
-            //         d.reject('server error');
-            //         console.log("error status code:"+status);
-            //     }
-            // );
             var d = $q.defer();
             grade._token = $window._token;
-            grade.skillgradetitle = data;
+            grade[field] = data;
             vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/grade/"+grade.id,grade);
             promise.then(
                 function(gradesdata) {/*success*/
                 if (gradesdata.indexOf("年级") >= 0){
-                        d.resolve(grade.skillgradetitle+'已经存在！');
-                        toastr.error(grade.skillgradetitle+'已经存在！');
+                        d.resolve(grade[field]+'已经存在！');
+                        toastr.error(grade[field]+'已经存在！');
                     }
                 else{
                     d.resolve();
-                        toastr.success(grade.skillgradetitle+'修改成功！');
+                        toastr.success(grade[field]+'修改成功！');
                     }
                 },
                 function(status) {
                     d.resolve(status);
-                    toastr.error(grade.skillgradetitle+'操作出错请重试！');
+                    toastr.error(grade[field]+'操作出错请重试！');
                 }
             );
             

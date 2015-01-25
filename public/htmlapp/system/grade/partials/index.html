@@ -38,8 +38,8 @@
 		<tbody>
 			<tr ng-repeat="grade in grades">
 				<td>[[grade.id]]</td>
-				<td editable-text="grade.skillgradetitle" onbeforesave="vm.checkAndSaveGradeTitle($data,grade)">[[grade.skillgradetitle]]</td>
-				<td editable-text="grade.skillgradedescription">[[grade.skillgradedescription]]</td>
+				<td editable-text="grade.skillgradetitle" onbeforesave="vm.checkAndSaveGrade($data,'skillgradetitle',grade)">[[grade.skillgradetitle]]</td>
+				<td editable-text="grade.skillgradedescription" onbeforesave="vm.checkAndSaveGrade($data,'skillgradedescription',grade)">[[grade.skillgradedescription]]</td>
 				<td>[[grade.created_at]]</td>
 				<td> 
 					<a ng-click="vm.deleteGrade(grade)" class="btn btn-danger">删除</a>
