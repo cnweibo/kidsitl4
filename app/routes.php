@@ -390,13 +390,23 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
     // Following is the GET request for laravel rendered html page funcioning as angular template partials
     Route::get('system/grade/', 'AdminGradesController@indexpage'); // index page
-    Route::get('system/grade/create', 'AdminGradesController@create'); // create page
-    Route::get('system/grade/{id}','AdminGradesController@show'); // show page
+    // Route::get('system/grade/create', 'AdminGradesController@create'); // create page
+    // Route::get('system/grade/{id}','AdminGradesController@show'); // show page
     Route::get('system/grade/{id}/delete','AdminGradesController@getDelete'); //delete page
     Route::get('system/grade/data', 'AdminGradesController@getData'); // ajax data feeding page
 
     
+    // global teacher information admin apis for data feeding
+    Route::group(array('prefix' => 'api'), function(){
+        Route::resource('system/teacher', 'AdminTeacherController');
+    });
 
+    // Following is the GET request for laravel rendered html page funcioning as angular template partials
+    Route::get('system/teacher/', 'AdminTeacherController@indexpage'); // index page
+    Route::get('system/teacher/create', 'AdminTeacherController@create'); // create page
+    Route::get('system/teacher/{id}','AdminTeacherController@show'); // show page
+    Route::get('system/teacher/{id}/delete','AdminTeacherController@getDelete'); //delete page
+    Route::get('system/teacher/data', 'AdminTeacherController@getData'); // ajax data feeding page
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
