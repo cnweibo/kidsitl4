@@ -38,16 +38,21 @@
             vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/grade/"+grade.id,grade);
             promise.then(
                 function(gradesdata) {/*success*/
-                if (gradesdata.indexOf("年级") >= 0)
+                if (gradesdata.indexOf("年级") >= 0){
                         d.resolve(grade.skillgradetitle+'已经存在！');
-                else
+                        toastr.error(grade.skillgradetitle+'已经存在！');
+                    }
+                else{
                     d.resolve();
+                        toastr.success(grade.skillgradetitle+'修改成功！');
+                    }
                 },
                 function(status) {
                     d.resolve(status);
+                    toastr.error(grade.skillgradetitle+'操作出错请重试！');
                 }
             );
-            toastr.error(grade.skillgradetitle+'已经存在！');
+            
             return d.promise;
         };
         vm.deleteGrade = function(grade){
