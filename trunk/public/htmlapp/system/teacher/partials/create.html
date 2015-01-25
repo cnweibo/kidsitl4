@@ -1,0 +1,52 @@
+<div class="container" ng-controller="teacherCreateCtrl as vm">
+
+		<!-- Notifications -->
+				<!-- ./ notifications -->
+
+		<div class="page-header">
+			<h3>
+				创建教师				<div class="pull-right">
+					<button class="btn btn-default btn-small btn-inverse close_popup" ng-click="goBack()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+				</div>
+			</h3>
+		</div>
+
+		<!-- Content -->
+		<form method="POST" action="http://kidsit.cn/admin/api/system/teacher" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createTeacher()'}">
+			<div class="form-group">
+				<label for="name">姓名</label>			
+				<input class="form-control" autofocus="autofocus" name="name" type="text" id="name" ng-model="vm.newTeacher.name">			
+			</div>
+			<div class="form-group">
+				<label for="email">email</label>			
+				<input class="form-control" name="email" type="text" id="email" ng-model="vm.newTeacher.email">		
+			</div>
+			<div class="form-group">
+				<label for="cell">手机</label>			
+				<input class="form-control" name="cell" type="text" id="cell" ng-model="vm.newTeacher.cell">		
+			</div>
+			<div class="form-group">
+				<label for="organization">单位</label>			
+				<input class="form-control" name="organization" type="text" id="organization" ng-model="vm.newTeacher.organization">		
+			</div>
+			<div class="form-group">
+				<label for="address">地址</label>			
+				<input class="form-control" name="address" type="text" id="address" ng-model="vm.newTeacher.address">		
+			</div>
+			<div class="form-group">
+				<label for="sysloginname">系统登陆名</label>			
+				<input class="form-control" name="sysloginname" type="text" id="sysloginname" ng-model="vm.newTeacher.sysloginname">		
+			</div>
+			<div class="form-group">
+				<label for="password">密码</label>			
+				<input class="form-control" name="password" type="text" id="password" ng-model="vm.newTeacher.password">		
+			</div>
+			<input class="btn btn-primary" type="button" value="提交" ng-click="vm.createTeacher()">	
+		</form>
+		<!-- ./ content -->
+
+		<!-- Footer -->
+		<footer class="clearfix">
+		</footer>
+		<!-- ./ Footer -->
+</div>
