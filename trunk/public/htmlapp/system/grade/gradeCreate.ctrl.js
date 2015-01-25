@@ -5,9 +5,9 @@
         .module('gradeApp')
         .controller('gradeCreateCtrl',gradeCreateCtrl);
 
-    gradeCreateCtrl.$inject = ['$scope','$window','khttp','$location'];
+    gradeCreateCtrl.$inject = ['$scope','$window','khttp','$location','toastr'];
 
-    function gradeCreateCtrl($scope,$window,vhttp,$location) {
+    function gradeCreateCtrl($scope,$window,vhttp,$location,toastr) {
         /*jshint validthis: true */
         var vm = this;
         vm.newGrade = null;
@@ -15,14 +15,22 @@
 			$window.history.back();
 		};
 		vm.createGrade = function () {
+			var promise;
 			vm.newGrade._token = $window._token;
-			vhttp.store("http://kidsit.cn/admin/api/system/grade",vm.newGrade)
-			.then(
-				function (data) {
-					console.log(data);
+			vm.currentPromise = promise = vhttp.store("http://kidsit.cn/admin/api/system/grade",vm.newGrade);
+			promise.then(
+				function (gradesdata) {
+					if (gradesdata.indexOf("年级") >= 0){
+						toastr.error(vm.newGrade.skillgradetitle+' 已经存在！');
+						return;
+					}
+					else{
+						toastr.success(vm.newGrade.skillgradetitle+' 创建成功！');
+					}
+					
 				},
 				function () {
-					console.log('error');
+					toastr.error(vm.newGrade.skillgradetitle+' 创建出错，请重试！');
 				}
 				);
 			$location.path('/grade-list');

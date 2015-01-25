@@ -39,16 +39,15 @@
             promise.then(
                 function(gradesdata) {/*success*/
                 if (gradesdata.indexOf("年级") >= 0)
-                        d.resolve(gradesdata);
+                        d.resolve(grade.skillgradetitle+'已经存在！');
                 else
                     d.resolve();
                 },
                 function(status) {
                     d.resolve(status);
-                    console.log("error status code:"+status);
                 }
             );
-            toastr.error(grade.skillgradetitle+' 该年级已经存在！');
+            toastr.error(grade.skillgradetitle+'已经存在！');
             return d.promise;
         };
         vm.deleteGrade = function(grade){
