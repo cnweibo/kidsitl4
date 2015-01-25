@@ -11,9 +11,6 @@
         /*jshint validthis: true */
         var vm = this;
         vm.newGrade = null;
-        vm.goBack = function () {
-			$window.history.back();
-		};
 		vm.createGrade = function () {
 			var promise;
 			vm.newGrade._token = $window._token;
@@ -33,7 +30,7 @@
 					toastr.error(vm.newGrade.skillgradetitle+' 创建出错，请重试！');
 				}
 				);
-			$location.path('/grade-list');
+			// $location.path('/grade-list');
 		};
 		
     }
