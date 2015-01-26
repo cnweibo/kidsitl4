@@ -36,22 +36,24 @@
 				<th class="col-md-2">地址：</th>
 				<th class="col-md-1">登陆名：</th>
 				<th class="col-md-1">密码：</th>
-				<th class="col-md-2">创建于：</th>
+				<th class="col-md-1">创建于：</th>
+				<th class="col-md-1">操作：</th>
+
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="teacher in teachers">
 				<td>[[teacher.id]]</td>
-				<td editable-text="teacher.name" onbeforesave="vm.checkAndSaveTeacher($data,'name',teacher)">[[teacher.name]]</td>
-				<td editable-text="teacher.email" onbeforesave="vm.checkAndSaveTeacher($data,'email',teacher)">[[teacher.email]]</td>
-				<td editable-text="teacher.cell" onbeforesave="vm.checkAndSaveTeacher($data,'cell',teacher)">[[teacher.cell]]</td>
-				<td editable-text="teacher.organization" onbeforesave="vm.checkAndSaveTeacher($data,'organization',teacher)">[[teacher.organization]]</td>
-				<td editable-text="teacher.address" onbeforesave="vm.checkAndSaveTeacher($data,'address',teacher)">[[teacher.address]]</td>
-				<td editable-text="teacher.sysloginname" onbeforesave="vm.checkAndSaveTeacher($data,'sysloginname',teacher)">[[teacher.sysloginname]]</td>
-				<td editable-text="teacher.password" onbeforesave="vm.checkAndSaveTeacher($data,'password',teacher)">[[teacher.password]]</td>
+				<td class="col-md-1" editable-text="teacher.name" onbeforesave="vm.checkAndSaveTeacher($data,'name',teacher)">[[teacher.name]]</td>
+				<td class="col-md-1" editable-text="teacher.email" onbeforesave="vm.checkAndSaveTeacher($data,'email',teacher)">[[teacher.email]]</td>
+				<td class="col-md-1" editable-text="teacher.cell" onbeforesave="vm.checkAndSaveTeacher($data,'cell',teacher)">[[teacher.cell]]</td>
+				<td class="col-md-2" editable-text="teacher.organization" onbeforesave="vm.checkAndSaveTeacher($data,'organization',teacher)">[[teacher.organization]]</td>
+				<td class="col-md-2" editable-text="teacher.address" onbeforesave="vm.checkAndSaveTeacher($data,'address',teacher)">[[teacher.address]]</td>
+				<td class="col-md-1" editable-text="teacher.sysloginname" onbeforesave="vm.checkAndSaveTeacher($data,'sysloginname',teacher)">[[teacher.sysloginname]]</td>
+				<td class="col-md-1" editable-text="teacher.password" onbeforesave="vm.checkAndSaveTeacher($data,'password',teacher)">[[teacher.password]]</td>
 
-				<td>[[teacher.created_at]]</td>
-				<td> 
+				<td class="col-md-1">[[teacher.created_at]]</td>
+				<td class="col-md-1"> 
 					<a ng-click="vm.deleteTeacher(teacher)" class="btn btn-danger">删除</a>
 				</td>
 			</tr>
