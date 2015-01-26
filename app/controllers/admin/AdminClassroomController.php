@@ -9,7 +9,7 @@ class AdminClassroomController extends \BaseController {
 	 */
 	public function indexpage()
 	{
-		$title = "教室管理";
+		$title = "班级管理";
 		return View::make('admin.classrooms.index',compact('title'));
 	}
 
@@ -31,7 +31,7 @@ class AdminClassroomController extends \BaseController {
 	 */
 	public function create()
 	{
-		$title = "创建教室";
+		$title = "创建班级";
 		// feed the html partial template to angular 
 		return View::make('admin.classrooms.create',compact('title'));
 	}
@@ -46,7 +46,7 @@ class AdminClassroomController extends \BaseController {
 		// Log::info("store request  \r\n",Input::all());
 		// return 'hit he route';
 
-		// $title = "创建教室";
+		// $title = "创建班级";
 		$errorinfo="ok";
 	    $classroom = new Classroom;
 	    $classroom->sysname = Input::get('sysname');
@@ -61,7 +61,7 @@ class AdminClassroomController extends \BaseController {
 	    	// dd("error");
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$classroom->skillgradetitle 教室已经存在！";
+	    			$errorinfo = "$classroom->skillgradetitle 班级已经存在！";
 	    		}	
 	    		dd("已经存在!");
 	    	dd(get_class_methods('Exception'));
@@ -92,7 +92,7 @@ class AdminClassroomController extends \BaseController {
 	public function edit($id)
 	{
 		//
-		$title = "教室编辑";
+		$title = "班级编辑";
 		$classroom = Classroom::findOrFail($id);
 		$gradeids = DB::table('classrooms')->orderBy('id')->lists('id');
 		$currentgradekey = array_search($id, $gradeids);
@@ -150,7 +150,7 @@ class AdminClassroomController extends \BaseController {
 	public function getDelete($id)
 	{
 		//
-		$title = "删除教室";
+		$title = "删除班级";
 		$classroom = Classroom::find($id);
 		return View::make('admin/api/classrooms/delete',compact('title','classroom'));
 	}

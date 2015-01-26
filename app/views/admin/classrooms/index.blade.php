@@ -26,7 +26,7 @@
 				{{{ $title }}}
 
 				<div class="pull-right">
-					<a href="#/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增教室</a>
+					<a href="#/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增班级</a>
 				</div>
 			</h3>
 		</div>
