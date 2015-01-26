@@ -21,6 +21,7 @@
         vm.checkAndSaveGrade = function(data,field,grade){
 
             var d = $q.defer();
+            grade._method = 'PUT';
             grade._token = $window._token;
             grade[field] = data;
             vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/grade/"+grade.id,grade);
