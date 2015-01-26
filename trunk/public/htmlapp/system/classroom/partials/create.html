@@ -1,0 +1,40 @@
+<div class="container" ng-controller="classroomCreateCtrl as vm">
+
+		<!-- Notifications -->
+				<!-- ./ notifications -->
+
+		<div class="page-header">
+			<h3>
+				创建教室				<div class="pull-right">
+					<button class="btn btn-default btn-small btn-inverse close_popup" ng-click="goBack()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+				</div>
+			</h3>
+		</div>
+
+		<!-- Content -->
+		<form method="POST" action="http://kidsit.cn/admin/api/system/classroom" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createClassroom()'}">
+			<div class="form-group">
+				<label for="sysname">系统登录名</label>			
+				<input class="form-control" autofocus="autofocus" name="sysname" type="text" id="sysname" ng-model="vm.newClassroom.sysname">			
+			</div>
+			<div class="form-group">
+				<label for="description">班级描述</label>			
+				<input class="form-control" name="description" type="text" id="description" ng-model="vm.newClassroom.description">		
+			</div>
+			<div class="form-group">
+				<label for="teacher_id">所属教师</label>			
+				<input class="form-control" name="teacher_id" type="text" id="teacher_id" ng-model="vm.newClassroom.teacher_id">		
+			</div>
+			<div class="form-group">
+				<label for="profileURL">班级主页</label>			
+				<input class="form-control" name="profileURL" type="text" id="profileURL" ng-model="vm.newClassroom.profileURL">		
+			</div>
+			<input class="btn btn-primary" type="button" value="提交" ng-click="vm.createClassroom()">	
+		</form>
+		<!-- ./ content -->
+
+		<!-- Footer -->
+		<footer class="clearfix">
+		</footer>
+		<!-- ./ Footer -->
+</div>
