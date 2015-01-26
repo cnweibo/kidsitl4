@@ -54,11 +54,11 @@
 					// postData._token = parameters._token;
 					// postData.title = parameters.todo.title;
 					// postData.id = parameters.todo.id;
-					$http({method: 'PUT', url: baseurl,
-						// params: {
-						//     _token: parameters._token
-						// },
-							data: parameters
+					$http({
+						method: 'POST',
+						url: baseurl,
+						headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+						data: $.param(parameters)
 					}).
 					success(function(data,status,headers,config){
 						deferred.resolve(data);
