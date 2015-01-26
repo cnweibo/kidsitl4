@@ -1,0 +1,61 @@
+<div ng-controller="studentListCtrl as vm">	
+	<div class="panel panel-danger"> <!--  come from admin.partials.mathprocess -->
+			<div class="panel-heading">
+			<h3 class="panel-title">Math模块管理流程图：</h3>
+			</div>
+			<div class="panel-body">
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/system/student">
+  				<i class="fa fa-flag pull-left"></i> 创建年级</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/skillcat">
+  				<i class="fa fa-flag pull-left"></i> 创建知识点类别</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/skill">
+  				<i class="fa fa-flag pull-left"></i> 创建知识点</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/exercisecat">
+  				<i class="fa fa-flag pull-left"></i> 创建习题类别</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/exercisedifficulty">
+  				<i class="fa fa-flag pull-left"></i> 创建习题难度</a>
+  				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/exercise">
+  				<i class="fa fa-flag pull-left"></i> 创建习题</a>
+
+			</div>
+    </div>
+
+	<table id="student" class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th class="col-md-1">ID</th>
+				<th class="col-md-1">姓名</th>
+				<th class="col-md-1">学号</th>
+				<th class="col-md-1">系统登陆名</th>
+				<th class="col-md-1">密码</th>
+				<th class="col-md-1">手机</th>
+				<th class="col-md-2">所属班级</th>
+
+				<th class="col-md-2">创建于：</th>
+				<th class="col-md-2">操作：</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="student in students">
+				<td class="col-md-1">[[student.id]]</td>
+				<td class="col-md-1" editable-text="student.name" onbeforesave="vm.checkAndSaveStudent($data,'name',student)">[[student.name]]</td>
+				<td class="col-md-1" editable-text="student.xuehao" onbeforesave="vm.checkAndSaveStudent($data,'xuehao',student)">[[student.xuehao]]</td>
+				<td class="col-md-1" editable-text="student.sysloginname" onbeforesave="vm.checkAndSaveStudent($data,'sysloginname',student)">[[student.sysloginname]]</td>
+				<td class="col-md-1" editable-text="student.password" onbeforesave="vm.checkAndSaveStudent($data,'password',student)">[[student.password]]</td>
+				<td class="col-md-1" editable-text="student.cell" onbeforesave="vm.checkAndSaveStudent($data,'cell',student)">[[student.cell]]</td>
+				<td class="col-md-2" editable-text="student.classroom_id" onbeforesave="vm.checkAndSaveStudent($data,'classroom_id',student)">[[student.classroom_id]]</td>
+
+				<td class="col-md-2">[[student.created_at]]</td>
+				<td class="col-md-2"> 
+					<a ng-click="vm.deleteStudent(student)" class="btn btn-danger">删除</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="#/create" class="btn btn-primary push-right"><span class="glyphicon glyphicon-plus"></span> 新增学生</a>
+</div>
