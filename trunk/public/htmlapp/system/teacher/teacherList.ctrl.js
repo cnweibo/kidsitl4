@@ -19,21 +19,20 @@
             function(status) {console.log("error status code:"+status);}
         );
         vm.deleteTeacher = function(teacher){
-            $scope.teachers.splice($scope.teachers.indexOf(teacher),1);
-            khttp.destroy("http://kidsit.cn/admin/api/system/teacher/",teacher.id).then(
+
+            khttp.destroy("http://kidsit.cn/admin/api/system/teacher/",teacher).then(
                 function(res){
+                    $scope.teachers.splice($scope.teachers.indexOf(teacher),1);
                     toastr.success(teacher.name+'删除成功！');
                 },
                 function(error){
                     toastr.error(teacher.name+'删除出错！');
-                    // console.log(error);
                 }
             );
             $location.path('/teacher-list');
         };
 		vm.checkAndSaveTeacher = function(data,field,teacher) {
 			var d = $q.defer();
-			teacher._token = $window._token;
 			teacher[field] = data;
 			vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/teacher/"+teacher.id,teacher);
 			promise.then(

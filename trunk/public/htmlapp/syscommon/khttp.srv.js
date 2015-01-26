@@ -7,7 +7,7 @@
 
     angular
         .module('khttp',[])
-        .factory('khttp',['$http','$q',function($http,$q){
+        .factory('khttp',['$http','$q','$window',function($http,$q,$window){
 			
 			return {
 
@@ -32,13 +32,13 @@
 						error(function  (data,status,headers,config) {
 							
 							console.log(status);
-						    deferred.reject(status);
+							deferred.reject(status);
 						});
 					return deferred.promise;
 				},
-				store: function (baseurl,parameters) {
+				store: function (baseurl,resource) {
 					var deferred = $q.defer();
-					$http({method: 'POST', url: baseurl,data:parameters}).
+					$http({method: 'POST', url: baseurl,data:resource}).
 						success(function(data){
 							deferred.resolve(data);
 						}).
@@ -48,17 +48,15 @@
 					return deferred.promise;
 				},
 				// return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
-				update: function (baseurl,parameters) {
+				update: function (baseurl,resource) {
 					var deferred = $q.defer();
-					var postData={};
-					// postData._token = parameters._token;
-					// postData.title = parameters.todo.title;
-					// postData.id = parameters.todo.id;
+					resource._method = 'PUT';
+					resource._token = $window._token;
 					$http({
 						method: 'POST',
 						url: baseurl,
 						headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-						data: $.param(parameters)
+						data: $.param(resource)
 					}).
 					success(function(data,status,headers,config){
 						deferred.resolve(data);
@@ -69,9 +67,16 @@
 					return deferred.promise;
 					// localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
 				},
-				destroy: function(baseurl, id){
+				destroy: function(baseurl, resource){
 					var deferred = $q.defer();
-					$http.delete(baseurl+id)
+
+					$http({
+						method: 'POST',
+						url: baseurl+resource.id,
+						headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+						data: $.param({_method: 'DELETE'})
+					})
+					// $http.delete(baseurl+id)
 					.success(function(data,status,headers,config){
 						deferred.resolve(data);
 					}).

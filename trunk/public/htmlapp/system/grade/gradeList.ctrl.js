@@ -21,8 +21,6 @@
         vm.checkAndSaveGrade = function(data,field,grade){
 
             var d = $q.defer();
-            grade._method = 'PUT';
-            grade._token = $window._token;
             grade[field] = data;
             vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/grade/"+grade.id,grade);
             promise.then(
@@ -45,9 +43,10 @@
             return d.promise;
         };
         vm.deleteGrade = function(grade){
-            $scope.grades.splice($scope.grades.indexOf(grade),1);
-            khttp.destroy("http://kidsit.cn/admin/api/system/grade/",grade.id).then(
+
+            khttp.destroy("http://kidsit.cn/admin/api/system/grade/",grade).then(
                 function(res){
+                    $scope.grades.splice($scope.grades.indexOf(grade),1);
                     toastr.success(grade.skillgradetitle+'删除成功！');
                 },
                 function(error){
