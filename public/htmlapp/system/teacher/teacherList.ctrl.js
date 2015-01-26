@@ -38,7 +38,7 @@
 			vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/teacher/"+teacher.id,teacher);
 			promise.then(
 				function(teacherdata) {/*success*/
-				if (teacherdata.indexOf("已存在") >= 0){
+				if (teacherdata.indexOf("存在") >= 0){
 					d.resolve(teacher.email+'已经存在！');
 						toastr.error(teacher[field]+'已经存在！');
 					}
