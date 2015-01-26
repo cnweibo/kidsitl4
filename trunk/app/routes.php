@@ -414,6 +414,15 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('system/classroom/{id}/delete','AdminClassroomController@getDelete'); //delete page
     Route::get('system/classroom/data', 'AdminClassroomController@getData'); // ajax data feeding page
 
+    // global student information admin apis for data feeding
+    Route::group(array('prefix' => 'api'), function(){
+        Route::resource('system/student', 'AdminStudentController');
+    });
+    // Following is the GET request for laravel rendered html page funcioning as angular template partials
+    Route::get('system/student/', 'AdminStudentController@indexpage'); // index page
+    Route::get('system/student/{id}/delete','AdminStudentController@getDelete'); //delete page
+    Route::get('system/student/data', 'AdminStudentController@getData'); // ajax data feeding page
+
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
 
