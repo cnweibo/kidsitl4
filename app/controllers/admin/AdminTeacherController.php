@@ -123,6 +123,7 @@ class AdminTeacherController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$errorinfo = "ok";
 	    $newteacher = Teacher::findOrFail($id);
 	    $newteacher->name = Input::get('name');
 	    $newteacher->email = Input::get('email');
@@ -138,7 +139,7 @@ class AdminTeacherController extends \BaseController {
 	    	if ($errorcode==23000) {
 	    			$errorinfo = "$newteacher->email email已经存在！";
 	    		}	
-	    	dd($e->getMessage());
+	    	dd($errorinfo);
 
 	    }
 
