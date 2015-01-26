@@ -19,9 +19,10 @@
             function(status) {console.log("error status code:"+status);}
         );
         vm.deleteClassroom = function(classroom){
-            $scope.classrooms.splice($scope.classrooms.indexOf(classroom),1);
-            khttp.destroy("http://kidsit.cn/admin/api/system/classroom/",classroom.id).then(
+
+            khttp.destroy("http://kidsit.cn/admin/api/system/classroom/",classroom).then(
                 function(res){
+                    $scope.classrooms.splice($scope.classrooms.indexOf(classroom),1);
                     toastr.success(classroom.sysname+'删除成功！');
                 },
                 function(error){
@@ -34,7 +35,6 @@
         // check and save for the edit in place
         vm.checkAndSaveClassroom = function(data,field,classroom) {
 		var d = $q.defer();
-		classroom._token = $window._token;
 		classroom[field] = data;
 		vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/classroom/"+classroom.id,classroom);
 		promise.then(
