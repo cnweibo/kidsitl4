@@ -29,7 +29,7 @@
 				function () {
 					toastr.error(vm.newGrade.skillgradetitle+' 创建出错，请重试！');
 				}
-				);
+			);
 			// $location.path('/grade-list');
 		};
 		

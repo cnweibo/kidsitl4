@@ -51,7 +51,6 @@
                 },
                 function(error){
                     toastr.error(res.resp.message);
-                    // console.log(error);
                 }
             );
             $location.path('/grade-list');

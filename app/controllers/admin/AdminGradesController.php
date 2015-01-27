@@ -9,7 +9,6 @@ class AdminGradesController extends \BaseController {
 	 */
 	public function indexpage()
 	{
-		Log::info('indexpage hit');
 		$title = "年级管理";
 		return View::make('admin.grades.index',compact('title'));
 	}
@@ -22,7 +21,7 @@ class AdminGradesController extends \BaseController {
 	public function index()
 	{
 
-		return Response::json(['resp' => ['data' => Grade::all()->toArray()],'code'=>0],200); //Grade::all();
+		return Response::json(['resp' => ['data' => Grade::all()->toArray()],'code'=>0],200); 
 	}
 
 	/**
@@ -44,11 +43,6 @@ class AdminGradesController extends \BaseController {
 	 */
 	public function store()
 	{	
-		// Log::info("store request  \r\n",Input::all());
-		// return 'hit he route';
-
-		// $title = "创建年级";
-		$errorinfo="ok";
 	    $grade = new Grade;
 	    $grade->skillgradetitle = Input::get('skillgradetitle');
 	    $grade->skillgradedescription = Input::get('skillgradedescription');
@@ -125,12 +119,10 @@ class AdminGradesController extends \BaseController {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
 	    			return Response::json(['resp' => ['code' => 409, 'message' => $newgrade->skillgradetitle . '所需唯一参数已存在！']], 200);
-	    		}	
-	    	// dd($errorinfo);
+	    		}
+	    	return Response::json(['resp' => ['code' => 410, 'message' => $newgrade->skillgradetitle . '更新出错！']], 200);
 	    }
 	    return Response::json(['resp' => ['code' => 0 , 'message' => $newgrade->skillgradetitle . "更新成功！"]], 200);
-		// return "update success for $newgrade->skillgradetitle!";
-		// return Redirect::to('admin/api/system/grade/'.$newgrade->id.'/edit')->with('success', "修改成功！");
 	}
 
 	/**
