@@ -21,7 +21,7 @@ class AdminTeacherController extends \BaseController {
 	public function index()
 	{
 
-		return Teacher::all();
+		return Response::json(['resp' => ['data' => Teacher::all()->toArray()],'code'=>0],200); 
 	}
 
 	/**
@@ -43,11 +43,6 @@ class AdminTeacherController extends \BaseController {
 	 */
 	public function store()
 	{	
-		// Log::info("store request  \r\n",Input::all());
-		// return 'hit he route';
-
-		// $title = "创建年级";
-		$errorinfo="ok";
 	    $teacher = new Teacher;
 	    $teacher->name = Input::get('name');
 	    $teacher->email = Input::get('email');
@@ -58,21 +53,16 @@ class AdminTeacherController extends \BaseController {
 	    $teacher->organization = Input::get('organization');
 
 	    try {
-		    $teacher->save();	  
-		    dd("saved");  	
+		    $teacher->save();	   	
 	    } catch (Exception $e) {
-	    	// dd("error");
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$teacher->skillgradetitle 年级已经存在！";
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $teacher->skillgradetitle . '所需唯一参数已存在！']], 200);
 	    		}	
-	    		dd("已经存在!");
-	    	dd(get_class_methods('Exception'));
-		    return Redirect::to('admin/system/teacher/create')->with('error', $errorinfo);
+	    		return Response::json(['resp' => ['code' => 410, 'message' => $teacher->skillgradetitle . '创建出错！']], 200);
 
 	    }
-	    dd($errorinfo);
-	    return Redirect::to('admin/api/system/teacher/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
+	   	return Response::json(['resp' => ['code' => 0, 'message' => $teacher->skillgradetitle . '创建成功！']], 200);
 	}
 
 	/**
@@ -123,8 +113,10 @@ class AdminTeacherController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$errorinfo = "ok";
-	    $newteacher = Teacher::findOrFail($id);
+	    $newteacher = Teacher::find($id);
+	    if (!$newteacher){
+	    	return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+	    }
 	    $newteacher->name = Input::get('name');
 	    $newteacher->email = Input::get('email');
 	    $newteacher->cell = Input::get('cell');
@@ -137,14 +129,13 @@ class AdminTeacherController extends \BaseController {
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$newteacher->email email已经存在！";
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $newteacher->name . '所需唯一参数已存在！']], 200);
 	    		}	
-	    	dd($errorinfo);
+	    	return Response::json(['resp' => ['code' => 410, 'message' => $newteacher->name . '更新出错！']], 200);
 
 	    }
 
-		return "update success for $newteacher->email!";
-		// return Redirect::to('admin/api/system/teacher/'.$newteacher->id.'/edit')->with('success', "修改成功！");
+		return Response::json(['resp' => ['code' => 0 , 'message' => $newteacher->name . "更新成功！"]], 200);
 	}
 
 	/**
@@ -169,10 +160,12 @@ class AdminTeacherController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-		$teacher = Teacher::findOrFail($id);
+		$teacher = Teacher::find($id);
+		if(!$teacher){
+			return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+		}
 		$teacher->delete();
-		return 'delete ok';
-		// return Redirect::to('admin/api/system/teacher');
+		return Response::json(['resp' => ['code' => 0 , 'message' => $teacher->name . "删除成功！"]], 200);
 	}
 
 	/**
@@ -193,11 +186,6 @@ class AdminTeacherController extends \BaseController {
     	    ')
 
     	->make();
-        // $grades = Teacher::select(array('grades.id', 'grades.skillgradetitle', 'grades.skillgradedescription as yinbiaocategory', 'grades.created_at'));
-        // return Datatables::of($grades)
-        // ->remove_column('id')
-
-        // ->make();
     }
 
 }

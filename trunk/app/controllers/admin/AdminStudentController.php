@@ -20,7 +20,7 @@ class AdminStudentController extends \BaseController {
 	public function index()
 	{
 
-		return Student::all();
+		return Response::json(['resp' => ['data' => Student::all()->toArray()],'code'=>0],200); 
 	}
 
 	/**
@@ -42,11 +42,6 @@ class AdminStudentController extends \BaseController {
 	 */
 	public function store()
 	{	
-		// Log::info("store request  \r\n",Input::all());
-		// return 'hit he route';
-
-		// $title = "创建学生";
-		$errorinfo="ok";
 	    $student = new Student;
 	    $student->name = Input::get('name');
 	    $student->email = Input::get('email');
@@ -58,20 +53,14 @@ class AdminStudentController extends \BaseController {
 
 	    try {
 		    $student->save();	  
-		    dd("saved");  	
 	    } catch (Exception $e) {
-	    	// dd("error");
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$student->name 学生已经存在！";
-	    		}	
-	    		dd("已经存在!");
-	    	dd(get_class_methods('Exception'));
-		    return Redirect::to('admin/system/student/create')->with('error', $errorinfo);
-
+	    		return Response::json(['resp' => ['code' => 409, 'message' => $student->name . '所需唯一参数已存在！']], 200);
+			}
+			return Response::json(['resp' => ['code' => 410, 'message' => $student->name . '创建出错！']], 200);
 	    }
-	    dd($errorinfo);
-	    return Redirect::to('admin/api/system/student/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
+	    return Response::json(['resp' => ['code' => 0, 'message' => $student->name . '创建成功！']], 200);
 	}
 
 	/**
@@ -122,8 +111,10 @@ class AdminStudentController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$errorinfo = "ok";
-	    $newstudent = Student::findOrFail($id);
+	    $newstudent = Student::find($id);
+		if (!$newstudent){
+			return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+		}
 	    $newstudent->name = Input::get('name');
 	    $newstudent->email = Input::get('email');
 	    $newstudent->xuehao = Input::get('xuehao');
@@ -137,14 +128,12 @@ class AdminStudentController extends \BaseController {
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$newstudent-> email已经存在！";
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $newstudent->name . '所需唯一参数已存在！']], 200);
 	    		}	
-	    	dd($errorinfo);
-
+	    	return Response::json(['resp' => ['code' => 409, 'message' => $newstudent->name . '所需唯一参数已存在！']], 200);
 	    }
 
-		return "update success for $newstudent->email!";
-		// return Redirect::to('admin/api/system/student/'.$newstudent->id.'/edit')->with('success', "修改成功！");
+		return Response::json(['resp' => ['code' => 0 , 'message' => $newstudent->name . "更新成功！"]], 200);
 	}
 
 	/**
@@ -169,10 +158,12 @@ class AdminStudentController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-		$student = Student::findOrFail($id);
+		$student = Student::find($id);
+		if(!$student){
+			return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+		}
 		$student->delete();
-		return 'delete ok';
-		// return Redirect::to('admin/api/system/student');
+		return Response::json(['resp' => ['code' => 0 , 'message' => $student->name . "删除成功！"]], 200);
 	}
 
 	/**

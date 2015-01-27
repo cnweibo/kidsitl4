@@ -14,7 +14,7 @@
         vm.currentPromise = promise = khttp.getAll("http://kidsit.cn/admin/api/system/student/");
         promise.then(
             function(studentsdata) {/*success*/
-                $scope.students = vm.studentsOrginal = studentsdata;
+                $scope.students = vm.studentsOrginal = studentsdata.resp.data;
                 },
             function(status) {console.log("error status code:"+status);}
         );
@@ -24,14 +24,15 @@
 			student[field] = data;
 			vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/student/"+student.id,student);
 			promise.then(
+
 				function(studentdata) {/*success*/
-				if (studentdata.indexOf("存在") >= 0){
-					d.resolve(student[field]+'已经存在！');
-						toastr.error(student[field]+'已经存在！');
+					if (studentdata.resp.code !==0 ){
+						d.resolve(studentdata.resp.message);
+						toastr.error(studentdata.resp.message);
 					}
-				else{
-					d.resolve();
-						toastr.success(student[field]+'修改成功！');
+					else{
+						d.resolve();
+						toastr.success(data+"更新成功！");
 					}
 				},
 				function(status) {
@@ -44,12 +45,13 @@
 		vm.deleteStudent = function(student){
 
 			khttp.destroy("http://kidsit.cn/admin/api/system/student/",student).then(
+
 				function(res){
 					$scope.students.splice($scope.students.indexOf(student),1);
-					toastr.success(student.name+'删除成功！');
+					toastr.success(res.resp.message);
 				},
 				function(error){
-					toastr.error(student.name+'删除出错！');
+					toastr.error(res.resp.message);
 				}
 			);
 			$location.path('/student-list');

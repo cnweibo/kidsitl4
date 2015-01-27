@@ -14,20 +14,20 @@
         vm.currentPromise = promise = khttp.getAll("http://kidsit.cn/admin/api/system/classroom/");
         promise.then(
             function(classroomsdata) {/*success*/
-                $scope.classrooms = vm.classroomsOrginal = classroomsdata;
+                $scope.classrooms = vm.classroomsOrginal = classroomsdata.resp.data;
                 },
             function(status) {console.log("error status code:"+status);}
         );
         vm.deleteClassroom = function(classroom){
 
             khttp.destroy("http://kidsit.cn/admin/api/system/classroom/",classroom).then(
+                
                 function(res){
                     $scope.classrooms.splice($scope.classrooms.indexOf(classroom),1);
-                    toastr.success(classroom.sysname+'删除成功！');
+                    toastr.success(res.resp.message);
                 },
                 function(error){
-                    toastr.error(classroom.sysname+'删除出错！');
-                    // console.log(error);
+                    toastr.error(res.resp.message);
                 }
             );
             $location.path('/classroom-list');
@@ -38,20 +38,20 @@
 		classroom[field] = data;
 		vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/classroom/"+classroom.id,classroom);
 		promise.then(
-			function(classroomdata) {/*success*/
-			if (classroomdata.indexOf("存在") >= 0){
-				d.resolve(classroom[field]+'已经存在！');
-					toastr.error(classroom[field]+'已经存在！');
-				}
-			else{
-				d.resolve();
-					toastr.success(classroom[field]+'修改成功！');
-				}
-			},
-			function(status) {
-				d.resolve(status);
-				toastr.error(classroom[field]+'操作出错请重试！');
-			}
+            function(classroomdata) {/*success*/
+                if (classroomdata.resp.code !==0 ){
+                    d.resolve(classroomdata.resp.message);
+                    toastr.error(classroomdata.resp.message);
+                }
+                else{
+                    d.resolve();
+                    toastr.success(data+"更新成功！");
+                }
+            },
+            function(status) {
+                d.resolve(status);
+                toastr.error(classroom[field]+'操作出错请重试！');
+            }
 		);
 		return d.promise;
         };

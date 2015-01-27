@@ -21,7 +21,7 @@ class AdminClassroomController extends \BaseController {
 	public function index()
 	{
 
-		return Classroom::all();
+		return Response::json(['resp' => ['data' => Classroom::all()->toArray()],'code'=>0],200); 
 	}
 
 	/**
@@ -43,11 +43,6 @@ class AdminClassroomController extends \BaseController {
 	 */
 	public function store()
 	{	
-		// Log::info("store request  \r\n",Input::all());
-		// return 'hit he route';
-
-		// $title = "创建班级";
-		$errorinfo="ok";
 	    $classroom = new Classroom;
 	    $classroom->sysname = Input::get('sysname');
 	    $classroom->description = Input::get('description');
@@ -56,20 +51,15 @@ class AdminClassroomController extends \BaseController {
 
 	    try {
 		    $classroom->save();	  
-		    dd("saved");  	
 	    } catch (Exception $e) {
-	    	// dd("error");
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$classroom->skillgradetitle 班级已经存在！";
-	    		}	
-	    		dd("已经存在!");
-	    	dd(get_class_methods('Exception'));
-		    return Redirect::to('admin/system/classroom/create')->with('error', $errorinfo);
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $classroom->sysname . '所需唯一参数已存在！']], 200);
+	    		}
+	    	return Response::json(['resp' => ['code' => 410, 'message' => $classroom->sysname . '创建出错！']], 200);
 
 	    }
-	    dd($errorinfo);
-	    return Redirect::to('admin/api/system/classroom/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
+	    return Response::json(['resp' => ['code' => 0, 'message' => $classroom->sysname . '创建成功！']], 200);
 	}
 
 	/**
@@ -120,8 +110,10 @@ class AdminClassroomController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$errorinfo = "ok";
-	    $newclassroom = Classroom::findOrFail($id);
+	    $newclassroom = Classroom::find($id);
+	    if (!$newclassroom){
+	    	return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+	    }
 	    $newclassroom->sysname = Input::get('sysname');
 	    $newclassroom->description = Input::get('description');
 	    $newclassroom->teacher_id = Input::get('teacher_id');
@@ -131,14 +123,13 @@ class AdminClassroomController extends \BaseController {
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$newclassroom->email email已经存在！";
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $newclassroom->sysname . '所需唯一参数已存在！']], 200);
 	    		}	
-	    	dd($errorinfo);
+	    	return Response::json(['resp' => ['code' => 409, 'message' => $newclassroom->sysname . '所需唯一参数已存在！']], 200);
 
 	    }
 
-		return "update success for $newclassroom->email!";
-		// return Redirect::to('admin/api/system/classroom/'.$newclassroom->id.'/edit')->with('success', "修改成功！");
+		return Response::json(['resp' => ['code' => 0 , 'message' => $newclassroom->sysname . "更新成功！"]], 200);
 	}
 
 	/**
@@ -163,10 +154,12 @@ class AdminClassroomController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-		$classroom = Classroom::findOrFail($id);
+		$classroom = Classroom::find($id);
+		if(!$classroom){
+			return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+		}
 		$classroom->delete();
-		return 'delete ok';
-		// return Redirect::to('admin/api/system/classroom');
+		return Response::json(['resp' => ['code' => 0 , 'message' => $classroom->sysname . "删除成功！"]], 200);
 	}
 
 	/**

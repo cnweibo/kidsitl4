@@ -15,17 +15,18 @@
 			vm.newStudent._token = $window._token;
 			vm.currentPromise = promise = khttp.store("http://kidsit.cn/admin/api/system/student",vm.newStudent);
 			promise.then(
-				function (studentdata) {
-					if (studentdata.indexOf("已经存在") >= 0){
-						toastr.error(vm.newStudent.xuehao+' 必须唯一的参数已经存在，请检查！');
+				function (studentsdata) {
+					if (studentsdata.resp.code!==0){
+						toastr.error(vm.newStudent.name+studentsdata.resp.message);
 						return;
 					}
 					else{
-						toastr.success(vm.newStudent.xuehao+' 创建成功！');
+						toastr.success(vm.newStudent.name+' 创建成功！');
 					}
+					
 				},
 				function () {
-					toastr.error(vm.newStudent.xuehao+' 创建出错，请重试！');
+					toastr.error(vm.newStudent.name+' 创建出错，请重试！');
 				}
 			);
 			// $location.path('/student-list');
