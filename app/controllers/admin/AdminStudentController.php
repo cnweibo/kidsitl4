@@ -63,7 +63,7 @@ class AdminStudentController extends \BaseController {
 	    	// dd("error");
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$student->skillgradetitle 学生已经存在！";
+	    			$errorinfo = "$student->name 学生已经存在！";
 	    		}	
 	    		dd("已经存在!");
 	    	dd(get_class_methods('Exception'));

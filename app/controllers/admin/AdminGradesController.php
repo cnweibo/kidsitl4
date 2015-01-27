@@ -22,7 +22,7 @@ class AdminGradesController extends \BaseController {
 	public function index()
 	{
 
-		return Grade::all();
+		return Response::json(['resp' => ['data' => Grade::all()->toArray()]],200); //Grade::all();
 	}
 
 	/**
@@ -116,6 +116,9 @@ class AdminGradesController extends \BaseController {
 	public function update($id)
 	{
 		$newgrade = Grade::find($id);
+		if (!$newgrade){
+			return Response::json(['resp' => ['error' => ['message' => '未找到id为$id的资源']]], 404);
+		}
 		$newgrade->skillgradetitle = Input::get('skillgradetitle');
 		$newgrade->skillgradedescription = Input::get('skillgradedescription');
 	    try {
@@ -123,13 +126,12 @@ class AdminGradesController extends \BaseController {
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$newgrade->skillgradetitle 年级已经存在！";
+	    			return Response::json(['resp' => ['error' => ['message' => '$newgrade->skillgradetitle已经存在！']]], 200);
 	    		}	
-	    	dd($errorinfo);
-
+	    	// dd($errorinfo);
 	    }
-
-		return "update success for $newgrade->skillgradetitle!";
+	    return Response::json(['resp' => ['data' => $newgrade->skillgradetitle . "更新成功！"]], 200);
+		// return "update success for $newgrade->skillgradetitle!";
 		// return Redirect::to('admin/api/system/grade/'.$newgrade->id.'/edit')->with('success', "修改成功！");
 	}
 
