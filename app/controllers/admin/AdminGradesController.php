@@ -22,7 +22,7 @@ class AdminGradesController extends \BaseController {
 	public function index()
 	{
 
-		return Response::json(['resp' => ['data' => Grade::all()->toArray()]],200); //Grade::all();
+		return Response::json(['resp' => ['data' => Grade::all()->toArray()],'code'=>0],200); //Grade::all();
 	}
 
 	/**
@@ -57,14 +57,12 @@ class AdminGradesController extends \BaseController {
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			$errorinfo = "$grade->skillgradetitle 年级已经存在！";
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $grade->skillgradetitle . '所需唯一参数已存在！']], 200);
 	    		}	
-	    	dd($errorinfo);
-		    return Redirect::to('admin/system/grade/create')->with('error', $errorinfo);
+	    	return Response::json(['resp' => ['code' => 410, 'message' => $grade->skillgradetitle . '创建出错！']], 200);
 
 	    }
-	    dd($errorinfo);
-	    return Redirect::to('admin/api/system/grade/create')->with('success', Lang::get('admin/blogs/messages.create.success'));
+	    return Response::json(['resp' => ['code' => 0, 'message' => $grade->skillgradetitle . '创建成功！']], 200);
 	}
 
 	/**
@@ -117,7 +115,7 @@ class AdminGradesController extends \BaseController {
 	{
 		$newgrade = Grade::find($id);
 		if (!$newgrade){
-			return Response::json(['resp' => ['error' => ['message' => '未找到id为$id的资源']]], 404);
+			return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
 		}
 		$newgrade->skillgradetitle = Input::get('skillgradetitle');
 		$newgrade->skillgradedescription = Input::get('skillgradedescription');
@@ -126,11 +124,11 @@ class AdminGradesController extends \BaseController {
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			return Response::json(['resp' => ['error' => ['message' => '$newgrade->skillgradetitle已经存在！']]], 200);
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $newgrade->skillgradetitle . '所需唯一参数已存在！']], 200);
 	    		}	
 	    	// dd($errorinfo);
 	    }
-	    return Response::json(['resp' => ['data' => $newgrade->skillgradetitle . "更新成功！"]], 200);
+	    return Response::json(['resp' => ['code' => 0 , 'message' => $newgrade->skillgradetitle . "更新成功！"]], 200);
 		// return "update success for $newgrade->skillgradetitle!";
 		// return Redirect::to('admin/api/system/grade/'.$newgrade->id.'/edit')->with('success', "修改成功！");
 	}
@@ -157,9 +155,12 @@ class AdminGradesController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-		$grade = Grade::findOrFail($id);
+		$grade = Grade::find($id);
+		if(!$grade){
+			return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+		}
 		$grade->delete();
-		return 'delete ok';
+		return Response::json(['resp' => ['code' => 0 , 'message' => $grade->skillgradetitle . "删除成功！"]], 200);
 		// return Redirect::to('admin/api/system/grade');
 	}
 

@@ -25,17 +25,9 @@
             vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/grade/"+grade.id,grade);
             promise.then(
                 function(gradesdata) {/*success*/
-                // if (gradesdata.indexOf("年级") >= 0){
-                //         d.resolve(grade[field]+'已经存在！');
-                //         toastr.error(grade[field]+'已经存在！');
-                //     }
-                // else{
-                //     d.resolve();
-                //         toastr.success(grade[field]+'修改成功！');
-                //     }
-                    if (gradesdata.resp.error){
-                        d.resolve(gradesdata.resp.error.message);
-                        toastr.error(gradesdata.resp.error.message);
+                    if (gradesdata.resp.code !==0 ){
+                        d.resolve(gradesdata.resp.message);
+                        toastr.error(gradesdata.resp.message);
                     }
                     else{
                         d.resolve();
@@ -55,10 +47,10 @@
             khttp.destroy("http://kidsit.cn/admin/api/system/grade/",grade).then(
                 function(res){
                     $scope.grades.splice($scope.grades.indexOf(grade),1);
-                    toastr.success(grade.skillgradetitle+'删除成功！');
+                    toastr.success(res.resp.message);
                 },
                 function(error){
-                    toastr.error(grade.skillgradetitle+'删除出错！');
+                    toastr.error(res.resp.message);
                     // console.log(error);
                 }
             );
