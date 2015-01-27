@@ -17,8 +17,8 @@
 			vm.currentPromise = promise = vhttp.store("http://kidsit.cn/admin/api/system/grade",vm.newGrade);
 			promise.then(
 				function (gradesdata) {
-					if (gradesdata.indexOf("年级") >= 0){
-						toastr.error(vm.newGrade.skillgradetitle+' 已经存在！');
+					if (gradesdata.resp.code!==0){
+						toastr.error(vm.newGrade.skillgradetitle+gradesdata.resp.message);
 						return;
 					}
 					else{
