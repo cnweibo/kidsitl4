@@ -20,8 +20,9 @@ class AdminClassroomController extends \BaseController {
 	 */
 	public function index()
 	{
-
-		return Response::json(['resp' => ['data' => Classroom::all()->toArray()],'code'=>0],200); 
+		Classroom::with('owner')->get(['sysname','teacher_id'])->toArray();
+		// dd(DB::getQueryLog());
+			return Response::json(['resp' => ['data' => Classroom::with('owner')->get(['id','name'])->get(['sysname','teacher_id'])->toArray()],'code'=>0],200); 
 	}
 
 	/**
