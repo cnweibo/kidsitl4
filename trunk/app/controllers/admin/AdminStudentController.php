@@ -20,7 +20,7 @@ class AdminStudentController extends \BaseController {
 	public function index()
 	{
 
-		return Response::json(['resp' => ['data' => Student::all()->toArray()],'code'=>0],200); 
+		return Response::json(['resp' => ['data' => Student::with('belongingClass')->get()->toArray()],'code'=>0],200); 
 	}
 
 	/**
