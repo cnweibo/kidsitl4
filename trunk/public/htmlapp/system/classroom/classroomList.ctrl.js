@@ -35,6 +35,7 @@
         // check and save for the edit in place
         vm.checkAndSaveClassroom = function(data,field,classroom) {
 		var d = $q.defer();
+        console.log(data);
 		classroom[field] = data;
 		vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/classroom/"+classroom.id,classroom);
 		promise.then(
@@ -54,6 +55,20 @@
             }
 		);
 		return d.promise;
+        };
+        $scope.owner = {
+            id: 5,
+            name: "chenxiu"
+        };
+        $scope.owners=[];
+        vm.loadClassroomSelectableOwners = function () {
+            khttp.getAll("http://kidsit.cn/admin/api/system/teacher").then(
+            function(teacherkeys) {/*success*/
+                $scope.owners = teacherkeys.resp.data;
+                console.log($scope.owners);
+                },
+            function(status) {console.log("error status code:"+status);}
+            );
         };
     }
 })();

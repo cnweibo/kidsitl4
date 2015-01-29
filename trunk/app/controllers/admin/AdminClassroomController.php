@@ -22,7 +22,7 @@ class AdminClassroomController extends \BaseController {
 	{
 		Classroom::with('owner')->get(['sysname','teacher_id'])->toArray();
 		// dd(DB::getQueryLog());
-			return Response::json(['resp' => ['data' => Classroom::with('owner')->get(['sysname','teacher_id'])->toArray()],'code'=>0],200); 
+			return Response::json(['resp' => ['data' => Classroom::with('owner')->get(['id','sysname','teacher_id'])->toArray()],'code'=>0],200); 
 	}
 
 	/**
@@ -115,22 +115,22 @@ class AdminClassroomController extends \BaseController {
 	    if (!$newclassroom){
 	    	return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
 	    }
-	    $newclassroom->sysname = Input::get('sysname');
-	    $newclassroom->description = Input::get('description');
-	    $newclassroom->teacher_id = Input::get('teacher_id');
-	    $newclassroom->profileURL = Input::get('profileURL');
+	    if(Input::get('sysname')) {$newclassroom->sysname = Input::get('sysname') ;}
+	    if(Input::get('description')) {$newclassroom->description = Input::get('description');}
+	    if(Input::get('teacher_id')) {$newclassroom->teacher_id = Input::get('teacher_id');}
+	    if(Input::get('profileURL')) {$newclassroom->profileURL =Input::get('profileURL');}
 	    try {
 		    $newclassroom->save();   	
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			return Response::json(['resp' => ['code' => 409, 'message' => $newclassroom->sysname . '所需唯一参数已存在！']], 200);
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $newclassroom->sysname . $e->getMessage()]], 200);
 	    		}	
 	    	return Response::json(['resp' => ['code' => 409, 'message' => $newclassroom->sysname . '所需唯一参数已存在！']], 200);
 
 	    }
 
-		return Response::json(['resp' => ['code' => 0 , 'message' => $newclassroom->sysname . "更新成功！"]], 200);
+		return Response::json(['resp' => ['code' => 0 , 'message' => $newclassroom->sysname . "(" .$newclassroom->teacher_id .")更新成功！"]], 200);
 	}
 
 	/**
