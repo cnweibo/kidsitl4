@@ -45,7 +45,7 @@
 				<td class="col-md-1" editable-text="classroom.sysname" onbeforesave="vm.checkAndSaveClassroom($data,'sysname',classroom)">[[classroom.sysname]]</td>
 				<td class="col-md-2" editable-text="classroom.description" onbeforesave="vm.checkAndSaveClassroom($data,'description',classroom)">[[classroom.description]]</td>
 				<td class="col-md-2" editable-select="classroom.teacher_id" onshow="vm.loadClassroomSelectableOwners()" e-ng-options="o.id as o.sysloginname + '(' + o.name + ':' + o.id +')' for o in owners" onbeforesave="vm.checkAndSaveClassroom($data,'teacher_id',classroom)">[[classroom.owner.name]]([[classroom.owner.id]])</td>
-				<td class="col-md-1" >[[classroom.studentquantity]]</td>
+				<td class="col-md-1" >[[classroom.students.length]]</td>
 				<td class="col-md-2" editable-text="classroom.profileURL" onbeforesave="vm.checkAndSaveClassroom($data,'profileURL',classroom)">[[classroom.profileURL]]</td>
 				<td class="col-md-1">[[classroom.created_at]]</td>
 				<td class="col-md-1"> 

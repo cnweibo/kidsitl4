@@ -8,6 +8,6 @@ class Classroom extends \Eloquent {
 	}
 	public function students()
 	{
-		return $this->hasMany('Student');
+		return $this->hasMany('Student')->select(array('id','name','classroom_id'));
 	}
 }
