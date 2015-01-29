@@ -20,8 +20,8 @@ class AdminTeacherController extends \BaseController {
 	 */
 	public function index()
 	{
-
-		return Response::json(['resp' => ['data' => Teacher::all()->toArray()],'code'=>0],200); 
+		// use fluent query builder mixed with eloquent model
+		return Response::json(['resp' => ['data' => Teacher::select('email','password','cell','id','name','sysloginname','organization','address','created_at')->get()->toArray()],'code'=>0],200); 
 	}
 
 	/**
@@ -128,10 +128,10 @@ class AdminTeacherController extends \BaseController {
 		    $newteacher->save();   	
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
-	    	if ($errorcode==23000) {
-	    			return Response::json(['resp' => ['code' => 409, 'message' => $newteacher->name . '所需唯一参数已存在！']], 200);
-	    		}	
-	    	return Response::json(['resp' => ['code' => 410, 'message' => $newteacher->name . '更新出错！']], 200);
+	    	// if ($errorcode==23000) {
+	    	// 		return Response::json(['resp' => ['code' => 409, 'message' => $newteacher->name . '所需唯一参数已存在！']], 200);
+	    	// 	}	
+	    	return Response::json(['resp' => ['code' => 410, 'message' => $e->getMessage()]], 200);
 
 	    }
 

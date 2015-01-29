@@ -43,6 +43,9 @@
 	</script>
 	<!--(if target mathdev)><!-->
 	<script type="text/javascript" src="{{asset('htmlapp/libs/jquery/dist/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/underscore/underscore.js')}}"></script>
+
+
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
