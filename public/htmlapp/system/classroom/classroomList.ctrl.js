@@ -46,7 +46,9 @@
                 }
                 else{
                     d.resolve();
-                    toastr.success(data+"更新成功！");
+                    classroom.owner.name = _.findWhere($scope.owners,{id:data}).name ;
+                    classroom.owner.id = data;
+                    toastr.success(_.findWhere($scope.owners,{id:data}).name+"更新成功！");
                 }
             },
             function(status) {

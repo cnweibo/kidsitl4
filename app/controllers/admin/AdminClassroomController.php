@@ -22,7 +22,7 @@ class AdminClassroomController extends \BaseController {
 	{
 		Classroom::with('owner')->get(['sysname','teacher_id'])->toArray();
 		// dd(DB::getQueryLog());
-			return Response::json(['resp' => ['data' => Classroom::with('owner')->get(['id','sysname','teacher_id'])->toArray()],'code'=>0],200); 
+			return Response::json(['resp' => ['data' => Classroom::with('owner')->get(['id','sysname','teacher_id','description','profileURL','created_at'])->toArray()],'code'=>0],200); 
 	}
 
 	/**
