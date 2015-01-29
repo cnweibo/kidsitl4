@@ -21,7 +21,7 @@ class AdminTeacherController extends \BaseController {
 	public function index()
 	{
 		// use fluent query builder mixed with eloquent model
-		return Response::json(['resp' => ['data' => Teacher::select('email','password','cell','id','name','sysloginname','organization','address','created_at')->get()->toArray()],'code'=>0],200); 
+		return Response::json(['resp' => ['data' => Teacher::with('classes')->select('email','password','cell','id','name','sysloginname','organization','address','created_at')->get()->toArray()],'code'=>0],200); 
 	}
 
 	/**

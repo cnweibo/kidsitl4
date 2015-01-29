@@ -29,10 +29,10 @@
 		<thead>
 			<tr>
 				<th class="col-md-1">ID</th>
-				<th class="col-md-1">姓名：</th>
+				<th class="col-md-2">姓名：</th>
 				<th class="col-md-1">email</th>
 				<th class="col-md-1">电话：</th>
-				<th class="col-md-2">单位：</th>
+				<th class="col-md-1">单位：</th>
 				<th class="col-md-2">地址：</th>
 				<th class="col-md-1">登陆名：</th>
 				<th class="col-md-1">密码：</th>
@@ -44,7 +44,12 @@
 		<tbody>
 			<tr ng-repeat="teacher in teachers">
 				<td>[[teacher.id]]</td>
-				<td class="col-md-1" editable-text="teacher.name" onbeforesave="vm.checkAndSaveTeacher($data,'name',teacher)">[[teacher.name]]</td>
+				<td class="col-md-1" editable-text="teacher.name" onbeforesave="vm.checkAndSaveTeacher($data,'name',teacher)">
+					[[teacher.name]] 
+					<button class="btn btn-default btn-xs " type="button">
+						<span class="glyphicon glyphicon-home"></span> <span class="badge">[[teacher.classes.length]]</span>
+					</button>
+				</td>
 				<td class="col-md-1" editable-text="teacher.email" onbeforesave="vm.checkAndSaveTeacher($data,'email',teacher)">[[teacher.email]]</td>
 				<td class="col-md-1" editable-text="teacher.cell" onbeforesave="vm.checkAndSaveTeacher($data,'cell',teacher)">[[teacher.cell]]</td>
 				<td class="col-md-2" editable-text="teacher.organization" onbeforesave="vm.checkAndSaveTeacher($data,'organization',teacher)">[[teacher.organization]]</td>
