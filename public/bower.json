@@ -23,6 +23,7 @@
     "highcharts": "http://code.highcharts.com/highcharts.js",
     "highcharts-ng": "~0.0.7",
     "underscore": "~1.7.0",
-    "angular-underscore": "~0.5.0"
+    "angular-underscore": "~0.5.0",
+    "bootstrap-hover-dropdown": "~2.0.11"
   }
 }
