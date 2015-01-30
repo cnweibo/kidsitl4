@@ -95,7 +95,7 @@
     					<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><i class="glyphicon glyphicon-bullhorn"></i> Comments</a></li>
     					<li{{ (Request::is('admin/bishuns*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/bishuns') }}}"><i class="glyphicon glyphicon glyphicon-pencil"></i> 笔顺</a></li>
                         <li class="dropdown {{(Request::is('admin/yinbiao*') ? ' active' : '') }}">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/yinbiaos') }}}">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" href="{{{ URL::to('admin/yinbiaos') }}}">
                                 <i class="glyphicon glyphicon-sort-by-alphabet"></i> 音标<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -108,7 +108,7 @@
                             </ul>
                         </li>
                         <li class="dropdown {{(Request::is('admin/system/grade*') ? ' active' : '') }}">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/yinbiaos') }}}">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" href="{{{ URL::to('admin/yinbiaos') }}}">
                                 <i class="glyphicon glyphicon-cog"></i> 系统<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -120,7 +120,7 @@
                             </ul>
                         </li>
                         <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
-    						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
+    						<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" href="{{{ URL::to('admin/users') }}}">
     							<i class="glyphicon glyphicon-user"></i> Users <span class="caret"></span>
     						</a>
     						<ul class="dropdown-menu">
@@ -163,6 +163,7 @@
 
 	<!-- Javascripts    -->
     <script src="{{asset('bootstrap/js/jquery.min.js,bootstrap.min.js,wysihtml5-0.3.0.js,bootstrap-wysihtml5.js,jquery.dataTables.min.js,datatables-bootstrap.js,datatables.fnReloadAjax.js,jquery.colorbox.js,prettify.js,custom.js')}}"></script>
+    <script type="text/javascript" src="{{asset('htmlapp/libs/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js')}}"></script>
    <!--  <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/wysihtml5/wysihtml5-0.3.0.js')}}"></script>
     <script src="{{asset('assets/js/wysihtml5/bootstrap-wysihtml5.js')}}"></script>
