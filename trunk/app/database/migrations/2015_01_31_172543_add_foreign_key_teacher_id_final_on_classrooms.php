@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignkeyOnClassrooms extends Migration {
+class AddForeignKeyTeacherIdFinalOnClassrooms extends Migration {
 
 	/**
 	 * Run the migrations.
