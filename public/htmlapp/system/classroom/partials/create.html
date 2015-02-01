@@ -12,22 +12,30 @@
 		</div>
 
 		<!-- Content -->
-		<form method="POST" action="http://kidsit.cn/admin/api/system/classroom" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createClassroom()'}">
-			<div class="form-group">
-				<label for="sysname">系统登录名</label>			
-				<input class="form-control" autofocus="autofocus" name="sysname" type="text" id="sysname" ng-model="vm.newClassroom.sysname">			
+		<form name="classroomCreateForm" method="POST" action="http://kidsit.cn/admin/api/system/classroom" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createClassroom()'}" novalidate>
+			<div class="form-group" ng-class="{'has-error':classroomCreateForm.sysname.$invalid && (classroomCreateForm.sysname.$dirty || classroomCreateForm.sysname.$touched)}">
+				<label for="sysname">系统标示名称：[[classroomCreateForm.sysname.$touched]]</label>			
+				<input class="form-control" autofocus="autofocus" name="sysname" type="text" id="sysname" ng-model="vm.newClassroom.sysname" required>
+				<span ng-show="classroomCreateForm.sysname.$invalid && (classroomCreateForm.sysname.$dirty || classroomCreateForm.sysname.$touched)" class="help-block has-error">系统名唯一标识该班级，是必填项目，请输入英文和数字组合，小于20位</span>
 			</div>
-			<div class="form-group">
-				<label for="description">班级描述</label>			
-				<input class="form-control" name="description" type="text" id="description" ng-model="vm.newClassroom.description">		
+			<div class="form-group" ng-class="{'has-error':classroomCreateForm.description.$invalid && (classroomCreateForm.description.$dirty || classroomCreateForm.description.$touched)}">
+				<label for="description">班级描述 [[classroomCreateForm.description.$touched]])</label>			
+				<input class="form-control" name="description" type="text" id="description" ng-model="vm.newClassroom.description" required>
+				<span ng-show="classroomCreateForm.description.$invalid && (classroomCreateForm.description.$dirty || classroomCreateForm.description.$touched)" class="help-block has-error">班级描述字段，是必填项目，请输入相关介绍描述，小于100字</span>		
 			</div>
-			<div class="form-group">
-				<label for="teacher_id">所属教师</label>			
-				<input class="form-control" name="teacher_id" type="text" id="teacher_id" ng-model="vm.newClassroom.teacher_id">		
+			<div class="form-group" ng-class="{'has-error':classroomCreateForm.teacher_id.$invalid && (classroomCreateForm.teacher_id.$dirty || classroomCreateForm.teacher_id.$touched)}">
+				<label for="teacher_id">所属教师id: (输入教师loginname自动模糊匹配选择)</label>	
+				<!-- o.id as o.sysloginname + '(' + o.name + ':' + o.id +')' for o in owners -->
+				<!-- teacher.id as teacher.sysloginname for teacher in teachersdata | filter:$viewValue | limitTo:8 -->
+				<!-- filter:$viewValue  -->
+				<input name="teacher_id" id="teacher_id" type="text" ng-model="vm.newClassroom.teacher_id" typeahead="teacher.id as teacher.sysloginname + '(' + teacher.name + ')' for teacher in teachersdata | fuzzyBy: 'name': $viewValue" | limitTo:8" typeahead-editable=false class="form-control" required>
+				<span ng-show="classroomCreateForm.teacher_id.$invalid && (classroomCreateForm.teacher_id.$dirty || classroomCreateForm.teacher_id.$touched)" class="help-block has-error">所属教师，是必填项目，请模糊查询并选择老师</span>
 			</div>
-			<div class="form-group">
+			<div class="form-group" ng-class="{'has-error':classroomCreateForm.profileURL.$invalid && (classroomCreateForm.profileURL.$dirty || classroomCreateForm.profileURL.$touched)}">
 				<label for="profileURL">班级主页</label>			
-				<input class="form-control" name="profileURL" type="text" id="profileURL" ng-model="vm.newClassroom.profileURL">		
+				<input class="form-control" name="profileURL" type="url" id="profileURL" ng-model="vm.newClassroom.profileURL" required>
+				<span ng-show="classroomCreateForm.profileURL.$error.required && classroomCreateForm.profileURL.$touched" class="help-block has-error">班级主页，是必填项目，请输入其URL(如：http://kidsit.cn/classroom/myclass)</span>
+				<span ng-show="classroomCreateForm.profileURL.$error.url" class="help-block has-error">URL格式不正确(以下为正确样例：http://kidsit.cn/classroom/myclass)</span>
 			</div>
 			<input class="btn btn-primary" type="button" value="提交" ng-click="vm.createClassroom()">	
 		</form>

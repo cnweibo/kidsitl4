@@ -55,9 +55,9 @@ class AdminClassroomController extends \BaseController {
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			return Response::json(['resp' => ['code' => 409, 'message' => $classroom->sysname . '所需唯一参数已存在！']], 200);
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $e->getMessage()]], 200);
 	    		}
-	    	return Response::json(['resp' => ['code' => 410, 'message' => $classroom->sysname . '创建出错！']], 200);
+	    	return Response::json(['resp' => ['code' => 410, 'message' => $e->getMessage()]], 200);
 
 	    }
 	    return Response::json(['resp' => ['code' => 0, 'message' => $classroom->sysname . '创建成功！']], 200);
