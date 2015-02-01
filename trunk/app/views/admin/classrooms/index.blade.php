@@ -49,10 +49,12 @@
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-messages/angular-messages.js')}}"></script>
 	
 	<script type="text/javascript" src="{{asset('htmlapp/libs/ui-utils-0.2.1/ui-utils.js')}}"></script>
+	<!-- introduce sync/async form validate mechanism -->
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-validate-directive/validate.js')}}"></script>
 
-	
 	
     <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
