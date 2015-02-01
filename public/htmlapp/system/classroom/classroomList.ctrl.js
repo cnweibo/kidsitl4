@@ -36,6 +36,7 @@
         vm.checkAndSaveClassroom = function(data,field,classroom) {
 		var d = $q.defer();
         console.log(data);
+        
 		classroom[field] = data;
 		vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/classroom/"+classroom.id,classroom);
 		promise.then(
@@ -46,9 +47,15 @@
                 }
                 else{
                     d.resolve();
-                    classroom.owner.name = _.findWhere($scope.owners,{id:data}).name ;
-                    classroom.owner.id = data;
-                    toastr.success(_.findWhere($scope.owners,{id:data}).name+"更新成功！");
+                    if (field=='teacher_id'){
+                        classroom.owner.name = _.findWhere($scope.owners,{id:data}).name ;
+                        classroom.owner.id = data;
+                        toastr.success(_.findWhere($scope.owners,{id:data}).name+"更新成功！");
+                    }
+                    else{
+                        toastr.success(data+" 更新成功！");
+                    }
+
                 }
             },
             function(status) {
