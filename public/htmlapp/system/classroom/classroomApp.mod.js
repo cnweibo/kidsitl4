@@ -7,7 +7,7 @@
     var indexpagebase = "http://kidsit.cn/admin/system/classroom#";
 
 	angular.module('classroomApp',['ngRoute','khttp','cgBusy','xeditable','toastr','ui.utils','containerCtrl',
-									'ui.bootstrap','angular.filter','ngMessages'])
+									'ui.bootstrap','angular.filter','ngMessages','dbrans.validate'])
 
 		.config( ['$routeProvider','$interpolateProvider','toastrConfig', function ($routeProvider,$interpolateProvider,toastrConfig) {
 			$interpolateProvider.startSymbol('[[');

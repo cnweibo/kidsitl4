@@ -71,7 +71,23 @@ class AdminClassroomController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Classroom::find($id);
+		if (is_numeric($id)){
+			$classroom = Classroom::with('owner','students')->find($id)->get(['id','sysname','teacher_id','description','profileURL','created_at'])->toArray();
+			if (!$classroom){
+				return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+			}
+			return Response::json(['resp' => ['data' => $classroom,'code'=>0],200]); 
+		}else{
+
+			$classroom = Classroom::with('owner','students')->where('sysname' , '=', $id)
+			->get(['id','sysname','teacher_id','description','profileURL','created_at'])->toArray();
+			if (!$classroom){
+				return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+			}else{
+				return Response::json(['resp' => ['data' => Classroom::with('owner','students')->where('sysname' , '=', $id)->get(['id','sysname','teacher_id','description','profileURL','created_at'])->toArray()],'code'=>0],200); 
+			}
+		}
+			
 	}
 
 	/**

@@ -53,7 +53,7 @@
 	
 	<script type="text/javascript" src="{{asset('htmlapp/libs/ui-utils-0.2.1/ui-utils.js')}}"></script>
 	<!-- introduce sync/async form validate mechanism -->
-	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-validate-directive/validate.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-validate-directive/validate.js')}}" ></script>
 
 	
     <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>

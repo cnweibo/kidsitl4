@@ -15,10 +15,12 @@
 		<form name="classroomCreateForm" method="POST" action="http://kidsit.cn/admin/api/system/classroom" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createClassroom()'}" novalidate>
 			<div class="form-group" ng-class="{'has-error':classroomCreateForm.sysname.$invalid && (classroomCreateForm.sysname.$dirty || classroomCreateForm.sysname.$touched)}">
 				<label for="sysname">系统标示名称:</label>			
-				<input class="form-control" autofocus="autofocus" name="sysname" type="text" id="sysname" ng-model="vm.newClassroom.sysname" required ng-minlength="6" ng-maxlength="20">
+				<input class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="sysname" type="text" id="sysname" ng-model="vm.newClassroom.sysname" ng-model-options="{ debounce: 1000 }" required ng-minlength="6" ng-maxlength="20">
+				[[ classroomCreateForm.sysname.$pending ]]
 				<div ng-messages="classroomCreateForm.sysname.$error">
 					<span class="help-block has-error" ng-message="minlength">最小需要6个非" #!& "字符</span>
 					<span class="help-block has-error" ng-message="maxlength">最大20个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="canUse">该系统标示已经被占用，请修改后重试</span>
 					<span ng-show="classroomCreateForm.sysname.$invalid && classroomCreateForm.sysname.$touched" class="help-block has-error">系统名唯一标识该班级，是必填项目，请输入英文和数字组合，大于6位，小于20位</span>				
 				</div>
 	
