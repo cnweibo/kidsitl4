@@ -36,7 +36,9 @@
         vm.checkAndSaveClassroom = function(data,field,classroom) {
 		var d = $q.defer();
         console.log(data);
-        
+        if (data.length<6 || data.length>100){
+            return "长度不符合要去，只能为6到100个字符之间";
+        }
 		classroom[field] = data;
 		vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/classroom/"+classroom.id,classroom);
 		promise.then(
