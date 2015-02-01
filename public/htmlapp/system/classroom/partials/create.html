@@ -14,12 +14,12 @@
 		<!-- Content -->
 		<form name="classroomCreateForm" method="POST" action="http://kidsit.cn/admin/api/system/classroom" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createClassroom()'}" novalidate>
 			<div class="form-group" ng-class="{'has-error':classroomCreateForm.sysname.$invalid && (classroomCreateForm.sysname.$dirty || classroomCreateForm.sysname.$touched)}">
-				<label for="sysname">系统标示名称：[[classroomCreateForm.sysname.$touched]]</label>			
+				<label for="sysname">系统标示名称:</label>			
 				<input class="form-control" autofocus="autofocus" name="sysname" type="text" id="sysname" ng-model="vm.newClassroom.sysname" required>
 				<span ng-show="classroomCreateForm.sysname.$invalid && (classroomCreateForm.sysname.$dirty || classroomCreateForm.sysname.$touched)" class="help-block has-error">系统名唯一标识该班级，是必填项目，请输入英文和数字组合，小于20位</span>
 			</div>
 			<div class="form-group" ng-class="{'has-error':classroomCreateForm.description.$invalid && (classroomCreateForm.description.$dirty || classroomCreateForm.description.$touched)}">
-				<label for="description">班级描述 [[classroomCreateForm.description.$touched]])</label>			
+				<label for="description">班级描述:</label>			
 				<input class="form-control" name="description" type="text" id="description" ng-model="vm.newClassroom.description" required>
 				<span ng-show="classroomCreateForm.description.$invalid && (classroomCreateForm.description.$dirty || classroomCreateForm.description.$touched)" class="help-block has-error">班级描述字段，是必填项目，请输入相关介绍描述，小于100字</span>		
 			</div>
