@@ -32,7 +32,9 @@
 					}
 					else{
 						d.resolve();
-						toastr.success(data+"更新成功！");
+						student.belonging_class.sysname = _.findWhere($scope.belongingClasses,{id:data}).sysname ;
+						student.belonging_class.id = _.findWhere($scope.belongingClasses,{id:data}).id ;
+						toastr.success(field+' '+data+" 更新成功！");
 					}
 				},
 				function(status) {
@@ -56,5 +58,15 @@
 			);
 			$location.path('/student-list');
 		};
-    }
+		$scope.belongingClasses=[];
+		vm.loadStudentSelectableBelongingClasses = function () {
+			khttp.getAll("http://kidsit.cn/admin/api/system/classroom").then(
+			function(classesdata) {/*success*/
+				$scope.belongingClasses = classesdata.resp.data;
+				console.log($scope.belongingClasses);
+				},
+			function(status) {console.log("error status code:"+status);}
+			);
+		};
+	}
 })();
