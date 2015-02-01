@@ -43,6 +43,8 @@
 	</script>
 	<!--(if target mathdev)><!-->
 	<script type="text/javascript" src="{{asset('htmlapp/libs/jquery/dist/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/libs/underscore/underscore.js')}}"></script>
+	
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular/angular.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-route/angular-route.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-animate/angular-animate.js')}}"></script>
@@ -53,7 +55,10 @@
 	
     <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
-
+	<!-- typeahead -->
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>	
+	<!-- fuzzy search -->
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-filter/dist/angular-filter.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('htmlapp/system/student/studentApp.mod.js')}}"></script>
 	

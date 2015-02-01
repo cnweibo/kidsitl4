@@ -46,7 +46,7 @@
 				<td class="col-md-1">[[student.id]]</td>
 				<td class="col-md-1" editable-text="student.name" onbeforesave="vm.checkAndSaveStudent($data,'name',student)">[[student.name]]</td>
 				<td class="col-md-1" editable-text="student.xuehao" onbeforesave="vm.checkAndSaveStudent($data,'xuehao',student)">[[student.xuehao]]</td>
-				<td class="col-md-2" editable-text="student.classroom_id" onbeforesave="vm.checkAndSaveStudent($data,'classroom_id',student)">[[student.belonging_class.sysname]]</td>
+				<td class="col-md-2" editable-select="student.classroom_id" onshow="vm.loadStudentSelectableBelongingClasses()" e-ng-options="c.id as c.sysname + '(' + c.name + ':' + c.id +')' for c in belongingClasses" onbeforesave="vm.checkAndSaveStudent($data,'classroom_id',student)">[[student.belonging_class.sysname]]([[student.belonging_class.id]])</td>
 				<td class="col-md-1" editable-text="student.sysloginname" onbeforesave="vm.checkAndSaveStudent($data,'sysloginname',student)">[[student.sysloginname]]</td>
 				<td class="col-md-1" editable-text="student.password" onbeforesave="vm.checkAndSaveStudent($data,'password',student)">[[student.password]]</td>
 				<td class="col-md-1" editable-text="student.cell" onbeforesave="vm.checkAndSaveStudent($data,'cell',student)">[[student.cell]]</td>

@@ -6,7 +6,7 @@
     var assetbase = "http://kidsit.cn/htmlapp/system/grade/";
     var indexpagebase = "http://kidsit.cn/admin/system/grade#";
 
-	angular.module('studentApp',['ngRoute','khttp','cgBusy','xeditable','toastr','ui.utils','containerCtrl'])
+	angular.module('studentApp',['ngRoute','khttp','cgBusy','xeditable','toastr','ui.utils','containerCtrl','ui.bootstrap','angular.filter'])
 
 		.config( ['$routeProvider','$interpolateProvider','toastrConfig', function ($routeProvider,$interpolateProvider,toastrConfig) {
 			$interpolateProvider.startSymbol('[[');
