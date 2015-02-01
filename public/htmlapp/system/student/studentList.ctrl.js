@@ -32,8 +32,10 @@
 					}
 					else{
 						d.resolve();
-						student.belonging_class.sysname = _.findWhere($scope.belongingClasses,{id:data}).sysname ;
-						student.belonging_class.id = _.findWhere($scope.belongingClasses,{id:data}).id ;
+						if(field == 'classroom_id'){
+							student.belonging_class.sysname = _.findWhere($scope.belongingClasses,{id:data}).sysname ;
+							student.belonging_class.id = _.findWhere($scope.belongingClasses,{id:data}).id ;
+						}
 						toastr.success(field+' '+data+" 更新成功！");
 					}
 				},
