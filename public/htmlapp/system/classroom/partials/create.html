@@ -12,11 +12,11 @@
 		</div>
 
 		<!-- Content -->
-		<form name="classroomCreateForm" method="POST" action="http://kidsit.cn/admin/api/system/classroom" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createClassroom()'}" novalidate>
+		<form name="classroomCreateForm" method="POST" action="http://kidsit.cn/admin/api/system/classroom" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createClassroom(classroomCreateForm)'}" novalidate>
 			<div class="form-group" ng-class="{'has-error':classroomCreateForm.sysname.$invalid && (classroomCreateForm.sysname.$dirty || classroomCreateForm.sysname.$touched)}">
 				<label for="sysname">系统标示名称:</label>			
 				<input class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="sysname" type="text" id="sysname" ng-model="vm.newClassroom.sysname" ng-model-options="{ debounce: 1000 }" required ng-minlength="6" ng-maxlength="20">
-				[[ classroomCreateForm.sysname.$pending ]]
+				<!-- [[ classroomCreateForm.sysname.$pending ]] -->
 				<div ng-messages="classroomCreateForm.sysname.$error">
 					<span class="help-block has-error" ng-message="minlength">最小需要6个非" #!& "字符</span>
 					<span class="help-block has-error" ng-message="maxlength">最大20个非" #!& "字符</span>
@@ -49,7 +49,7 @@
 				<span ng-show="classroomCreateForm.profileURL.$error.required && classroomCreateForm.profileURL.$touched" class="help-block has-error">班级主页，是必填项目，请输入其URL(如：http://kidsit.cn/classroom/myclass)</span>
 				<span ng-show="classroomCreateForm.profileURL.$error.url" class="help-block has-error">URL格式不正确(以下为正确样例：http://kidsit.cn/classroom/myclass)</span>
 			</div>
-			<input class="btn btn-primary" type="button" value="提交" ng-click="vm.createClassroom()">	
+			<input class="btn btn-primary" type="button" value="提交" ng-click="vm.createClassroom(classroomCreateForm)">	
 		</form>
 		<!-- ./ content -->
 
