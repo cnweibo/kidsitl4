@@ -56,7 +56,10 @@
 	
     <script type="text/javascript" src="{{ asset('htmlapp/libs/angular-busy/dist/angular-busy.js') }}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-toastr/dist/angular-toastr.js')}}"></script>	
-
+	
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>	
+	
+	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-filter/dist/angular-filter.js')}}"></script>	
 
 	<script type="text/javascript" src="{{asset('htmlapp/system/classroom/classroomApp.mod.js')}}"></script>
 	
