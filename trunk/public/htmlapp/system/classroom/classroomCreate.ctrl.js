@@ -16,6 +16,7 @@
 			// {id: 5,sysloginname:"lisi"},
 			// {id: 4,sysloginname:"zhaowu"},
    //      ];
+		$scope.teachersdata = [];
         var promise;
         vm.currentPromise = promise = khttp.getAll("http://kidsit.cn/admin/api/system/teacher/");
         promise.then(
