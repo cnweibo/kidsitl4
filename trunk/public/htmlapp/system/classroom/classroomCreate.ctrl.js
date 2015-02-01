@@ -49,5 +49,17 @@
 			);
 			// $location.path('/classroom-list');
         };
+        $scope.canUseThisName = function (thisname) {
+			var d = $q.defer();
+			khttp.getOne('http://kidsit.cn/admin/api/system/classroom/',thisname).then(
+				function (a) {
+					return d.reject();
+				},
+				function (a) {
+					d.resolve();
+				}
+			);
+			return d.promise;
+        };
     }
 })();
