@@ -32,8 +32,10 @@
             );
             $location.path('/teacher-list');
         };
-		vm.checkAndSaveTeacher = function(data,field,teacher) {
+		vm.checkAndSaveTeacher = function(data,field,teacher,rules) {
 			var d = $q.defer();
+            var returned = simpleFormDataValidate(rules,data);
+            if (returned!==0){return returned;}
 			teacher[field] = data;
 			vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/teacher/"+teacher.id,teacher);
 			promise.then(
