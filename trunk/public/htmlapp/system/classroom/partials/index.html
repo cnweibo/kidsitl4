@@ -35,7 +35,7 @@
 		<tbody>
 			<tr ng-repeat="classroom in classrooms">
 				<td class="col-md-1">[[classroom.id]]</td>
-				<td class="col-md-1" editable-text="classroom.sysname" onbeforesave="vm.checkAndSaveClassroom($data,'sysname',classroom,{minlength:2,maxlength:20})">[[classroom.sysname]]</td>
+				<td class="col-md-1" editable-text="classroom.sysname" onbeforesave="vm.checkAndSaveClassroom($data,'sysname',classroom,{minlength:2,maxlength:20,canuse:1})">[[classroom.sysname]]</td>
 				<td class="col-md-2" editable-text="classroom.description" onbeforesave="vm.checkAndSaveClassroom($data,'description',classroom,{minlength:2,maxlength:200})">[[classroom.description]]</td>
 				<td class="col-md-2" editable-select="classroom.teacher_id" onshow="vm.loadClassroomSelectableOwners()" e-ng-options="o.id as o.sysloginname + '(' + o.name + ':' + o.id +')' for o in owners" onbeforesave="vm.checkAndSaveClassroom($data,'teacher_id',classroom)">[[classroom.owner.name]]([[classroom.owner.id]])</td>
 				<td class="col-md-1" >[[classroom.students.length]]</td>
