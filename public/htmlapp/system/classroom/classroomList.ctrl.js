@@ -5,9 +5,9 @@
         .module('classroomApp')
         .controller('classroomListCtrl',classroomListCtrl);
 
-    classroomListCtrl.$inject = ['$scope','$window','toastr','$location','khttp','$q'];
+    classroomListCtrl.$inject = ['$scope','$window','toastr','$location','khttp','$q','simplevalidate'];
 
-    function classroomListCtrl($scope,$window,toastr,$location,khttp,$q) {
+    function classroomListCtrl($scope,$window,toastr,$location,khttp,$q,simplevalidate) {
         /*jshint validthis: true */
         var vm = this;
         var promise;
@@ -33,11 +33,11 @@
             $location.path('/classroom-list');
         };
         // check and save for the edit in place
-        vm.checkAndSaveClassroom = function(data,field,classroom) {
+        vm.checkAndSaveClassroom = function(data,field,classroom,rules) {
 		var d = $q.defer();
-        if (data.length<6 || data.length>100){
-            return "长度不符合要求，只能为6到100个字符之间";
-        }
+        var returned = simplevalidate.dovalidate(rules,data);
+        // var returned = simpleFormDataValidate(rules,data);
+        if (returned!==0){return returned;}
 		classroom[field] = data;
 		vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/classroom/"+classroom.id,classroom);
 		promise.then(
