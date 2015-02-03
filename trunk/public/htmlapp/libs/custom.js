@@ -28,6 +28,15 @@ var simpleFormDataValidate = function (rules,data) {
 				return "要求全部为字母或数字";
 			}
         }
+        if (rules.isurl){
+			var urlformat = /^(?:http(?:s)?:\/\/)?(?:www\.)?(?:[\w-]*)\.\w{2,}$/;
+			if (!data.match(urlformat)){
+				return "不符合网址URL的合法格式！请使用http://xx.yy.zz或者https://xx.yy.zz";
+			}
+        }
+        if (rules.canuse){
+
+        }
         return 0;
     }
     return 0;

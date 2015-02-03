@@ -68,11 +68,15 @@
 	<script type="text/javascript" src="{{asset('htmlapp/system/container.ctrl.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('htmlapp/syscommon/khttp.srv.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/syscommon/simplevalidate.srv.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('htmlapp/system/classroom/classroomList.ctrl.js')}}"></script>
-	 <script type="text/javascript" src="{{asset('htmlapp/system/classroom/classroomCreate.ctrl.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/system/classroom/classroomCreate.ctrl.js')}}"></script>
 	
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-xeditable-0.1.8/js/xeditable.js')}}"></script>
+
+	<script type="text/javascript" src="{{asset('htmlapp/libs/custom.js')}}"></script>
+
 
 	
 <!--<!(endif)-->
