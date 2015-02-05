@@ -5,9 +5,9 @@
         .module('teacherApp')
         .controller('teacherListCtrl',teacherListCtrl);
 
-    teacherListCtrl.$inject = ['$scope','khttp','$location','toastr','$q','$window'];
+    teacherListCtrl.$inject = ['$scope','khttp','$location','toastr','$q','$window','simplevalidate'];
 
-    function teacherListCtrl($scope,khttp,$location,toastr,$q,$window) {
+    function teacherListCtrl($scope,khttp,$location,toastr,$q,$window,simplevalidate) {
         /*jshint validthis: true */
         var vm = this;
         var promise;
@@ -34,28 +34,42 @@
         };
 		vm.checkAndSaveTeacher = function(data,field,teacher,rules) {
 			var d = $q.defer();
-            var returned = simpleFormDataValidate(rules,data);
-            if (returned!==0){return returned;}
-			teacher[field] = data;
-			vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/teacher/"+teacher.id,teacher);
-			promise.then(
-				function(teacherdata) {/*success*/
-                    if (teacherdata.resp.code !==0 ){
-                        d.resolve(teacherdata.resp.message);
-                        toastr.error(teacherdata.resp.message);
+            var returned = simplevalidate.dovalidate(rules,data,
+                                                     'http://kidsit.cn/admin/api/system/teacher/');
+            returned.then(
+                function (response) {
+                    if (response){
+                        // already exist
+                        d.resolve(response);
+                        toastr.error(response);
+                    }else{
+                        // can use and 0 returned by simplevalidation service
+                        teacher[field] = data;
+                        vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/teacher/"+teacher.id,teacher);
+                        promise.then(
+                            function(teacherdata) {/*success*/
+                                if (teacherdata.resp.code !==0 ){
+                                    d.resolve(teacherdata.resp.message);
+                                    toastr.error(teacherdata.resp.message);
+                                }
+                                else{
+                                        d.resolve();
+                                        toastr.success(data+" 更新成功！");
+                                }
+                            },
+                            function(status) {
+                                d.resolve(status);
+                                toastr.error(teacher[field]+'操作出错请重试！');
+                            }
+                        );
                     }
-                    else{
-                        d.resolve();
-                        toastr.success(data+"更新成功！");
-                    }
-				},
-				function(status) {
-					d.resolve(status);
-					toastr.error(teacher[field]+'操作出错请重试！');
-				}
-			);
-
-			return d.promise;
+                },
+                function (response) {
+                    d.resolve(response);
+                    toastr.error(response);
+                }
+            );
+                return d.promise;
 		};
     }
 })();

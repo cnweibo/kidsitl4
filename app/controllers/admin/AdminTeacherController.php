@@ -73,7 +73,24 @@ class AdminTeacherController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Teacher::find($id);
+		if (is_numeric($id)){
+			$teacher = Teacher::find($id)->get(['id','name','email','cell','sysloginname','address','organization','created_at'])->toArray();
+			if (!$teacher){
+				return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+			}
+			return Response::json(['resp' => ['data' => $teacher,'code'=>0],200]); 
+		}else{
+
+			$teacher = Teacher::where('sysloginname' , '=', $id)
+			->get(['id','name','email','cell','sysloginname','address','organization','created_at'])->toArray();
+			if (!$teacher){
+				return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
+			}else{
+				return Response::json(['resp' => ['data' => Teacher::where('sysloginname' , '=', $id)->get(['id','name','email','cell','sysloginname','address','organization','created_at'])->toArray()],'code'=>0],200); 
+			}
+		}
+
+		// return Teacher::find($id);
 	}
 
 	/**
