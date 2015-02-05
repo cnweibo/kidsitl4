@@ -37,7 +37,7 @@
 		<tbody>
 			<tr ng-repeat="teacher in teachers">
 				<td>[[teacher.id]]</td>
-				<td class="col-md-1" editable-text="teacher.name" onbeforesave="vm.checkAndSaveTeacher($data,'name',teacher)">
+				<td class="col-md-1" editable-text="teacher.name" onbeforesave="vm.checkAndSaveTeacher($data,'name',teacher,{minlength:2,maxlength:50})">
 					[[teacher.name]] 
 					<button class="btn btn-default btn-xs " type="button">
 						<span class="glyphicon glyphicon-home"></span> <span class="badge">[[teacher.classes.length]]</span>
@@ -47,7 +47,7 @@
 				<td class="col-md-1" editable-text="teacher.cell" onbeforesave="vm.checkAndSaveTeacher($data,'cell',teacher,{isallnumeric:1,minlength:11,maxlength:15})">[[teacher.cell]]</td>
 				<td class="col-md-2" editable-text="teacher.organization" onbeforesave="vm.checkAndSaveTeacher($data,'organization',teacher,{minlength:10,maxlength:100})">[[teacher.organization]]</td>
 				<td class="col-md-2" editable-text="teacher.address" onbeforesave="vm.checkAndSaveTeacher($data,'address',teacher,{minlength:10,maxlength:100})">[[teacher.address]]</td>
-				<td class="col-md-1" editable-text="teacher.sysloginname" onbeforesave="vm.checkAndSaveTeacher($data,'sysloginname',teacher,{minlength:2,maxlength:20})">[[teacher.sysloginname]]</td>
+				<td class="col-md-1" editable-text="teacher.sysloginname" onbeforesave="vm.checkAndSaveTeacher($data,'sysloginname',teacher,{minlength:2,maxlength:50,canuse: 1})">[[teacher.sysloginname]]</td>
 				<td class="col-md-1" editable-text="teacher.password" onbeforesave="vm.checkAndSaveTeacher($data,'password',teacher,{minlength:6,maxlength:50})">[[teacher.password]]</td>
 
 				<td class="col-md-1">[[teacher.created_at]]</td>

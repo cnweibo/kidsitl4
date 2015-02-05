@@ -61,7 +61,8 @@
 	<script type="text/javascript" src="{{asset('htmlapp/system/container.ctrl.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('htmlapp/syscommon/khttp.srv.js')}}"></script>
-
+	<script type="text/javascript" src="{{asset('htmlapp/syscommon/simplevalidate.srv.js')}}"></script>
+	
 	<script type="text/javascript" src="{{asset('htmlapp/system/teacher/teacherList.ctrl.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/system/teacher/teacherCreate.ctrl.js')}}"></script>
 

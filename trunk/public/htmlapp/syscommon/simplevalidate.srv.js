@@ -5,7 +5,7 @@
         .module('simplevalidate',[])
         .factory('simplevalidate',['$http','khttp','$q',function($http,khttp,$q){
 			return {
-				dovalidate: function (rules,data) {
+				dovalidate: function (rules,data,validateurl) {
 					var d = $q.defer();
 					if (rules){
 						if (rules.minlength){
@@ -50,7 +50,7 @@
 						if (rules.canuse){
 							// if there is async checking, let the d.resolve() here 
 							
-							khttp.getOne('http://kidsit.cn/admin/api/system/classroom/',data).then(
+							khttp.getOne(validateurl,data).then(
 								function (a) {
 									d.resolve(data+"已经存在，请更改后重试！");
 								},
