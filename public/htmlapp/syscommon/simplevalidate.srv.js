@@ -6,56 +6,65 @@
         .factory('simplevalidate',['$http','khttp','$q',function($http,khttp,$q){
 			return {
 				dovalidate: function (rules,data) {
+					var d = $q.defer();
 					if (rules){
 						if (rules.minlength){
 							if (data.length<rules.minlength){
-								return "长度不符合要求，必需大于"+rules.minlength+"个字符！";
+								d.resolve("长度不符合要求，必需大于"+rules.minlength+"个字符！");
 							}
 						}
 						if (rules.maxlength){
 							if (data.length>rules.maxlength){
-								return "长度不符合要求，必需小于"+rules.maxlength+"个字符！";
+								d.resolve(data+  "长度不符合要求，必需小于"+rules.maxlength+"个字符！");
 							}
 						}
 						if (rules.isEmail){
 							var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
 							if(!data.match(mailformat)){
-								return "不符合mail格式要求！";
+								d.resolve(data+  "不符合mail格式要求！");
 							}
 						}
 						if (rules.isallnumeric){
 							var numbersformat = /^[0-9]+$/;
 							if(!data.match(numbersformat)){
-								return "要求全部为数字";
+								d.resolve(data+  "要求全部为数字");
 							}
 						}
 						if (rules.isallletter){
 							var lettersformat = /^[0-9a-zA-Z]+$/;
 							if (!data.match(lettersformat)){
-								return "要求全部为字母或数字";
+								d.resolve(data+  "要求全部为字母或数字");
 							}
 						}
 						if (rules.isurl){
 							var urlformat = /^(?:http(?:s)?:\/\/)?(?:www\.)?(?:[\w-]*)\.\w{2,}$/;
 							if (!data.match(urlformat)){
-								return "不符合网址URL的合法格式！请使用http://xx.yy.zz或者https://xx.yy.zz";
+								d.resolve(data+ " 不符合网址URL的合法格式:http://xx.yy");
 							}
 						}
+						// if no async checking , we should resolve the promise with null message so that state can change.
+						if (!rules.canuse){
+							// here we resolve the promise as a total response for above synchronous validation
+							d.resolve();
+						}
 						if (rules.canuse){
-							var d = $q.defer();
+							// if there is async checking, let the d.resolve() here 
+							
 							khttp.getOne('http://kidsit.cn/admin/api/system/classroom/',data).then(
 								function (a) {
-									return d.reject();
+									d.resolve(data+"已经存在，请更改后重试！");
 								},
 								function (a) {
+									// return 0;
 									d.resolve();
 								}
 							);
-							return d.promise;
 						}
-						return 0;
+						return d.promise;
 					}
-					return 0;
+					// if no validation rule existed, we just return the null resolve promise
+					d.resolve();
+					return d.promise;
 				}
 			};
 	}]);
