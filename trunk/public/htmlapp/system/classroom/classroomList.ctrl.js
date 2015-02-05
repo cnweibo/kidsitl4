@@ -35,52 +35,50 @@
         // check and save for the edit in place
         vm.checkAndSaveClassroom = function(data,field,classroom,rules) {
 		var d = $q.defer();
-        var returned = simplevalidate.dovalidate(rules,data);
-        // var returned = simpleFormDataValidate(rules,data);
-        // if (returned!==0){return returned;}
+        var returned = simplevalidate.dovalidate(rules,data,
+                                                'http://kidsit.cn/admin/api/system/classroom/');
         returned.then(
-                function (response) {
-                    if (response){
-                        // already exist
-                        d.resolve(response);
-                        toastr.error(response);
-                    }else{
-                        // can use and 0 returned by simplevalidation service
-                            classroom[field] = data;
-                            vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/classroom/"+classroom.id,classroom);
-                            promise.then(
-                                function(classroomdata) {/*success*/
-                                    if (classroomdata.resp.code !==0 ){
-                                        d.resolve(classroomdata.resp.message);
-                                        toastr.error(classroomdata.resp.message);
-                                    }
-                                    else{
-                                        d.resolve();
-                                        if (field=='teacher_id'){
-                                            classroom.owner.name = _.findWhere($scope.owners,{id:data}).name ;
-                                            classroom.owner.id = data;
-                                            toastr.success(_.findWhere($scope.owners,{id:data}).name+"更新成功！");
-                                        }
-                                        else{
-                                            toastr.success(data+" 更新成功！");
-                                        }
-
-                                    }
-                                },
-                                function(status) {
-                                    d.resolve(status);
-                                    toastr.error(classroom[field]+'操作出错请重试！');
-                                }
-                            );
-                        }
-                },
-                function (response) {
+            function (response) {
+                if (response){
+                    // already exist
                     d.resolve(response);
                     toastr.error(response);
+                }else{
+                    // can use and 0 returned by simplevalidation service
+                    classroom[field] = data;
+                    vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/system/classroom/"+classroom.id,classroom);
+                    promise.then(
+                        function(classroomdata) {/*success*/
+                            if (classroomdata.resp.code !==0 ){
+                                d.resolve(classroomdata.resp.message);
+                                toastr.error(classroomdata.resp.message);
+                            }
+                            else{
+                                d.resolve();
+                                if (field=='teacher_id'){
+                                    classroom.owner.name = _.findWhere($scope.owners,{id:data}).name ;
+                                    classroom.owner.id = data;
+                                    toastr.success(_.findWhere($scope.owners,{id:data}).name+"更新成功！");
+                                }
+                                else{
+                                    toastr.success(data+" 更新成功！");
+                                }
+
+                            }
+                        },
+                        function(status) {
+                            d.resolve(status);
+                            toastr.error(classroom[field]+'操作出错请重试！');
+                        }
+                    );
                 }
-            );
-		
-		return d.promise;
+            },
+            function (response) {
+                d.resolve(response);
+                toastr.error(response);
+            }
+        );
+            return d.promise;
         };
         $scope.owner = {
             id: 5,
