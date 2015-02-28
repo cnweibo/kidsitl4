@@ -12,7 +12,7 @@
 		<meta name="description" content="@section('description')中国计算机从娃娃抓起的践行者和推动者，IT宝贝网-中国青少年信息化推动者，信息教育的先锋队 IT style learning,NIT competence for China kids
 		@show"
 		/>
-		<meta name="viewport" content="width=1024, initial-scale=1.0">
+		<meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=yes">
 
 		<link rel="stylesheet" type="text/css" href="{{asset('dist/css/bladelayout.min.css')}}">
 		
