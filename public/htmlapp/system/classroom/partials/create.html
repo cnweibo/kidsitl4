@@ -16,6 +16,7 @@
 			<div class="form-group" ng-class="{'has-error':classroomCreateForm.sysname.$invalid && (classroomCreateForm.sysname.$dirty || classroomCreateForm.sysname.$touched)}">
 				<label for="sysname">系统标示名称:</label>			
 				<input class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="sysname" type="text" id="sysname" ng-model="vm.newClassroom.sysname" ng-model-options="{ debounce: 1000 }" required ng-minlength="6" ng-maxlength="20">
+				<div cg-busy="vm.verifysysnamepromise"></div>
 				<!-- [[ classroomCreateForm.sysname.$pending ]] -->
 				<div ng-messages="classroomCreateForm.sysname.$error">
 					<span class="help-block has-error" ng-message="minlength">最小需要6个非" #!& "字符</span>

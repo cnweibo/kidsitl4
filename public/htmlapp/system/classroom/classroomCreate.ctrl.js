@@ -55,7 +55,9 @@
         };
         $scope.canUseThisName = function (thisname) {
 			var d = $q.defer();
-			khttp.getOne('http://kidsit.cn/admin/api/system/classroom/',thisname).then(
+			var promise;
+			vm.verifysysnamepromise = promise = khttp.getOne('http://kidsit.cn/admin/api/system/classroom/',thisname);
+			promise.then(
 				function (a) {
 					return d.reject();
 				},
