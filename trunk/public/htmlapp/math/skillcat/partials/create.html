@@ -15,7 +15,7 @@
 		<form name="mathskillcatCreateForm" method="POST" action="http://kidsit.cn/admin/api/math/skillcat" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createMathskillcat(mathskillcatCreateForm)'}" novalidate>
 			<div class="form-group" ng-class="{'has-error':mathskillcatCreateForm.catlabel.$invalid && (mathskillcatCreateForm.catlabel.$dirty || mathskillcatCreateForm.catlabel.$touched)}">
 				<label for="catlabel">类别 label:</label>			
-				<input placeholder = "例如 AA" class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="catlabel" type="text" id="catlabel" ng-model="vm.newMathskillcat.catlabel" ng-model-options="{ debounce: 1000 }" required ng-minlength="2" ng-maxlength="2">
+				<input placeholder = "例如 AA" class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="catlabel" type="text" id="catlabel" uppercase ng-model="vm.newMathskillcat.catlabel" ng-model-options="{ debounce: 1000 }" required ng-minlength="2" ng-maxlength="2">
 				<div cg-busy="{promise:vm.verfiycatlabelpromise,minDuration:500,message:'可用性检查...'}"></div>
 				<!-- [[ mathskillcatCreateForm.catlabel.$pending ]] -->
 				<div ng-messages="mathskillcatCreateForm.catlabel.$error">
