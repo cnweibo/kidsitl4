@@ -369,19 +369,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('guestaddedwords/{fayinguize}/delete', array('as'=>'guestaddedwordsdelete', 'uses' => 'AdminGuestaddedwordsController@postDelete'));
     Route::controller('guestaddedwords', 'AdminGuestaddedwordsController');
 
-    // math relative resource admin
-    Route::resource('math/skillcat','AdminMathskillcatsController');
-    Route::resource('math/skill','AdminMathskillsController');
-    Route::resource('math/exercisecat', 'AdminMathexercisecatsController');
-    Route::resource('math/exercise', 'AdminMathexercisesController');
-    // Route::resource('math/opdata', 'AdminMathexerciseopdatasController');
-    // Route::resource('math/opsession', 'AdminMathexerciseopsessionsController');
-    Route::resource('math/difficulty', 'AdminMathexercisedifficultiesController');
-    // Route::resource('math/score', 'AdminMathscoresController');
-
-    // Route::resource('math/syntheticalexam', 'AdminMathsyntheticalexamsController');
-    // Route::resource('math/syntheticalexamrow', 'AdminMathsyntheticalexamrowsController');
-    // Route::resource('math/syntheticalexamopdata', 'AdminMathsyntheticalexamopdatasController');
+    
 
     // global grade information admin apis for data feeding
     Route::group(array('prefix' => 'api'), function(){
@@ -423,21 +411,46 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('system/student/{id}/delete','AdminStudentController@getDelete'); //delete page
     Route::get('system/student/data', 'AdminStudentController@getData'); // ajax data feeding page
 
+
+    // global mathskillcat information admin apis for data feeding
+    Route::group(array('prefix' => 'api'), function(){
+        Route::resource('math/skillcat', 'AdminMathskillcatController');
+    });
+    // Following is the GET request for laravel rendered html page funcioning as angular template partials
+    Route::get('math/skillcat/', 'AdminMathskillcatController@indexpage'); // index page
+    // Route::get('math/skillcat/create', 'AdminMathskillcatController@create'); // create page
+    // Route::get('math/skillcat/{id}','AdminMathskillcatController@show'); // show page
+    Route::get('math/skillcat/{id}/delete','AdminMathskillcatController@getDelete'); //delete page
+    Route::get('math/skillcat/data', 'AdminMathskillcatController@getData'); // ajax data feeding page
+
+    // math relative default resource admin
+    // Route::resource('math/skillcat','AdminMathskillcatController');
+    // Route::resource('math/skill','AdminMathskillController');
+    // Route::resource('math/exercisecat', 'AdminMathexercisecatController');
+    // Route::resource('math/exercise', 'AdminMathexerciseController');
+    // Route::resource('math/opdata', 'AdminMathexerciseopdatasController');
+    // Route::resource('math/opsession', 'AdminMathexerciseopsessionsController');
+    Route::resource('math/difficulty', 'AdminMathexercisedifficultyController');
+    // Route::resource('math/score', 'AdminMathscoresController');
+
+    // Route::resource('math/syntheticalexam', 'AdminMathsyntheticalexamsController');
+    // Route::resource('math/syntheticalexamrow', 'AdminMathsyntheticalexamrowsController');
+    // Route::resource('math/syntheticalexamopdata', 'AdminMathsyntheticalexamopdatasController');
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
 
 
-    Route::resource('math/skillcat','MathskillcatsController');
-    Route::resource('math/skill','MathskillsController');
-    Route::resource('math/exercisecat', 'MathexercisecatsController');
-    Route::resource('math/exercise', 'MathexercisesController');
-    Route::resource('math/opdata', 'MathexerciseopdatasController');
-    Route::resource('math/opsession', 'MathexerciseopsessionsController');
-    Route::resource('math/difficulty', 'MathexercisedifficultiesController');
-    Route::resource('math/score', 'MathscoresController');
-    Route::resource('math/syntheticalexam', 'MathsyntheticalexamsController');
-    Route::resource('math/syntheticalexamrow', 'MathsyntheticalexamrowsController');
-    Route::resource('math/syntheticalexamopdata', 'MathsyntheticalexamopdatasController');
+    // Route::resource('math/skillcat','MathskillcatsController');
+    // Route::resource('math/skill','MathskillsController');
+    // Route::resource('math/exercisecat', 'MathexercisecatsController');
+    // Route::resource('math/exercise', 'MathexercisesController');
+    // Route::resource('math/opdata', 'MathexerciseopdatasController');
+    // Route::resource('math/opsession', 'MathexerciseopsessionsController');
+    // Route::resource('math/difficulty', 'MathexercisedifficultiesController');
+    // Route::resource('math/score', 'MathscoresController');
+    // Route::resource('math/syntheticalexam', 'MathsyntheticalexamsController');
+    // Route::resource('math/syntheticalexamrow', 'MathsyntheticalexamrowsController');
+    // Route::resource('math/syntheticalexamopdata', 'MathsyntheticalexamopdatasController');
 
 });
 
