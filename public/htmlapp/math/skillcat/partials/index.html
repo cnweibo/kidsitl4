@@ -1,0 +1,41 @@
+<div ng-controller="mathskillcatListCtrl as vm">	
+	<div class="panel panel-danger"> <!--  come from admin.partials.mathprocess -->
+			<div class="panel-heading">
+			<h3 class="panel-title">系统参数管理流程图：</h3>
+			</div>
+			<div class="panel-body">
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/system/mathskillcat">
+  				<i class="fa fa-flag pull-left"></i> 创建知识点类别</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/system/teacher">
+  				<i class="fa fa-flag pull-left"></i> 创建知识点</a>
+				<i class="fa fa-arrow-right fa-2x"></i>
+				<a class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/system/mathskillcat">
+  				<i class="fa fa-flag pull-left"></i> 创建习题</a>
+			</div>
+    </div>
+
+	<table id="mathskillcat" class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th class="col-md-1">ID</th>
+				<th class="col-md-1">类别标签</th>
+				<th class="col-md-2">类别描述</th>
+				<th class="col-md-1">创建于：</th>
+				<th class="col-md-1">操作：</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="mathskillcat in mathskillcats">
+				<td class="col-md-1">[[mathskillcat.id]]</td>
+				<td class="col-md-2" editable-text="mathskillcat.catlabel" onbeforesave="vm.checkAndSaveMathskillcat($data,'catlabel',mathskillcat,{minlength:2,maxlength:20})">[[mathskillcat.catlabel]]</td>
+				<td class="col-md-5" editable-text="mathskillcat.description" onbeforesave="vm.checkAndSaveMathskillcat($data,'description',mathskillcat,{minlength:2,maxlength:200})">[[mathskillcat.description]]</td>
+				<td class="col-md-2">[[mathskillcat.created_at]]</td>
+				<td class="col-md-2"> 
+					<a ng-click="vm.deleteClassroom(mathskillcat)" class="btn btn-danger">删除</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="#/create" class="btn btn-primary push-right"><span class="glyphicon glyphicon-plus"></span> 新增数学知识点类别</a>
+</div>
