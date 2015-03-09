@@ -1,0 +1,61 @@
+<div class="container" ng-controller="mathskillCreateCtrl as vm">
+
+		<!-- Notifications -->
+				<!-- ./ notifications -->
+
+		<div class="page-header">
+			<h3>
+				创建数学知识点				<div class="pull-right">
+					<button class="btn btn-default btn-small btn-inverse close_popup" ng-click="goBack()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+				</div>
+			</h3>
+		</div>
+
+		<!-- Content -->
+		<form name="mathskillCreateForm" method="POST" action="http://kidsit.cn/admin/api/math/skill" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createMathskill(mathskillCreateForm)'}" novalidate>
+			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skilllabel.$invalid && (mathskillCreateForm.skilllabel.$dirty || mathskillCreateForm.skilllabel.$touched)}">
+				<label for="skilllabel">知识点 label:</label>			
+				<input placeholder = "例如 AA" class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="skilllabel" type="text" id="skilllabel" uppercase ng-model="vm.newMathskill.skilllabel" ng-model-options="{ debounce: 1000 }" required ng-minlength="3" ng-maxlength="8">
+				<div cg-busy="{promise:vm.verfiyskilllabelpromise,minDuration:500,message:'可用性检查...'}"></div>
+				<!-- [[ mathskillCreateForm.skilllabel.$pending ]] -->
+				<div ng-messages="mathskillCreateForm.skilllabel.$error">
+					<span class="help-block has-error" ng-message="minlength">最小需要3个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="maxlength">最大8个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="canUse">该系统标示已经被占用，请修改后重试</span>
+					<span ng-show="mathskillCreateForm.skilllabel.$invalid && mathskillCreateForm.skilllabel.$touched" class="help-block has-error">系统名唯一标识该数学知识点，是必填项目，请输入英文和数字组合，大于6位，小于20位</span>				
+				</div>
+	
+			</div>
+			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.description.$invalid && (mathskillCreateForm.description.$touched || mathskillCreateForm.description.$dirty)}">
+				<label for="description">数学知识点描述:</label>			
+				<input class="form-control" name="description" type="text" id="description" ng-model="vm.newMathskill.description" required ng-minlength="6" ng-maxlength="100" >
+				<div ng-messages="mathskillCreateForm.description.$error">
+					<span class="help-block has-error" ng-message="minlength">最小需要6个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="maxlength">最大100个非" #!& "字符</span>
+					<span ng-show="mathskillCreateForm.description.$invalid && mathskillCreateForm.description.$touched" class="help-block has-error">数学知识点描述字段，是必填项目，请输入相关介绍描述，小于100字</span>			
+				</div>
+						
+			</div>
+
+			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skilllabel.$invalid && (mathskillCreateForm.skilllabel.$dirty || mathskillCreateForm.skilllabel.$touched)}">
+				<label for="skilllabel">所属类别 label:</label>			
+				<input placeholder = "选择所属知识点类别..." class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="skilllabel" type="text" id="skilllabel" uppercase ng-model="vm.newMathskill.skilllabel" ng-model-options="{ debounce: 1000 }" required ng-minlength="3" ng-maxlength="8">
+				<div cg-busy="{promise:vm.verfiyskilllabelpromise,minDuration:500,message:'可用性检查...'}"></div>
+				<!-- [[ mathskillCreateForm.skilllabel.$pending ]] -->
+				<div ng-messages="mathskillCreateForm.skilllabel.$error">
+					<span class="help-block has-error" ng-message="minlength">最小需要3个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="maxlength">最大8个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="canUse">该系统标示已经被占用，请修改后重试</span>
+					<span ng-show="mathskillCreateForm.skilllabel.$invalid && mathskillCreateForm.skilllabel.$touched" class="help-block has-error">系统名唯一标识该数学知识点，是必填项目，请输入英文和数字组合，大于6位，小于20位</span>				
+				</div>
+			
+			</div>
+			<input class="btn btn-primary" type="button" value="提交" ng-click="vm.createMathskill(mathskillCreateForm)">	
+		</form>
+		<!-- ./ content -->
+
+		<!-- Footer -->
+		<footer class="clearfix">
+		</footer>
+		<!-- ./ Footer -->
+</div>
