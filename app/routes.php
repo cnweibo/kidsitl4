@@ -423,6 +423,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('math/skillcat/{id}/delete','AdminMathskillcatController@getDelete'); //delete page
     Route::get('math/skillcat/data', 'AdminMathskillcatController@getData'); // ajax data feeding page
 
+    // global mathskill information admin apis for data feeding
+    Route::group(array('prefix' => 'api'), function(){
+        Route::resource('math/skill', 'AdminMathskillController');
+    });
+    // Following is the GET request for laravel rendered html page funcioning as angular template partials
+    Route::get('math/skill/', 'AdminMathskillController@indexpage'); // index page
+    // Route::get('math/skill/create', 'AdminMathskillController@create'); // create page
+    // Route::get('math/skill/{id}','AdminMathskillController@show'); // show page
+    Route::get('math/skill/{id}/delete','AdminMathskillController@getDelete'); //delete page
+    Route::get('math/skill/data', 'AdminMathskillController@getData'); // ajax data feeding page
+
     // math relative default resource admin
     // Route::resource('math/skillcat','AdminMathskillcatController');
     // Route::resource('math/skill','AdminMathskillController');

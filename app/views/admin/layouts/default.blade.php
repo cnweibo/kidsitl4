@@ -125,10 +125,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li {{ (Request::is('admin/math/skillcat*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/skillcat') }}}"><span class="glyphicon glyphicon-tasks"></span> 知识点类别管理</a></li>
-                                <li {{ (Request::is('admin/math/teacher*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/teacher') }}}"><span class="glyphicon glyphicon-list"></span> 知识点管理</a></li>
-                                <li {{ (Request::is('admin/math/classroom*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/classroom') }}}"><span class="shock-edu-classroom"></span> 习题难度管理</a></li>
-                                <li {{ (Request::is('admin/math/student*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/student') }}}"><span class="glyphicon glyphicon-paperclip"></span> 习题管理</a></li>
-                                <li {{ (Request::is('admin/math/editor*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/editor') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 综合试卷管理</a></li>
+                                <li {{ (Request::is('admin/math/skill') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/skill') }}}"><span class="glyphicon glyphicon-list"></span> 知识点管理</a></li>
+                                <li {{ (Request::is('admin/math/exercisedifficulty*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/exercisedifficulty') }}}"><span class="shock-edu-classroom"></span> 习题难度管理</a></li>
+                                <li {{ (Request::is('admin/math/exercise*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/exercise') }}}"><span class="glyphicon glyphicon-paperclip"></span> 习题管理</a></li>
+                                <li {{ (Request::is('admin/math/syntheticalexam*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/math/syntheticalexam') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 综合试卷管理</a></li>
                             </ul>
                         </li>
                         <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
