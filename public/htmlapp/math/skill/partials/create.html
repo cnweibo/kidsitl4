@@ -14,10 +14,9 @@
 		<!-- Content -->
 		<form name="mathskillCreateForm" method="POST" action="http://kidsit.cn/admin/api/math/skill" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createMathskill(mathskillCreateForm)'}" novalidate>
 			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skillcatlabel.$invalid && (mathskillCreateForm.skillcatlabel.$dirty || mathskillCreateForm.skillcatlabel.$touched)}">
-				<label for="skillcatlabel">所属知识点类别 label:</label>	
+				<label for="skillcatlabel">所属知识点类别:</label>	
 				
-				<input placeholder = "选择所属知识点类别..." class="form-control" autofocus="autofocus" name="skillcatlabel" type="text" id="skillcatlabel" ng-model="vm.newMathskill.skillcatlabel" ng-model-options="{ debounce: 500 }"  typeahead="mathskillcat.catlabel for mathskillcat in mathskillcatsdata | filter:$viewValue | limitTo:8" typeahead-editable=false typeahead-on-select="vm.onSelectSkillcatLabel($item, $model, $label)">
-				<div cg-busy="{promise:vm.verfiyskillcatlabelpromise,minDuration:500,message:'可用性检查...'}"></div>
+				<input placeholder = "输入知识点类别任意字符，模糊查询结果中选择类别..." class="form-control" autofocus="autofocus" name="skillcatlabel" type="text" id="skillcatlabel" ng-model="vm.newMathskill.skillcatlabel" ng-model-options="{ debounce: 500 }"  typeahead="mathskillcat.catlabel for mathskillcat in mathskillcatsdata | filter:$viewValue | limitTo:8" typeahead-editable=false typeahead-on-select="vm.onSelectSkillcatLabel($item, $model, $label)">
 				<!-- [[ mathskillCreateForm.skillcatlabel.$pending ]] -->
 				<div ng-messages="mathskillCreateForm.skillcatlabel.$error">
 					<span class="help-block has-error" ng-message="minlength">最小需要3个非" #!& "字符</span>
@@ -28,7 +27,7 @@
 			
 			</div>
 			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skillsublabel.$invalid && (mathskillCreateForm.skillsublabel.$dirty || mathskillCreateForm.skillsublabel.$touched)}">
-				<label for="skillsublabel">[[vm.newMathskill.skillcatlabel]]类别下知识点id: (知识点合成label:<span class="label label-success"> [[vm.newMathskill.skillcatlabel]].[[vm.newMathskill.skillsublabel]]</span>) </label>			
+				<label for="skillsublabel"><span class="label label-info">[[vm.newMathskill.skillcatlabel]]</span>类别下知识点id: (注意：知识点类别+id = 知识点label)-><span class="label label-success"> [[vm.newMathskill.skillcatlabel]].[[vm.newMathskill.skillsublabel]]</span>) </label>			
 				<input placeholder = "例如 1" class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="skillsublabel" type="text" id="skillsublabel" uppercase ng-model="vm.newMathskill.skillsublabel" ng-model-options="{ debounce: 500 }" required ng-minlength="1" ng-maxlength="5">
 				<div cg-busy="{promise:vm.verfiyskillsublabelpromise,minDuration:500,message:'可用性检查...'}"></div>
 				<!-- [[ mathskillCreateForm.skillsublabel.$pending ]] -->
