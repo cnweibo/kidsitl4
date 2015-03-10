@@ -10,13 +10,14 @@
     function classroomCreateCtrl($scope,khttp,$window,toastr,$location,$q,$timeout) {
         /*jshint validthis: true */
         var vm = this;
-   //      $scope.teachersdata = [
-			// {id: 3,sysloginname:"chenxiu"},
-			// {id: 32,sysloginname:"zhangsan"},
-			// {id: 5,sysloginname:"lisi"},
-			// {id: 4,sysloginname:"zhaowu"},
-   //      ];
+
 		$scope.teachersdata = [];
+		   //      $scope.teachersdata = [
+					// {id: 3,sysloginname:"chenxiu"},
+					// {id: 32,sysloginname:"zhangsan"},
+					// {id: 5,sysloginname:"lisi"},
+					// {id: 4,sysloginname:"zhaowu"},
+		   //      ];
         var promise;
         vm.currentPromise = promise = khttp.getAll("http://kidsit.cn/admin/api/system/teacher/");
         promise.then(
