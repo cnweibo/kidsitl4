@@ -31,9 +31,36 @@
                     );
                     $location.path('/mathskill-list');
                 };
+                vm.getMathskillsubid = function (mathskill) {
+                    return mathskill.skilllabel.split(".")[1];
+                };
+                vm.updateMathskilllabel = function (data,field,mathskill) {
+                    mathskill.skilllabel = mathskill.category.catlabel+'.'+data;
+                    this.saveMathskill(mathskill);
+                };
+                vm.saveMathskill = function(mathskill){
+                    var d = $q.defer();
+                    vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/math/skill/"+mathskill.id,mathskill);
+                    promise.then(
+                        function(mathskilldata) {/*success*/
+                            if (mathskilldata.resp.code !==0 ){
+                                d.resolve(mathskilldata.resp.message);
+                                toastr.error(mathskilldata.resp.message);
+                            }
+                            else{
+                                d.resolve();
+
+                            }
+                        },
+                        function(status) {
+                            d.resolve(status);
+                            toastr.error('操作出错请重试！');
+                        }
+                    );
+                };
                 // check and save for the edit in place
                 vm.checkAndSaveMathskill = function(data,field,mathskill,rules) {
-        		var d = $q.defer();
+                var d = $q.defer();
                 var returned = simplevalidate.dovalidate(rules,data,
                                                         'http://kidsit.cn/admin/api/math/skill/');
                 returned.then(

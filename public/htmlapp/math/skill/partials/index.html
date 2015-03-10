@@ -20,16 +20,24 @@
 			<tr>
 				<th class="col-md-1">ID</th>
 				<th class="col-md-1">知识点标签</th>
-				<th class="col-md-2">知识点描述</th>
-				<th class="col-md-1">创建于：</th>
-				<th class="col-md-1">操作：</th>
+				<th class="col-md-1">所属知识点类别标签</th>
+				<th class="col-md-1">所属知识点类别下id</th>
+				<th class="col-md-4">知识点描述</th>
+				<th class="col-md-2">创建于：</th>
+				<th class="col-md-2">操作：</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="mathskill in mathskills">
+			<tr ng-repeat="mathskill in mathskills | orderBy:['skilllabel','-id']">
 				<td class="col-md-1">[[mathskill.id]]</td>
-				<td class="col-md-2" editable-text="mathskill.skilllabel" onbeforesave="vm.checkAndSaveMathskill($data,'skilllabel',mathskill,{minlength:2,maxlength:20})">[[mathskill.skilllabel]]</td>
-				<td class="col-md-5" editable-text="mathskill.description" onbeforesave="vm.checkAndSaveMathskill($data,'description',mathskill,{minlength:2,maxlength:200})">[[mathskill.description]]</td>
+
+				<td class="col-md-1"><span class="label label-success">[[mathskill.skilllabel]]</span></td>
+				
+				<td class="col-md-1" editable-text="mathskill.category.catlabel" onbeforesave="vm.checkAndSaveMathskill($data,'category.catlabel',mathskill,{minlength:2,maxlength:20})">[[mathskill.category.catlabel]]</td>
+				
+				<td class="col-md-1" editable-text="mathskill.subid" onbeforesave="vm.updateMathskilllabel($data,'subid',mathskill)">[[vm.getMathskillsubid(mathskill)]]</td>
+
+				<td class="col-md-4" editable-text="mathskill.description" onbeforesave="vm.checkAndSaveMathskill($data,'description',mathskill,{minlength:2,maxlength:200})">[[mathskill.description]]</td>
 				<td class="col-md-2">[[mathskill.created_at]]</td>
 				<td class="col-md-2"> 
 					<a ng-click="vm.deleteMathskill(mathskill)" class="btn btn-danger">删除</a>
