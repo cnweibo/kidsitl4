@@ -13,16 +13,30 @@
 
 		<!-- Content -->
 		<form name="mathskillCreateForm" method="POST" action="http://kidsit.cn/admin/api/math/skill" accept-charset="UTF-8" ui-keyup="{'enter':'vm.createMathskill(mathskillCreateForm)'}" novalidate>
-			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skilllabel.$invalid && (mathskillCreateForm.skilllabel.$dirty || mathskillCreateForm.skilllabel.$touched)}">
-				<label for="skilllabel">知识点 label:</label>			
-				<input placeholder = "例如 AA" class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="skilllabel" type="text" id="skilllabel" uppercase ng-model="vm.newMathskill.skilllabel" ng-model-options="{ debounce: 1000 }" required ng-minlength="3" ng-maxlength="8">
-				<div cg-busy="{promise:vm.verfiyskilllabelpromise,minDuration:500,message:'可用性检查...'}"></div>
-				<!-- [[ mathskillCreateForm.skilllabel.$pending ]] -->
-				<div ng-messages="mathskillCreateForm.skilllabel.$error">
+			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skillcatlabel.$invalid && (mathskillCreateForm.skillcatlabel.$dirty || mathskillCreateForm.skillcatlabel.$touched)}">
+				<label for="skillcatlabel">所属知识点类别 label:</label>	
+				
+				<input placeholder = "选择所属知识点类别..." class="form-control" autofocus="autofocus" name="skillcatlabel" type="text" id="skillcatlabel" ng-model="vm.newMathskill.skillcatlabel" ng-model-options="{ debounce: 500 }"  typeahead="mathskillcat.catlabel for mathskillcat in mathskillcatsdata | filter:$viewValue | limitTo:8" typeahead-editable=false typeahead-on-select="vm.onSelectSkillcatLabel($item, $model, $label)">
+				<div cg-busy="{promise:vm.verfiyskillcatlabelpromise,minDuration:500,message:'可用性检查...'}"></div>
+				<!-- [[ mathskillCreateForm.skillcatlabel.$pending ]] -->
+				<div ng-messages="mathskillCreateForm.skillcatlabel.$error">
 					<span class="help-block has-error" ng-message="minlength">最小需要3个非" #!& "字符</span>
 					<span class="help-block has-error" ng-message="maxlength">最大8个非" #!& "字符</span>
 					<span class="help-block has-error" ng-message="canUse">该系统标示已经被占用，请修改后重试</span>
-					<span ng-show="mathskillCreateForm.skilllabel.$invalid && mathskillCreateForm.skilllabel.$touched" class="help-block has-error">系统名唯一标识该数学知识点，是必填项目，请输入英文和数字组合，大于6位，小于20位</span>				
+					<span ng-show="mathskillCreateForm.skillcatlabel.$invalid && mathskillCreateForm.skillcatlabel.$touched" class="help-block has-error">系统名唯一标识该数学知识点，是必填项目，请输入英文和数字组合，大于6位，小于20位</span>				
+				</div>
+			
+			</div>
+			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skillsublabel.$invalid && (mathskillCreateForm.skillsublabel.$dirty || mathskillCreateForm.skillsublabel.$touched)}">
+				<label for="skillsublabel">[[vm.newMathskill.skillcatlabel]]类别下知识点id: (知识点合成label:<span class="label label-success"> [[vm.newMathskill.skillcatlabel]].[[vm.newMathskill.skillsublabel]]</span>) </label>			
+				<input placeholder = "例如 1" class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="skillsublabel" type="text" id="skillsublabel" uppercase ng-model="vm.newMathskill.skillsublabel" ng-model-options="{ debounce: 500 }" required ng-minlength="1" ng-maxlength="5">
+				<div cg-busy="{promise:vm.verfiyskillsublabelpromise,minDuration:500,message:'可用性检查...'}"></div>
+				<!-- [[ mathskillCreateForm.skillsublabel.$pending ]] -->
+				<div ng-messages="mathskillCreateForm.skillsublabel.$error">
+					<span class="help-block has-error" ng-message="minlength">最小需要3个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="maxlength">最大8个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="canUse"><span class="label label-warning"> [[vm.newMathskill.skillcatlabel]].[[mathskillCreateForm.skillsublabel.$viewValue]]</span>已经被占用，请修改后重试</span>
+					<span ng-show="mathskillCreateForm.skillsublabel.$invalid && mathskillCreateForm.skillsublabel.$touched" class="help-block has-error">系统名唯一标识该数学知识点，是必填项目，请输入英文和数字组合，大于6位，小于20位</span>				
 				</div>
 	
 			</div>
@@ -37,19 +51,7 @@
 						
 			</div>
 
-			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skilllabel.$invalid && (mathskillCreateForm.skilllabel.$dirty || mathskillCreateForm.skilllabel.$touched)}">
-				<label for="skilllabel">所属类别 label:</label>			
-				<input placeholder = "选择所属知识点类别..." class="form-control" dbrans-validate-async="{canUse: canUseThisName}" autofocus="autofocus" name="skilllabel" type="text" id="skilllabel" uppercase ng-model="vm.newMathskill.skilllabel" ng-model-options="{ debounce: 1000 }" required ng-minlength="3" ng-maxlength="8">
-				<div cg-busy="{promise:vm.verfiyskilllabelpromise,minDuration:500,message:'可用性检查...'}"></div>
-				<!-- [[ mathskillCreateForm.skilllabel.$pending ]] -->
-				<div ng-messages="mathskillCreateForm.skilllabel.$error">
-					<span class="help-block has-error" ng-message="minlength">最小需要3个非" #!& "字符</span>
-					<span class="help-block has-error" ng-message="maxlength">最大8个非" #!& "字符</span>
-					<span class="help-block has-error" ng-message="canUse">该系统标示已经被占用，请修改后重试</span>
-					<span ng-show="mathskillCreateForm.skilllabel.$invalid && mathskillCreateForm.skilllabel.$touched" class="help-block has-error">系统名唯一标识该数学知识点，是必填项目，请输入英文和数字组合，大于6位，小于20位</span>				
-				</div>
 			
-			</div>
 			<input class="btn btn-primary" type="button" value="提交" ng-click="vm.createMathskill(mathskillCreateForm)">	
 		</form>
 		<!-- ./ content -->
