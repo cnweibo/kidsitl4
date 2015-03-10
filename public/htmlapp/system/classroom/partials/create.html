@@ -41,7 +41,8 @@
 				<!-- o.id as o.sysloginname + '(' + o.name + ':' + o.id +')' for o in owners -->
 				<!-- teacher.id as teacher.sysloginname for teacher in teachersdata | filter:$viewValue | limitTo:8 -->
 				<!-- filter:$viewValue  -->
-				<input name="teacher_id" id="teacher_id" type="text" ng-model="vm.newClassroom.teacher_id" typeahead="teacher.id as teacher.sysloginname + '(' + teacher.id + ')' for teacher in teachersdata | filter:$viewValue | limitTo:8" typeahead-editable=false class="form-control" required>
+				<!-- TODO: typeahead custom template and js supporting chinese -->
+				<input name="teacher_id" id="teacher_id" type="text" ng-model="vm.newClassroom.teacher_id" typeahead="teacher.id as teacher.sysloginname + '(' + teacher.name + ':' +teacher.id +')' for teacher in teachersdata | filter:$viewValue | limitTo:8" typeahead-editable=false class="form-control" required>
 				<span ng-show="classroomCreateForm.teacher_id.$invalid && classroomCreateForm.teacher_id.$touched" class="help-block has-error">所属教师，是必填项目，请模糊查询并选择老师</span>
 			</div>
 			<div class="form-group" ng-class="{'has-error':classroomCreateForm.profileURL.$invalid && (classroomCreateForm.profileURL.$dirty || classroomCreateForm.profileURL.$touched)}">
