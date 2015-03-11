@@ -27,6 +27,7 @@
     "bootstrap-hover-dropdown": "~2.0.11",
     "angular-filter": "~0.5.2",
     "angular-validate-directive": "~0.1.0",
-    "angular-messages": "1.3.3"
+    "angular-messages": "1.3.3",
+    "ui-router": "~0.2.13"
   }
 }
