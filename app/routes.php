@@ -411,6 +411,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('system/student/{id}/delete','AdminStudentController@getDelete'); //delete page
     Route::get('system/student/data', 'AdminStudentController@getData'); // ajax data feeding page
 
+    // the math indexpage for all math admin features 
+    Route::get('math/', 'AdminMathindexController@indexpage'); // index page
 
     // global mathskillcat information admin apis for data feeding
     Route::group(array('prefix' => 'api'), function(){
