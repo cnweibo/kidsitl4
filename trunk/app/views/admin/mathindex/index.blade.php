@@ -79,7 +79,7 @@
 	<script type="text/javascript" src="{{asset('htmlapp/syscommon/simplevalidate.srv.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/syscommon/parsers.srv.js')}}"></script>
 
-
+	<script type="text/javascript" src="{{asset('htmlapp/math/skillcat/mathskillcatIndex.ctrl.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/math/skillcat/mathskillcatList.ctrl.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/math/skillcat/mathskillcatCreate.ctrl.js')}}"></script>
 	

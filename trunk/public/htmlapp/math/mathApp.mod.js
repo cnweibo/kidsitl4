@@ -38,8 +38,8 @@
 			});
 			$stateProvider
 				.state("skillcat",{url: "/skillcat", templateUrl: indexpagebase+"skillcat/partials/index.html"})
-					.state("skillcat-list",{parent: "skillcat", url: "/list", templateUrl: indexpagebase+"skillcat/partials/index.html"})
-					.state("skillcat-create",{parent: "skillcat", url: "/create", templateUrl: indexpagebase+"skillcat/partials/create.html"});
+					.state("skillcat.list",{url: "/list", templateUrl: indexpagebase+"skillcat/partials/list.html"})
+					.state("skillcat.create",{url: "/create", templateUrl: indexpagebase+"skillcat/partials/create.html"});
 			$urlRouterProvider.otherwise("/skillcat/list");
 		}])
 		.run(function(editableOptions) {
