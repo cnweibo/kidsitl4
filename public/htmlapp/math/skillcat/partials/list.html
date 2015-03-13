@@ -1,0 +1,25 @@
+	<div class="mathskillcatbox" ng-controller="mathskillcatListCtrl as listvm">
+		<table id="mathskillcat" class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="col-md-1">ID</th>
+					<th class="col-md-1">类别标签</th>
+					<th class="col-md-2">类别描述</th>
+					<th class="col-md-1">创建于：</th>
+					<th class="col-md-1">操作：</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="mathskillcat in mathskillcats">
+					<td class="col-md-1">[[mathskillcat.id]]</td>
+					<td class="col-md-2" editable-text="mathskillcat.catlabel" onbeforesave="listvm.checkAndSaveMathskillcat($data,'catlabel',mathskillcat,{minlength:2,maxlength:20})">[[mathskillcat.catlabel]]</td>
+					<td class="col-md-5" editable-text="mathskillcat.description" onbeforesave="listvm.checkAndSaveMathskillcat($data,'description',mathskillcat,{minlength:2,maxlength:200})">[[mathskillcat.description]]</td>
+					<td class="col-md-2">[[mathskillcat.created_at]]</td>
+					<td class="col-md-2"> 
+						<a ng-click="listvm.deleteMathskillcat(mathskillcat)" class="btn btn-danger">删除</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a ui-sref="skillcat.create" class="btn btn-primary push-right"><span class="glyphicon glyphicon-plus"></span> 新增数学知识点类别</a>
+	</div>
