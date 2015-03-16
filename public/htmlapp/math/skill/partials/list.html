@@ -22,7 +22,7 @@
 					<!-- e-typeahead="state for state in states | filter:$viewValue | limitTo:8" -->
 					<!-- + '(' +mathskill.category.description + ')'  -->
 					<!-- 注意这里应该对组合数据存在做判断，catlabel+catsubid应该唯一! Todo: 使用query string的方式来做 -->
-					<td class="col-md-1" editable-text="mathskill.category.catlabel" e-typeahead="mathskillcat.catlabel  as mathskillcat.catlabel + '(' + mathskillcat.id + ':' +mathskillcat.description + ')' for mathskillcat in mathskillcats | filter:$viewValue | limitTo:8" onbeforesave="listvm.checkAndSaveMathskill($data,'category.catlabel',mathskill,{minlength:2,maxlength:20,canuse:1})">[[mathskill.category.catlabel]]</td>
+					<td class="col-md-1" editable-text="mathskill.category.catlabel" e-typeahead="mathskillcat.catlabel  as mathskillcat.catlabel + '(' + mathskillcat.id + ':' +mathskillcat.description + ')' for mathskillcat in mathskillcats | filter:$viewValue | limitTo:8" onbeforesave="listvm.checkAndSaveMathskill($data,'catlabel',mathskill,{minlength:2,maxlength:20,canuse:1})">[[mathskill.category.catlabel]]</td>
 					
 					<td class="col-md-1" editable-text="mathskill.catsubid" onbeforesave="listvm.checkAndSaveMathskill($data,'catsubid',mathskill,{minlength:1,maxlength:3,isallnumeric:1})">[[mathskill.catsubid]]</td>
 

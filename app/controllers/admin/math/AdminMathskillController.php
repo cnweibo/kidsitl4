@@ -35,7 +35,7 @@ class AdminMathskillController extends \BaseController {
 		} 
 		// Mathskill::with('owner','students')->get(['sysname','teacher_id'])->toArray();
 		// dd(DB::getQueryLog());
-			return Response::json(['resp' => ['data' => Mathskill::with('category')->select(['id','catsubid','description','mathskillcat_id','created_at'])->get()->toArray()],'code'=>0],200); 
+			return Response::json(['resp' => ['data' => Mathskill::with('category')->with('grades')->select(['id','catsubid','description','mathskillcat_id','created_at'])->get()->toArray()],'code'=>0],200); 
 	}
 
 	/**
