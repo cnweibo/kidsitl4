@@ -50,7 +50,19 @@
 						
 			</div>
 
-			
+			<div class="form-group" ng-class="{'has-error':mathskillCreateForm.skillcatlabel.$invalid && (mathskillCreateForm.skillcatlabel.$dirty || mathskillCreateForm.skillcatlabel.$touched)}">
+				<label for="skillcatlabel">所属年级:</label>	
+				
+				<input placeholder = "输入年级任意字符，模糊查询结果中选择年级..." class="form-control" name="skillgrades" type="text" id="skillgrades" ng-model="vm.newMathskill.skillgrades" ng-model-options="{ debounce: 500 }"  typeahead="mathskillgrade.skillgradetitle for mathskillgrade in mathskillgradesdata | filter:$viewValue | limitTo:8" typeahead-editable=false typeahead-on-select="vm.onSelectskillgrades($item, $model, $label)">
+				<!-- [[ mathskillCreateForm.skillgrades.$pending ]] -->
+				<div ng-messages="mathskillCreateForm.skillgrades.$error">
+					<span class="help-block has-error" ng-message="minlength">最小需要3个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="maxlength">最大8个非" #!& "字符</span>
+					<span class="help-block has-error" ng-message="canUse">该系统标示已经被占用，请修改后重试</span>
+					<span ng-show="mathskillCreateForm.skillgrades.$invalid && mathskillCreateForm.skillgrades.$touched" class="help-block has-error">系统名唯一标识该数学知识点，是必填项目，请输入英文和数字组合，大于6位，小于20位</span>				
+				</div>
+				<span class="label label-success" ng-repeat="grade in currentItemGrades" style="margin-right:2px">[[grade.skillgradetitle]] <span ng-click=vm.removeThisGrade(grade) style="cursor: pointer; color: red">X</span> </span>
+			</div>
 			<input class="btn btn-primary" type="button" value="提交" ng-click="vm.createMathskill(mathskillCreateForm)">	
 		</form>
 		<!-- ./ content -->

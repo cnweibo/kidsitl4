@@ -8,6 +8,7 @@
 					<th class="col-md-1">所属知识点类别标签</th>
 					<th class="col-md-1">所属知识点类别下id</th>
 					<th class="col-md-4">知识点描述</th>
+					<th class="col-md-4">所属年级</th>
 					<th class="col-md-2">创建于：</th>
 					<th class="col-md-2">操作：</th>
 				</tr>
@@ -27,6 +28,7 @@
 					<td class="col-md-1" editable-text="mathskill.catsubid" onbeforesave="listvm.checkAndSaveMathskill($data,'catsubid',mathskill,{minlength:1,maxlength:3,isallnumeric:1})">[[mathskill.catsubid]]</td>
 
 					<td class="col-md-4" editable-text="mathskill.description" onbeforesave="listvm.checkAndSaveMathskill($data,'description',mathskill,{minlength:2,maxlength:200})">[[mathskill.description]]</td>
+					<td class="col-md-4" editable-text="mathskill.grades" onbeforesave="listvm.checkAndSaveMathskill($data,'description',mathskill,{minlength:2,maxlength:200})"> <span class="label label-success" style="margin-right:2px" ng-repeat="grade in mathskill.grades |orderBy: id">[[grade.skillgradetitle]]</span> </td>
 					<td class="col-md-2">[[mathskill.created_at]]</td>
 					<td class="col-md-2"> 
 						<a ng-click="listvm.deleteMathskill(mathskill)" class="btn btn-danger">删除</a>
