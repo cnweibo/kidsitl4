@@ -10,4 +10,8 @@ class Mathskill extends \Eloquent {
 	{
 		return $this->hasMany('Mathscore');
 	}
+	public function grades()
+	{
+		return $this->belongsToMany('Grade');
+	}
 }
