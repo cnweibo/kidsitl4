@@ -33,7 +33,7 @@
                 };
                 // check and save for the edit in place
                 vm.checkAndSaveMathskillcat = function(data,field,mathskillcat,rules) {
-        		var d = $q.defer();
+                var d = $q.defer();
                 var returned = simplevalidate.dovalidate(rules,data,
                                                         'http://kidsit.cn/admin/api/math/skillcat/');
                 returned.then(
@@ -55,9 +55,9 @@
                                     else{
                                         d.resolve();
                                         if (field=='teacher_id'){
-                                            mathskillcat.owner.name = _.findWhere($scope.owners,{id:data}).name ;
-                                            mathskillcat.owner.id = data;
-                                            toastr.success(_.findWhere($scope.owners,{id:data}).name+"更新成功！");
+                                            // mathskillcat.owner.name = _.findWhere($scope.owners,{id:data}).name ;
+                                            // mathskillcat.owner.id = data;
+                                            // toastr.success(_.findWhere($scope.owners,{id:data}).name+"更新成功！");
                                         }
                                         else{
                                             toastr.success(data+" 更新成功！");

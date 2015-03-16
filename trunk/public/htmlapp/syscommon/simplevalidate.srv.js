@@ -5,6 +5,7 @@
         .module('simplevalidate',[])
         .factory('simplevalidate',['$http','khttp','$q',function($http,khttp,$q){
 			return {
+
 				dovalidate: function (rules,data,validateurl) {
 					var d = $q.defer();
 					if (rules){
@@ -64,6 +65,19 @@
 					}
 					// if no validation rule existed, we just return the null resolve promise
 					d.resolve();
+					return d.promise;
+				},
+				dovalidateQuery: function (queryurl) {
+					var d = $q.defer();
+					khttp.getAll(queryurl).then(
+						function (a) {
+							d.resolve("相应id已经存在，请更改后重试！");
+						},
+						function (a) {
+							// return 0;
+							d.resolve();
+						}
+					);
 					return d.promise;
 				}
 			};

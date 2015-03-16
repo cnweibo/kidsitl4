@@ -22,15 +22,7 @@
 	<div class="container" ng-app="mathApp" ng-controller="containerCtrl">
 		@include('admin.partials.indicatorcontainer')
 		
-		<div class="page-header">
-			<h3>
-				{{{ $title }}}
-
-				<div class="pull-right">
-					<a href="#/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增数学知识点</a>
-				</div>
-			</h3>
-		</div>
+		
 		<div ui-view></div> <!-- web app view -->
 		
 	</div>
@@ -71,7 +63,7 @@
 <!-- own js file -->
 	<script type="text/javascript" src="{{asset('htmlapp/math/mathApp.mod.js')}}"></script>
 
-	<script type="text/javascript" src="{{asset('htmlapp/math/skillcat/mathskillcatApp.mod.js')}}"></script>
+	
 	
 	<script type="text/javascript" src="{{asset('htmlapp/system/container.ctrl.js')}}"></script>
 
@@ -79,9 +71,15 @@
 	<script type="text/javascript" src="{{asset('htmlapp/syscommon/simplevalidate.srv.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/syscommon/parsers.srv.js')}}"></script>
 
+	<script type="text/javascript" src="{{asset('htmlapp/math/skillcat/mathskillcatApp.mod.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/math/skillcat/mathskillcatIndex.ctrl.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/math/skillcat/mathskillcatList.ctrl.js')}}"></script>
 	<script type="text/javascript" src="{{asset('htmlapp/math/skillcat/mathskillcatCreate.ctrl.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/math/skill/mathskillApp.mod.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/math/skill/mathskillIndex.ctrl.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/math/skill/mathskillList.ctrl.js')}}"></script>
+	<script type="text/javascript" src="{{asset('htmlapp/math/skill/mathskillCreate.ctrl.js')}}"></script>
+
 	
 	<script type="text/javascript" src="{{asset('htmlapp/libs/angular-xeditable-0.1.8/js/xeditable.js')}}"></script>
 

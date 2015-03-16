@@ -13,7 +13,14 @@
                 vm.currentPromise = promise = khttp.getAll("http://kidsit.cn/admin/api/math/skill");
                 promise.then(
                     function(mathskillsdata) {/*success*/
-                        $scope.mathskills = vm.mathskillsOrginal = mathskillsdata.resp.data;
+                        $scope.mathskills = mathskillsdata.resp.data;
+                        },
+                    function(status) {console.log("error status code:"+status);}
+                );
+                vm.currentPromise = promise = khttp.getAll("http://kidsit.cn/admin/api/math/skillcat");
+                promise.then(
+                    function(mathskillcatdata) {/*success*/
+                        $scope.mathskillcats = mathskillcatdata.resp.data;
                         },
                     function(status) {console.log("error status code:"+status);}
                 );
@@ -32,10 +39,10 @@
                     $location.path('/mathskill-list');
                 };
                 vm.getMathskillsubid = function (mathskill) {
-                    return mathskill.skilllabel.split(".")[1];
+                    return mathskill.catsubid.split(".")[1];
                 };
-                vm.updateMathskilllabel = function (data,field,mathskill) {
-                    mathskill.skilllabel = mathskill.category.catlabel+'.'+data;
+                vm.updateMathcatsubid = function (data,field,mathskill) {
+                    mathskill.catsubid = mathskill.category.catlabel+'.'+data;
                     this.saveMathskill(mathskill);
                 };
                 vm.saveMathskill = function(mathskill){
@@ -60,9 +67,10 @@
                 };
                 // check and save for the edit in place
                 vm.checkAndSaveMathskill = function(data,field,mathskill,rules) {
+                    console.log(data);
                 var d = $q.defer();
-                var returned = simplevalidate.dovalidate(rules,data,
-                                                        'http://kidsit.cn/admin/api/math/skill/');
+                var returned = simplevalidate.dovalidateQuery(
+                    'http://kidsit.cn/admin/api/math/skill/?catsubid='+mathskill.catsubid+'&mathskillcat_id='+_.findWhere($scope.mathskillcats,{catlabel:data}).id);
                 returned.then(
                     function (response) {
                         if (response){
@@ -71,7 +79,10 @@
                             toastr.error(response);
                         }else{
                             // can use and 0 returned by simplevalidation service
-                            mathskill[field] = data;
+                            mathskill.category.catlabel = data;
+                            mathskill.category.id = _.findWhere($scope.mathskillcats,{catlabel:data}).id ;
+                            mathskill.mathskillcat_id = mathskill.category.id ;
+
                             vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/math/skill/"+mathskill.id,mathskill);
                             promise.then(
                                 function(mathskilldata) {/*success*/
@@ -81,15 +92,7 @@
                                     }
                                     else{
                                         d.resolve();
-                                        if (field=='teacher_id'){
-                                            mathskill.owner.name = _.findWhere($scope.owners,{id:data}).name ;
-                                            mathskill.owner.id = data;
-                                            toastr.success(_.findWhere($scope.owners,{id:data}).name+"更新成功！");
-                                        }
-                                        else{
-                                            toastr.success(data+" 更新成功！");
-                                        }
-
+                                        toastr.success(_.findWhere($scope.mathskillcats,{catlabel:data}).catlabel+"更新成功！");
                                     }
                                 },
                                 function(status) {

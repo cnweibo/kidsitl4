@@ -1,18 +1,27 @@
 <div ng-controller="mathskillcatIndexCtrl as indexvm">	
+
 	<div class="panel panel-danger"> <!--  come from admin.partials.mathprocess -->
 			<div class="panel-heading">
 			<h3 class="panel-title">系统参数管理流程图：</h3>
 			</div>
 			<div class="panel-body">
-				<a ui-sref="skillcat.create" class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/skillcat">
+				<a ui-sref="skillcat.list" class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/skillcat">
   				<i class="fa fa-flag pull-left"></i> 创建知识点类别</a>
 				<i class="fa fa-arrow-right fa-2x"></i>
-				<a ui-sref="skill.create" class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/skill">
+				<a ui-sref="skill.list" class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/skill">
   				<i class="fa fa-flag pull-left"></i> 创建知识点</a>
 				<i class="fa fa-arrow-right fa-2x"></i>
 				<a ui-sref="exercise-list" class="btn btn-lg btn-success adminprocessitem" href="http://kidsit.cn/admin/math/exercise">
   				<i class="fa fa-flag pull-left"></i> 创建习题</a>
 			</div>
+    </div>
+    <div class="page-header clearfix">
+    	<h3>
+    		数学知识点类别管理:
+    		<div class="pull-right">
+    			<a ui-sref="skillcat.create" class="btn btn-primary push-right"><span class="glyphicon glyphicon-plus"></span> 新增数学知识点类别</a>
+    		</div>
+    	</h3>
     </div>
 	<div class="ui-view"></div>
 </div>
