@@ -8,7 +8,7 @@
 
 	angular.module('mathApp',['khttp','cgBusy','xeditable','toastr','ui.utils','containerCtrl',
 										'ui.bootstrap','angular.filter','ngMessages','dbrans.validate','simplevalidate',
-										'cgBusy','parsers','ui.router','mathskillcatApp'])
+										'cgBusy','parsers','ui.router','mathskillcatApp','mathskillApp'])
 		// use ui.router in replace of angular native routeProvider
 		.config(['$stateProvider','$urlRouterProvider','$interpolateProvider','toastrConfig',function($stateProvider,$urlRouterProvider,$interpolateProvider,toastrConfig) {
 			$interpolateProvider.startSymbol('[[');
@@ -39,7 +39,11 @@
 			$stateProvider
 				.state("skillcat",{url: "/skillcat", templateUrl: indexpagebase+"skillcat/partials/index.html"})
 					.state("skillcat.list",{url: "/list", templateUrl: indexpagebase+"skillcat/partials/list.html"})
-					.state("skillcat.create",{url: "/create", templateUrl: indexpagebase+"skillcat/partials/create.html"});
+					.state("skillcat.create",{url: "/create", templateUrl: indexpagebase+"skillcat/partials/create.html"})
+				.state("skill",{url: "/skill", templateUrl: indexpagebase+"skill/partials/index.html"})
+					.state("skill.list",{url: "/list", templateUrl: indexpagebase+"skill/partials/list.html"})
+					.state("skill.create",{url: "/create", templateUrl: indexpagebase+"skill/partials/create.html"});
+				
 			$urlRouterProvider.otherwise("/skillcat/list");
 		}])
 		.run(function(editableOptions) {

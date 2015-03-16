@@ -20,9 +20,22 @@ class AdminMathskillController extends \BaseController {
 	 */
 	public function index()
 	{
+		if (Input::has('catsubid')){
+			$catsubid = Input::get('catsubid');
+		}
+		if (Input::has('mathskillcat_id')){
+			$mathskillcat_id = Input::get('mathskillcat_id');
+		}
+		if ((Input::has('catsubid')) && (Input::has('mathskillcat_id'))){
+			$skillfound = Mathskill::where('catsubid','=',$catsubid)->where('mathskillcat_id','=',$mathskillcat_id)
+														
+														->with('category')->select(['id','catsubid','description','mathskillcat_id','created_at'])->get()->toArray();
+
+			return Response::json(['resp' => ['data' => $skillfound],'code'=>0], $skillfound? 200 : 404); 
+		} 
 		// Mathskill::with('owner','students')->get(['sysname','teacher_id'])->toArray();
 		// dd(DB::getQueryLog());
-			return Response::json(['resp' => ['data' => Mathskill::with('category')->select(['id','skilllabel','description','mathskillcat_id','created_at'])->get()->toArray()],'code'=>0],200); 
+			return Response::json(['resp' => ['data' => Mathskill::with('category')->select(['id','catsubid','description','mathskillcat_id','created_at'])->get()->toArray()],'code'=>0],200); 
 	}
 
 	/**
@@ -45,7 +58,7 @@ class AdminMathskillController extends \BaseController {
 	public function store()
 	{	
 	    $mathskillcat = new Mathskill;
-	    $mathskillcat->skilllabel = Input::get('skilllabel');
+	    $mathskillcat->catsubid = Input::get('catsubid');
 	    $mathskillcat->description = Input::get('description');
 	    $mathskillcat->mathskillcat_id = Input::get('catid');
 	    try {
@@ -58,7 +71,7 @@ class AdminMathskillController extends \BaseController {
 	    	return Response::json(['resp' => ['code' => 410, 'message' => $e->getMessage()]], 200);
 
 	    }
-	    return Response::json(['resp' => ['code' => 0, 'message' => $mathskillcat->skilllabel . '创建成功！']], 200);
+	    return Response::json(['resp' => ['code' => 0, 'message' => $mathskillcat->catsubid . '创建成功！']], 200);
 	}
 
 	/**
@@ -70,19 +83,19 @@ class AdminMathskillController extends \BaseController {
 	public function show($id)
 	{
 		if (is_numeric($id)){
-			$mathskillcat = Mathskill::find($id)->get(['id','skilllabel','description','created_at'])->toArray();
+			$mathskillcat = Mathskill::find($id)->get(['id','catsubid','description','created_at'])->toArray();
 			if (!$mathskillcat){
 				return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
 			}
 			return Response::json(['resp' => ['data' => $mathskillcat,'code'=>0],200]); 
 		}else{
 
-			$mathskillcat = Mathskill::where('skilllabel' , '=', $id)
-			->get(['id','skilllabel','description','created_at'])->toArray();
+			$mathskillcat = Mathskill::where('catsubid' , '=', $id)
+			->get(['id','catsubid','description','created_at'])->toArray();
 			if (!$mathskillcat){
 				return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
 			}else{
-				return Response::json(['resp' => ['data' => Mathskill::where('skilllabel' , '=', $id)->get(['id','skilllabel','description','created_at'])->toArray()],'code'=>0],200); 
+				return Response::json(['resp' => ['data' => Mathskill::where('catsubid' , '=', $id)->get(['id','catsubid','description','created_at'])->toArray()],'code'=>0],200); 
 			}
 		}
 			
@@ -129,20 +142,21 @@ class AdminMathskillController extends \BaseController {
 	    if (!$newmathskillcat){
 	    	return Response::json(['resp' => ['code' => 400, 'message' => '未找到id为' . $id .'的资源']], 404);
 	    }
-	    if(Input::get('skilllabel')) {$newmathskillcat->skilllabel = Input::get('skilllabel') ;}
+	    if(Input::get('catsubid')) {$newmathskillcat->catsubid = Input::get('catsubid') ;}
 	    if(Input::get('description')) {$newmathskillcat->description = Input::get('description');}
+	    if(Input::get('mathskillcat_id')){$newmathskillcat->mathskillcat_id = Input::get('mathskillcat_id');}
 	    try {
 		    $newmathskillcat->save();   	
 	    } catch (Exception $e) {
 	    	$errorcode = $e->getCode();
 	    	if ($errorcode==23000) {
-	    			return Response::json(['resp' => ['code' => 409, 'message' => $newmathskillcat->skilllabel . $e->getMessage()]], 200);
+	    			return Response::json(['resp' => ['code' => 409, 'message' => $newmathskillcat->catsubid . $e->getMessage()]], 200);
 	    		}	
-	    	return Response::json(['resp' => ['code' => 409, 'message' => $newmathskillcat->skilllabel . $e->getMessage()]], 200);
+	    	return Response::json(['resp' => ['code' => 409, 'message' => $newmathskillcat->catsubid . $e->getMessage()]], 200);
 
 	    }
 
-		return Response::json(['resp' => ['code' => 0 , 'message' => $newmathskillcat->skilllabel . "更新成功！"]], 200);
+		return Response::json(['resp' => ['code' => 0 , 'message' => $newmathskillcat->catsubid . "更新成功！"]], 200);
 	}
 
 	/**
