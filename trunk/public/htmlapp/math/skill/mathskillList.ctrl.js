@@ -69,8 +69,13 @@
                 vm.checkAndSaveMathskill = function(data,field,mathskill,rules) {
                     console.log(data);
                 var d = $q.defer();
-                var returned = simplevalidate.dovalidateQuery(
-                    'http://kidsit.cn/admin/api/math/skill/?catsubid='+mathskill.catsubid+'&mathskillcat_id='+_.findWhere($scope.mathskillcats,{catlabel:data}).id);
+                var queryurl;
+                if (field=="catlabel"){
+                    queryurl ='http://kidsit.cn/admin/api/math/skill/?catsubid='+mathskill.catsubid+'&mathskillcat_id='+_.findWhere($scope.mathskillcats,{catlabel:data}).id;
+                }else if (field=="catsubid"){
+                    queryurl = 'http://kidsit.cn/admin/api/math/skill/?catsubid='+ data +'&mathskillcat_id='+mathskill.category.id;
+                }
+                var returned = simplevalidate.dovalidateQuery(queryurl);
                 returned.then(
                     function (response) {
                         if (response){
@@ -79,10 +84,13 @@
                             toastr.error(response);
                         }else{
                             // can use and 0 returned by simplevalidation service
-                            mathskill.category.catlabel = data;
-                            mathskill.category.id = _.findWhere($scope.mathskillcats,{catlabel:data}).id ;
-                            mathskill.mathskillcat_id = mathskill.category.id ;
-
+                            if (field=="catlabel"){
+                                mathskill.category.catlabel = data;
+                                mathskill.category.id = _.findWhere($scope.mathskillcats,{catlabel:data}).id ;
+                                mathskill.mathskillcat_id = mathskill.category.id ;
+                            }else if (field=="catsubid"){
+                                mathskill.catsubid = data;
+                            }
                             vm.currentPromise = promise = khttp.update("http://kidsit.cn/admin/api/math/skill/"+mathskill.id,mathskill);
                             promise.then(
                                 function(mathskilldata) {/*success*/
