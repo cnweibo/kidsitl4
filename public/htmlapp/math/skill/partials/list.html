@@ -1,0 +1,37 @@
+
+	<div class="mathskillbox" ng-controller="mathskillListCtrl as listvm">
+		<table id="mathskill" class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="col-md-1">ID</th>
+					<th class="col-md-1">知识点标签</th>
+					<th class="col-md-1">所属知识点类别标签</th>
+					<th class="col-md-1">所属知识点类别下id</th>
+					<th class="col-md-4">知识点描述</th>
+					<th class="col-md-2">创建于：</th>
+					<th class="col-md-2">操作：</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="mathskill in mathskills | orderBy:['catsubid','-id']">
+					<td class="col-md-1">[[mathskill.id]]</td>
+
+					<td class="col-md-1"><span class="label label-success">[[mathskill.category.catlabel]].[[mathskill.catsubid]]</span></td>
+					<!-- editable-select="mathskill.teacher_id" onshow="vm.loadmathskillSelectableOwners()" e-ng-options="o.id as o.sysloginname + '(' + o.name + ':' + o.id +')' for o in owners" onbeforesave="vm.checkAndSavemathskill($data,'teacher_id',mathskill)"
+					editable-text="user.state" e-typeahead="state for state in states | filter:$viewValue | limitTo:8" -->
+					<!-- e-typeahead="state for state in states | filter:$viewValue | limitTo:8" -->
+					<!-- + '(' +mathskill.category.description + ')'  -->
+					<!-- 注意这里应该对组合数据存在做判断，catlabel+catsubid应该唯一! Todo: 使用query string的方式来做 -->
+					<td class="col-md-1" editable-text="mathskill.category.catlabel" e-typeahead="mathskillcat.catlabel  as mathskillcat.catlabel + '(' + mathskillcat.id + ':' +mathskillcat.description + ')' for mathskillcat in mathskillcats | filter:$viewValue | limitTo:8" onbeforesave="listvm.checkAndSaveMathskill($data,'category.catlabel',mathskill,{minlength:2,maxlength:20,canuse:1})">[[mathskill.category.catlabel]]</td>
+					
+					<td class="col-md-1" editable-text="mathskill.catsubid" onbeforesave="listvm.checkAndSaveMathskill($data,'catsubid',mathskill,{minlength:1,maxlength:3,isallnumeric:1})">[[mathskill.catsubid]]</td>
+
+					<td class="col-md-4" editable-text="mathskill.description" onbeforesave="listvm.checkAndSaveMathskill($data,'description',mathskill,{minlength:2,maxlength:200})">[[mathskill.description]]</td>
+					<td class="col-md-2">[[mathskill.created_at]]</td>
+					<td class="col-md-2"> 
+						<a ng-click="listvm.deleteMathskill(mathskill)" class="btn btn-danger">删除</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
